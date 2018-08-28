@@ -1,1 +1,1 @@
-The version of Unity that we will be using for this part of the project is 2018.2.4f1.
+The version of Unity that we will be using for this part of the project is 2018.2.5f1.
