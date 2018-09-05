@@ -28,19 +28,36 @@ public class CharacterMovement : MonoBehaviour {
     {
         //Horizontal Movement
         float force = Input.GetAxis("Horizontal");
+        Debug.Log("Force: " + force + "rby: " + rb.velocity.y);
         an.SetFloat("Speed", Mathf.Abs(force));
 
+        if (force > 0 && !facingRight && onGround)
+        {
+            Flip();
+        }
+        else if (force < 0 && facingRight && onGround)
+        {
+            Flip();
+        }
+
+        if (!onGround)
+        {
+            if ((facingRight && force < 0) || (!facingRight && force > 0))
+            {
+                if (rb.velocity.y > -3f)
+                {
+                    force = rb.velocity.x / charMaxSpeed;
+                }
+                else
+                {
+                    force = force * 0.4f + (rb.velocity.x / charMaxSpeed);
+                    force = Mathf.Clamp(force, -0.6f, 0.6f);
+                }
+            }
+        }
+
+
         rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
-
-        if (force > 0 && !facingRight)
-        {
-            Flip();
-        }
-        else if (force < 0 && facingRight)
-        {
-            Flip();
-        }
-
         if (rb.velocity.y == 0)
         {
             onGround = true;
