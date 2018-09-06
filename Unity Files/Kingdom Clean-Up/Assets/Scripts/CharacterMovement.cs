@@ -10,7 +10,7 @@ public class CharacterMovement : MonoBehaviour {
 
     public float charMaxSpeed = 5f;
     public float charJumpSpeed = 10f;
-    public bool onGround { get; protected set; }
+    public bool onGround;
     public bool facingRight = true;
 
     Animator an;
@@ -50,7 +50,7 @@ public class CharacterMovement : MonoBehaviour {
     private void Update()
     {
         //Vertical Movement
-        if ((Input.GetAxis("Vertical") > 0 || Input.GetKeyDown(KeyCode.Space)) && onGround)
+        if ((Input.GetAxis("Vertical") > 0 || Input.GetButtonDown("Jump")) && onGround)
         {
             rb.velocity = new Vector2(rb.velocity.x, charJumpSpeed);
             onGround = false;

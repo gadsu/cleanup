@@ -7,71 +7,60 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-
-    GameObject[] PauseObjects;
-    int Paused = 1;
+    
+    public GameObject PauseObjects;
+    public bool Unpaused;
     // Use this for initialization
     void Start()
     {
 
-        PauseObjects = GameObject.FindGameObjectsWithTag("Paused");
+        // PauseObjects = GameObject.FindGameObjectsWithTag("Paused");
+        PauseObjects = GameObject.Find("PauseMenu");
         HidePaused();
+        Unpaused = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        //uses the ESC button to pause and unpause the game
-        if (Input.GetKeyDown(KeyCode.P))
+    
+        //uses the P button to pause and unpause the game
+        if (Input.GetButtonDown("Pause"))
         {
-            Debug.Log("P was pressed");
-            if (Paused == 1)
-            {
-                Debug.Log("pausing");
-                Paused = 0;
-                ShowPaused();
-            }
-            else if (Paused == 0)
-            {
-                Debug.Log("un-pausing");
-                Paused = 1;
-                HidePaused();
-            }
+            PauseControl();
         }
     }
-
-    //controls the pausing of the scene
+    
     public void PauseControl()
     {
-        if (Paused == 1)
-        {
-            Paused = 0;
-            ShowPaused();
-        }
-        else if (Paused == 0)
-        {
-            Paused = 1;
-            HidePaused();
-        }
+         if (Unpaused)
+            {
+               
+                Time.timeScale = 0;
+                Unpaused = false;
+                ShowPaused();
+                
+            }
+            else if (!Unpaused)
+            {
+                
+                Time.timeScale = 1;
+                Unpaused = true;
+                HidePaused();
+            }
     }
-
+    
     //shows objects with ShowOnPause tag
     public void ShowPaused()
     {
-        foreach (GameObject g in PauseObjects)
-        {
-            g.SetActive(true);
-        }
+        PauseObjects.SetActive(true);
     }
 
     //hides objects with ShowOnPause tag
     public void HidePaused()
     {
-        foreach (GameObject g in PauseObjects)
-        {
-            g.SetActive(false);
-        }
+
+        PauseObjects.SetActive(false);
     }
 }
 

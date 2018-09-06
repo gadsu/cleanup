@@ -19,4 +19,10 @@ public class MainMenu : MonoBehaviour {
     {
         SceneManager.LoadScene(name);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Quit mothas");
+    }
 }
