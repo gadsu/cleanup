@@ -25,7 +25,7 @@ public class PauseMenu : MonoBehaviour
     {
     
         //uses the P button to pause and unpause the game
-        if (Input.GetButtonDown("Pause"))
+        if (Input.GetButtonDown("Menu"))
         {
             PauseControl();
         }
