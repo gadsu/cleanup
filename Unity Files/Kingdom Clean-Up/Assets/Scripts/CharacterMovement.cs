@@ -28,8 +28,8 @@ public class CharacterMovement : MonoBehaviour {
     {
         //Horizontal Movement
         float force = Input.GetAxis("Horizontal");
-        Debug.Log("Force: " + force + "rby: " + rb.velocity.y);
-        an.SetFloat("Speed", Mathf.Abs(force));
+        //Debug.Log("Force: " + force + "rby: " + rb.velocity.y);
+        //an.SetFloat("Speed", Mathf.Abs(force));
 
         if (force > 0 && !facingRight && onGround)
         {
