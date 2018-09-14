@@ -11,10 +11,10 @@ M2 - Throw Slime
 
 Controller Controls
 Bumpers Cycles
-LT: Throw Slime
+LT: Aim/Distance of Thrown Slime
 RT: Place Slime
-A: Jup
+A: Jump
 X: Clean
 Y: Interact
-B:
+B: Throw Slime
 Start: Menu/Pause
