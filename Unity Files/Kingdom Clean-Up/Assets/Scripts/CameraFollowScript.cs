@@ -6,8 +6,8 @@ public class CameraFollowScript : MonoBehaviour
 {
 
     public Transform player;
-    public float maxDist = 20.0f;
-    public float cameraSpeed = 2.0f;
+    public float maxDist = 14.0f;
+    public float cameraSpeed = 5.0f;
     public Vector3 distance;
     public Vector3 currentDistance;
 
@@ -31,12 +31,13 @@ public class CameraFollowScript : MonoBehaviour
 
         Vector3 position = transform.position;
 
-//        Debug.Log(Vector3.Distance(transform.position, player.position));
-//        if (Vector3.Distance(transform.position, player.position) >= maxDist)
- //       {
-            position.y = Mathf.Lerp(transform.position.y, player.transform.position.y, interpolation);
-            position.x = Mathf.Lerp(transform.position.x, player.transform.position.x, interpolation);
-            transform.position = position;
- //       }
+        if (Vector3.Distance(transform.position, player.transform.position) > maxDist)
+        {
+            interpolation *= Vector3.Distance(transform.position, player.transform.position) - maxDist;
+        }
+
+        position.y = Mathf.Lerp(transform.position.y, player.transform.position.y, interpolation);
+        position.x = Mathf.Lerp(transform.position.x, player.transform.position.x, interpolation);
+        transform.position = position;
     }
 }

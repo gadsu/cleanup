@@ -1,21 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FloorKillbox : MonoBehaviour {
 
-    public Transform player;
+    public Transform playertransform;
+    Slider health;
 
     // Use this for initialization
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<Transform>();
+        playertransform = GameObject.Find("Player").GetComponent<Transform>();
+        health = GameObject.Find("Health").GetComponent<Slider>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z);
+        transform.position = new Vector3(playertransform.position.x, transform.position.y, transform.position.z);
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -23,6 +26,12 @@ public class FloorKillbox : MonoBehaviour {
         if (col.gameObject.tag == "Player")
         {
             col.gameObject.transform.position = new Vector3(0, 0, 0);
+            if (health.value > 0)
+            {
+                GameObject.Find("Health").GetComponent<Slider>().value -= 33;
+            }
+            else
+                Debug.Log("Player is DEAD");
         }
         else
         {
