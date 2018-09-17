@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Paused
   - UI
+  - Platform
   layers:
   - Default
   - TransparentFX

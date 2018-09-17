@@ -18,7 +18,7 @@ public class CharacterMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+        onGround = true;
         an = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
 	}
@@ -28,8 +28,8 @@ public class CharacterMovement : MonoBehaviour {
     {
         //Horizontal Movement
         float force = Input.GetAxis("Horizontal");
-        Debug.Log("Force: " + force + "rby: " + rb.velocity.y);
-        an.SetFloat("Speed", Mathf.Abs(force));
+        //Debug.Log("Force: " + force + "rby: " + rb.velocity.y);
+        //an.SetFloat("Speed", Mathf.Abs(force));
 
         if (force > 0 && !facingRight && onGround)
         {
@@ -40,27 +40,36 @@ public class CharacterMovement : MonoBehaviour {
             Flip();
         }
 
-        if (!onGround)
+        if (!onGround)  //tabling this for now
         {
-            if ((facingRight && force < 0) || (!facingRight && force > 0))
-            {
-                if (rb.velocity.y > -3f)
-                {
-                    force = rb.velocity.x / charMaxSpeed;
-                }
-                else
-                {
-                    force = force * 0.4f + (rb.velocity.x / charMaxSpeed);
-                    force = Mathf.Clamp(force, -0.6f, 0.6f);
-                }
-            }
-        }
+              if ((facingRight && force < 0) || (!facingRight && force > 0))
+              {
+                  
+                      force = force * 0.4f + (rb.velocity.x / charMaxSpeed);
+                      force = Mathf.Clamp(force, -0.6f, 0.6f);
+                  
+              }
+         } 
 
 
-        rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
-        if (rb.velocity.y == 0)
+            rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.tag == "Platform" && !onGround)
         {
             onGround = true;
+            Debug.Log("onground = true");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (onGround == true && col.tag == "Platform")
+        {
+            onGround = false;
         }
     }
 
@@ -72,6 +81,7 @@ public class CharacterMovement : MonoBehaviour {
             rb.velocity = new Vector2(rb.velocity.x, charJumpSpeed);
             onGround = false;
         }
+        
     }
 
     void Flip()
