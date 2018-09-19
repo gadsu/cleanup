@@ -61,7 +61,7 @@ public class CharacterMovement : MonoBehaviour {
         if (col.tag == "Platform" && !onGround)
         {
             onGround = true;
-            Debug.Log("onground = true");
+ //           Debug.Log("onground = true");
         }
     }
 
