@@ -40,6 +40,17 @@ public class CharacterMovement : MonoBehaviour {
             Flip();
         }
 
+       // RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f);
+        //RaycastHit2D hit = Physics2D.Raycast()
+        //Debug.DrawRay(transform.position, Vector2.down * 1f);
+        if (hit.collider != null)
+        {
+            if (hit.collider.gameObject.tag == "Platform")
+                onGround = true;
+        }
+
+
+
         if (!onGround)  //tabling this for now
         {
               if ((facingRight && force < 0) || (!facingRight && force > 0))
@@ -60,6 +71,7 @@ public class CharacterMovement : MonoBehaviour {
     {
         if (col.tag == "Platform" && !onGround)
         {
+            col.transform.position
             onGround = true;
  //           Debug.Log("onground = true");
         }
