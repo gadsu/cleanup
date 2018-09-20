@@ -19,7 +19,7 @@ public class CharacterMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         onGround = true;
-        an = GetComponent<Animator>();
+        //an = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
 	}
 
@@ -43,12 +43,12 @@ public class CharacterMovement : MonoBehaviour {
        // RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f);
         //RaycastHit2D hit = Physics2D.Raycast()
         //Debug.DrawRay(transform.position, Vector2.down * 1f);
-        if (hit.collider != null)
+        /*if (hit.collider != null)
         {
             if (hit.collider.gameObject.tag == "Platform")
                 onGround = true;
         }
-
+        */
 
 
         if (!onGround)  //tabling this for now
@@ -64,9 +64,9 @@ public class CharacterMovement : MonoBehaviour {
 
 
             rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
-
+        
     }
-
+    /*
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.tag == "Platform" && !onGround)
@@ -76,7 +76,7 @@ public class CharacterMovement : MonoBehaviour {
  //           Debug.Log("onground = true");
         }
     }
-
+    */
     private void OnTriggerExit2D(Collider2D col)
     {
         if (onGround == true && col.tag == "Platform")
