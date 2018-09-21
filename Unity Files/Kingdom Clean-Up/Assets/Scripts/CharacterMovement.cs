@@ -13,6 +13,8 @@ public class CharacterMovement : MonoBehaviour {
     public bool onGround;
     public bool facingRight = true;
 
+    float jumpFrame;
+
     Animator an;
     Rigidbody2D rb;
 
@@ -31,67 +33,68 @@ public class CharacterMovement : MonoBehaviour {
         //Debug.Log("Force: " + force + "rby: " + rb.velocity.y);
         //an.SetFloat("Speed", Mathf.Abs(force));
 
-        if (force > 0 && !facingRight && onGround)
+        if (force > 0 && !facingRight /*&& onGround*/)
         {
             Flip();
         }
-        else if (force < 0 && facingRight && onGround)
+        else if (force < 0 && facingRight /*&& onGround*/)
         {
             Flip();
         }
 
-       // RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f);
-        //RaycastHit2D hit = Physics2D.Raycast()
-        //Debug.DrawRay(transform.position, Vector2.down * 1f);
-        /*if (hit.collider != null)
+        rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
+
+        Debug.DrawRay(transform.position, Vector2.down * 1f, Color.magenta);
+        if (!onGround && ((Time.time - jumpFrame) > 0.5f))  //tabling this for now
         {
-            if (hit.collider.gameObject.tag == "Platform")
-                onGround = true;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f);
+            Debug.Log(hit.collider.gameObject.tag + hit.collider.gameObject.tag.ToString());
+            if (hit.collider != null)
+            {
+                if (hit.collider.gameObject.tag == "Platform")
+                    onGround = true;
+            }
+
+            /*if ((facingRight && force < 0) || (!facingRight && force > 0))
+            {
+
+                force = force * 0.4f + (rb.velocity.x / charMaxSpeed);
+                force = Mathf.Clamp(force, -0.6f, 0.6f);
+
+            }/*/
         }
-        */
 
 
-        if (!onGround)  //tabling this for now
-        {
-              if ((facingRight && force < 0) || (!facingRight && force > 0))
-              {
-                  
-                      force = force * 0.4f + (rb.velocity.x / charMaxSpeed);
-                      force = Mathf.Clamp(force, -0.6f, 0.6f);
-                  
-              }
-         } 
-
-
-            rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
+        //rb.AddForce(new Vector2(force * charMaxSpeed, rb.velocity.y));
         
     }
-    /*
+    
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.tag == "Platform" && !onGround)
+       /* if (col.tag == "Platform" && !onGround)
         {
-            col.transform.position
+            //col.transform.position
             onGround = true;
- //           Debug.Log("onground = true");
-        }
+                       Debug.Log("onground = true");
+        } */
     }
-    */
+    
     private void OnTriggerExit2D(Collider2D col)
     {
-        if (onGround == true && col.tag == "Platform")
+       /* if (onGround == true && col.tag == "Platform")
         {
             onGround = false;
-        }
+        } */
     }
 
     private void Update()
     {
         //Vertical Movement
-        if ((Input.GetAxis("Vertical") > 0 || Input.GetButtonDown("Jump")) && onGround)
+        if (Input.GetButtonDown("Jump") && onGround)
         {
             rb.velocity = new Vector2(rb.velocity.x, charJumpSpeed);
             onGround = false;
+            jumpFrame = Time.time;
         }
         
     }
