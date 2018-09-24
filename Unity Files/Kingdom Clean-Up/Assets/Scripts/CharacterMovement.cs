@@ -12,6 +12,8 @@ public class CharacterMovement : MonoBehaviour {
     public float charJumpSpeed = 10f;
     public bool onGround;
     public bool facingRight = true;
+    public bool doubleJump = false;
+    bool jumpFinished;
 
     float jumpFrame;
 
@@ -44,15 +46,20 @@ public class CharacterMovement : MonoBehaviour {
 
         rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
 
+
+        //Checking for ground
         Debug.DrawRay(transform.position, Vector2.down * 1f, Color.magenta);
-        if (!onGround && ((Time.time - jumpFrame) > 0.5f))  //tabling this for now
+        if (!onGround && ((Time.time - jumpFrame) > 0.5f)) 
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f);
-            Debug.Log(hit.collider.gameObject.tag + hit.collider.gameObject.tag.ToString());
             if (hit.collider != null)
             {
+                Debug.Log(hit.collider.gameObject.tag + hit.collider.gameObject.tag.ToString());
                 if (hit.collider.gameObject.tag == "Platform")
+                {
                     onGround = true;
+                    jumpFinished = false;
+                }
             }
 
             /*if ((facingRight && force < 0) || (!facingRight && force > 0))
@@ -62,6 +69,35 @@ public class CharacterMovement : MonoBehaviour {
                 force = Mathf.Clamp(force, -0.6f, 0.6f);
 
             }/*/
+        }
+
+        //Checking for Slime Wall
+        if(!onGround && doubleJump && !jumpFinished) // if you slide past and don't jump
+        {
+            RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left * 1f, 1f);
+            RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right * 1f, 1f);
+            if (hitLeft.collider == null && hitRight.collider == null) //update later
+            {
+                    doubleJump = false;
+            }
+
+        }
+        if(!onGround && !doubleJump && !jumpFinished) //checking to add doublejump
+        {
+            Debug.DrawRay(transform.position, Vector2.left * 1f, Color.green);
+            Debug.DrawRay(transform.position, Vector2.right * 1f, Color.green);
+            RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left * 1f, 1f);
+            RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right * 1f, 1f);
+            if (hitLeft.collider != null) // break into 2 or it gets angry
+            {
+                if (hitLeft.collider.gameObject.tag == "slimeInteractable" && hitLeft.collider.gameObject.name.Contains("green"))
+                    doubleJump = true;
+            }
+            else if (hitRight.collider != null)
+            {
+                if (hitRight.collider.gameObject.tag == "slimeInteractable" && hitRight.collider.gameObject.name.Contains("green"))
+                    doubleJump = true;
+            }
         }
 
 
@@ -96,6 +132,13 @@ public class CharacterMovement : MonoBehaviour {
             onGround = false;
             jumpFrame = Time.time;
         }
+        else if(Input.GetButtonDown("Jump") && !onGround && doubleJump && !jumpFinished)
+        {
+            jumpFinished = true;
+            rb.velocity = new Vector2(-rb.velocity.x, charJumpSpeed);
+            doubleJump = false;
+        }
+
         
     }
 
