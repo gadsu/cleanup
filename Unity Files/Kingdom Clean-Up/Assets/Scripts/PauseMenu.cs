@@ -1,7 +1,4 @@
-﻿
-//This was testing it doesn't work :)
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
