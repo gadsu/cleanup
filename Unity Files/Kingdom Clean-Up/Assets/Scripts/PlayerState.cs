@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PlayerStatus : MonoBehaviour {
+public class PlayerState : MonoBehaviour {
 
 
     public int greenSlimeMeter { get; protected set; }

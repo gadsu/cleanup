@@ -19,6 +19,7 @@ public class CharacterMovement : MonoBehaviour {
 
     Animator an;
     Rigidbody2D rb;
+    public GameObject mop;
 
 	// Use this for initialization
 	void Start () {
@@ -54,7 +55,7 @@ public class CharacterMovement : MonoBehaviour {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f);
             if (hit.collider != null)
             {
-                Debug.Log(hit.collider.gameObject.tag + hit.collider.gameObject.tag.ToString());
+                //Debug.Log(hit.collider.gameObject.tag + hit.collider.gameObject.tag.ToString());
                 if (hit.collider.gameObject.tag == "Platform")
                 {
                     onGround = true;
@@ -139,6 +140,11 @@ public class CharacterMovement : MonoBehaviour {
             doubleJump = false;
         }
 
+        //checking for input
+        if(Input.GetButtonDown("Attack"))
+        {
+            mop.GetComponent<CleanAttack>().swingMop();
+        }
         
     }
 

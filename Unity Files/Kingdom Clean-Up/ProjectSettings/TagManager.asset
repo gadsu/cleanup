@@ -9,6 +9,7 @@ TagManager:
   - Platform
   - slimeObject
   - slimeInteractable
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -14,12 +14,12 @@ public class ItemInteraction : MonoBehaviour {
             {
                 Debug.Log("IS INTER");
                 if (gameObject.name.Contains("green"))
-                    other.GetComponent<PlayerStatus>().addSlime(10, "green");
+                    other.GetComponent<PlayerState>().addSlime(10, "green");
                 else if (gameObject.name.Contains("red"))
-                    other.GetComponent<PlayerStatus>().addSlime(10, "red");
+                    other.GetComponent<PlayerState>().addSlime(10, "red");
                 else if (gameObject.name.Contains("blue"))
                 {
-                    other.GetComponent<PlayerStatus>().addSlime(10, "blue");
+                    other.GetComponent<PlayerState>().addSlime(10, "blue");
                 }
                 Debug.Log("IS DESTROY");
                 Destroy(gameObject);
