@@ -6,14 +6,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMovement : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 
     public float charMaxSpeed = 5f;
     public float charJumpSpeed = 10f;
     public bool onGround;
-    public bool facingRight = true;
-    public bool doubleJump = false;
+    public bool facingRight;
+    public bool doubleJump;
     bool jumpFinished;
+    bool aiming;
+
 
     float jumpFrame;
 
@@ -26,6 +28,9 @@ public class CharacterMovement : MonoBehaviour {
         onGround = true;
         //an = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        aiming = false;
+        doubleJump = false;
+        facingRight = true;
 	}
 
     // Update is called once per frame
@@ -140,17 +145,47 @@ public class CharacterMovement : MonoBehaviour {
             doubleJump = false;
         }
 
-        //checking for input
+        //checking for basic button presses - all button input should be here
         if(Input.GetButtonDown("Attack"))
         {
             mop.GetComponent<CleanAttack>().swingMop();
         }
-        
+
+        //slime throwing shenanigans
+        if (Input.GetButtonDown("Aim"))
+        {
+            ShowAim();
+        }
+        else if(Input.GetButtonUp("Aim"))
+        {
+            HideAim();
+        }
+
+        if(aiming && Input.GetButtonDown("Throw"))
+        {
+            ThrowSlime();
+        }
     }
 
     void Flip()
     {
         facingRight = !facingRight;
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y);
+    }
+
+    //Display the reticle and allow you to interact with it
+    void ShowAim()
+    {
+        aiming = true;
+    }
+
+    void HideAim()
+    {
+        aiming = false;
+    }
+
+    void ThrowSlime()
+    {
+        HideAim();
     }
 }
