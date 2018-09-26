@@ -20,7 +20,7 @@ public class KillScreen : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        KillScreenControl(); //Don't know if this is needed, had to leave before i could test without it
+       //KillScreenControl(); //Don't know if this is needed, had to leave before i could test without it
     }
 
     //checks to see if PC has health left or not
