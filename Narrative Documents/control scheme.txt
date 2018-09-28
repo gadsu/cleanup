@@ -2,8 +2,8 @@ Mouse and Keyboard Controls
 A - Move Left
 D - Move Right
 W - Jump
-E - Interact
-Space - Attack/Clean
+E - Interact/Clean
+Space - Mop Attack
 Esc - Pause
 Tab - Swap
 M1 - Place Slime
@@ -11,10 +11,10 @@ M2 - Throw Slime
 
 Controller Controls
 Bumpers Cycles
-LT: Aim/Distance of Thrown Slime
+LT: Distance/Aim of Thrown Slime
 RT: Place Slime
 A: Jump
-X: Clean
-Y: Interact
+X: Mop Attack
+Y: Interact/Clean
 B: Throw Slime
 Start: Menu/Pause
