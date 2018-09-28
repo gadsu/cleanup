@@ -31,11 +31,14 @@ public class FloorKillbox : MonoBehaviour {
                 GameObject.Find("Health").GetComponent<Slider>().value -= 33;
             }
             else
+            {
                 Debug.Log("Player is DEAD");
+                GameObject.Find("UI Canvas").GetComponent<KillScreen>().KillScreenControl();
+            }
         }
         else
         {
-            // kill the damn thing
+            // kil
         }
     }
 
