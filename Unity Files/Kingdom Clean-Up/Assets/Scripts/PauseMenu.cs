@@ -1,7 +1,4 @@
-﻿
-//This was testing it doesn't work :)
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,9 +8,14 @@ public class PauseMenu : MonoBehaviour
     public GameObject PauseObjects;
     public bool Unpaused;
     // Use this for initialization
+    private void Awake()
+    {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
+    }
     void Start()
     {
-
+        //TESTING FOR LAG
         // PauseObjects = GameObject.FindGameObjectsWithTag("Paused");
         PauseObjects = GameObject.Find("PauseMenu");
         HidePaused();

@@ -7,6 +7,9 @@ TagManager:
   - Paused
   - UI
   - Platform
+  - slimeObject
+  - slimeInteractable
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -16,9 +19,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Platform
+  - Viscera
+  - Objects
   - 
   - 
   - 
@@ -43,4 +46,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Viscera
+    uniqueID: 1833632159
+    locked: 0
+  - name: Objects
+    uniqueID: 3532061751
     locked: 0
