@@ -107,7 +107,6 @@ public class PlayerController : MonoBehaviour {
 
         rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
 
-
         //Checking for ground
         //Debug.DrawRay(transform.position, Vector2.down * 1f, Color.magenta);
         if (!onGround && ((Time.time - jumpFrame) > 0.5f))
