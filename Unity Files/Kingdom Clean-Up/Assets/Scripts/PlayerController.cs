@@ -8,8 +8,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    public float charMaxSpeed = 5f;
-    public float charJumpSpeed = 10f;
+    public float charMaxSpeed = 40f;
+    public float charJumpSpeed = 60f;
+    public float playerSize = 4f;
     public bool onGround;
     public bool facingRight;
     public bool doubleJump;
@@ -108,10 +109,10 @@ public class PlayerController : MonoBehaviour {
         rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
 
         //Checking for ground
-        //Debug.DrawRay(transform.position, Vector2.down * 1f, Color.magenta);
+        //Debug.DrawRay(transform.position, Vector2.down * playerSize, Color.magenta);
         if (!onGround && ((Time.time - jumpFrame) > 0.5f))
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, playerSize);
             if (hit.collider != null)
             {
                 //Debug.Log(hit.collider.gameObject.tag + hit.collider.gameObject.tag.ToString());
@@ -134,9 +135,10 @@ public class PlayerController : MonoBehaviour {
         //Checking for Slime Wall
         if (!onGround && doubleJump && !jumpFinished) // if you slide past and don't jump
         {
-            RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left * 1f, 1f);
-            RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right * 1f, 1f);
+            RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left * playerSize, playerSize);
+            RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right * playerSize, playerSize);
             if (hitLeft.collider == null && hitRight.collider == null) //update later
+
             {
                 doubleJump = false;
             }
@@ -144,10 +146,10 @@ public class PlayerController : MonoBehaviour {
         }
         if (!onGround && !doubleJump && !jumpFinished) //checking to add doublejump
         {
-            Debug.DrawRay(transform.position, Vector2.left * 1f, Color.green);
-            Debug.DrawRay(transform.position, Vector2.right * 1f, Color.green);
-            RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left * 1f, 1f);
-            RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right * 1f, 1f);
+            Debug.DrawRay(transform.position, Vector2.left * playerSize, Color.green);
+            Debug.DrawRay(transform.position, Vector2.right * playerSize, Color.green);
+            RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left * playerSize, playerSize);
+            RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right * playerSize, playerSize);
             if (hitLeft.collider != null) // break into 2 or it gets angry
             {
                 if (hitLeft.collider.gameObject.tag == "slimeInteractable" && hitLeft.collider.gameObject.name.Contains("green"))

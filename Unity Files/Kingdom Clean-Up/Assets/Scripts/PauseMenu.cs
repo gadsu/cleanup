@@ -20,6 +20,7 @@ public class PauseMenu : MonoBehaviour
         PauseObjects = GameObject.Find("PauseMenu");
         HidePaused();
         Unpaused = true;
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
