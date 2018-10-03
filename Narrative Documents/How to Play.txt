@@ -1,0 +1,30 @@
+How to Play:
+
+In Kingdom Clean-Up, your home has been taken over by the cute, cuddly slimes. The goal of the game? Clean up your home to take it back, and use the slime you have collected to traverse the stages and reach the end. Be wary though, the slimes dont like you cleaning up the place, and will try to stop you whenever they can.
+
+Controls:
+
+Mouse and Keyboard Controls
+A - Move Left
+D - Move Right
+W - Jump
+E - Interact/Clean
+Space - Mop Attack
+Esc - Pause
+Tab - Swap
+M1 - Place Slime
+M2 - Throw Slime
+
+Controller Controls
+Bumpers Cycles
+LT: Distance/Aim of Thrown Slime
+RT: Place Slime
+A: Jump
+X: Mop Attack
+Y: Interact/Clean
+B: Throw Slime
+Start: Menu/Pause
+
+Slimes and Their Abilities:
+
+Green slimes are the first enemies you will encounter. They do what slimes do best; make things sticky. Without knowing how to use it the slime may seem like a hinderence. It slows you down, makes things so you cant push them, and makes jumping harder. Used correctly however, you can use it to slow down enemies, or use it to jump off walls if you need some extra height.
