@@ -1,0 +1,41 @@
+﻿Types of slimes
+Slime Colors
+* Red
+   * Stretchy and Self-Hardening
+   * Used to make shapes of various sizes to act as temporary platforms
+* Green
+   * Sticky
+   * Climb walls, slow enemies
+* Blue
+   * Slippery
+   * Speed build up for long jumps, make enemies fall off a ledge.
+
+
+Slime Enemy types
+* Goopa
+   * Base slimes, do almost nothing, run into player to deal damage.
+* Bosses
+   * More powerful slimes at the end of the stage, have unique attacks
+   * Most, if not all, bosses will have 9 hitpoints. Every 3 attacks the boss will do a powerful move that the player must avoid.
+
+
+        Bosses
+* OBSOOOTM
+   * Aggressive Goopa stuck in a bucket, special attack is a large jump followed by a slam into the player.
+   * Special attack consists of consecutive jumps across the arena, the player must avoid by running beneath OBSOOO between each jump.
+* Barney
+   * Spider like slime that hangs from the ceiling
+   * Throws slime at the player that hurts and slows upon hitting the player
+   * After three hits he throws a large amount of slime over the half of the stage that will hurt the player and is too thick to clean 
+   * After both sides of the stage have been covered the boss will fall to the ground swinging its arms/tentacles around which if the player gets hit by will do damage
+Stages
+1. Tutorial level
+   1. The true OBSOOO location
+   2. Very simple
+1. Country
+   1. Area surrounding the Kingdom
+   2. Boss is Barney
+1. Kingdom
+   1. Immediately within the perimeter of the wall, leading towards the Castle/Keep
+1. Throne Room
+   1. After getting into the Castle/Keep, ends with Throne Room, final boss fight.
