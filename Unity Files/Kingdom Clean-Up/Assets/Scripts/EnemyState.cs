@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyState : MonoBehaviour {
 
     int health;
     Animator an;
     public GameObject spawner = null;
+    public bool facingRight = true;
 
 	// Use this for initialization
 	void Start () {
@@ -31,6 +33,27 @@ public class EnemyState : MonoBehaviour {
     public void setSpawner(string spawnName)
     {
         spawner = GameObject.Find(spawnName);
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+    
+    }
+
+    void Flip()
+    {
+        facingRight = !facingRight;
+        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y);
+    }
+
+    void Jump()
+    {
+
+    }
+
+    public void walkto(Vector3 pos)
+    {
+
     }
 
     public void death()
