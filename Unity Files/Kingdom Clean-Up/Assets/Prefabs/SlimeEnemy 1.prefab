@@ -22,8 +22,10 @@ GameObject:
   - component: {fileID: 212621883372955916}
   - component: {fileID: 50719679293043000}
   - component: {fileID: 114455870935192602}
+  - component: {fileID: 114063165567039276}
   - component: {fileID: 95449754548174956}
   - component: {fileID: 61492792687858184}
+  - component: {fileID: 195318537141989182}
   m_Layer: 0
   m_Name: SlimeEnemy 1
   m_TagString: Enemy
@@ -107,6 +109,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114063165567039276
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1275367914314004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb0967894253304ea5fd4c3dedbe045, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 4550764926146348, guid: 768ed5cf1b65a97498504b19a7bc4bdf, type: 2}
+  targetArr:
+  - {fileID: 4550764926146348, guid: 768ed5cf1b65a97498504b19a7bc4bdf, type: 2}
+  LostPlayerTimer: 5
+  PatrolTimer: 5
+  PatrolIndex: 1
 --- !u!114 &114455870935192602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,6 +138,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 0}
+--- !u!195 &195318537141989182
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1275367914314004}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 2.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 5
+  m_BaseOffset: 2.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!212 &212621883372955916
 SpriteRenderer:
   m_ObjectHideFlags: 1
