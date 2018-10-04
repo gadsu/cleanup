@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetArr:
-  - {fileID: 4550764926146348, guid: 768ed5cf1b65a97498504b19a7bc4bdf, type: 2}
+  - {fileID: 0}
   LostPlayerTimer: 5
   PatrolTimer: 5
   PatrolIndex: 1
@@ -138,6 +138,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 0}
+  facingRight: 1
+  speed: 20
 --- !u!212 &212621883372955916
 SpriteRenderer:
   m_ObjectHideFlags: 1

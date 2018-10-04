@@ -10,7 +10,7 @@ public class SlimeSpawner : MonoBehaviour {
     public int slimeCount;
     public int maxSlime = 1;
     public int totalSlime = 4;
-    float timeDelay = 3f;
+    public float timeDelay = 3f;
 
 	// Use this for initialization
 	void Start ()
@@ -29,6 +29,7 @@ public class SlimeSpawner : MonoBehaviour {
             GameObject SlimeEnemy = Instantiate<GameObject>(prefab, startpos.position, startpos.rotation);
             //SlimeEnemy.GetComponent<EnemyState>().spawner = this.gameObject;
             SlimeEnemy.GetComponent<EnemyState>().setSpawner(gameObject.name.ToString());
+            SlimeEnemy.name = name.ToCharArray()[0].ToString() + SlimeEnemy.name;
             //SlimeEnemy.GetComponent<SpriteRenderer>().color = Color.red;
             spawnTime = Time.fixedTime;
             totalSlime--;

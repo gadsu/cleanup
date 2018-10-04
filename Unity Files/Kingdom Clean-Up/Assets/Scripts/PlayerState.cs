@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.IO;
+using System.Linq;
 
 public class PlayerState : MonoBehaviour {
-
+    Dictionary<string, string> saveDic;
 
     public int greenSlimeMeter { get; protected set; }
     public int redSlimeMeter { get; protected set; }
@@ -47,6 +48,13 @@ public class PlayerState : MonoBehaviour {
         greenMeter = GameObject.Find("GreenMeter").GetComponent<Slider>();
         redMeter = GameObject.Find("RedMeter").GetComponent<Slider>();
         blueMeter = GameObject.Find("BlueMeter").GetComponent<Slider>();
+
+        //Fill the dictionary from file   saveDic["name"] will return the string "Rachel" 
+        TextAsset PlayerFile = new TextAsset();
+        if(true)//CHECK TO SEE IF THE SAVE FILE HAS BEEN LOADED
+        {
+
+        }
     }
 	
 	// Update is called once per frame

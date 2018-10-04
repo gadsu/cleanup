@@ -10,7 +10,7 @@ public class AIFollow : MonoBehaviour
 {
 
     public static float PTIME = 5f;
-    
+
 
     GameObject target = null;
     public List<Transform> targetArr;
@@ -21,7 +21,7 @@ public class AIFollow : MonoBehaviour
     public int PatrolIndex = 0;
     public float distance;
     public char patrolNum;
-    
+
 
     void Start()
     {
@@ -29,14 +29,17 @@ public class AIFollow : MonoBehaviour
         patrolNum = name.ToCharArray()[0];
 
         points = GameObject.FindGameObjectsWithTag("Spawner");
+        Debug.Log(points.Length);
+        targetArr.Clear();
+
         foreach (GameObject n in points)
         {
-            if (n.name.Contains("PatrolPoint") && n.GetComponentInParent<GameObject>().name.ToCharArray()[0] == patrolNum)  //AGreenSlimeSpawner BGreenSLime
+            if (n.name.Contains("PatrolPoint") && n.transform.parent.name.ToCharArray()[0] == patrolNum)  //AGreenSlimeSpawner BGreenSLime
             {
                 targetArr.Add(n.transform);
+                Debug.Log("Added " + n.name + "to list");
             }
         }
-
     }
 
     void FixedUpdate()
@@ -44,12 +47,13 @@ public class AIFollow : MonoBehaviour
         distance = Vector2.Distance(target.transform.position, transform.position);
         if (playerFound)
         {
-           // agent.SetDestination(target.transform.position);   REPLACE WITH MOVE FUNCTION
-
+            // agent.SetDestination(target.transform.position);   REPLACE WITH MOVE FUNCTION
+            MoveTowardsPoint(target.transform.position);
             if (LostPlayerTimer <= 0)
             {
                 playerFound = false;
-              //  agent.SetDestination(targetArr[0].position);
+                //  agent.SetDestination(targetArr[0].position);
+                MoveTowardsPoint(targetArr[PatrolIndex].position);
             }
             else if (distance > 30f)
             {
@@ -70,15 +74,16 @@ public class AIFollow : MonoBehaviour
             {
                 PatrolTimer -= Time.deltaTime;
 
-                if (PatrolIndex < targetArr.Count && targetArr[PatrolIndex] != null)
+                if (PatrolIndex < targetArr.Count && targetArr[PatrolIndex].position != null)
                 {
                     //agent.SetDestination(targetArr[PatrolIndex].position);
+                    MoveTowardsPoint(targetArr[PatrolIndex].position);
                     if (PatrolTimer <= 0)
                     {
                         PatrolIndex++;
                         PatrolTimer = PTIME;
 
-                        if (PatrolIndex == targetArr.Count)
+                        if (PatrolIndex >= targetArr.Count)
                         {
                             PatrolIndex = 0;
                         }
@@ -99,5 +104,4 @@ public class AIFollow : MonoBehaviour
     {
         GetComponent<EnemyState>().walkto(pos);
     }
-
 }

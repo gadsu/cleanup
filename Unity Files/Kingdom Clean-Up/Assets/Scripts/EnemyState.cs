@@ -5,14 +5,19 @@ using UnityEngine.AI;
 
 public class EnemyState : MonoBehaviour {
 
+    Rigidbody2D rb;
     int health;
     Animator an;
     public GameObject spawner = null;
     public bool facingRight = true;
+    public float speed = 20f;
+    public float buffer = 3f;
+    public float toEdge;
 
 	// Use this for initialization
 	void Start () {
         health = 10;
+        rb = GetComponent<Rigidbody2D>();
         an = GetComponent<Animator>();
 	}
 	
@@ -35,11 +40,6 @@ public class EnemyState : MonoBehaviour {
         spawner = GameObject.Find(spawnName);
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-    
-    }
-
     void Flip()
     {
         facingRight = !facingRight;
@@ -53,7 +53,28 @@ public class EnemyState : MonoBehaviour {
 
     public void walkto(Vector3 pos)
     {
+        if(pos.x - buffer > rb.position.x)
+        {
+            if (!facingRight)
+            {
+                Flip();
+            }
 
+            rb.velocity = new Vector2(speed, rb.velocity.y);
+        }
+        else if (pos.x + buffer < rb.position.x)
+        {
+            if (facingRight)
+            {
+                Flip();
+            }
+
+            rb.velocity = new Vector2(-1 * speed, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
     }
 
     public void death()
