@@ -27,6 +27,7 @@ Slime Enemy types
    * Spider like slime that hangs from the ceiling
    * Throws slime at the player that hurts and slows upon hitting the player
    * After three hits he throws a large amount of slime over the half of the stage that will hurt the player and is too thick to clean 
+   * The special attack starts at the top of the screen and moves down leaving time for the player to get out of the way.
    * After both sides of the stage have been covered the boss will fall to the ground swinging its arms/tentacles around which if the player gets hit by will do damage
 Stages
 1. Tutorial level
