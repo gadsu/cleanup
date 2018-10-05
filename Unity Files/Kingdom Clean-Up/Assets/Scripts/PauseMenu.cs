@@ -36,21 +36,20 @@ public class PauseMenu : MonoBehaviour
     
     public void PauseControl()
     {
-         if (Unpaused)
-            {
-               
-                Time.timeScale = 0;
-                Unpaused = false;
-                ShowPaused();
-                
-            }
-            else if (!Unpaused)
-            {
-                
-                Time.timeScale = 1;
-                Unpaused = true;
-                HidePaused();
-            }
+        if (Unpaused)
+        {
+            Time.timeScale = 0;
+            Unpaused = false;
+            ShowPaused();
+            GameObject.Find("Player").GetComponent<PlayerController>().toggleMove();
+        }
+        else if (!Unpaused)
+        {
+            Time.timeScale = 1;
+            Unpaused = true;
+            HidePaused();
+            GameObject.Find("Player").GetComponent<PlayerController>().toggleMove();
+        }
     }
     
     //shows objects with ShowOnPause tag

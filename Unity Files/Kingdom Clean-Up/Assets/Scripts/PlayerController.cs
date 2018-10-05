@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
     public bool doubleJump;
     bool jumpFinished;
     bool aiming;
+    public bool canMove;
 
 
     float jumpFrame;
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour {
         aiming = false;
         doubleJump = false;
         facingRight = true;
+        canMove = true;
 	}
 
     
@@ -55,58 +57,61 @@ public class PlayerController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        //Vertical Movement
-        if (Input.GetButtonDown("Jump") && onGround)
+        if (canMove)
         {
-            rb.velocity = new Vector2(rb.velocity.x, charJumpSpeed);
-            onGround = false;
-            jumpFrame = Time.time;
-        }
-        else if (Input.GetButtonDown("Jump") && !onGround && doubleJump && !jumpFinished)
-        {
-            jumpFinished = true;
-            rb.velocity = new Vector2(-rb.velocity.x, charJumpSpeed);
-            doubleJump = false;
-        }
+            //Vertical Movement
+            if (Input.GetButtonDown("Jump") && onGround)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, charJumpSpeed);
+                onGround = false;
+                jumpFrame = Time.time;
+            }
+            else if (Input.GetButtonDown("Jump") && !onGround && doubleJump && !jumpFinished)
+            {
+                jumpFinished = true;
+                rb.velocity = new Vector2(-rb.velocity.x, charJumpSpeed);
+                doubleJump = false;
+            }
 
-        //checking for basic button presses - all button input should be here
-        if (Input.GetButtonDown("Attack"))
-        {
-            mop.GetComponent<CleanAttack>().swingMop();
+            //checking for basic button presses - all button input should be here
+            if (Input.GetButtonDown("Attack"))
+            {
+                mop.GetComponent<CleanAttack>().swingMop();
+            }
+
+            //slime throwing shenanigans
+            if (Input.GetButtonDown("Aim"))
+            {
+                ShowAim();
+            }
+            else if (Input.GetButtonUp("Aim"))
+            {
+                HideAim();
+            }
+
+            if (aiming && Input.GetButtonDown("Throw"))
+            {
+                ThrowSlime();
+            }
+
+
+
+            //Horizontal Movement
+            float force = Input.GetAxis("Horizontal");
+            //Debug.Log("Force: " + force + "rby: " + rb.velocity.y);
+            //an.SetFloat("Speed", Mathf.Abs(force));
+
+            if (force > 0 && !facingRight /*&& onGround*/)
+            {
+                Flip();
+            }
+            else if (force < 0 && facingRight /*&& onGround*/)
+            {
+                Flip();
+            }
+
+            rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
         }
-
-        //slime throwing shenanigans
-        if (Input.GetButtonDown("Aim"))
-        {
-            ShowAim();
-        }
-        else if (Input.GetButtonUp("Aim"))
-        {
-            HideAim();
-        }
-
-        if (aiming && Input.GetButtonDown("Throw"))
-        {
-            ThrowSlime();
-        }
-
-
-
-        //Horizontal Movement
-        float force = Input.GetAxis("Horizontal");
-        //Debug.Log("Force: " + force + "rby: " + rb.velocity.y);
-        //an.SetFloat("Speed", Mathf.Abs(force));
-
-        if (force > 0 && !facingRight /*&& onGround*/)
-        {
-            Flip();
-        }
-        else if (force < 0 && facingRight /*&& onGround*/)
-        {
-            Flip();
-        }
-
-        rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
 
         //Checking for ground
         //Debug.DrawRay(transform.position, Vector2.down * playerSize, Color.magenta);
@@ -183,6 +188,11 @@ public class PlayerController : MonoBehaviour {
     void HideAim()
     {
         aiming = false;
+    }
+
+    public void toggleMove()
+    {
+        canMove = !canMove;
     }
 
     void ThrowSlime()

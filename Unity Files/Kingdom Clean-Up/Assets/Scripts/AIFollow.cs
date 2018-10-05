@@ -74,7 +74,7 @@ public class AIFollow : MonoBehaviour
             {
                 PatrolTimer -= Time.deltaTime;
 
-                if (PatrolIndex < targetArr.Count && targetArr[PatrolIndex].position != null)
+                if (PatrolIndex < targetArr.Count && targetArr[PatrolIndex] != null)
                 {
                     //agent.SetDestination(targetArr[PatrolIndex].position);
                     MoveTowardsPoint(targetArr[PatrolIndex].position);
