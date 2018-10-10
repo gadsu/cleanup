@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
     public bool facingRight;
     public bool doubleJump;
     bool jumpFinished;
-    bool aiming;
+    public bool aiming;
     public bool canMove;
 
 
@@ -24,12 +24,14 @@ public class PlayerController : MonoBehaviour {
     Animator an;
     Rigidbody2D rb;
     public GameObject mop;
+ //   AimRender ar;
 
 	// Use this for initialization
 	void Start () {
         onGround = true;
         //an = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+ //       ar = GetComponent<AimRender>();
         aiming = false;
         doubleJump = false;
         facingRight = true;
@@ -80,11 +82,11 @@ public class PlayerController : MonoBehaviour {
             }
 
             //slime throwing shenanigans
-            if (Input.GetButtonDown("Aim"))
+            if (Input.GetButtonDown("ShowAimButton") || Input.GetAxis("ShowAimTrigger") < 0)
             {
                 ShowAim();
             }
-            else if (Input.GetButtonUp("Aim"))
+            else if (Input.GetButtonUp("ShowAimButton") || Input.GetAxis("ShowAimTrigger") == 0)
             {
                 HideAim();
             }
