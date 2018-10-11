@@ -7,14 +7,12 @@ public class ThrowParticle : MonoBehaviour {
     public Transform initialpos;
     Rigidbody2D rb;
     AimRender ar;
-    public bool inair;
 
 	// Use this for initialization
 	void Start () {
         ar = GetComponentInParent<AimRender>();
         initialpos = GameObject.Find("Player").GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
-        inair = false;
         Physics2D.IgnoreLayerCollision(11, 2);
         Physics2D.IgnoreLayerCollision(11, 9);
         Physics2D.IgnoreLayerCollision(11, 10);
@@ -23,7 +21,7 @@ public class ThrowParticle : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        if (inair)
+        if (ar.inAir)
         {
             ar.AddSpot(transform);
         }
@@ -37,7 +35,6 @@ public class ThrowParticle : MonoBehaviour {
     {
         transform.position = initialpos.position;
         rb.velocity = dir;
-        inair = true;
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -45,7 +42,7 @@ public class ThrowParticle : MonoBehaviour {
         if (col.transform.tag == "Platform")
         {
             ar.DrawLine(transform);
-            inair = false;
+            ar.inAir = false;
         }
     }
 }

@@ -29,7 +29,7 @@ public class AIFollow : MonoBehaviour
         patrolNum = name.ToCharArray()[0];
 
         points = GameObject.FindGameObjectsWithTag("Spawner");
-        Debug.Log(points.Length);
+  //      Debug.Log(points.Length);
         targetArr.Clear();
 
         foreach (GameObject n in points)
@@ -37,7 +37,7 @@ public class AIFollow : MonoBehaviour
             if (n.name.Contains("PatrolPoint") && n.transform.parent.name.ToCharArray()[0] == patrolNum)  //AGreenSlimeSpawner BGreenSLime
             {
                 targetArr.Add(n.transform);
-                Debug.Log("Added " + n.name + "to list");
+   //             Debug.Log("Added " + n.name + "to list");
             }
         }
     }

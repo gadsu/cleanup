@@ -7,13 +7,14 @@ using UnityEngine;
 public class AimRender : MonoBehaviour {
     public GameObject reticle;
     public ThrowParticle tp;
-    float xmax = 5f;
+    float xmax = 50f;
     PlayerController pc;
     Vector2 launchVel = new Vector2();
     bool visible;
     LineRenderer lr;
-
+    public bool inAir;
     List<Vector3> points = new List<Vector3>();
+    float lastframeval;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +22,7 @@ public class AimRender : MonoBehaviour {
         tp = GameObject.Find("throwReticle").GetComponent<ThrowParticle>();
         pc = GetComponent<PlayerController>();
         lr = reticle.GetComponent<LineRenderer>();
+        launchVel.y = 30f;
 
         reticle.SetActive(false);
         visible = false;
@@ -30,26 +32,33 @@ public class AimRender : MonoBehaviour {
 	void Update () {
         //We only want to recalculate if there is a noticeable change but this is what we got
         //if aiming
-        if (pc.aiming)
+        if (pc.aiming && !inAir)
         {
             if(!visible)
             {
                 reticle.SetActive(true);
+                visible = true;
             }
-            //if moving at all
-            if (Input.GetAxis("Aim") != 0)
+            //if moving at all and not throwing
+            if (Input.GetAxis("Aim") != 0 && Input.GetAxis("Aim") != lastframeval)
             {
                 launchVel.x = Input.GetAxis("Aim")*xmax;
+                Cast();
             }
-            Cast();
         }
-        
+        if(!pc.aiming && visible)
+        {
+            clearLine();
+            hideParticle();
+        }
+        lastframeval = Input.GetAxis("Aim");
     }
 
     //Throw a ball, record the points, add at specific intervals
     void Cast()
     {
         tp.Throw(launchVel);
+        inAir = true;
     }
 
     public void AddSpot(Transform pos)
@@ -65,10 +74,17 @@ public class AimRender : MonoBehaviour {
         lr.SetPositions(points.ToArray());
     }
 
-    void clearLine()
+    public void clearLine()
     {
         points.Clear();
         lr.enabled = false;
+    }
+
+    public void hideParticle()
+    {
+        reticle.SetActive(false);
+        visible = false;
+        Debug.Log(reticle.activeSelf);
     }
 
 

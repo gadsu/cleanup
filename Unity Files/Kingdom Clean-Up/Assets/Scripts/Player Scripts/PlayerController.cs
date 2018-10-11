@@ -82,13 +82,15 @@ public class PlayerController : MonoBehaviour {
             }
 
             //slime throwing shenanigans
-            if (Input.GetButtonDown("ShowAimButton") || Input.GetAxis("ShowAimTrigger") < 0)
+            if (Input.GetAxis("ShowAim") > 0 && !aiming )//(Input.GetButtonDown("ShowAimButton") || Input.GetAxis("ShowAimTrigger") > 0) && !aiming)
             {
                 ShowAim();
+                Debug.Log("Showing Aim");
             }
-            else if (Input.GetButtonUp("ShowAimButton") || Input.GetAxis("ShowAimTrigger") == 0)
+            else if (Input.GetAxis("ShowAim") <= 0 && aiming)//(Input.GetButtonUp("ShowAimButton") || Input.GetAxis("ShowAimTrigger") == 0) && aiming)
             {
                 HideAim();
+                Debug.Log("Aim Hidden");
             }
 
             if (aiming && Input.GetButtonDown("Throw"))
