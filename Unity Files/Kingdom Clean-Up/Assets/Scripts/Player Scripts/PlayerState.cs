@@ -16,6 +16,13 @@ public class PlayerState : MonoBehaviour {
     public Slider blueMeter;
     int maxSlime = 100;
 
+    TextAsset PlayerFile = new TextAsset();
+
+    public void loadData(string playernum)
+    {
+        PlayerFile = Resources.Load("SaveFile" + playernum) as TextAsset;
+    }
+
     public void addSlime(int val, string type)// Adds slime to the slime meter
     {
         if ((greenSlimeMeter < maxSlime) && type == "green")//Adds green slime to the slime meter
