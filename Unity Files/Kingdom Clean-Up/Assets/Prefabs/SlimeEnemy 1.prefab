@@ -121,6 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetArr:
   - {fileID: 0}
+  playerFound: 0
   LostPlayerTimer: 5
   PatrolTimer: 5
   PatrolIndex: 1
@@ -177,8 +178,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300002, guid: be91755b5915eb1439dc74c8b2ed7487, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300002, guid: 416d336916f40cf439368ebde9c3478a, type: 3}
+  m_Color: {r: 0.12500006, g: 0.75, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
