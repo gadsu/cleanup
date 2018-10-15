@@ -9,9 +9,10 @@ using System;
 
 public class GameData : MonoBehaviour {
     //player name
-    public Text playerName;
-    public bool newGame;
-    public string Appearance;
+//    public Text playerName;
+//    public bool newGame;
+//    public string Appearance;
+
     public Dictionary<string, string> gamedic;
 
     // Use this for initialization
@@ -19,7 +20,7 @@ public class GameData : MonoBehaviour {
     {
         DontDestroyOnLoad(gameObject);
 
-        //SceneManager.LoadScene("MainMenu");
+      //  SceneManager.LoadScene("MainMenu");
     }
 
     void Start() {
@@ -41,7 +42,19 @@ public class GameData : MonoBehaviour {
         name4.text = gamedic["4playerName"];
     }
 
-
+    private void FirstTimeCheck(string playernum)
+    {
+        if (gamedic[playernum + "newGame" ] == "true")
+        {
+            SceneManager.LoadScene("CharacterCustomize");
+ //           gamedic[playernum + "newGame"] = "false";
+ //           NEED TO CHANGE STRING TO READ FALSE!
+        }
+        else if (gamedic[playernum + "newGame"] == "false")
+        {
+            SceneManager.LoadScene("OverWorld");
+        }
+    }
 
     //void SaveFile()
     //{
