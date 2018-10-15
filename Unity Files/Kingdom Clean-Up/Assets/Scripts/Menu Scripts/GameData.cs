@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.IO;
 using System.Linq;
 using System;
+
 public class GameData : MonoBehaviour {
     //player name
     public Text playerName;
@@ -13,6 +15,13 @@ public class GameData : MonoBehaviour {
     public Dictionary<string, string> gamedic;
 
     // Use this for initialization
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+
+        //SceneManager.LoadScene("MainMenu");
+    }
+
     void Start() {
 
         TextAsset GameFile = new TextAsset();

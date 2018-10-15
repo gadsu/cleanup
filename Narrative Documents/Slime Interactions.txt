@@ -1,7 +1,8 @@
-Slime Colors and Their Uses:
+﻿Slime Colors and Their Uses:
 Red- predetermined shapes (Ramp, Rectangle, Square)
 Green- sticky (Used for Wall Jumps, Holding down buttons)
 Blue- slippery (Used to Push Obstacles, or to Make Enemies Slide, Speed Up)
+
 
 Basic Mechanics:
 Cleaning:
@@ -9,15 +10,30 @@ Slime is cleaned up and held within a bucket that works as a form of inventory f
 Distribution:
 Slime is distributed back onto the map by being placed or thrown off the mop after dipping it in the respective slime instead of water.
 
+
+Slime Ratios:
+Player inventory:
+10
+Innate Slime:
+Gain 1
+Enemy Slime:
+Gain 2
+Thrown slime:
+Use 1
+
+
 Situational Examples:
 Red:
 The player is at a cliff that is 3 blocks high, the player can jump 2 blocks high. Using the red slime, the player can drop a one block high slime cube at the base of the cliff. The player can jump on the red block and then jump onto the top of the cliff.
 
+
 Green:
 The player is at a cliff that is 3 blocks high, the player can jump 2 blocks high. There is a nearby wall that is close enough for the player to distribute green slime onto. Using the green slime on that wall, the player can hold onto the wall and jump off allowing them to propell themself to the top of the cliff.
 
+
 Blue:
 You are at the top of a hill, and at the bottom there is a ramp and a gap that is too wide to jump across normally. The player can distribute the blue slime from the top of the ramp back up the hill. Utilizing the slippery properties of the blue slime the player can slide quickly down the hill and off the ramp managing to jump across the gap.
+
 
 Innate Slime:
 All slimes when found on the stage will all be in a gelatinous form spread across the floor, walls, and ceiling.

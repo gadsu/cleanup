@@ -14,11 +14,14 @@ public class EnemyState : MonoBehaviour {
     public float buffer = 3f;
     public float toEdge;
 
+    Color green;
+
 	// Use this for initialization
 	void Start () {
         health = 10;
         rb = GetComponent<Rigidbody2D>();
         an = GetComponent<Animator>();
+        green = Color.HSVToRGB(110f, 100f, 75f);
 	}
 	
 	// Update is called once per frame
@@ -57,7 +60,7 @@ public class EnemyState : MonoBehaviour {
         {
             if (!facingRight)
             {
-                Flip();
+              //  Flip();
             }
 
             rb.velocity = new Vector2(speed, rb.velocity.y);
@@ -66,7 +69,7 @@ public class EnemyState : MonoBehaviour {
         {
             if (facingRight)
             {
-                Flip();
+               // Flip();
             }
 
             rb.velocity = new Vector2(-1 * speed, rb.velocity.y);
