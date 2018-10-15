@@ -7,7 +7,7 @@ public class ItemInteraction : MonoBehaviour {
     void OnTriggerStay2D(Collider2D other)
     {
         //Debug.Log("TOUCHING " + other.gameObject.name);
-        if ((gameObject.CompareTag("slimeObject") || gameObject.CompareTag("slimeInteractable")) && other.CompareTag("Player"))
+        if (gameObject.CompareTag("slimeObject") && other.CompareTag("Player"))
         {
             //Debug.Log("IS SLIME");
             if (Input.GetButtonDown("Interact"))

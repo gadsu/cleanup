@@ -10,6 +10,7 @@ TagManager:
   - slimeObject
   - slimeInteractable
   - Enemy
+  - Spawner
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Platform
   - Viscera
   - Objects
-  - 
+  - throwReticle
   - 
   - 
   - 
