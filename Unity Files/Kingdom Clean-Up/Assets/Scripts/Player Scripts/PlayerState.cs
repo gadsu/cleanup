@@ -16,10 +16,11 @@ public class PlayerState : MonoBehaviour {
     public Slider blueMeter;
     int maxSlime = 100;
 
-    TextAsset PlayerFile = new TextAsset();
+    //public TextAsset PlayerFile; DOES NOT WORK FOR SOME RAISIN
 
     public void loadData(string playernum)
     {
+        TextAsset PlayerFile = new TextAsset();
         PlayerFile = Resources.Load("SaveFile" + playernum) as TextAsset;
     }
 
@@ -57,7 +58,6 @@ public class PlayerState : MonoBehaviour {
         blueMeter = GameObject.Find("BlueMeter").GetComponent<Slider>();
 
         //Fill the dictionary from file   saveDic["name"] will return the string "Rachel" 
-        TextAsset PlayerFile = new TextAsset();
         if(true)//CHECK TO SEE IF THE SAVE FILE HAS BEEN LOADED
         {
 

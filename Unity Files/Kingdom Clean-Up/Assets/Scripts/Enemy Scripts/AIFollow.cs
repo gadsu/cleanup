@@ -15,9 +15,9 @@ public class AIFollow : MonoBehaviour
     GameObject target = null;
     public List<Transform> targetArr;
     GameObject[] points;
-    private bool playerFound = false;
-    public float LostPlayerTimer = 5f;
-    public float PatrolTimer = 5f;
+    public bool playerFound = false;
+    public float LostPlayerTimer;
+    public float PatrolTimer;
     public int PatrolIndex = 0;
     public float distance;
     public char patrolNum;
@@ -27,6 +27,8 @@ public class AIFollow : MonoBehaviour
     {
         target = GameObject.Find("Player");
         patrolNum = name.ToCharArray()[0];
+        PatrolTimer = 5f;
+        LostPlayerTimer = 5f;
 
         points = GameObject.FindGameObjectsWithTag("Spawner");
   //      Debug.Log(points.Length);
