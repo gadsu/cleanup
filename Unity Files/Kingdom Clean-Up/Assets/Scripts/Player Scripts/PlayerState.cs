@@ -29,7 +29,7 @@ public class PlayerState : MonoBehaviour {
         if ((greenSlimeMeter < maxSlime) && type == "green")//Adds green slime to the slime meter
         {
             greenSlimeMeter = Mathf.Clamp(greenSlimeMeter + val, 0, 100);
-            greenMeter.value = greenSlimeMeter;
+            greenMeter.value = greenSlimeMeter;s
             //Debug.Log("<color=green>GreenSlimeVal:</color> " + greenSlimeMeter);//tells the debug log that green slime was added to the slime meter
         }
 

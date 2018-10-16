@@ -13,8 +13,9 @@ public class EnemyState : MonoBehaviour {
     public float speed = 20f;
     public float buffer = 3f;
     public float toEdge;
-
+    public GameObject prefab;
     Color green;
+    private Rigidbody2D body;
 
 	// Use this for initialization
 	void Start () {
@@ -80,6 +81,7 @@ public class EnemyState : MonoBehaviour {
         }
     }
 
+
     public void death()
     {
         if (spawner)
@@ -89,7 +91,15 @@ public class EnemyState : MonoBehaviour {
         }
 
         //spawn viscera
+        Transform currentPos = gameObject.transform;
+        //new Vector2 = currentPos.position.y;
+        for(int i = 0; i < 2; i++ )
+        {
+            GameObject SlimeViscera = Instantiate<GameObject>(prefab, new Vector2(currentPos.position.x, (currentPos.position.y)), currentPos.rotation);
+        }
+        
 
+        // Die
         Destroy(gameObject);
     }
 }
