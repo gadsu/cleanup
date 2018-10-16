@@ -1,4 +1,7 @@
-﻿//This script's entire function is to show the pretty arc upon aiming.
+﻿
+//    AimRender
+//    This script's entire function is to show the pretty arc upon aiming.
+//    IN HEAVY PROGRESS
 
 using System.Collections;
 using System.Collections.Generic;

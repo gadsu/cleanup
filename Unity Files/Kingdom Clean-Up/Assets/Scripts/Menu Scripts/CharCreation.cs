@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿
+//   Char Creation
+//   This is the script for the Character Creation scene, will control the movement and making those choices once we've moved scenes
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

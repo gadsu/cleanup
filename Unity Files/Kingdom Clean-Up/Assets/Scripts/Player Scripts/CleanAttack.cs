@@ -1,16 +1,20 @@
-﻿using System.Collections;
+﻿
+//    Clean Attack
+//    Controls the events that will happen when someone actually tries to hit someone
+//    Will need to be updated with new animations
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CleanAttack : MonoBehaviour {
 
-    int mopDamage = 10;
+    int mopDamage = 10;  //How much damage does the attack do?
     Animator an;
 
     // Use this for initialization
     void Start() {
         an = GetComponent<Animator>();
-
     }
 
     // Update is called once per frame
@@ -18,16 +22,16 @@ public class CleanAttack : MonoBehaviour {
 
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D col)  
     {
         Debug.Log(col.gameObject.tag.ToString());
-        if (col.gameObject.tag == "Enemy")
+        if (col.gameObject.tag == "Enemy")  //If you are hitting an enemy
         {
-            col.gameObject.GetComponent<EnemyState>().takeDamage(mopDamage);
+            col.gameObject.GetComponent<EnemyState>().takeDamage(mopDamage); //
             Debug.Log("SLIME HIT: " + col.gameObject.name);
 
         }
-        else if(col.gameObject.tag == "slimeInteractable")
+        else if(col.gameObject.tag == "slimeInteractable") //If you are hitting placed slime
         {
             //break the object
             //col.gameObject.GetComponent
@@ -35,7 +39,7 @@ public class CleanAttack : MonoBehaviour {
     }
     public void swingMop()
     {
-        if (!an.GetCurrentAnimatorStateInfo(0).IsName("Swing"))
+        if (!an.GetCurrentAnimatorStateInfo(0).IsName("Swing"))  //If you are not already playing the animation, play it
             an.Play("Swing");
     }
     

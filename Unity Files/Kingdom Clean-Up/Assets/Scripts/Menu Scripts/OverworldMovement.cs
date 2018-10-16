@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿
+//    Overworld Movement
+//    Script for the thing that moves between worlds in the save file
+//    needs a LOT OF FUCKIN WORK
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
