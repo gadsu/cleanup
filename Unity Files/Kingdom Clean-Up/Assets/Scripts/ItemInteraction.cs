@@ -4,6 +4,27 @@ using UnityEngine;
 
 public class ItemInteraction : MonoBehaviour {
 
+    private Rigidbody2D rb;
+    public Vector2 initvel;
+
+
+    public void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Platform")
+        {
+        Debug.Log("I FOUND THE GROUND!");
+            rb = GetComponent<Rigidbody2D>();
+        //       body.bodyType = RigidbodyType2D.Static;
+            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+        }
+
+    }
+
+    //private void Start()
+    //{
+     //   OnTriggerEnter2D(Collider2D);
+    //}
+
     void OnTriggerStay2D(Collider2D other)
     {
         //Debug.Log("TOUCHING " + other.gameObject.name);

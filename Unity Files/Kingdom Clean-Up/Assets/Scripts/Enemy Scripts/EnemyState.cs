@@ -27,11 +27,18 @@ public class EnemyState : MonoBehaviour {
     public float speed = 20f;
     [Tooltip("The buffer between the person's xy and the point, to stop aggressive wiggling")]
     public float buffer = 3f;
+<<<<<<< HEAD
 
     //Slime/World Colors
     Color green = Color.HSVToRGB(110f, 100f, 75f);
     Color red = Color.red;
     Color blue = Color.blue;
+=======
+    public float toEdge;
+    public GameObject prefab;
+    Color green;
+    private Rigidbody2D body;
+>>>>>>> 9753f228fd21dee9af328be96dd2fc72db271b61
 
 	// Initialization
 	void Start () {
@@ -122,6 +129,7 @@ public class EnemyState : MonoBehaviour {
         }
     }
 
+
     public void death()
     {
         if (spawner)  //If the slime has a spawner, tell the spawner the slime died and to spawn another one
@@ -129,8 +137,20 @@ public class EnemyState : MonoBehaviour {
             spawner.GetComponent<SlimeSpawner>().respawn();
         }
 
+<<<<<<< HEAD
         //Spawn viscera
+=======
+        //spawn viscera
+        Transform currentPos = gameObject.transform;
+        //new Vector2 = currentPos.position.y;
+        for(int i = 0; i < 2; i++ )
+        {
+            GameObject SlimeViscera = Instantiate<GameObject>(prefab, new Vector2(currentPos.position.x, (currentPos.position.y)), currentPos.rotation);
+        }
+        
+>>>>>>> 9753f228fd21dee9af328be96dd2fc72db271b61
 
+        // Die
         Destroy(gameObject);
     }
 }
