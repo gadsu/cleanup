@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50583829220702314}
   - component: {fileID: 70759244651429476}
   m_Layer: 10
-  m_Name: blue Slime
+  m_Name: blueSlimeBall
   m_TagString: slimeObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,6 +89,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e6e48d93bc01d94da52f06cc3393022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initvel: {x: 0, y: 0}
+  prefab: {fileID: 0}
+  color: blue
 --- !u!212 &212331534368014104
 SpriteRenderer:
   m_ObjectHideFlags: 1

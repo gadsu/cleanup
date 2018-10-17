@@ -34,7 +34,7 @@ public class CleanAttack : MonoBehaviour {
         else if(col.gameObject.tag == "slimeInteractable") //If you are hitting placed slime
         {
             //break the object
-            //col.gameObject.GetComponent
+            col.gameObject.GetComponent<SlimeConstructs>().breakSlime();
         }
     }
 

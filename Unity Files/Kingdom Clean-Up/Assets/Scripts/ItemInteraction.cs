@@ -6,33 +6,78 @@ public class ItemInteraction : MonoBehaviour {
 
     private Rigidbody2D rb;
     public Vector2 initvel;
-    public int slimeInteractableHealth;
     public GameObject prefab;
+    public string color;
+
+    Color cgreen = Color.HSVToRGB(.110f, .100f, 0.75f);
+    Color cred = Color.red;
+    Color cblue = Color.blue;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        //if (color == "green")
+        //{
+        //    GetComponent<SpriteRenderer>().color = cgreen;
+        //}
+        //else if (color == "red")
+        //{
+        //    GetComponent<SpriteRenderer>().color = cred;
+        //}
+        //else if (color == "blue")
+        //{
+        //    GetComponent<SpriteRenderer>().color = cblue;
+        //}
+        //else
+        //{
+        //    Debug.Log("color:" + color.ToString() + color);
+        //    //GetComponent<SpriteRenderer>().color = Color.black;
+        //}
+
+    }
 
 
     public void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Platform")
         {
-        Debug.Log("I FOUND THE GROUND!");
-            rb = GetComponent<Rigidbody2D>();
-        //       body.bodyType = RigidbodyType2D.Static;
-            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+            Debug.Log("I FOUND THE GROUND!");
+            rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionX;
         }
 
     }
 
-    public void takeDamage(int dmg)
+    public void setVelocity(Vector2 vel)
     {
-        slimeInteractableHealth-= dmg;
-        if (slimeInteractableHealth <= 0)
+        if(rb != null)
         {
-            Transform currentPos = gameObject.transform;
-            for (int i = 0; i < 2; i++)
-            {
-                GameObject SlimeViscera = Instantiate<GameObject>(prefab, new Vector2(currentPos.position.x, (currentPos.position.y)), currentPos.rotation);
-            }
-            Destroy(gameObject);
+            rb.velocity = vel;
+        }
+    }
+    public void setColor(string col)
+    {
+        color = col;
+        if (color == "green")
+        {
+            Debug.Log("I'M FUCKING GREEN");
+            GetComponent<SpriteRenderer>().color = cgreen;
+            Debug.Log("COLOR " + cgreen.ToString() + " MADE ME " + GetComponent<SpriteRenderer>().color.ToString());
+        }
+        else if (color == "red")
+        {
+            GetComponent<SpriteRenderer>().color = cred;
+        }
+        else if (color == "blue")
+        {
+            GetComponent<SpriteRenderer>().color = cblue;
+        }
+        else
+        {
+            Debug.Log("HELP");
         }
     }
 
@@ -48,27 +93,23 @@ public class ItemInteraction : MonoBehaviour {
                 Debug.Log("IS INTER");
                 if(gameObject.name.Contains("Splat"))
                 {
-                    if (gameObject.name.Contains("green"))
-                        other.GetComponent<PlayerState>().addSlime(2, "green");
-                    else if (gameObject.name.Contains("red"))
-                        other.GetComponent<PlayerState>().addSlime(2, "red");
-                    else if (gameObject.name.Contains("blue"))
-                    {
-                        other.GetComponent<PlayerState>().addSlime(2, "blue");
-
-                    }
+                    other.GetComponent<PlayerState>().addSlime(2, color);
+                    //if (color == "green")
+                    //    other.GetComponent<PlayerState>().addSlime(2, "green");
+                    //else if (color == "red")
+                    //    other.GetComponent<PlayerState>().addSlime(2, "red");
+                    //else if (color == "blue")
+                    //    other.GetComponent<PlayerState>().addSlime(2, "blue");
                 }
                 else
                 {
-                    if (gameObject.name.Contains("green"))
-                        other.GetComponent<PlayerState>().addSlime(10, "green");
-                    else if (gameObject.name.Contains("red"))
-                        other.GetComponent<PlayerState>().addSlime(10, "red");
-                    else if (gameObject.name.Contains("blue"))
-                    {
-                        other.GetComponent<PlayerState>().addSlime(10, "blue");
-
-                    }
+                    other.GetComponent<PlayerState>().addSlime(10, color);
+                    //if (color == "green")
+                    //    other.GetComponent<PlayerState>().addSlime(10, "green");
+                    //else if (color == "red")
+                    //    other.GetComponent<PlayerState>().addSlime(10, "red");
+                    //else if (color == "blue")
+                    //    other.GetComponent<PlayerState>().addSlime(10, "blue");
                 }
                 Debug.Log("IS DESTROY");
                 Destroy(gameObject);

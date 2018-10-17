@@ -27,14 +27,17 @@ public class EnemyState : MonoBehaviour {
     public float speed = 20f;
     [Tooltip("The buffer between the person's xy and the point, to stop aggressive wiggling")]
     public float buffer = 3f;
+
+
+
     [Tooltip("Setting the prefab for what viscera it spawns")]
-    public GameObject prefab;
+    public GameObject visceraPrefab;
 
 
     //Slime/World Colors
-    Color green = Color.HSVToRGB(110f, 100f, 75f);
-    Color red = Color.red;
-    Color blue = Color.blue;
+    Color cgreen = Color.HSVToRGB(110f * 0.1f, 100f*0.1f, 75f*0.1f);
+    Color cred = Color.red;
+    Color cblue = Color.blue;
 
 
 	// Initialization
@@ -56,20 +59,20 @@ public class EnemyState : MonoBehaviour {
         GetComponent<Animator>().enabled = false;
         if (color == "green")
         {
-            GetComponent<SpriteRenderer>().color = green;
+            GetComponent<SpriteRenderer>().color = cgreen;
         }
         else if (color == "red")
         {
-            GetComponent<SpriteRenderer>().color = red;
+            GetComponent<SpriteRenderer>().color = cred;
         }
         else if (color == "blue")
         {
-            GetComponent<SpriteRenderer>().color = blue;
+            GetComponent<SpriteRenderer>().color = cblue;
         }
         else
         {
-            Debug.Log("color:" + color.ToString() + inColor);
-            GetComponent<SpriteRenderer>().color = Color.black;
+ //           Debug.Log("color:" + color.ToString() + inColor);
+            //GetComponent<SpriteRenderer>().color = Color.black;
         }
         GetComponent<Animator>().enabled = true;
     }
@@ -134,13 +137,61 @@ public class EnemyState : MonoBehaviour {
             spawner.GetComponent<SlimeSpawner>().respawn();
         }
 
+        int green = 0, red = 0, blue = 0;
+        if (color == "green")
+            green = 3;
+        else if (color == "red")
+            red = 3;
+        else if (color == "blue")
+            blue = 3;
+        else
+        {
+            green = 1;
+            red = 1;
+            blue = 1;
+        }
         //spawn viscera
         Transform currentPos = gameObject.transform;
-        for(int i = 0; i < 2; i++ )
+        int i = 1;
+        while (green + red + blue > 0)
         {
-            GameObject SlimeViscera = Instantiate<GameObject>(prefab, new Vector2(currentPos.position.x, (currentPos.position.y)), currentPos.rotation);
+            GameObject SlimeViscera = Instantiate<GameObject>(visceraPrefab, currentPos.position, currentPos.rotation);
+
+            if (green > 0)
+            {
+                green--;
+                SlimeViscera.gameObject.GetComponent<ItemInteraction>().setColor("green");
+            }
+            else if (red > 0)
+            {
+                red--;
+                //SlimeViscera.gameObject.GetComponent<ItemInteraction>().setColor("red");
+            }
+            else if (blue > 0)
+            {
+                blue--;
+                //SlimeViscera.gameObject.GetComponent<ItemInteraction>().setColor("blue");
+            }
+            else
+            {
+                Debug.Log("IDK MAN");
+            }
+
+
+            Vector2 vel = new Vector2(30f, 15f);
+            if (i % 3 == 0)
+            {
+                vel.x *= 0;
+            }
+            else if (i % 3 == 1)
+            {
+                vel.x *= -1;
+            }
+
+            SlimeViscera.GetComponent<ItemInteraction>().setVelocity(vel);
+            i++;
         }
-        
+
 
         // Die
         Destroy(gameObject);

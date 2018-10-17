@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 95449754548174956}
   - component: {fileID: 61492792687858184}
   m_Layer: 0
-  m_Name: SlimeEnemy 1
+  m_Name: SlimeEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   PatrolTimer: 5
   PatrolIndex: 1
   distance: 0
-  patrolNum: 0
+  patrolChar: 0
 --- !u!114 &114455870935192602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,11 +139,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 0}
+  color: 
   facingRight: 1
   speed: 20
   buffer: 3
-  toEdge: 0
-  prefab: {fileID: 1827464675113566, guid: f1ef8da39b8126e4691a9a3c234f4da3, type: 2}
+  visceraPrefab: {fileID: 1827464675113566, guid: f1ef8da39b8126e4691a9a3c234f4da3,
+    type: 2}
 --- !u!212 &212621883372955916
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -180,7 +181,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: 416d336916f40cf439368ebde9c3478a, type: 3}
-  m_Color: {r: 0.12500006, g: 0.75, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -14,7 +14,7 @@ public class SlimeSpawner : MonoBehaviour {
 
     [Header("Editable Variables")]
     [Tooltip("The type of enemy to spawn")]
-    public GameObject prefab;
+    public GameObject enemyPrefab;
     [Tooltip("The color of the slime to spawn (red, green, blue, default)")]
     public string color;
     [Tooltip("Maximum number of slime that can be alive at one time")]
@@ -38,7 +38,7 @@ public class SlimeSpawner : MonoBehaviour {
         {
             slimeCount++; //Increment counter
             Transform startpos = gameObject.transform;
-            GameObject SlimeEnemy = Instantiate<GameObject>(prefab, startpos.position, startpos.rotation);  //Create slime
+            GameObject SlimeEnemy = Instantiate<GameObject>(enemyPrefab, startpos.position, startpos.rotation);  //Create slime
             SlimeEnemy.GetComponent<EnemyState>().setSpawner(gameObject.name.ToString());  //Set spawner
             SlimeEnemy.GetComponent<EnemyState>().setColor(color);   //Set color
             SlimeEnemy.name = name.ToCharArray()[0].ToString() + SlimeEnemy.name;  //Name
