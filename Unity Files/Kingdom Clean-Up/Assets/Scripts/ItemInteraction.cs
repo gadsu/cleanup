@@ -4,6 +4,39 @@ using UnityEngine;
 
 public class ItemInteraction : MonoBehaviour {
 
+    private Rigidbody2D rb;
+    public Vector2 initvel;
+    public int slimeInteractableHealth;
+    public GameObject prefab;
+
+
+    public void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Platform")
+        {
+        Debug.Log("I FOUND THE GROUND!");
+            rb = GetComponent<Rigidbody2D>();
+        //       body.bodyType = RigidbodyType2D.Static;
+            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+        }
+
+    }
+
+    public void takeDamage(int dmg)
+    {
+        slimeInteractableHealth-= dmg;
+        if (slimeInteractableHealth <= 0)
+        {
+            Transform currentPos = gameObject.transform;
+            for (int i = 0; i < 2; i++)
+            {
+                GameObject SlimeViscera = Instantiate<GameObject>(prefab, new Vector2(currentPos.position.x, (currentPos.position.y)), currentPos.rotation);
+            }
+            Destroy(gameObject);
+        }
+    }
+
+
     void OnTriggerStay2D(Collider2D other)
     {
         //Debug.Log("TOUCHING " + other.gameObject.name);

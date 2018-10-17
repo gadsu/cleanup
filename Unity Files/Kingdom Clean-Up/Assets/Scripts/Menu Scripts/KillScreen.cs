@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿
+//    KillScreen
+//    Information that shows and hides a screen upon death
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,7 +24,6 @@ public class KillScreen : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-       //KillScreenControl(); //Don't know if this is needed, had to leave before i could test without it
     }
 
     //checks to see if PC has health left or not

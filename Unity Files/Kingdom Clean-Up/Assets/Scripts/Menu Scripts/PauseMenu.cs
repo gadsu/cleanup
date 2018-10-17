@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿
+//    PauseMenu
+//    Controls the display of the pausemenu screen and freezing time
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

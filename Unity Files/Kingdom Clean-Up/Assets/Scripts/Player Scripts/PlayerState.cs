@@ -8,12 +8,21 @@ using System.Linq;
 public class PlayerState : MonoBehaviour {
     Dictionary<string, string> saveDic;
 
-    public int greenSlimeMeter { get; protected set; }
-    public int redSlimeMeter { get; protected set; }
-    public int blueSlimeMeter { get; protected set; }
+    [Header("Debug Variables")]
+    [Tooltip("How much green slime?")]
+    public int greenSlimeMeter;
+    [Tooltip("How much red slime?")]
+    public int redSlimeMeter;
+    [Tooltip("How much blue slime?")]
+    public int blueSlimeMeter;
+    [Tooltip("Slider object")]
     public Slider greenMeter;
+    [Tooltip("Slider object")]
     public Slider redMeter;
+    [Tooltip("Slider object")]
     public Slider blueMeter;
+
+
     int maxSlime = 100;
 
     //public TextAsset PlayerFile; DOES NOT WORK FOR SOME RAISIN

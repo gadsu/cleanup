@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿
+//    MainMenu
+//    Any code needed for the main menu (mostly quit)
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;

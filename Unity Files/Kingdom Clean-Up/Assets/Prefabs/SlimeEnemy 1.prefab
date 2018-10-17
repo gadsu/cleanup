@@ -143,6 +143,7 @@ MonoBehaviour:
   speed: 20
   buffer: 3
   toEdge: 0
+  prefab: {fileID: 1827464675113566, guid: f1ef8da39b8126e4691a9a3c234f4da3, type: 2}
 --- !u!212 &212621883372955916
 SpriteRenderer:
   m_ObjectHideFlags: 1

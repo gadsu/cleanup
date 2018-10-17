@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿
+//    ThrowParticle
+//    Will need to be updated
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

@@ -1,6 +1,8 @@
-﻿/*
- * Moving the player character and reading inputs
- */
+﻿
+//    PlayerController
+//    Moving the player character and reading inputs
+//    This should control anything and everything to do with the player
+
 
 using System.Collections;
 using System.Collections.Generic;
@@ -8,22 +10,35 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    public float charMaxSpeed = 40f;
-    public float charJumpSpeed = 60f;
+    [Header("Debug Variables")]
+    [Tooltip("How far should raycasting reach?")]
     public float playerSize = 5f;
+    [Tooltip("Is player touching ground?")]
     public bool onGround;
+    [Tooltip("Is player facing right?")]
     public bool facingRight;
+    [Tooltip("Can player doublejump?")]
     public bool doubleJump;
-    bool jumpFinished;
+    [Tooltip("Is player aiming?")]
     public bool aiming;
+    [Tooltip("Can player move?")]
     public bool canMove;
+    [Tooltip("Is the jump over?")]
+    public bool jumpFinished;
+    [Tooltip("The mop object")]
+    public GameObject mop;
+
+    [Header("Editable Variables")]
+    [Tooltip("How fast can the character move?")]
+    public float charMaxSpeed = 40f;
+    [Tooltip("How much can the character jump?")]
+    public float charJumpSpeed = 60f;
 
 
     float jumpFrame;
 
     Animator an;
     Rigidbody2D rb;
-    public GameObject mop;
  //   AimRender ar;
 
 	// Use this for initialization
