@@ -37,6 +37,7 @@ public class CleanAttack : MonoBehaviour {
             //col.gameObject.GetComponent
         }
     }
+
     public void swingMop()
     {
         if (!an.GetCurrentAnimatorStateInfo(0).IsName("Swing"))  //If you are not already playing the animation, play it

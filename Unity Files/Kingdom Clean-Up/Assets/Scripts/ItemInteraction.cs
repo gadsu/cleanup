@@ -6,6 +6,8 @@ public class ItemInteraction : MonoBehaviour {
 
     private Rigidbody2D rb;
     public Vector2 initvel;
+    public int slimeInteractableHealth;
+    public GameObject prefab;
 
 
     public void OnTriggerEnter2D(Collider2D col)
@@ -20,10 +22,20 @@ public class ItemInteraction : MonoBehaviour {
 
     }
 
-    //private void Start()
-    //{
-     //   OnTriggerEnter2D(Collider2D);
-    //}
+    public void takeDamage(int dmg)
+    {
+        slimeInteractableHealth-= dmg;
+        if (slimeInteractableHealth <= 0)
+        {
+            Transform currentPos = gameObject.transform;
+            for (int i = 0; i < 2; i++)
+            {
+                GameObject SlimeViscera = Instantiate<GameObject>(prefab, new Vector2(currentPos.position.x, (currentPos.position.y)), currentPos.rotation);
+            }
+            Destroy(gameObject);
+        }
+    }
+
 
     void OnTriggerStay2D(Collider2D other)
     {

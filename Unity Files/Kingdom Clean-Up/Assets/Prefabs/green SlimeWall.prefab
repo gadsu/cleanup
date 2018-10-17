@@ -78,6 +78,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e6e48d93bc01d94da52f06cc3393022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initvel: {x: 0, y: 0}
+  slimeInteractableHealth: 0
+  prefab: {fileID: 1827464675113566, guid: f1ef8da39b8126e4691a9a3c234f4da3, type: 2}
 --- !u!212 &212041683450388822
 SpriteRenderer:
   m_ObjectHideFlags: 1
