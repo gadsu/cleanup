@@ -45,7 +45,7 @@ public class ItemInteraction : MonoBehaviour {
     {
         if (col.gameObject.tag == "Platform")
         {
-            Debug.Log("I FOUND THE GROUND!");
+           // Debug.Log("I FOUND THE GROUND!");
             rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionX;
         }
 

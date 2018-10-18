@@ -129,7 +129,7 @@ public class EnemyState : MonoBehaviour {
         }
     }
 
-
+    //A mirror of SlimeConstruct's breakSlime function
     public void death()
     {
         if (spawner)  //If the slime has a spawner, tell the spawner the slime died and to spawn another one
