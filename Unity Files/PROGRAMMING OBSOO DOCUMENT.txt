@@ -12,11 +12,11 @@ his 'Y' position freezes, his 'X' position follows the PC for a couple seconds t
 -big jumps up after 4 seconds
 	-freeze y and follow player for 3 secs
 	-freeze everything for 1 sec
--unfreeze y, increase velocity and hit ground
-- unfreeze everything and following the player
+	-unfreeze y, increase velocity and hit ground
+	- unfreeze everything and following the player
 -quick jump
--after taking 3 hits from the player he does special 
-(if pos > player then go right patrol point else pos < player go to left patrol point, and then charge at player)
+	-after taking 3 hits from the player he does special 
+	(if pos > player then go right patrol point else pos < player go to left patrol point, and then charge at player)
 - move towards player
 - get patrol points
 - parses movement mechanics
@@ -37,7 +37,6 @@ correct amount of damage. ^^ maybe an OnCollisionEnter2D function?
 
 -----------------------------------------------------------
 *DONE* OBSOOO Prefab in editor
-*DONE* Change size to big and thicc 
 ------------------------------------------------------------
 Int jumpcounter
 Int hitcounter
