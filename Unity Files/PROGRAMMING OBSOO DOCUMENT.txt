@@ -1,29 +1,44 @@
-Rename green slime spawner to spawner that can be used to spawn any slime 
-'OBSOOO' jumps after (X amount) of time then jumps really high into the air, his 'Y' position freezes, his 'X' position follows the PC for a couple seconds then freezes, his 'Y' position unfreezes and he drops down quickly toward the ground. Jumps into the air (X amount) of times.
+*DONE*Rename green slime spawner to spawner that can be used to spawn any slime 
+
+----------------------------------------------------------
+'OBSOOO' jumps after (X amount) of time then jumps really high into the air, 
+his 'Y' position freezes, his 'X' position follows the PC for a couple seconds then freezes,
+ his 'Y' position unfreezes and he drops down quickly toward the ground. Jumps into the air (X amount) of times.
 -spawn in once player gets close
 -will be tagged with “boss”
 
-~OBSOOO script
+----------------------------------------------------------
+ *MADE BUT STILL EMPTY* ~OBSOOO script~
 -big jumps up after 4 seconds
 	-freeze y and follow player for 3 secs
 	-freeze everything for 1 sec
 -unfreeze y, increase velocity and hit ground
 - unfreeze everything and following the player
 -quick jump
--after taking 3 hits from the player he does special (if pos > player then go right patrol point else pos < player go to left patrol point, and then charge at player)
+-after taking 3 hits from the player he does special 
+(if pos > player then go right patrol point else pos < player go to left patrol point, and then charge at player)
 - move towards player
 - get patrol points
 - parses movement mechanics
 	Counter for # of jumps and counter for # of hits (hit counter >= 3)
 -Movement function for small jumps or whatever obsiooo’s movement is 
-*EnemyState script 
--set color to boss
--if statement to set health (9 times the base slime health)
-- do dmg (Bosses do 1 dmg, normal slimes do 0.5)
 
-Use the spawner set prefab to OBSOOO
-OBSOOO Prefab in editor
-	Change size to big and thicc 
+-----------------------------------------------------------
+~EnemyState script~
+*DONE* -set color to boss
+*DONE* -if statement to set health (9 times the base slime health)
+- do dmg (Bosses do 1 dmg, normal slimes do 0.5) when your collider hit the collider of the slime it will do the
+correct amount of damage. ^^ maybe an OnCollisionEnter2D function?
+
+
+-----------------------------------------------------------
+*DONE* Use the spawner set prefab to OBSOOO
+
+
+-----------------------------------------------------------
+*DONE* OBSOOO Prefab in editor
+*DONE* Change size to big and thicc 
+------------------------------------------------------------
 Int jumpcounter
 Int hitcounter
 float framewhenHitGround;

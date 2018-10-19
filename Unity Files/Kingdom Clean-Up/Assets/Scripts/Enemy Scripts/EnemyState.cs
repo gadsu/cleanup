@@ -45,7 +45,10 @@ public class EnemyState : MonoBehaviour {
         health = 10;
         rb = GetComponent<Rigidbody2D>();
         an = GetComponent<Animator>();
-
+        if (gameObject.CompareTag("Boss"))
+        {
+            health = 90;
+        }
     }
 	
 	// Update is called once per frame

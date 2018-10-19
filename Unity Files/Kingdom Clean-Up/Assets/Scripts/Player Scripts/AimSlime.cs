@@ -34,7 +34,7 @@ public class AimSlime : MonoBehaviour {
             {
                 Vector2 newpos = rbRet.position;
 
-                rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionX;
+                rbRet.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionX;
 
 
 
