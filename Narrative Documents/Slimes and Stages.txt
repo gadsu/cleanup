@@ -27,7 +27,7 @@ Bosses
    * Special attacked triggered by Obsooo taking 3 damage
 
 * Barney (Slime balls deal half heart of damage, Slime lazer deals 1 1/2 hearts of damage, Flailing tentacles deal 1 heart damage)
-   * Spider like slime that hangs from the ceiling
+   * Large Spider like slime that hangs from the ceiling
    * Throws slime balls at the player that hurts and slows upon hitting the player
    * After three hits he throws a large amount of slime over the half of the stage that will hurt the player and is too thick to clean (supposed to cover most of that half of the stage, but leave the bottom area open for final stage)
    * The special attack originates from Barney, starts at the top of the screen and moves down leaving time for the player to get out of the way. (Doesn't go all the way to the bottom, Stops about the bottom of the bottom left/right platforms.)
