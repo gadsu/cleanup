@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - Spawner
   - Boss
+  - InvisObject
   layers:
   - Default
   - TransparentFX

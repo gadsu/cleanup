@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class PlayerState : MonoBehaviour {
     Dictionary<string, string> saveDic;
@@ -21,6 +22,8 @@ public class PlayerState : MonoBehaviour {
     public Slider redMeter;
     [Tooltip("Slider object")]
     public Slider blueMeter;
+    [Tooltip("How much health the player has as a float")]
+    public float playerHealth = 100f;
 
 
     int maxSlime = 100;
@@ -58,9 +61,19 @@ public class PlayerState : MonoBehaviour {
 
 
     }
-
-	// Use this for initialization
-	void Start () {
+    public void takeDamage(float dmg)
+    {
+        playerHealth -= dmg;
+        GameObject.Find("Health").GetComponent<Slider>().value = playerHealth;
+        if (playerHealth <= 0)
+        {
+            Debug.Log("YOU DIED :(");
+            //an.Play("death"); //calls death function at end of animation
+            GameObject.Find("UI Canvas").GetComponent<KillScreen>().KillScreenControl();
+        }
+    }
+    // Use this for initialization
+    void Start () {
         Debug.Log("TEST");
         greenMeter = GameObject.Find("GreenMeter").GetComponent<Slider>();
         redMeter = GameObject.Find("RedMeter").GetComponent<Slider>();

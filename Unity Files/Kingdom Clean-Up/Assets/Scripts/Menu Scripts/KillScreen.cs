@@ -11,7 +11,7 @@ public class KillScreen : MonoBehaviour {
 
     public GameObject KillScreenObject;
     public Slider HealthBar;
-    int MinHealthValue = 1; //According to the kill box we die at one health
+    int MinHealthValue = 0; //According to the kill box we die at one health
   
     // Use this for initialization
 	void Start ()

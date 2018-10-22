@@ -13,6 +13,7 @@ public class EnemyState : MonoBehaviour {
     Rigidbody2D rb;  //this object's rigidbody
     int health;      //total health
     Animator an;     //this object's animator
+    float slimeDamage;
 
     [Header("Debug Variables")]
     [Tooltip("The spawner it came from")]
@@ -43,11 +44,13 @@ public class EnemyState : MonoBehaviour {
 	// Initialization
 	void Start () {
         health = 10;
+        slimeDamage = 16.7f;
         rb = GetComponent<Rigidbody2D>();
         an = GetComponent<Animator>();
         if (gameObject.CompareTag("Boss"))
         {
             health = 90;
+            slimeDamage = 33.4f;
         }
     }
 	
@@ -87,6 +90,16 @@ public class EnemyState : MonoBehaviour {
         if(health <= 0)
         {
             an.Play("death"); //calls death function at end of animation
+        }
+    }
+    // Do damage to the player when colliders hits
+    public void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Player")  //If you are hitting an enemy
+        {
+            col.gameObject.GetComponent<PlayerState>().takeDamage(slimeDamage); //
+            Debug.Log("PLAYER HIT: " + col.gameObject.name);
+
         }
     }
 
