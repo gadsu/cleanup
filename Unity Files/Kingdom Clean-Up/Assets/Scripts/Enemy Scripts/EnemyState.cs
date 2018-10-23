@@ -34,15 +34,17 @@ public class EnemyState : MonoBehaviour {
     [Tooltip("Setting the prefab for what viscera it spawns")]
     public GameObject visceraPrefab;
 
-
     //Slime/World Colors
-    Color cgreen = Color.HSVToRGB(110f * 0.1f, 100f*0.1f, 75f*0.1f);
-    Color cred = Color.red;
-    Color cblue = Color.blue;
+    // Green - 110, 100, 75   (32, 191, 0)     (0.12549, 0.39216, 0)
+    // Blue - 190, 100, 95    (255, 25, 102)   (1, 0.09804, 0.4)
+    // Red - 345, 90, 100     (0, 202, 242)    (0, 0.79216, 0.94902)
+    Color cgreen = new Color(0.12549f, 0.39216f, 0f);
+    Color cred = new Color(1f, 0.09804f, 0.4f);
+    Color cblue = new Color(0f, 0.79216f, 0.94902f);
 
 
-	// Initialization
-	void Start () {
+    // Initialization
+    void Start () {
         health = 10;
         slimeDamage = 16.7f;
         rb = GetComponent<Rigidbody2D>();
@@ -62,8 +64,28 @@ public class EnemyState : MonoBehaviour {
     public void setColor(string inColor)
     {
         color = inColor;
-
-        GetComponent<Animator>().enabled = false;
+        
+        if (color == "green")
+        {
+            GetComponent<Animator>().Play("green");
+        }
+        else if (color == "red")
+        {
+            GetComponent<Animator>().Play("red");
+        }
+        else if (color == "blue")
+        {
+            GetComponent<Animator>().Play("blue");
+        }
+        else
+        {
+            //           Debug.Log("color:" + color.ToString() + inColor);
+            //GetComponent<SpriteRenderer>().color = Color.black;
+            GetComponent<Animator>().Play("chromatic");
+        }
+    }
+    public void setColorinAnimation()
+    {
         if (color == "green")
         {
             GetComponent<SpriteRenderer>().color = cgreen;
@@ -76,12 +98,7 @@ public class EnemyState : MonoBehaviour {
         {
             GetComponent<SpriteRenderer>().color = cblue;
         }
-        else
-        {
- //           Debug.Log("color:" + color.ToString() + inColor);
-            //GetComponent<SpriteRenderer>().color = Color.black;
-        }
-        GetComponent<Animator>().enabled = true;
+        Debug.Log(color + " color");
     }
     // Happens every time the slime take damage, called from the Player
     public void takeDamage(int dmg)  
@@ -182,12 +199,12 @@ public class EnemyState : MonoBehaviour {
             else if (red > 0)
             {
                 red--;
-                //SlimeViscera.gameObject.GetComponent<ItemInteraction>().setColor("red");
+                SlimeViscera.gameObject.GetComponent<ItemInteraction>().setColor("red");
             }
             else if (blue > 0)
             {
                 blue--;
-                //SlimeViscera.gameObject.GetComponent<ItemInteraction>().setColor("blue");
+                SlimeViscera.gameObject.GetComponent<ItemInteraction>().setColor("blue");
             }
             else
             {
