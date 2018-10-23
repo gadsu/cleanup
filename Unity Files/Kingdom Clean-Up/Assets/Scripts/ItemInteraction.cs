@@ -9,9 +9,13 @@ public class ItemInteraction : MonoBehaviour {
     public GameObject prefab;
     public string color;
 
-    Color cgreen = Color.HSVToRGB(.110f, .100f, 0.75f);
-    Color cred = Color.red;
-    Color cblue = Color.blue;
+    //Slime/World Colors
+    // Green - 110, 100, 75   (32, 191, 0)     (0.12549, 0.39216, 0)
+    // Blue - 190, 100, 95    (255, 25, 102)   (1, 0.09804, 0.4)
+    // Red - 345, 90, 100     (0, 202, 242)    (0, 0.79216, 0.94902)
+    Color cgreen = new Color(0.12549f, 0.39216f, 0f);
+    Color cred = new Color(1f, 0.09804f, 0.4f);
+    Color cblue = new Color(0f, 0.79216f, 0.94902f);
 
     private void Awake()
     {
@@ -62,10 +66,8 @@ public class ItemInteraction : MonoBehaviour {
     {
         color = col;
         if (color == "green")
-        {
-            Debug.Log("I'M FUCKING GREEN");
+        {;
             GetComponent<SpriteRenderer>().color = cgreen;
-            Debug.Log("COLOR " + cgreen.ToString() + " MADE ME " + GetComponent<SpriteRenderer>().color.ToString());
         }
         else if (color == "red")
         {
@@ -90,7 +92,7 @@ public class ItemInteraction : MonoBehaviour {
             //Debug.Log("IS SLIME");
             if (Input.GetButtonDown("Interact"))
             {
-                Debug.Log("IS INTER");
+                //Debug.Log("IS INTER");
                 if(gameObject.name.Contains("Splat"))
                 {
                     other.GetComponent<PlayerState>().addSlime(2, color);
