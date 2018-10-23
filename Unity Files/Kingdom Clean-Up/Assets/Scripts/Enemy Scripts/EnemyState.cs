@@ -126,7 +126,7 @@ public class EnemyState : MonoBehaviour {
         spawner = GameObject.Find(spawnName);
     }
 
-    void Flip()  //Rotate the player
+    public void Flip()  //Rotate the player
     {
         facingRight = !facingRight;
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y);

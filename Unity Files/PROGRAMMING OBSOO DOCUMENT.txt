@@ -6,7 +6,7 @@ his 'Y' position freezes, his 'X' position follows the PC for a couple seconds t
  his 'Y' position unfreezes and he drops down quickly toward the ground. Jumps into the air (X amount) of times.
 
 *DONE* -spawn in once player gets close
-*DONE* -will be tagged with “boss”
+*DONE* -will be tagged with â€œbossâ€
 
 ----------------------------------------------------------
  *MADE BUT STILL EMPTY* ~OBSOOO script~
@@ -19,10 +19,15 @@ his 'Y' position freezes, his 'X' position follows the PC for a couple seconds t
 	-after taking 3 hits from the player he does special 
 	(if pos > player then go right patrol point else pos < player go to left patrol point, and then charge at player)
 -move towards player
-*DONE....MAYBE* -get patrol points
+*DONE* -get patrol points
 - parses movement mechanics
 	Counter for # of jumps and counter for # of hits (hit counter >= 3)
--Movement function for small jumps or whatever obsiooo’s movement is 
+-Movement function for small jumps or whatever obsioooâ€™s movement is 
+
+-----------------------------------------------------------
+colliders
+- add a giant collider that is the size of the boss area. 
+- add a OnTriggerEnter2D that turns on the invisWalls
 
 -----------------------------------------------------------
 -----~EnemyState script~------
@@ -43,7 +48,7 @@ Int jumpcounter
 Int hitcounter
 float framewhenHitGround;
 
-If(Time.currentTime – framewhenhitground > 1f)
+If(Time.currentTime â€“ framewhenhitground > 1f)
 {
 	Do a move
 }
