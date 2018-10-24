@@ -6,15 +6,16 @@ public class OBSOOO : MonoBehaviour {
 
     GameObject[] points;
     GameObject target = null;  //Will be the player
-    public List<Transform> targetArr;
+    public List<Transform> targetArr; //array of patrol points
     public int hitCount = 0;
     public int jumpCount = 0;
     public static float PTIME = 4f;
     Rigidbody2D rb;
-    public float basicSpeed = 20f;
+    public float basicSpeed = 300f;
     public float specialSpeed = 40f;
-    public bool facingRight = true;
-    private bool onGround;
+    EnemyState es;
+    Animator an;
+    public bool onGround;
 
     // Use this for initialization
     void Start ()
@@ -25,6 +26,9 @@ public class OBSOOO : MonoBehaviour {
         targetArr.Clear();
 
         rb = GetComponent<Rigidbody2D>();
+        es = GetComponent<EnemyState>();
+        an = GetComponent<Animator>();
+
 
         //Cycle through all spawner objects and only add the ones that match our character
         foreach (GameObject n in points)
@@ -44,9 +48,9 @@ public class OBSOOO : MonoBehaviour {
             basicJump();
             jumpCount++;
         }
-        else if (jumpCount == PTIME)
+        else
         {
-            //big jump
+            bigJump();
             jumpCount = 0;
         }
 
@@ -54,38 +58,64 @@ public class OBSOOO : MonoBehaviour {
 
     public void basicJump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, basicSpeed);
-
+        onGround = false;
+        an.Play("jump");
         Vector3 playerPos = target.transform.position;
+        Vector2 vel = new Vector2(rb.velocity.x, rb.velocity.y);
         if (playerPos.x > rb.position.x)  //If it is to the right of you
         {
-            if (!facingRight)
+            if (!es.facingRight)
             {
                 GetComponent<EnemyState>().Flip();
             }
 
-            rb.velocity = new Vector2(rb.velocity.y, basicSpeed);
+            vel.x = basicSpeed;
+            //vel.y = specialSpeed;
         }
         else if (playerPos.x < rb.position.x)   //If it is to the left of you
         {
-            if (facingRight)
+            if (es.facingRight)
             {
                 GetComponent<EnemyState>().Flip();
             }
 
-            rb.velocity = new Vector2(-1 * rb.velocity.y, basicSpeed);
+            vel.x = basicSpeed * -1;
+            //vel.y = specialSpeed;
         }
-        
-        if(gameObject.transform.position.y >= 25)
-        {
-            rb.velocity = new Vector2(-1 * rb.velocity.x, basicSpeed);
-        }
-        
+
+        Debug.Log(vel);
+        rb.velocity = vel;
     }
 
-    public void bigjump()
+    public void bigJump()
     {
+        onGround = false;
+        an.Play("jump");
+        Vector3 playerPos = target.transform.position;
+        Vector2 vel = new Vector2(rb.velocity.x, rb.velocity.y);
+        if (playerPos.x > rb.position.x)  //If it is to the right of you
+        {
+            if (!es.facingRight)
+            {
+                GetComponent<EnemyState>().Flip();
+            }
 
+            vel.x = basicSpeed;
+            //vel.y = specialSpeed * 2;
+        }
+        else if (playerPos.x < rb.position.x)   //If it is to the left of you
+        {
+            if (es.facingRight)
+            {
+                GetComponent<EnemyState>().Flip();
+            }
+
+            vel.x = basicSpeed * -1;
+            //vel.y = specialSpeed * 2;
+        }
+
+
+        rb.velocity = vel;
     }
 
     public void specialAttack()
@@ -95,20 +125,22 @@ public class OBSOOO : MonoBehaviour {
 
     private void OnCollisionStay2D(Collision2D col)
     {
-        while (col.gameObject.tag == "Platform")
+        if (col.gameObject.tag == "Platform" && !onGround)
         {
             onGround = true;
         }
-        onGround = false;
     }
     // Update is called once per frame
     void FixedUpdate ()
     {
-        if(onGround)
+        if(!an.GetCurrentAnimatorStateInfo(0).IsName("jump"))
         {
             movementController();
         }
-        
+        else if (!onGround)
+        {
+            MoveTowardsPoint(target.transform.position);
+        }
 	}
 
     private void MoveTowardsPoint(Vector3 pos)
