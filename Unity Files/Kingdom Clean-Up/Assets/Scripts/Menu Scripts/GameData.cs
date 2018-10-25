@@ -25,7 +25,7 @@ public class GameData : MonoBehaviour {
     {
         DontDestroyOnLoad(gameObject);  //THIS IS WHAT MAKES THE OBJECT PERSIST
 
-      //  SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenu");
     }
 
     void Start() {
@@ -37,7 +37,18 @@ public class GameData : MonoBehaviour {
         //Create a dictionary that can be referenced by gamedic["varname"] = stringresult, i.e. gamedic[1playerName] will return Rachel or some shit
         gamedic = GameFile.text.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries).Select(l => l.Split(new[] { '=' })).ToDictionary(s => s[0].Trim(), s => s[1].Trim());
 
-        //assign values to the Load game screen - this will need to be moved into a different script for that scene otherwise it will happen on EVERY scene and then get angry
+    }
+
+    void Update()
+    {
+        if(SceneManager.GetActiveScene().name == "Save and Load")
+        {
+            loadSaveAndLoad();
+        }
+    }
+
+    public void loadSaveAndLoad()
+    {
         Text name1 = GameObject.Find("Name1").GetComponent<Text>();
         name1.text = gamedic["1playerName"];
 

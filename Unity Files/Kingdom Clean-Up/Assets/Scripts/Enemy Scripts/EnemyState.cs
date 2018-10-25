@@ -114,7 +114,7 @@ public class EnemyState : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")  //If you are hitting an enemy
         {
-            col.gameObject.GetComponent<PlayerState>().takeDamage(slimeDamage); //
+            GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().takeDamage(slimeDamage); //
             Debug.Log("PLAYER HIT: " + col.gameObject.name);
 
         }

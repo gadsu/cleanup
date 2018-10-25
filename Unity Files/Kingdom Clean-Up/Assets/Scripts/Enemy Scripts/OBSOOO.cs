@@ -13,7 +13,7 @@ public class OBSOOO : MonoBehaviour {
     public int playerFollowCountDown;
     public int YPosFreeze = 47;
     Rigidbody2D rb;
-    public float basicSpeed = 10f;
+    public float basicSpeed = 30f;
     public float specialSpeed = 40f;
     EnemyState es;
     //Animator an;
@@ -23,7 +23,6 @@ public class OBSOOO : MonoBehaviour {
     void Start ()
     {
         target = GameObject.Find("Player");    //Find the player
-
         points = GameObject.FindGameObjectsWithTag("Spawner");   //Find all of the spawner objects in the scene
         targetArr.Clear();
 
@@ -61,6 +60,7 @@ public class OBSOOO : MonoBehaviour {
 
     public void basicJump()
     {
+        Debug.Log("aim dumbping");
         onGround = false;
         //an.Play("jump");
         Vector3 playerPos = target.transform.position;
@@ -134,9 +134,6 @@ public class OBSOOO : MonoBehaviour {
                     rb.constraints = ~RigidbodyConstraints2D.FreezePositionX;
                 }
             }
-        
-        
-
     }
 
     public void specialAttack()

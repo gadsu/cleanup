@@ -95,7 +95,7 @@ public class ItemInteraction : MonoBehaviour {
                 //Debug.Log("IS INTER");
                 if(gameObject.name.Contains("Splat"))
                 {
-                    other.GetComponent<PlayerState>().addSlime(2, color);
+                    GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().addSlime(2, color);
                     //if (color == "green")
                     //    other.GetComponent<PlayerState>().addSlime(2, "green");
                     //else if (color == "red")
@@ -105,7 +105,7 @@ public class ItemInteraction : MonoBehaviour {
                 }
                 else
                 {
-                    other.GetComponent<PlayerState>().addSlime(10, color);
+                    GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().addSlime(10, color);
                     //if (color == "green")
                     //    other.GetComponent<PlayerState>().addSlime(10, "green");
                     //else if (color == "red")
