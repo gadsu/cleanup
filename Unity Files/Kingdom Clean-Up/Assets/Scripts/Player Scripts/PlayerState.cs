@@ -58,9 +58,8 @@ public class PlayerState : MonoBehaviour {
             blueMeter.value = blueSlimeMeter;
             //Debug.Log("<color=blue>BlueSlimeVal:</color> " + blueSlimeMeter);//tells the debug log that blue slime was added to the slime meter
         }
-
-
     }
+
     public void takeDamage(float dmg)
     {
         playerHealth -= dmg;
@@ -74,20 +73,21 @@ public class PlayerState : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-        Debug.Log("TEST");
+
+    }
+	
+    public void loadScene()
+    {
         greenMeter = GameObject.Find("GreenMeter").GetComponent<Slider>();
         redMeter = GameObject.Find("RedMeter").GetComponent<Slider>();
         blueMeter = GameObject.Find("BlueMeter").GetComponent<Slider>();
-
-        //Fill the dictionary from file   saveDic["name"] will return the string "Rachel" 
-        if(true)//CHECK TO SEE IF THE SAVE FILE HAS BEEN LOADED
-        {
-
-        }
     }
-	
+
 	// Update is called once per frame
 	void Update () {
-		
+        if (GameObject.Find("GreenMeter"))
+        {
+            loadScene();
+        }
 	}
 }

@@ -11,7 +11,7 @@ public class OBSOOO : MonoBehaviour {
     public int jumpCount = 0;
     public static float PTIME = 4f;
     Rigidbody2D rb;
-    public float basicSpeed = 300f;
+    public float basicSpeed = 30f;
     public float specialSpeed = 40f;
     EnemyState es;
     Animator an;
@@ -21,7 +21,6 @@ public class OBSOOO : MonoBehaviour {
     void Start ()
     {
         target = GameObject.Find("Player");    //Find the player
-
         points = GameObject.FindGameObjectsWithTag("Spawner");   //Find all of the spawner objects in the scene
         targetArr.Clear();
 
@@ -58,8 +57,9 @@ public class OBSOOO : MonoBehaviour {
 
     public void basicJump()
     {
+        Debug.Log("aim dumbping");
         onGround = false;
-        an.Play("jump");
+        //an.Play("jump");
         Vector3 playerPos = target.transform.position;
         Vector2 vel = new Vector2(rb.velocity.x, rb.velocity.y);
         if (playerPos.x > rb.position.x)  //If it is to the right of you
@@ -70,7 +70,7 @@ public class OBSOOO : MonoBehaviour {
             }
 
             vel.x = basicSpeed;
-            //vel.y = specialSpeed;
+            vel.y = specialSpeed;
         }
         else if (playerPos.x < rb.position.x)   //If it is to the left of you
         {
@@ -80,7 +80,7 @@ public class OBSOOO : MonoBehaviour {
             }
 
             vel.x = basicSpeed * -1;
-            //vel.y = specialSpeed;
+            vel.y = specialSpeed;
         }
 
         Debug.Log(vel);
@@ -90,7 +90,7 @@ public class OBSOOO : MonoBehaviour {
     public void bigJump()
     {
         onGround = false;
-        an.Play("jump");
+        //an.Play("jump");
         Vector3 playerPos = target.transform.position;
         Vector2 vel = new Vector2(rb.velocity.x, rb.velocity.y);
         if (playerPos.x > rb.position.x)  //If it is to the right of you
@@ -101,7 +101,7 @@ public class OBSOOO : MonoBehaviour {
             }
 
             vel.x = basicSpeed;
-            //vel.y = specialSpeed * 2;
+            vel.y = specialSpeed * 2;
         }
         else if (playerPos.x < rb.position.x)   //If it is to the left of you
         {
@@ -111,10 +111,11 @@ public class OBSOOO : MonoBehaviour {
             }
 
             vel.x = basicSpeed * -1;
-            //vel.y = specialSpeed * 2;
+            vel.y = specialSpeed * 2;
         }
 
-
+        vel.x = basicSpeed;
+        vel.y = specialSpeed;
         rb.velocity = vel;
     }
 
@@ -133,14 +134,11 @@ public class OBSOOO : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate ()
     {
-        if(!an.GetCurrentAnimatorStateInfo(0).IsName("jump"))
+        if(onGround)
         {
             movementController();
         }
-        else if (!onGround)
-        {
-            MoveTowardsPoint(target.transform.position);
-        }
+
 	}
 
     private void MoveTowardsPoint(Vector3 pos)
