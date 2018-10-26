@@ -52,7 +52,7 @@ public class EnemyState : MonoBehaviour {
         if (gameObject.CompareTag("Boss"))
         {
             health = 90;
-            slimeDamage = 33.4f;
+            slimeDamage = 34f;
         }
     }
 	
@@ -106,7 +106,8 @@ public class EnemyState : MonoBehaviour {
         health -= dmg;
         if(health <= 0)
         {
-            an.Play("death"); //calls death function at end of animation
+            death();
+            //an.Play("death"); //calls death function at end of animation
         }
     }
     // Do damage to the player when colliders hits

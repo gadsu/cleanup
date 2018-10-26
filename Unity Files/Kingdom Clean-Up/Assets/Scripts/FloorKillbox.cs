@@ -28,7 +28,7 @@ public class FloorKillbox : MonoBehaviour {
             col.gameObject.transform.position = new Vector3(-25, 7, 0);
             if (health.value > 0)
             {
-                GameObject.Find("Health").GetComponent<Slider>().value -= 33.4f;
+                GameObject.Find("Health").GetComponent<Slider>().value -= 34f;
             }
             else
             {
