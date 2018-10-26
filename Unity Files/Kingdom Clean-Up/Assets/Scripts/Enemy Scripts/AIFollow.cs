@@ -50,7 +50,7 @@ public class AIFollow : MonoBehaviour
         //Cycle through all spawner objects and only add the ones that match our character
         foreach (GameObject n in points)
         {
-            if (n.name.Contains("PatrolPoint") && n.transform.parent.name.ToCharArray()[0] == patrolChar)  //AGreenSlimeSpawner BGreenSLime
+            if (n.name.Contains("PatrolPoint") && n.transform.name.ToCharArray()[0] == patrolChar)  //AGreenSlimeSpawner BGreenSLime
             {
                 targetArr.Add(n.transform);
             }

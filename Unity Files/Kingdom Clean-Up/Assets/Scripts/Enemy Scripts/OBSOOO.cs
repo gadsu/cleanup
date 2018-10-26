@@ -16,7 +16,7 @@ public class OBSOOO : MonoBehaviour {
     public float basicSpeed = 30f;
     public float specialSpeed = 40f;
     EnemyState es;
-    //Animator an;
+    Animator an;
     public bool onGround;
 
     // Use this for initialization
@@ -28,7 +28,7 @@ public class OBSOOO : MonoBehaviour {
 
         rb = GetComponent<Rigidbody2D>();
         es = GetComponent<EnemyState>();
-        //an = GetComponent<Animator>();
+        an = GetComponentInChildren<Animator>();
 
 
         //Cycle through all spawner objects and only add the ones that match our character
@@ -61,7 +61,7 @@ public class OBSOOO : MonoBehaviour {
     public void basicJump()
     {
         onGround = false;
-        //an.Play("jump");
+        an.Play("jump");
         Vector3 playerPos = target.transform.position;
         Vector2 vel = new Vector2(rb.velocity.x, rb.velocity.y);
         if (playerPos.x > rb.position.x)  //If it is to the right of you
@@ -90,7 +90,7 @@ public class OBSOOO : MonoBehaviour {
     public void bigJump()
     {
         onGround = false;
-        //an.Play("jump");
+        an.Play("jump");
         Vector3 playerPos = target.transform.position;
         Vector2 vel = new Vector2(rb.velocity.x, rb.velocity.y);
         if (playerPos.x > rb.position.x)  //If it is to the right of you

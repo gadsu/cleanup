@@ -38,10 +38,10 @@ public class SlimeSpawner : MonoBehaviour {
         {
             slimeCount++; //Increment counter
             Transform startpos = gameObject.transform;
-            GameObject SlimeEnemy = Instantiate<GameObject>(enemyPrefab, startpos.position, startpos.rotation);  //Create slime
-            SlimeEnemy.GetComponent<EnemyState>().setSpawner(gameObject.name.ToString());  //Set spawner
-            SlimeEnemy.GetComponent<EnemyState>().setColor(color);   //Set color
-            SlimeEnemy.name = name.ToCharArray()[0].ToString() + SlimeEnemy.name;  //Name
+            GameObject newSlimeEnemy = Instantiate<GameObject>(enemyPrefab, startpos.position, startpos.rotation);  //Create slime
+            newSlimeEnemy.GetComponent<EnemyState>().setSpawner(gameObject.name.ToString());  //Set spawner
+            newSlimeEnemy.GetComponent<EnemyState>().setColor(color);   //Set color
+            newSlimeEnemy.name = name.ToCharArray()[0].ToString() + newSlimeEnemy.name;  //Name
             spawnTime = Time.fixedTime;  //reset timer
             totalSlime--;
         }
