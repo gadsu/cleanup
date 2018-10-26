@@ -10,7 +10,7 @@ public class OBSOOO : MonoBehaviour {
     public int hitCount = 0;
     public int jumpCount = 0;
     public static float PTIME = 4f;
-    public int playerFollowCountDown;
+    public float playerFollowCountDown = 0;
     public int YPosFreeze = 47;
     Rigidbody2D rb;
     public float basicSpeed = 30f;
@@ -60,7 +60,6 @@ public class OBSOOO : MonoBehaviour {
 
     public void basicJump()
     {
-        Debug.Log("aim dumbping");
         onGround = false;
         //an.Play("jump");
         Vector3 playerPos = target.transform.position;
@@ -90,7 +89,6 @@ public class OBSOOO : MonoBehaviour {
 
     public void bigJump()
     {
-        Debug.Log("jump count is " + jumpCount);
         onGround = false;
         //an.Play("jump");
         Vector3 playerPos = target.transform.position;
@@ -116,24 +114,27 @@ public class OBSOOO : MonoBehaviour {
             vel.y = specialSpeed * 4;
         }
         rb.velocity = vel;
-
-        if (rb.transform.position.y >= YPosFreeze)
+    }
+    public void freezeInAir()
+    {
+        Vector2 vel = new Vector2(rb.velocity.x, rb.velocity.y);
+        rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+        if (playerFollowCountDown < PTIME)
         {
-                rb.constraints = RigidbodyConstraints2D.FreezePositionY;
-                if (playerFollowCountDown < PTIME)
-                {
-                    MoveTowardsPoint(target.transform.position);
-                    playerFollowCountDown++;
-                }
-                else
-                {
-                    rb.constraints = ~RigidbodyConstraints2D.FreezePositionY;
-                    rb.constraints = RigidbodyConstraints2D.FreezePositionX;
-                    vel.y = specialSpeed * -4;
-                    rb.velocity = vel;
-                    rb.constraints = ~RigidbodyConstraints2D.FreezePositionX;
-                }
-            }
+            MoveTowardsPoint(target.transform.position);
+            playerFollowCountDown = playerFollowCountDown + Time.deltaTime;
+        }
+        else
+        {
+            rb.constraints = RigidbodyConstraints2D.None;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+            vel.y = specialSpeed * -4;
+            rb.velocity = vel;
+            rb.constraints = RigidbodyConstraints2D.None;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            playerFollowCountDown = 0;
+        }
     }
 
     public void specialAttack()
@@ -154,6 +155,10 @@ public class OBSOOO : MonoBehaviour {
         if(hitCount == 3)
         {
             //do stuff
+        }
+        if (rb.transform.position.y >= YPosFreeze)
+        {
+            freezeInAir();
         }
         //!an.GetCurrentAnimatorStateInfo(0).IsName("jump")
         if (onGround)

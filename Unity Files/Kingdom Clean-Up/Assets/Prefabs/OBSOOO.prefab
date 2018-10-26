@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1622957449561232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1476.3, y: 11.3, z: 0}
+  m_LocalPosition: {x: 1466.013, y: 12.047505, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -139,7 +139,9 @@ MonoBehaviour:
   targetArr: []
   hitCount: 0
   jumpCount: 0
-  basicSpeed: 10
+  playerFollowCountDown: 0
+  YPosFreeze: 47
+  basicSpeed: 30
   specialSpeed: 25
   onGround: 0
 --- !u!212 &212954494874239218
