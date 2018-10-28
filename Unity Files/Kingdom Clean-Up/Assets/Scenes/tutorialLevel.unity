@@ -102000,7 +102000,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialpos: {fileID: 0}
-  inair: 0
 --- !u!1 &1300977700
 GameObject:
   m_ObjectHideFlags: 0
@@ -102259,6 +102258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reticle: {fileID: 0}
   tp: {fileID: 0}
+  inAir: 0
 --- !u!1001 &1426947367
 Prefab:
   m_ObjectHideFlags: 0
