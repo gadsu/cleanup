@@ -1,4 +1,9 @@
-﻿using System;
+﻿//
+//   AIFollow
+//   A script attached to each enemy who will follow the player
+//   This script switches back and forth between following the player and patrolling the Patrol Points attached to its spawner.
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,59 +14,65 @@ using UnityEngine.AI;
 public class AIFollow : MonoBehaviour
 {
 
-    public static float PTIME = 5f;
+    public static float PTIME = 5f;   //the default setting of the timer countdowns
 
 
-    GameObject target = null;
+    GameObject target = null;  //Will be the player
+    GameObject[] points;   //Will be a list of all spawner points
+
+    [Header("Debug Variables")]
+    [Tooltip("The list of its patrol points")]
     public List<Transform> targetArr;
-    GameObject[] points;
+    [Tooltip("Has the player been found?")]
     public bool playerFound = false;
+    [Tooltip("How long it's been since the player has been close enough")]
     public float LostPlayerTimer;
+    [Tooltip("How long it's been since it's started heading to the pos")]
     public float PatrolTimer;
+    [Tooltip("Which point in the patrol list it's headed for")]
     public int PatrolIndex = 0;
+    [Tooltip("How far from the player character this enemy is")]
     public float distance;
-    public char patrolNum;
+    [Tooltip("Unique character val")]
+    public char patrolChar;
 
 
     void Start()
     {
-        target = GameObject.Find("Player");
-        patrolNum = name.ToCharArray()[0];
-        PatrolTimer = 5f;
-        LostPlayerTimer = 5f;
+        target = GameObject.Find("Player");    //Find the player
+        patrolChar = name.ToCharArray()[0];    //Get your unique ID
+        PatrolTimer = PTIME;
+        LostPlayerTimer = PTIME;
 
-        points = GameObject.FindGameObjectsWithTag("Spawner");
-  //      Debug.Log(points.Length);
+        points = GameObject.FindGameObjectsWithTag("Spawner");   //Find all of the spawner objects in the scene
         targetArr.Clear();
 
+        //Cycle through all spawner objects and only add the ones that match our character
         foreach (GameObject n in points)
         {
-            if (n.name.Contains("PatrolPoint") && n.transform.parent.name.ToCharArray()[0] == patrolNum)  //AGreenSlimeSpawner BGreenSLime
+            if (n.name.Contains("PatrolPoint") && n.transform.name.ToCharArray()[0] == patrolChar)  //AGreenSlimeSpawner BGreenSLime
             {
                 targetArr.Add(n.transform);
-   //             Debug.Log("Added " + n.name + "to list");
             }
         }
     }
 
-    void FixedUpdate()
+    void FixedUpdate()  //Happens every fixed frame
     {
-        distance = Vector2.Distance(target.transform.position, transform.position);
+        distance = Vector2.Distance(target.transform.position, transform.position);   //Calculate the distance between the player and yourself
         if (playerFound)
         {
-            // agent.SetDestination(target.transform.position);   REPLACE WITH MOVE FUNCTION
             MoveTowardsPoint(target.transform.position);
-            if (LostPlayerTimer <= 0)
+            if (LostPlayerTimer <= 0) //If the player has been out of range for too long
             {
                 playerFound = false;
-                //  agent.SetDestination(targetArr[0].position);
                 MoveTowardsPoint(targetArr[PatrolIndex].position);
             }
-            else if (distance > 30f)
+            else if (distance > 30f)  //Decrements LostPlayerTimer if the player is too far away
             {
                 LostPlayerTimer -= Time.deltaTime;
             }
-            else
+            else  // Keep updating the timer since the player is close enough
             {
                 LostPlayerTimer = PTIME;
             }
@@ -74,18 +85,17 @@ public class AIFollow : MonoBehaviour
             }
             else  //Patrolling
             {
-                PatrolTimer -= Time.deltaTime;
+                PatrolTimer -= Time.deltaTime;   //The timer between switching points ticks down
 
-                if (PatrolIndex < targetArr.Count && targetArr[PatrolIndex] != null)
+                if (PatrolIndex < targetArr.Count && targetArr[PatrolIndex] != null)  //If you're inside of the array and you have a target
                 {
-                    //agent.SetDestination(targetArr[PatrolIndex].position);
                     MoveTowardsPoint(targetArr[PatrolIndex].position);
-                    if (PatrolTimer <= 0)
+                    if (PatrolTimer <= 0)   //If it has been longer than PTIME, increment the counter and move towards the next array target
                     {
                         PatrolIndex++;
                         PatrolTimer = PTIME;
 
-                        if (PatrolIndex >= targetArr.Count)
+                        if (PatrolIndex >= targetArr.Count)  //If you've reached the end of the array, start back at the bottom.
                         {
                             PatrolIndex = 0;
                         }
@@ -95,13 +105,14 @@ public class AIFollow : MonoBehaviour
         }
     }
 
+    //Simple flag to toggle the bool and reset the timer
     private void PlayerFound()
     {
         playerFound = true;
         LostPlayerTimer = PTIME;
     }
 
-
+    //Calls the enemystate's walking function (may be different depending on slime)
     private void MoveTowardsPoint(Vector3 pos)
     {
         GetComponent<EnemyState>().walkto(pos);

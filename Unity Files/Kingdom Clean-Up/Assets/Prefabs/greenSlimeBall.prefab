@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50075199463577738}
   - component: {fileID: 70493302714736932}
   m_Layer: 10
-  m_Name: red Slime
+  m_Name: greenSlimeBall
   m_TagString: slimeObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,8 +37,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1539890530373000}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.6225834, y: 0.6434462, z: -8.180877}
-  m_LocalScale: {x: 5.4349313, y: 1.7069081, z: 3.0619333}
+  m_LocalPosition: {x: 0.85, y: 0.76, z: -8.180877}
+  m_LocalScale: {x: 60, y: 18, z: 3.0619333}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -89,6 +89,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e6e48d93bc01d94da52f06cc3393022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initvel: {x: 0, y: 0}
+  prefab: {fileID: 0}
+  color: green
 --- !u!212 &212282225175845748
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -125,7 +128,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.8962264, g: 0.021137413, b: 0.021137413, a: 1}
+  m_Color: {r: 0.12500006, g: 0.75, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

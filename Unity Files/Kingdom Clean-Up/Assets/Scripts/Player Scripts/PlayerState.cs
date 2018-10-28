@@ -4,16 +4,28 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class PlayerState : MonoBehaviour {
     Dictionary<string, string> saveDic;
 
-    public int greenSlimeMeter { get; protected set; }
-    public int redSlimeMeter { get; protected set; }
-    public int blueSlimeMeter { get; protected set; }
+    [Header("Debug Variables")]
+    [Tooltip("How much green slime?")]
+    public int greenSlimeMeter;
+    [Tooltip("How much red slime?")]
+    public int redSlimeMeter;
+    [Tooltip("How much blue slime?")]
+    public int blueSlimeMeter;
+    [Tooltip("Slider object")]
     public Slider greenMeter;
+    [Tooltip("Slider object")]
     public Slider redMeter;
+    [Tooltip("Slider object")]
     public Slider blueMeter;
+    [Tooltip("How much health the player has as a float")]
+    public float playerHealth = 100f;
+
+
     int maxSlime = 100;
 
     //public TextAsset PlayerFile; DOES NOT WORK FOR SOME RAISIN
@@ -46,26 +58,36 @@ public class PlayerState : MonoBehaviour {
             blueMeter.value = blueSlimeMeter;
             //Debug.Log("<color=blue>BlueSlimeVal:</color> " + blueSlimeMeter);//tells the debug log that blue slime was added to the slime meter
         }
-
-
     }
 
-	// Use this for initialization
-	void Start () {
-        Debug.Log("TEST");
+    public void takeDamage(float dmg)
+    {
+        playerHealth -= dmg;
+        GameObject.Find("Health").GetComponent<Slider>().value = playerHealth;
+        if (playerHealth <= 0)
+        {
+            Debug.Log("YOU DIED :(");
+            //an.Play("death"); //calls death function at end of animation
+            GameObject.Find("UI Canvas").GetComponent<KillScreen>().KillScreenControl();
+        }
+    }
+    // Use this for initialization
+    void Start () {
+
+    }
+	
+    public void loadScene()
+    {
         greenMeter = GameObject.Find("GreenMeter").GetComponent<Slider>();
         redMeter = GameObject.Find("RedMeter").GetComponent<Slider>();
         blueMeter = GameObject.Find("BlueMeter").GetComponent<Slider>();
-
-        //Fill the dictionary from file   saveDic["name"] will return the string "Rachel" 
-        if(true)//CHECK TO SEE IF THE SAVE FILE HAS BEEN LOADED
-        {
-
-        }
     }
-	
+
 	// Update is called once per frame
 	void Update () {
-		
+        if (GameObject.Find("GreenMeter"))
+        {
+            loadScene();
+        }
 	}
 }
