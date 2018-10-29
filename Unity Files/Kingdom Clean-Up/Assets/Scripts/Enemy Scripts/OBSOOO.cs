@@ -232,11 +232,13 @@ public class OBSOOO : MonoBehaviour {
         if (specialAttackTimer == 1)
         {
             specialAttack(rightPoint.transform.position);
+            hitCount = 0;
         }
 
         if (specialAttackTimer == 2)
         {
             specialAttack(leftPoint.transform.position);
+            hitCount = 0;
         }
 
         if (rb.transform.position.y >= YPosFreeze)
