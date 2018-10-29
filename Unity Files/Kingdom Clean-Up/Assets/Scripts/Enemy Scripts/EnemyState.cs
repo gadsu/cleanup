@@ -11,7 +11,7 @@ using UnityEngine.AI;
 public class EnemyState : MonoBehaviour {
 
     Rigidbody2D rb;  //this object's rigidbody
-    int health;      //total health
+    public int health;      //total health
     Animator an;     //this object's animator
     float slimeDamage;
 
@@ -106,8 +106,7 @@ public class EnemyState : MonoBehaviour {
         health -= dmg;
         if(health <= 0)
         {
-            death();
-            //an.Play("death"); //calls death function at end of animation
+            an.Play("death"); //calls death function at end of animation
         }
     }
     // Do damage to the player when colliders hits

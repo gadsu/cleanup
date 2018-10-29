@@ -18,6 +18,10 @@ public class OBSOOO : MonoBehaviour {
     EnemyState es;
     Animator an;
     public bool onGround;
+    GameObject leftPoint;
+    GameObject rightPoint;
+    int specialAttackTimer = 0;
+    bool playerDir;
 
     // Use this for initialization
     void Start ()
@@ -25,6 +29,11 @@ public class OBSOOO : MonoBehaviour {
         target = GameObject.Find("Player");    //Find the player
         points = GameObject.FindGameObjectsWithTag("Spawner");   //Find all of the spawner objects in the scene
         targetArr.Clear();
+
+
+        //temp get points
+        leftPoint = GameObject.Find("LeftPatrolPoint");
+        rightPoint = GameObject.Find("RightPatrolPoint");
 
         rb = GetComponent<Rigidbody2D>();
         es = GetComponent<EnemyState>();
@@ -46,8 +55,9 @@ public class OBSOOO : MonoBehaviour {
     {
         if (jumpCount < PTIME) 
         {
-            basicJump();
-            
+            Vector3 playerPos = target.transform.position;
+
+            basicJump(playerPos);
             jumpCount++;
         }
         else
@@ -58,13 +68,12 @@ public class OBSOOO : MonoBehaviour {
 
     }
 
-    public void basicJump()
+    public void basicJump(Vector3 targetPos)
     {
         onGround = false;
         an.Play("jump");
-        Vector3 playerPos = target.transform.position;
         Vector2 vel = new Vector2(rb.velocity.x, rb.velocity.y);
-        if (playerPos.x > rb.position.x)  //If it is to the right of you
+        if (targetPos.x > rb.position.x)  //If it is to the right of you
         {
             if (!es.facingRight)
             {
@@ -74,7 +83,7 @@ public class OBSOOO : MonoBehaviour {
             vel.x = basicSpeed;
             vel.y = specialSpeed;
         }
-        else if (playerPos.x < rb.position.x)   //If it is to the left of you
+        else if (targetPos.x < rb.position.x)   //If it is to the left of you
         {
             if (es.facingRight)
             {
@@ -137,9 +146,59 @@ public class OBSOOO : MonoBehaviour {
         }
     }
 
-    public void specialAttack()
+    public void moveToSpecialAttack(bool playerDir)
     {
+        if (onGround)
+        {
+            if (playerDir)
+            {
+                basicJump(rightPoint.transform.position);
+            }
+            else
+            {
+                basicJump(leftPoint.transform.position);
+            }
+        }
+        if(rb.position.x == leftPoint.transform.position.x || rb.position.x == rightPoint.transform.position.x)
+        {
+            if (rb.position.x == leftPoint.transform.position.x)
+            {
+                specialAttackTimer = 1;
+            }
+            else
+            {
+                specialAttackTimer = 2;
+            }
+        }
+    }
 
+    public void specialAttack(Vector2 pointPos)
+    {
+        onGround = false;
+        an.Play("jump");
+        Vector2 vel = new Vector2(rb.velocity.x, rb.velocity.y);
+        specialSpeed = 20f;
+        if (pointPos.x > rb.position.x)  //If it is to the right of you
+        {
+            if (!es.facingRight)
+            {
+                GetComponent<EnemyState>().Flip();
+            }
+
+            vel.x = basicSpeed *3;
+            vel.y = specialSpeed / 2;
+        }
+        else if (pointPos.x < rb.position.x)   //If it is to the left of you
+        {
+            if (es.facingRight)
+            {
+                GetComponent<EnemyState>().Flip();
+            }
+
+            vel.x = basicSpeed * -3;
+            vel.y = specialSpeed / 2;
+        }
+        rb.velocity = vel;
     }
 
     private void OnCollisionStay2D(Collision2D col)
@@ -149,19 +208,43 @@ public class OBSOOO : MonoBehaviour {
             onGround = true;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.name == "mopAttack")
+        {
+            hitCount++; 
+        }
+    }
+
+
     // Update is called once per frame
     void FixedUpdate ()
     {
-        if(hitCount == 3)
+        
+        if (hitCount >= 3)
         {
-            //do stuff
+            playerDir = target.GetComponent<PlayerController>().facingRight;
+            Debug.Log(" OUCH");
+            moveToSpecialAttack(playerDir);
         }
+
+        if (specialAttackTimer == 1)
+        {
+            specialAttack(rightPoint.transform.position);
+        }
+
+        if (specialAttackTimer == 2)
+        {
+            specialAttack(leftPoint.transform.position);
+        }
+
         if (rb.transform.position.y >= YPosFreeze)
         {
             freezeInAir();
         }
         //!an.GetCurrentAnimatorStateInfo(0).IsName("jump")
-        if (onGround)
+        if (onGround && hitCount < 3)
         {
             movementController();
         }

@@ -41,7 +41,7 @@ public class InvisObjects : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        BossSpawnerObject = GameObject.Find("BossSlimeSpawner");
+        //BossSpawnerObject = GameObject.Find("BossSlimeSpawner");
         HideObject();
 	}
 }

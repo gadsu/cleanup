@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4631367701892960}
   m_Layer: 0
-  m_Name: SlimePatrolPoint
+  m_Name: RightPatrolPoint
   m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,7 +51,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4430435974514088}
   m_Layer: 0
-  m_Name: SlimePatrolPoint
+  m_Name: LeftPatrolPoint
   m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1003719272533740}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1599.3033, y: 99.81517, z: -2.8539956}
+  m_LocalPosition: {x: 1506, y: 6, z: -3.8539956}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4631367701892960}
@@ -79,7 +79,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1609460194600446}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -238.3, y: -87.6, z: -0.98975444}
+  m_LocalPosition: {x: -142.7, y: -31.5, z: -0.98975444}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4256250145630126}
@@ -92,7 +92,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1228419336483066}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 101.1, y: -89.9, z: -0.98975444}
+  m_LocalPosition: {x: 187.5, y: -31.5, z: -0.98975444}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4256250145630126}
@@ -111,8 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slimeAlive: 0
   slimeCount: 0
-  enemyPrefab: {fileID: 1622957449561232, guid: ed35254e18ba2d24d8dfc4b50bfae484,
-    type: 2}
+  enemyPrefab: {fileID: 0}
   color: Boss
   maxSlime: 1
   totalSlime: 1
