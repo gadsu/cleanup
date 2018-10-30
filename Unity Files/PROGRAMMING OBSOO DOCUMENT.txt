@@ -1,4 +1,4 @@
-*DONE*Rename green slime spawner to spawner that can be used to spawn any slime 
+﻿*DONE*Rename green slime spawner to spawner that can be used to spawn any slime 
 
 ----------------------------------------------------------
 'OBSOOO' jumps after (X amount) of time then jumps really high into the air, 
@@ -10,7 +10,7 @@ his 'Y' position freezes, his 'X' position follows the PC for a couple seconds t
 
 ----------------------------------------------------------
  *MADE BUT STILL EMPTY* ~OBSOOO script~
--big jumps up after 4 seconds
+*DONE*-big jumps up after 4 seconds
 	-freeze y and follow player for 3 secs
 	-freeze everything for 1 sec
 	-unfreeze y, increase velocity and hit ground
@@ -20,9 +20,9 @@ his 'Y' position freezes, his 'X' position follows the PC for a couple seconds t
 	(if pos > player then go right patrol point else pos < player go to left patrol point, and then charge at player)
 -move towards player
 *DONE* -get patrol points
-- parses movement mechanics
+*DONE*- parses movement mechanics
 	Counter for # of jumps and counter for # of hits (hit counter >= 3)
--Movement function for small jumps or whatever obsiooo’s movement is 
+*DONE*-Movement function for small jumps or whatever obsiooo’s movement is 
 
 -----------------------------------------------------------
 colliders

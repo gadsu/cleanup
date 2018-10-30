@@ -99999,7 +99999,7 @@ Prefab:
         type: 2}
       propertyPath: enemyPrefab
       value: 
-      objectReference: {fileID: 1483345512463468, guid: a7bc3a6789a5e5d47a3264956edabf8e,
+      objectReference: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
         type: 2}
     - target: {fileID: 114420274793960826, guid: f5060fa611596d44da371cee6e2e336a,
         type: 2}
@@ -101001,7 +101001,7 @@ Prefab:
         type: 2}
       propertyPath: enemyPrefab
       value: 
-      objectReference: {fileID: 1483345512463468, guid: a7bc3a6789a5e5d47a3264956edabf8e,
+      objectReference: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
         type: 2}
     - target: {fileID: 114420274793960826, guid: f5060fa611596d44da371cee6e2e336a,
         type: 2}
@@ -101797,7 +101797,7 @@ Prefab:
         type: 2}
       propertyPath: enemyPrefab
       value: 
-      objectReference: {fileID: 1483345512463468, guid: a7bc3a6789a5e5d47a3264956edabf8e,
+      objectReference: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
         type: 2}
     - target: {fileID: 114420274793960826, guid: f5060fa611596d44da371cee6e2e336a,
         type: 2}
@@ -101950,7 +101950,7 @@ Prefab:
         type: 2}
       propertyPath: enemyPrefab
       value: 
-      objectReference: {fileID: 1483345512463468, guid: a7bc3a6789a5e5d47a3264956edabf8e,
+      objectReference: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
         type: 2}
     - target: {fileID: 114420274793960826, guid: f5060fa611596d44da371cee6e2e336a,
         type: 2}
@@ -102031,7 +102031,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1071252011654016, guid: f5060fa611596d44da371cee6e2e336a, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: Spawner
       objectReference: {fileID: 0}
     - target: {fileID: 4100497372149402, guid: f5060fa611596d44da371cee6e2e336a, type: 2}
       propertyPath: m_LocalScale.x
@@ -102041,7 +102041,7 @@ Prefab:
         type: 2}
       propertyPath: enemyPrefab
       value: 
-      objectReference: {fileID: 1483345512463468, guid: a7bc3a6789a5e5d47a3264956edabf8e,
+      objectReference: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
         type: 2}
     - target: {fileID: 114420274793960826, guid: f5060fa611596d44da371cee6e2e336a,
         type: 2}
@@ -102122,7 +102122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfde28b3d461d1a48b5d5fabd33671a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossSpawnerObject: {fileID: 0}
+  BossSpawnerObject: {fileID: 1721816828}
 --- !u!1 &1300977700
 GameObject:
   m_ObjectHideFlags: 0
@@ -102579,6 +102579,11 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1664824517}
   m_CullTransparentMesh: 0
+--- !u!1 &1721816828 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1003719272533740, guid: 719337b565458034aa1f43cd21aaa180,
+    type: 2}
+  m_PrefabInternal: {fileID: 2027387169}
 --- !u!1001 &1732059909
 Prefab:
   m_ObjectHideFlags: 0
