@@ -9,7 +9,9 @@ public class OBSOOO : MonoBehaviour {
     public List<Transform> targetArr; //array of patrol points
     public int hitCount = 0;
     public int jumpCount = 0;
-    public static float PTIME = 4f;
+    public bool doingSpecial = false;
+    public int attackSpecial = 0; // 0 - Not Attacking, 1 - Left, 2 - Right
+    public static float PTIME = 10f;
     public float playerFollowCountDown = 0;
     public int YPosFreeze = 47;
     Rigidbody2D rb;
@@ -20,8 +22,10 @@ public class OBSOOO : MonoBehaviour {
     public bool onGround;
     GameObject leftPoint;
     GameObject rightPoint;
+    float rightX;
+    float leftX;
     int specialAttackTimer = 0;
-    bool playerDir;
+    bool facingRight;
 
     // Use this for initialization
     void Start ()
@@ -34,6 +38,8 @@ public class OBSOOO : MonoBehaviour {
         //temp get points
         leftPoint = GameObject.Find("LeftPatrolPoint");
         rightPoint = GameObject.Find("RightPatrolPoint");
+        rightX = rightPoint.transform.position.x;
+        leftX = leftPoint.transform.position.x;
 
         rb = GetComponent<Rigidbody2D>();
         es = GetComponent<EnemyState>();
@@ -53,17 +59,49 @@ public class OBSOOO : MonoBehaviour {
 
     public void movementController()
     {
-        if (jumpCount < PTIME) 
+        if (hitCount >= 3 && doingSpecial == false) //Setting persistent direction so OBSOOO doesn't change direction during special prep
         {
-            Vector3 playerPos = target.transform.position;
-
-            basicJump(playerPos);
-            jumpCount++;
+            facingRight = target.GetComponent<PlayerController>().facingRight;
+            Debug.Log("Setting Direction for Special Attack. Facing Right = " + facingRight);
+            hitCount = 0;
+            doingSpecial = true;
         }
-        else
+        if (doingSpecial) //Move to and commence special attack
         {
-            bigJump();
-            jumpCount = 0;
+            if (rb.position.x < rightX && rb.position.x > leftX && attackSpecial == 0)
+            {
+                moveToSpecialAttack(facingRight);
+            }
+            else if ((rb.position.x <= leftX && attackSpecial == 1) || (rb.position.x >= rightX && attackSpecial == 2))
+            {
+                doingSpecial = false;
+                attackSpecial = 0;
+            }
+            else if (rb.position.x >= rightX || attackSpecial == 1)
+            {
+                specialAttack(leftPoint.transform.position);
+                attackSpecial = 1;
+            }
+            else if (rb.position.x <= leftX || attackSpecial == 2)
+            {
+                specialAttack(rightPoint.transform.position);
+                attackSpecial = 2;
+            }
+        }
+        if (hitCount < 3 && !doingSpecial) //Normal movement
+        {
+            if (jumpCount < PTIME) 
+            {
+                Vector3 playerPos = target.transform.position;
+
+                basicJump(playerPos);
+                jumpCount++;
+            }
+            else
+            {
+                bigJump();
+                jumpCount = 0;
+            }
         }
 
     }
@@ -148,27 +186,13 @@ public class OBSOOO : MonoBehaviour {
 
     public void moveToSpecialAttack(bool playerDir)
     {
-        if (onGround)
+        if (playerDir)
         {
-            if (playerDir)
-            {
-                basicJump(rightPoint.transform.position);
-            }
-            else
-            {
-                basicJump(leftPoint.transform.position);
-            }
+            basicJump(rightPoint.transform.position);
         }
-        if(rb.position.x == leftPoint.transform.position.x || rb.position.x == rightPoint.transform.position.x)
+        else
         {
-            if (rb.position.x == leftPoint.transform.position.x)
-            {
-                specialAttackTimer = 1;
-            }
-            else
-            {
-                specialAttackTimer = 2;
-            }
+            basicJump(leftPoint.transform.position);
         }
     }
 
@@ -177,7 +201,6 @@ public class OBSOOO : MonoBehaviour {
         onGround = false;
         an.Play("jump");
         Vector2 vel = new Vector2(rb.velocity.x, rb.velocity.y);
-        specialSpeed = 20f;
         if (pointPos.x > rb.position.x)  //If it is to the right of you
         {
             if (!es.facingRight)
@@ -185,8 +208,8 @@ public class OBSOOO : MonoBehaviour {
                 GetComponent<EnemyState>().Flip();
             }
 
-            vel.x = basicSpeed *3;
-            vel.y = specialSpeed / 2;
+            vel.x = basicSpeed *4;
+            vel.y = specialSpeed;
         }
         else if (pointPos.x < rb.position.x)   //If it is to the left of you
         {
@@ -195,8 +218,8 @@ public class OBSOOO : MonoBehaviour {
                 GetComponent<EnemyState>().Flip();
             }
 
-            vel.x = basicSpeed * -3;
-            vel.y = specialSpeed / 2;
+            vel.x = basicSpeed * -4;
+            vel.y = specialSpeed;
         }
         rb.velocity = vel;
     }
@@ -222,31 +245,14 @@ public class OBSOOO : MonoBehaviour {
     void FixedUpdate ()
     {
         
-        if (hitCount >= 3)
-        {
-            playerDir = target.GetComponent<PlayerController>().facingRight;
-            Debug.Log(" OUCH");
-            moveToSpecialAttack(playerDir);
-        }
-
-        if (specialAttackTimer == 1)
-        {
-            specialAttack(rightPoint.transform.position);
-            hitCount = 0;
-        }
-
-        if (specialAttackTimer == 2)
-        {
-            specialAttack(leftPoint.transform.position);
-            hitCount = 0;
-        }
+        
 
         if (rb.transform.position.y >= YPosFreeze)
         {
             freezeInAir();
         }
         //!an.GetCurrentAnimatorStateInfo(0).IsName("jump")
-        if (onGround && hitCount < 3)
+        if (onGround)
         {
             movementController();
         }
