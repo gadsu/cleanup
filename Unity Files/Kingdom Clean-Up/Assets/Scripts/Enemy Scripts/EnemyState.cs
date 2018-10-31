@@ -106,7 +106,8 @@ public class EnemyState : MonoBehaviour {
         health -= dmg;
         if(health <= 0)
         {
-            an.Play("death"); //calls death function at end of animation
+            death();
+ //           an.Play("death"); //calls death function at end of animation
         }
     }
     // Do damage to the player when colliders hits
@@ -228,6 +229,8 @@ public class EnemyState : MonoBehaviour {
 
 
         // Die
+        Debug.Log("i should die now");
         Destroy(gameObject);
+       // Destroy(gameObject.transform.parent.gameObject); //trying to get the parent to die 
     }
 }

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4601904761564942}
   - component: {fileID: 212114615716861108}
   - component: {fileID: 95705563098737598}
+  - component: {fileID: 114826460253411566}
   m_Layer: 0
   m_Name: SlimeEnemySprite
   m_TagString: Enemy
@@ -148,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0c9c7106adea4e49a5031e78fa01dc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   spawner: {fileID: 0}
   color: 
   facingRight: 1
@@ -174,6 +176,24 @@ MonoBehaviour:
   PatrolIndex: 1
   distance: 0
   patrolChar: 0
+--- !u!114 &114826460253411566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1144098954101912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0c9c7106adea4e49a5031e78fa01dc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  spawner: {fileID: 0}
+  color: 
+  facingRight: 1
+  speed: 20
+  buffer: 3
+  visceraPrefab: {fileID: 0}
 --- !u!212 &212114615716861108
 SpriteRenderer:
   m_ObjectHideFlags: 1

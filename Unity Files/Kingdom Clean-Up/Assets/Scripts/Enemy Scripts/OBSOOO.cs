@@ -173,12 +173,12 @@ public class OBSOOO : MonoBehaviour {
         }
         else
         {
-            rb.constraints = RigidbodyConstraints2D.None;
-            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            //rb.constraints = RigidbodyConstraints2D.None;
+            //rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             rb.constraints = RigidbodyConstraints2D.FreezePositionX;
             vel.y = specialSpeed * -4;
             rb.velocity = vel;
-            rb.constraints = RigidbodyConstraints2D.None;
+            //rb.constraints = RigidbodyConstraints2D.None;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             playerFollowCountDown = 0;
         }
