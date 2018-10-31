@@ -25,7 +25,7 @@ public class CleanAttack : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D col)  
     {
         Debug.Log(col.gameObject.tag.ToString());
-        if (col.gameObject.tag == "Enemy")  //If you are hitting an enemy
+        if (col.gameObject.tag == "Enemy" || col.gameObject.tag == "Boss")  //If you are hitting an enemy
         {
             col.gameObject.GetComponent<EnemyState>().takeDamage(mopDamage); //
             Debug.Log("SLIME HIT: " + col.gameObject.name);
@@ -34,7 +34,7 @@ public class CleanAttack : MonoBehaviour {
         else if(col.gameObject.tag == "slimeInteractable") //If you are hitting placed slime
         {
             //break the object
-            //col.gameObject.GetComponent
+            col.gameObject.GetComponent<SlimeConstructs>().breakSlime();
         }
     }
 

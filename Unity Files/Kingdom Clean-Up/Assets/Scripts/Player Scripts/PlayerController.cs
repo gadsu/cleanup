@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour {
                 mop.GetComponent<CleanAttack>().swingMop();
             }
 
-            //slime throwing shenanigans
+            //slime throwing shenanigans - movement of reticle happens on the reticle
             if (Input.GetAxis("ShowAim") > 0 && !aiming )//(Input.GetButtonDown("ShowAimButton") || Input.GetAxis("ShowAimTrigger") > 0) && !aiming)
             {
                 ShowAim();
@@ -107,12 +107,7 @@ public class PlayerController : MonoBehaviour {
                 HideAim();
                 Debug.Log("Aim Hidden");
             }
-
-            if (aiming && Input.GetButtonDown("Throw"))
-            {
-                ThrowSlime();
-            }
-
+            
 
 
             //Horizontal Movement
@@ -133,7 +128,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         //Checking for ground
-        Debug.DrawRay(transform.position, Vector2.down * playerSize, Color.magenta);
+        //Debug.DrawRay(transform.position, Vector2.down * playerSize, Color.magenta);
         if (!onGround && ((Time.time - jumpFrame) > 0.5f))
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down * playerSize);
