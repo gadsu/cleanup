@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: SlopeTileD-DV2_1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: ef46b83f0081f614882fea07f21d3bb8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dba8ba04a91098643b6ad4f38f9a3063, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
