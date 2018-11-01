@@ -5,6 +5,8 @@ using UnityEngine;
 public class InvisObjects : MonoBehaviour {
 
     public GameObject BossSpawnerObject;
+    public GameObject rightWall;
+    public GameObject leftWall;
 
     //turns on OBSOOO spawner
     private void OnTriggerEnter2D(Collider2D col)
@@ -15,14 +17,31 @@ public class InvisObjects : MonoBehaviour {
             ShowObject();
         }
     }
+
     //turns on invisWalls
-    private void OnTriggerExit2D(Collider2D col)
+    private void OnTriggerStay2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Boss")
         {
-            GetComponent<Collider2D>().isTrigger = false;
+            leftWall.SetActive(true);
+            rightWall.SetActive(true);
+        }
+        else
+        {
+            leftWall.SetActive(false);
+            rightWall.SetActive(false);
         }
     }
+
+
+
+    //private void OnTriggerExit2D(Collider2D col)
+    //{
+    //    if (col.gameObject.tag == "Player")
+    //    {
+    //        GetComponent<Collider2D>().isTrigger = false;
+    //    }
+    //}
 
     //shows Spawner
     public void ShowObject()
@@ -41,6 +60,8 @@ public class InvisObjects : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        //rightWall = GameObject.Find("RightWall");
+        //leftWall = GameObject.Find("LeftWall");
         //BossSpawnerObject = GameObject.Find("BossSlimeSpawner");
         HideObject();
 	}

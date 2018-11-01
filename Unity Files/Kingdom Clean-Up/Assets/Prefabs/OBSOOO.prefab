@@ -168,12 +168,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0c9c7106adea4e49a5031e78fa01dc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   spawner: {fileID: 0}
   color: Boss
   facingRight: 1
   speed: 20
   buffer: 3
-  visceraPrefab: {fileID: 0}
+  visceraPrefab: {fileID: 1827464675113566, guid: f1ef8da39b8126e4691a9a3c234f4da3,
+    type: 2}
 --- !u!114 &114292402023868728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -188,6 +190,8 @@ MonoBehaviour:
   targetArr: []
   hitCount: 0
   jumpCount: 0
+  doingSpecial: 0
+  attackSpecial: 0
   playerFollowCountDown: 0
   YPosFreeze: 47
   basicSpeed: 15
