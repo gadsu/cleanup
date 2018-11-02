@@ -128,17 +128,22 @@ public class PlayerController : MonoBehaviour {
         }
 
         //Checking for ground
-        //Debug.DrawRay(transform.position, Vector2.down * playerSize, Color.magenta);
+        Debug.DrawRay(transform.position, Vector2.down * playerSize, Color.magenta);
         if (!onGround && ((Time.time - jumpFrame) > 0.5f))
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down * playerSize);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down * playerSize, 1000f, 9);
             if (hit.collider != null)
             {
                 Debug.Log(hit.collider.gameObject.tag + hit.collider.gameObject.tag.ToString());
                 if (hit.collider.gameObject.tag == "Platform")
                 {
-                    onGround = true;
-                    jumpFinished = false;
+                    if (hit.collider.Distance(GetComponent<Collider2D>()).distance < 1)
+                    {
+                        Debug.Log(hit.collider.Distance(GetComponent<Collider2D>()).distance);
+                        onGround = true;
+                        jumpFinished = false;
+                        doubleJump = true;
+                    }
                 }
             }
 
