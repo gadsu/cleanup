@@ -140152,7 +140152,6 @@ GameObject:
   - component: {fileID: 441837577}
   - component: {fileID: 441837576}
   - component: {fileID: 441837575}
-  - component: {fileID: 441837578}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -140205,21 +140204,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &441837578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 441837574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cfa5b5dade22c04a93bd646fef389e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  navigationMode: 0
-  circular: 0
-  startingPoint: 0
 --- !u!1 &477070385
 GameObject:
   m_ObjectHideFlags: 0
@@ -140902,7 +140886,7 @@ Prefab:
     - target: {fileID: 114987883528048664, guid: 8b65b5bdd2d6f154181d3c7ecd536d6a,
         type: 2}
       propertyPath: m_Navigation.m_Mode
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114948147347816484, guid: 8b65b5bdd2d6f154181d3c7ecd536d6a,
         type: 2}
@@ -140937,7 +140921,7 @@ Prefab:
     - target: {fileID: 114626571161473408, guid: 8b65b5bdd2d6f154181d3c7ecd536d6a,
         type: 2}
       propertyPath: m_Navigation.m_Mode
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114626571161473408, guid: 8b65b5bdd2d6f154181d3c7ecd536d6a,
         type: 2}
@@ -140947,13 +140931,32 @@ Prefab:
     - target: {fileID: 114328712305050780, guid: 8b65b5bdd2d6f154181d3c7ecd536d6a,
         type: 2}
       propertyPath: m_Navigation.m_Mode
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114328712305050780, guid: 8b65b5bdd2d6f154181d3c7ecd536d6a,
         type: 2}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
       objectReference: {fileID: 1961896691}
+    - target: {fileID: 1083285839766518, guid: 8b65b5bdd2d6f154181d3c7ecd536d6a, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114987883528048664, guid: 8b65b5bdd2d6f154181d3c7ecd536d6a,
+        type: 2}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 723528756}
+    - target: {fileID: 114626571161473408, guid: 8b65b5bdd2d6f154181d3c7ecd536d6a,
+        type: 2}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114328712305050780, guid: 8b65b5bdd2d6f154181d3c7ecd536d6a,
+        type: 2}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114156495075053620, guid: 8b65b5bdd2d6f154181d3c7ecd536d6a, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 8b65b5bdd2d6f154181d3c7ecd536d6a, type: 2}
@@ -141095,9 +141098,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_SelectOnUp: {fileID: 1664824520}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnDown: {fileID: 670376542}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -142528,26 +142531,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4942231245853812, guid: 048952684eaee544a892168d94a26e0a,
     type: 2}
   m_PrefabInternal: {fileID: 860179511}
---- !u!1 &1985424871 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1083285839766518, guid: 8b65b5bdd2d6f154181d3c7ecd536d6a,
-    type: 2}
-  m_PrefabInternal: {fileID: 715603792}
---- !u!114 &1985424872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1985424871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cfa5b5dade22c04a93bd646fef389e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
-  navigationMode: 0
-  circular: 0
-  startingPoint: 0
 --- !u!1001 &2027387169
 Prefab:
   m_ObjectHideFlags: 0

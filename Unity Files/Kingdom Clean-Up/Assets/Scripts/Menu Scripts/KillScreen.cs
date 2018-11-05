@@ -6,11 +6,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class KillScreen : MonoBehaviour {
 
     public GameObject KillScreenObject;
     public Slider HealthBar;
+    public Button firstButton;
     int MinHealthValue = 0; //According to the kill box we die at one health
   
     // Use this for initialization
@@ -18,6 +20,7 @@ public class KillScreen : MonoBehaviour {
     {
         KillScreenObject = GameObject.Find("Kill Screen");
         HealthBar = GameObject.Find("Health").GetComponent<Slider>();
+        firstButton = KillScreenObject.GetComponentInChildren<Button>();
         HideKillScreen();
     }
 
@@ -48,6 +51,7 @@ public class KillScreen : MonoBehaviour {
     public void ShowKillScreen()
     {
         KillScreenObject.SetActive(true);
+
     }
 
     //hides KillScreen
@@ -55,5 +59,6 @@ public class KillScreen : MonoBehaviour {
     {
 
         KillScreenObject.SetActive(false);
+        firstButton.Select();
     }
 }

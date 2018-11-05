@@ -5,11 +5,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
     
     public GameObject PauseObjects;
+    public Button firstButton;
     public bool Unpaused;
     // Use this for initialization
     private void Awake()
@@ -22,6 +25,7 @@ public class PauseMenu : MonoBehaviour
         //TESTING FOR LAG
         // PauseObjects = GameObject.FindGameObjectsWithTag("Paused");
         PauseObjects = GameObject.Find("PauseMenu");
+        firstButton = PauseObjects.GetComponentInChildren<Button>();
         HidePaused();
         Unpaused = true;
         Time.timeScale = 1;
@@ -60,6 +64,7 @@ public class PauseMenu : MonoBehaviour
     public void ShowPaused()
     {
         PauseObjects.SetActive(true);
+        firstButton.Select();
     }
 
     //hides objects with ShowOnPause tag
