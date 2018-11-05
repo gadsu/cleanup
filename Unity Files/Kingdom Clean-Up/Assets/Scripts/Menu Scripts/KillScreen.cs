@@ -51,6 +51,7 @@ public class KillScreen : MonoBehaviour {
     public void ShowKillScreen()
     {
         KillScreenObject.SetActive(true);
+        firstButton.Select();
 
     }
 
@@ -59,6 +60,6 @@ public class KillScreen : MonoBehaviour {
     {
 
         KillScreenObject.SetActive(false);
-        firstButton.Select();
+
     }
 }
