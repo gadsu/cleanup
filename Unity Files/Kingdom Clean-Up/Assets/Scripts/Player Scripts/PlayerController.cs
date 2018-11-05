@@ -8,7 +8,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
     [Header("Debug Variables")]
     [Tooltip("How far should raycasting reach?")]
@@ -39,37 +40,42 @@ public class PlayerController : MonoBehaviour {
 
     Animator an;
     Rigidbody2D rb;
- //   AimRender ar;
+    //   AimRender ar;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         onGround = true;
         //an = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
- //       ar = GetComponent<AimRender>();
+        //       ar = GetComponent<AimRender>();
         aiming = false;
         doubleJump = false;
         facingRight = true;
         canMove = true;
-	}
+    }
 
-    
+
     private void OnTriggerEnter2D(Collider2D col)
     {
-       /* if (col.tag == "Platform" && !onGround)
-        {
-            //col.transform.position
-            onGround = true;
-                       Debug.Log("onground = true");
-        } */
+        /* if (col.tag == "Platform" && !onGround)
+         {
+             //col.transform.position
+             onGround = true;
+                        Debug.Log("onground = true");
+         } */
     }
-    
+
     private void OnTriggerExit2D(Collider2D col)
     {
-       /* if (onGround == true && col.tag == "Platform")
-        {
-            onGround = false;
-        } */
+        /* if (onGround == true && col.tag == "Platform")
+         {
+             onGround = false;
+         } */
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Debug.DrawRay(transform.position, Vector2.down * playerSize, Color.magenta);
     }
 
     private void FixedUpdate()
@@ -97,7 +103,7 @@ public class PlayerController : MonoBehaviour {
             }
 
             //slime throwing shenanigans - movement of reticle happens on the reticle
-            if (Input.GetAxis("ShowAim") > 0 && !aiming )//(Input.GetButtonDown("ShowAimButton") || Input.GetAxis("ShowAimTrigger") > 0) && !aiming)
+            if (Input.GetAxis("ShowAim") > 0 && !aiming)//(Input.GetButtonDown("ShowAimButton") || Input.GetAxis("ShowAimTrigger") > 0) && !aiming)
             {
                 ShowAim();
                 Debug.Log("Showing Aim");
@@ -107,7 +113,7 @@ public class PlayerController : MonoBehaviour {
                 HideAim();
                 Debug.Log("Aim Hidden");
             }
-            
+
 
 
             //Horizontal Movement
@@ -128,6 +134,8 @@ public class PlayerController : MonoBehaviour {
         }
 
         //Checking for ground
+        //Debug.DrawRay(transform.position, Vector2.down * playerSize, Color.magenta);
+
         Debug.DrawRay(transform.position, Vector2.down * playerSize, Color.magenta);
         if (!onGround && ((Time.time - jumpFrame) > 0.5f))
         {
@@ -218,4 +226,5 @@ public class PlayerController : MonoBehaviour {
     {
         HideAim();
     }
+
 }
