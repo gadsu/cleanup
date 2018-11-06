@@ -24,7 +24,6 @@ public class OBSOOO : MonoBehaviour {
     GameObject rightPoint;
     float rightX;
     float leftX;
-    int specialAttackTimer = 0;
     bool facingRight;
 
     // Use this for initialization
