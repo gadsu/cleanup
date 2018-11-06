@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Debug Variables")]
     [Tooltip("How far should raycasting reach?")]
-    public float playerSize = 5f;
+    public float playerSize = 5000f;
     [Tooltip("Is player touching ground?")]
     public bool onGround;
     [Tooltip("Is player facing right?")]
@@ -46,12 +46,12 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         onGround = true;
-        //an = GetComponent<Animator>();
+        an = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         //       ar = GetComponent<AimRender>();
         aiming = false;
         doubleJump = false;
-        facingRight = true;
+        facingRight = false;
         canMove = true;
     }
 
@@ -131,15 +131,23 @@ public class PlayerController : MonoBehaviour
             }
 
             rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
+            if (!an.GetCurrentAnimatorStateInfo(0).IsName("run") && Mathf.Abs(rb.velocity.x) > 0)
+            {
+                an.Play("run");
+            }
+            else
+            {
+                an.
+            }
         }
 
         //Checking for ground
         //Debug.DrawRay(transform.position, Vector2.down * playerSize, Color.magenta);
 
-        Debug.DrawRay(transform.position, Vector2.down * playerSize, Color.magenta);
+        Debug.DrawRay(transform.position, Vector2.down * playerSize,  Color.magenta);
         if (!onGround && ((Time.time - jumpFrame) > 0.5f))
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down * playerSize, 1000f, 9);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down * playerSize);
             if (hit.collider != null)
             {
                 Debug.Log(hit.collider.gameObject.tag + hit.collider.gameObject.tag.ToString());
