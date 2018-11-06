@@ -18,8 +18,12 @@ World will be slimed up which will represent the slimes having taken over and wh
 
 Thought Bubbles:
 *Upon seeing slime on the ground for the first time*
-Displays an image of the mop mopping up the slime with the x button being pressed.
-
+Displays an image of the mop mopping up the slime with the y button being pressed.
 
 *At the last obstacle of tutorial level*
 Display bubble showing the slime being thrown onto the surface of the map, also displaying the buttons needed to do so. (LT and B)
+
+*upon seeing a slime for the first time*
+Stops game to display the bubble
+shows MC 'cleaning' the slime with the mop with the x button being pressed
+
