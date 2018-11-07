@@ -52,6 +52,7 @@ public class ItemInteraction : MonoBehaviour {
            // Debug.Log("I FOUND THE GROUND!");
             rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionX;
         }
+        
 
     }
 
@@ -86,6 +87,8 @@ public class ItemInteraction : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D other)
     {
+        
+        
         //Debug.Log("TOUCHING " + other.gameObject.name);
         if (gameObject.CompareTag("slimeObject") && other.CompareTag("Player"))
         {
