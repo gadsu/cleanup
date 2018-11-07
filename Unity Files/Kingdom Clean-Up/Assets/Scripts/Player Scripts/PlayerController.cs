@@ -7,6 +7,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
@@ -64,6 +65,28 @@ public class PlayerController : MonoBehaviour
              onGround = true;
                         Debug.Log("onground = true");
          } */
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        Vector3 colpos = col.gameObject.transform.position;
+        Vector3 mypos = transform.position;
+        if (col.gameObject.tag == "Platform")
+        {
+            Debug.DrawRay(transform.position, Vector2.down * playerSize, Color.magenta);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down * playerSize);
+            if (hit.collider != null)
+            {
+                Debug.Log(hit.collider.gameObject.tag + hit.collider.gameObject.tag.ToString());
+                if (hit.collider.gameObject.tag == "Platform")
+                {
+                    Debug.Log(hit.collider.Distance(GetComponent<Collider2D>()).distance);
+                    onGround = true;
+                    jumpFinished = false;
+                    doubleJump = true;
+                }
+            }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D col)
@@ -135,15 +158,11 @@ public class PlayerController : MonoBehaviour
             {
                 an.Play("run");
             }
-            else
-            {
-                an.
-            }
         }
 
         //Checking for ground
         //Debug.DrawRay(transform.position, Vector2.down * playerSize, Color.magenta);
-
+/*
         Debug.DrawRay(transform.position, Vector2.down * playerSize,  Color.magenta);
         if (!onGround && ((Time.time - jumpFrame) > 0.5f))
         {
@@ -163,16 +182,17 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            /*if ((facingRight && force < 0) || (!facingRight && force > 0))
+            if ((facingRight && force < 0) || (!facingRight && force > 0))
             {
 
                 force = force * 0.4f + (rb.velocity.x / charMaxSpeed);
                 force = Mathf.Clamp(force, -0.6f, 0.6f);
 
-            }/*/
-        }
+            }
+        }*/
 
         //Checking for Slime Wall
+        /*
         if (!onGround && doubleJump && !jumpFinished) // if you slide past and don't jump
         {
             RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left * playerSize, playerSize);
@@ -202,7 +222,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-
+    */
         //rb.AddForce(new Vector2(force * charMaxSpeed, rb.velocity.y));
 
 
