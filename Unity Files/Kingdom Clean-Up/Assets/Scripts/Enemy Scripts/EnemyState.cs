@@ -11,7 +11,7 @@ using UnityEngine.AI;
 public class EnemyState : MonoBehaviour {
 
     Rigidbody2D rb;  //this object's rigidbody
-    int health;      //total health
+    public int health;      //total health
     Animator an;     //this object's animator
     float slimeDamage;
 
@@ -48,7 +48,7 @@ public class EnemyState : MonoBehaviour {
         health = 10;
         slimeDamage = 16.7f;
         rb = GetComponent<Rigidbody2D>();
-        an = GetComponent<Animator>();
+        an = GetComponentInChildren<Animator>();
         if (gameObject.CompareTag("Boss"))
         {
             health = 90;
@@ -67,36 +67,36 @@ public class EnemyState : MonoBehaviour {
         
         if (color == "green")
         {
-            GetComponent<Animator>().Play("green");
+            GetComponentInChildren<Animator>().Play("green");
         }
         else if (color == "red")
         {
-            GetComponent<Animator>().Play("red");
+            GetComponentInChildren<Animator>().Play("red");
         }
         else if (color == "blue")
         {
-            GetComponent<Animator>().Play("blue");
+            GetComponentInChildren<Animator>().Play("blue");
         }
         else
         {
             //           Debug.Log("color:" + color.ToString() + inColor);
             //GetComponent<SpriteRenderer>().color = Color.black;
-            GetComponent<Animator>().Play("chromatic");
+            GetComponentInChildren<Animator>().Play("chromatic");
         }
     }
     public void setColorinAnimation()
     {
         if (color == "green")
         {
-            GetComponent<SpriteRenderer>().color = cgreen;
+            GetComponentInChildren<SpriteRenderer>().color = cgreen;
         }
         else if (color == "red")
         {
-            GetComponent<SpriteRenderer>().color = cred;
+            GetComponentInChildren<SpriteRenderer>().color = cred;
         }
         else if (color == "blue")
         {
-            GetComponent<SpriteRenderer>().color = cblue;
+            GetComponentInChildren<SpriteRenderer>().color = cblue;
         }
         Debug.Log(color + " color");
     }
@@ -107,7 +107,7 @@ public class EnemyState : MonoBehaviour {
         if(health <= 0)
         {
             death();
-            //an.Play("death"); //calls death function at end of animation
+ //           an.Play("death"); //calls death function at end of animation
         }
     }
     // Do damage to the player when colliders hits
@@ -229,6 +229,8 @@ public class EnemyState : MonoBehaviour {
 
 
         // Die
+        Debug.Log("i should die now");
         Destroy(gameObject);
+       // Destroy(gameObject.transform.parent.gameObject); //trying to get the parent to die 
     }
 }

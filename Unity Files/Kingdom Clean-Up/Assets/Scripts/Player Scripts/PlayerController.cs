@@ -7,12 +7,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
     [Header("Debug Variables")]
     [Tooltip("How far should raycasting reach?")]
-    public float playerSize = 5f;
+    public float playerSize = 5000f;
     [Tooltip("Is player touching ground?")]
     public bool onGround;
     [Tooltip("Is player facing right?")]
@@ -39,37 +41,64 @@ public class PlayerController : MonoBehaviour {
 
     Animator an;
     Rigidbody2D rb;
- //   AimRender ar;
+    //   AimRender ar;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         onGround = true;
-        //an = GetComponent<Animator>();
+        an = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
- //       ar = GetComponent<AimRender>();
+        //       ar = GetComponent<AimRender>();
         aiming = false;
         doubleJump = false;
-        facingRight = true;
+        facingRight = false;
         canMove = true;
-	}
+    }
 
-    
+
     private void OnTriggerEnter2D(Collider2D col)
     {
-       /* if (col.tag == "Platform" && !onGround)
-        {
-            //col.transform.position
-            onGround = true;
-                       Debug.Log("onground = true");
-        } */
+        /* if (col.tag == "Platform" && !onGround)
+         {
+             //col.transform.position
+             onGround = true;
+                        Debug.Log("onground = true");
+         } */
     }
-    
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        Vector3 colpos = col.gameObject.transform.position;
+        Vector3 mypos = transform.position;
+        if (col.gameObject.tag == "Platform")
+        {
+            Debug.DrawRay(transform.position, Vector2.down * playerSize, Color.magenta);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down * playerSize);
+            if (hit.collider != null)
+            {
+                Debug.Log(hit.collider.gameObject.tag + hit.collider.gameObject.tag.ToString());
+                if (hit.collider.gameObject.tag == "Platform")
+                {
+                    Debug.Log(hit.collider.Distance(GetComponent<Collider2D>()).distance);
+                    onGround = true;
+                    jumpFinished = false;
+                    doubleJump = true;
+                }
+            }
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D col)
     {
-       /* if (onGround == true && col.tag == "Platform")
-        {
-            onGround = false;
-        } */
+        /* if (onGround == true && col.tag == "Platform")
+         {
+             onGround = false;
+         } */
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Debug.DrawRay(transform.position, Vector2.down * playerSize, Color.magenta);
     }
 
     private void FixedUpdate()
@@ -97,7 +126,7 @@ public class PlayerController : MonoBehaviour {
             }
 
             //slime throwing shenanigans - movement of reticle happens on the reticle
-            if (Input.GetAxis("ShowAim") > 0 && !aiming )//(Input.GetButtonDown("ShowAimButton") || Input.GetAxis("ShowAimTrigger") > 0) && !aiming)
+            if (Input.GetAxis("ShowAim") > 0 && !aiming)//(Input.GetButtonDown("ShowAimButton") || Input.GetAxis("ShowAimTrigger") > 0) && !aiming)
             {
                 ShowAim();
                 Debug.Log("Showing Aim");
@@ -107,7 +136,7 @@ public class PlayerController : MonoBehaviour {
                 HideAim();
                 Debug.Log("Aim Hidden");
             }
-            
+
 
 
             //Horizontal Movement
@@ -125,10 +154,16 @@ public class PlayerController : MonoBehaviour {
             }
 
             rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
+            if (!an.GetCurrentAnimatorStateInfo(0).IsName("run") && Mathf.Abs(rb.velocity.x) > 0)
+            {
+                an.Play("run");
+            }
         }
 
         //Checking for ground
         //Debug.DrawRay(transform.position, Vector2.down * playerSize, Color.magenta);
+/*
+        Debug.DrawRay(transform.position, Vector2.down * playerSize,  Color.magenta);
         if (!onGround && ((Time.time - jumpFrame) > 0.5f))
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down * playerSize);
@@ -137,21 +172,27 @@ public class PlayerController : MonoBehaviour {
                 Debug.Log(hit.collider.gameObject.tag + hit.collider.gameObject.tag.ToString());
                 if (hit.collider.gameObject.tag == "Platform")
                 {
-                    onGround = true;
-                    jumpFinished = false;
+                    if (hit.collider.Distance(GetComponent<Collider2D>()).distance < 1)
+                    {
+                        Debug.Log(hit.collider.Distance(GetComponent<Collider2D>()).distance);
+                        onGround = true;
+                        jumpFinished = false;
+                        doubleJump = true;
+                    }
                 }
             }
 
-            /*if ((facingRight && force < 0) || (!facingRight && force > 0))
+            if ((facingRight && force < 0) || (!facingRight && force > 0))
             {
 
                 force = force * 0.4f + (rb.velocity.x / charMaxSpeed);
                 force = Mathf.Clamp(force, -0.6f, 0.6f);
 
-            }/*/
-        }
+            }
+        }*/
 
         //Checking for Slime Wall
+        /*
         if (!onGround && doubleJump && !jumpFinished) // if you slide past and don't jump
         {
             RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left * playerSize, playerSize);
@@ -181,7 +222,7 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
-
+    */
         //rb.AddForce(new Vector2(force * charMaxSpeed, rb.velocity.y));
 
 
@@ -213,4 +254,5 @@ public class PlayerController : MonoBehaviour {
     {
         HideAim();
     }
+
 }
