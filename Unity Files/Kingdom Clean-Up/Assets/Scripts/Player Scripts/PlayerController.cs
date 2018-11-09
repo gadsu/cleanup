@@ -36,7 +36,8 @@ public class PlayerController : MonoBehaviour
     [Tooltip("How much can the character jump?")]
     public float charJumpSpeed = 60f;
 
-
+    bool hasLeft;
+    float leaveGroundFrame;
     float jumpFrame;
 
     Animator an;
@@ -72,7 +73,7 @@ public class PlayerController : MonoBehaviour
         }
         
     }
-
+    
     private void OnCollisionEnter2D(Collision2D col)
     {
         
@@ -90,11 +91,22 @@ public class PlayerController : MonoBehaviour
                     Debug.Log(hit.collider.Distance(GetComponent<Collider2D>()).distance);
                     onGround = true;
                     jumpFinished = false;
+                    hasLeft = false;
                 }
-            }  
+            }
         }
         
         
+    }
+
+    private void OnCollisionExit2D(Collision2D col)
+    {
+
+        if (col.gameObject.tag == "Platform" && onGround)
+        {
+            leaveGroundFrame = Time.deltaTime;
+            hasLeft = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D col)
@@ -115,6 +127,10 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (onGround && hasLeft && leaveGroundFrame + 5f < Time.deltaTime)
+        {
+            onGround = false;
+        }
         if (canMove)
         {
             //Vertical Movement

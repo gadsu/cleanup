@@ -495,6 +495,7 @@ GameObject:
   - component: {fileID: 604814719}
   - component: {fileID: 604814721}
   - component: {fileID: 604814720}
+  - component: {fileID: 604814722}
   m_Layer: 5
   m_Name: Kingdom Cleanup
   m_TagString: Untagged
@@ -560,6 +561,20 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 604814718}
   m_CullTransparentMesh: 0
+--- !u!114 &604814722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 604814718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 1
 --- !u!1 &628026728
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,7 +950,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: TestingScene
+          m_StringArgument: tutorialLevel
           m_BoolArgument: 0
         m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,

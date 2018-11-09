@@ -24,8 +24,13 @@ public class PlayerState : MonoBehaviour {
     public Slider blueMeter;
     [Tooltip("How much health the player has as a float")]
     public float playerHealth = 100f;
+    [Tooltip("Can the player be damaged?")]
+    public bool isInvuln;
+    [Tooltip("Frame the player was damaged on")]
+    public float damageFrame;
 
 
+    GameObject player;
     int maxSlime = 100;
 
     //public TextAsset PlayerFile; DOES NOT WORK FOR SOME RAISIN
@@ -62,14 +67,26 @@ public class PlayerState : MonoBehaviour {
 
     public void takeDamage(float dmg)
     {
-        playerHealth -= dmg;
-        GameObject.Find("Health").GetComponent<Slider>().value = playerHealth;
-        if (playerHealth <= 0)
+        if (!isInvuln)
         {
-            Debug.Log("YOU DIED :(");
-            //an.Play("death"); //calls death function at end of animation
-            GameObject.Find("UI Canvas").GetComponent<KillScreen>().KillScreenControl();
+            playerHealth -= dmg;
+            GameObject.Find("Health").GetComponent<Slider>().value = playerHealth;
+            if (playerHealth <= 0)
+            {
+                Debug.Log("YOU DIED :(");
+                //an.Play("death"); //calls death function at end of animation
+                GameObject.Find("UI Canvas").GetComponent<KillScreen>().KillScreenControl();
+            }
+            isInvuln = true;
+            damageFrame = Time.deltaTime;
+
+            Knockback();
         }
+    }
+
+    void Knockback()
+    {
+
     }
     // Use this for initialization
     void Start () {
@@ -81,6 +98,8 @@ public class PlayerState : MonoBehaviour {
         greenMeter = GameObject.Find("GreenMeter").GetComponent<Slider>();
         redMeter = GameObject.Find("RedMeter").GetComponent<Slider>();
         blueMeter = GameObject.Find("BlueMeter").GetComponent<Slider>();
+
+        player = GameObject.Find("Player");
     }
 
 	// Update is called once per frame
@@ -88,6 +107,10 @@ public class PlayerState : MonoBehaviour {
         if (GameObject.Find("GreenMeter"))
         {
             loadScene();
+        }
+        if (isInvuln && damageFrame <= Time.deltaTime + 0.5f)
+        {
+            isInvuln = false;
         }
 	}
 }
