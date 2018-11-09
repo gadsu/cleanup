@@ -188,15 +188,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetArr: []
+  onGround: 0
   hitCount: 0
   jumpCount: 0
+  playerFollowCountDown: 0
   doingSpecial: 0
   attackSpecial: 0
-  playerFollowCountDown: 0
+  PTIME: 3
+  JTIME: 4
   YPosFreeze: 47
   basicSpeed: 15
-  specialSpeed: 25
-  onGround: 0
+  specialSpeed: 31
 --- !u!212 &212483728879703542
 SpriteRenderer:
   m_ObjectHideFlags: 1
