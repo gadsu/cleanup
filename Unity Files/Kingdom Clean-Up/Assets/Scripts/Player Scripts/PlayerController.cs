@@ -65,10 +65,17 @@ public class PlayerController : MonoBehaviour
              onGround = true;
                         Debug.Log("onground = true");
          } */
+        if (col.CompareTag("slimeInteractable"))
+        {
+            Debug.Log("Hit a slime wall");
+            doubleJump = true;
+        }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
+        
         Vector3 colpos = col.gameObject.transform.position;
         Vector3 mypos = transform.position;
         if (col.gameObject.tag == "Platform")
@@ -83,14 +90,19 @@ public class PlayerController : MonoBehaviour
                     Debug.Log(hit.collider.Distance(GetComponent<Collider2D>()).distance);
                     onGround = true;
                     jumpFinished = false;
-                    doubleJump = true;
                 }
-            }
+            }  
         }
+        
+        
     }
 
     private void OnTriggerExit2D(Collider2D col)
     {
+        if (col.CompareTag("!slimeInteractable"))
+        {
+            doubleJump = false;
+        }
         /* if (onGround == true && col.tag == "Platform")
          {
              onGround = false;
