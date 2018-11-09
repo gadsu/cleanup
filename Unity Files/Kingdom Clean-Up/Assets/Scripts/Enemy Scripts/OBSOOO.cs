@@ -25,7 +25,7 @@ public class OBSOOO : MonoBehaviour {
     [Tooltip("Jumps to begin big jump")]
     public float JTIME = 6f; //How many jump to do big jump
     [Tooltip("Y Value to freeze OBSOOO at")]
-    public int YPosFreeze = 47;
+    public int YPosFreeze = 64;
     [Tooltip("X Movement Speed")]
     public float basicSpeed = 30f;
     [Tooltip("Y Jump Speed")]
@@ -190,7 +190,8 @@ public class OBSOOO : MonoBehaviour {
             //rb.constraints = RigidbodyConstraints2D.None;
             //rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             rb.constraints = RigidbodyConstraints2D.FreezePositionX;
-            vel.y = specialSpeed * -4;
+            vel.x = 0;
+            vel.y = specialSpeed * -3;
             rb.velocity = vel;
             //rb.constraints = RigidbodyConstraints2D.None;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -278,6 +279,6 @@ public class OBSOOO : MonoBehaviour {
 
     private void MoveTowardsPoint(Vector3 pos)
     {
-        GetComponent<EnemyState>().walkto(pos); 
+        GetComponent<EnemyState>().walkto(pos, basicSpeed * 3); 
     }
 }

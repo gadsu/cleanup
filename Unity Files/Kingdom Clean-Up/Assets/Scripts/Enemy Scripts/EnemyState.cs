@@ -24,8 +24,8 @@ public class EnemyState : MonoBehaviour {
     public bool facingRight = true;
 
     [Header("Editable Variables")]
-    [Tooltip("How fast the enemy moves")]
-    public float speed = 20f;
+    //[Tooltip("How fast the enemy moves")]
+    //public float baseSpeed = 20f;
     [Tooltip("The buffer between the person's xy and the point, to stop aggressive wiggling")]
     public float buffer = 3f;
 
@@ -52,7 +52,7 @@ public class EnemyState : MonoBehaviour {
         if (gameObject.CompareTag("Boss"))
         {
             health = 90;
-            slimeDamage = 34f;
+            //slimeDamage = 34f;
         }
     }
 	
@@ -138,7 +138,7 @@ public class EnemyState : MonoBehaviour {
 
     }
 
-    public void walkto(Vector3 pos)  //Move towards a position 
+    public void walkto(Vector3 pos, float speed)  //Move towards a position 
     {
         if(pos.x - buffer > rb.position.x)  //If it is to the right of you
         {
@@ -191,6 +191,7 @@ public class EnemyState : MonoBehaviour {
         while (green + red + blue > 0)
         {
             GameObject SlimeViscera = Instantiate<GameObject>(visceraPrefab, currentPos.position, currentPos.rotation);
+            SlimeViscera.transform.localScale = new Vector3(2.5f, 2.5f, 0);
 
             if (green > 0)
             {

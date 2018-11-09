@@ -172,7 +172,6 @@ MonoBehaviour:
   spawner: {fileID: 0}
   color: Boss
   facingRight: 1
-  speed: 20
   buffer: 3
   visceraPrefab: {fileID: 1827464675113566, guid: f1ef8da39b8126e4691a9a3c234f4da3,
     type: 2}
@@ -196,7 +195,7 @@ MonoBehaviour:
   attackSpecial: 0
   PTIME: 3
   JTIME: 4
-  YPosFreeze: 47
+  YPosFreeze: 64
   basicSpeed: 15
   specialSpeed: 31
 --- !u!212 &212483728879703542

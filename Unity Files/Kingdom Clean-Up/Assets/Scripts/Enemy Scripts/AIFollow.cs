@@ -35,6 +35,9 @@ public class AIFollow : MonoBehaviour
     public float distance;
     [Tooltip("Unique character val")]
     public char patrolChar;
+    [Header("Editable Variables")]
+    [Tooltip("How fast the enemy moves")]
+    public float baseSpeed = 20f;
 
 
     void Start()
@@ -115,6 +118,6 @@ public class AIFollow : MonoBehaviour
     //Calls the enemystate's walking function (may be different depending on slime)
     private void MoveTowardsPoint(Vector3 pos)
     {
-        GetComponent<EnemyState>().walkto(pos);
+        GetComponent<EnemyState>().walkto(pos, baseSpeed);
     }
 }
