@@ -94007,11 +94007,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4200679053849870, guid: c008b36a9e039574cbb9caa9b32e8ac6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 668
+      value: 1247.4
       objectReference: {fileID: 0}
     - target: {fileID: 4200679053849870, guid: c008b36a9e039574cbb9caa9b32e8ac6, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: -5.5
       objectReference: {fileID: 0}
     - target: {fileID: 4200679053849870, guid: c008b36a9e039574cbb9caa9b32e8ac6, type: 2}
       propertyPath: m_LocalPosition.z
@@ -94417,7 +94417,7 @@ GameObject:
   - component: {fileID: 477070386}
   - component: {fileID: 477070388}
   - component: {fileID: 477070387}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WallTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95333,7 +95333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1170550612}
   - component: {fileID: 1170550613}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LeftWall
   m_TagString: InvisObject
   m_Icon: {fileID: 0}
@@ -95453,7 +95453,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1474691606}
   - component: {fileID: 1474691607}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RightWall
   m_TagString: InvisObject
   m_Icon: {fileID: 0}

@@ -4,22 +4,37 @@ using UnityEngine;
 
 public class OBSOOO : MonoBehaviour {
 
+    [Header("Debug Variables")]
+    [Tooltip("List of Patrol Points")]
+    public List<Transform> targetArr; //array of patrol points
+    [Tooltip("If OBSOOO is on the ground")]
+    public bool onGround;
+    [Tooltip("How many times the player hit OBSOOO")]
+    public int hitCount = 0;
+    [Tooltip("How many times OBSOOO has jumped")]
+    public int jumpCount = 0;
+    [Tooltip("Is this even used?")]
+    public float playerFollowCountDown = 0;
+    [Tooltip("Is OBSOOO Preparing for his special attack")]
+    public bool doingSpecial = false;
+    [Tooltip("Is OBSOOO doing his special attack, 1 - Left, 2 - Right")]
+    public int attackSpecial = 0; // 0 - Not Attacking, 1 - Left, 2 - Right
+    [Header("Editable Variables")]
+    [Tooltip("Time to float in air")]
+    public float PTIME = 5f; //How long to float in the air
+    [Tooltip("Jumps to begin big jump")]
+    public float JTIME = 6f; //How many jump to do big jump
+    [Tooltip("Y Value to freeze OBSOOO at")]
+    public int YPosFreeze = 47;
+    [Tooltip("X Movement Speed")]
+    public float basicSpeed = 30f;
+    [Tooltip("Y Jump Speed")]
+    public float specialSpeed = 40f;
     GameObject[] points;
     GameObject target = null;  //Will be the player
-    public List<Transform> targetArr; //array of patrol points
-    public int hitCount = 0;
-    public int jumpCount = 0;
-    public bool doingSpecial = false;
-    public int attackSpecial = 0; // 0 - Not Attacking, 1 - Left, 2 - Right
-    public static float PTIME = 10f;
-    public float playerFollowCountDown = 0;
-    public int YPosFreeze = 47;
     Rigidbody2D rb;
-    public float basicSpeed = 30f;
-    public float specialSpeed = 40f;
     EnemyState es;
     Animator an;
-    public bool onGround;
     GameObject leftPoint;
     GameObject rightPoint;
     float rightX;
@@ -89,7 +104,7 @@ public class OBSOOO : MonoBehaviour {
         }
         if (hitCount < 3 && !doingSpecial) //Normal movement
         {
-            if (jumpCount < PTIME) 
+            if (jumpCount < JTIME) 
             {
                 Vector3 playerPos = target.transform.position;
 
