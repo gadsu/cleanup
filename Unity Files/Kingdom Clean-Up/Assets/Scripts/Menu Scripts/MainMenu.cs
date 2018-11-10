@@ -24,6 +24,11 @@ public class MainMenu : MonoBehaviour {
         SceneManager.LoadScene(name);
     }
 
+    public void setResetPlayer()
+    {
+        GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().playerHealth = 100;
+    }
+
     public void QuitGame()
     {
         Application.Quit();

@@ -28,12 +28,13 @@ public class FloorKillbox : MonoBehaviour {
             col.gameObject.transform.position = new Vector3(-25, 9, 0);
             if (health.value > 0)
             {
-                GameObject.Find("Health").GetComponent<Slider>().value -= 34f;
+                GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().takeDamage(34f);
             }
             else
             {
                 Debug.Log("Player is DEAD");
                 GameObject.Find("UI Canvas").GetComponent<KillScreen>().KillScreenControl();
+                health.value = 100;
             }
         }
         else
@@ -41,7 +42,4 @@ public class FloorKillbox : MonoBehaviour {
             // kil
         }
     }
-
-
-    
 }

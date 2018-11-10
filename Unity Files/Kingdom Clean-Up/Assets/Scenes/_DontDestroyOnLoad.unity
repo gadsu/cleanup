@@ -242,6 +242,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23eabbcc7cfc22408d6d00d34f29982, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  greenSlimeMeter: 0
+  redSlimeMeter: 0
+  blueSlimeMeter: 0
   greenMeter: {fileID: 0}
   redMeter: {fileID: 0}
   blueMeter: {fileID: 0}
+  playerHealth: 100
+  isInvuln: 0
+  damageFrame: 0

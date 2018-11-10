@@ -76,6 +76,7 @@ public class PlayerState : MonoBehaviour {
                 Debug.Log("YOU DIED :(");
                 //an.Play("death"); //calls death function at end of animation
                 GameObject.Find("UI Canvas").GetComponent<KillScreen>().KillScreenControl();
+                playerHealth = 100;
             }
             isInvuln = true;
             damageFrame = Time.deltaTime;
