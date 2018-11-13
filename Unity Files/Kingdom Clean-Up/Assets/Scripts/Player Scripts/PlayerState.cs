@@ -80,15 +80,9 @@ public class PlayerState : MonoBehaviour {
             }
             isInvuln = true;
             damageFrame = Time.deltaTime;
-
-            Knockback();
         }
     }
 
-    void Knockback()
-    {
-
-    }
     // Use this for initialization
     void Start () {
 

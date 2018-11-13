@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     bool hasLeft;
     float leaveGroundFrame;
     float jumpFrame;
+    float force;
 
     Animator an;
     Rigidbody2D rb;
@@ -88,7 +89,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log(hit.collider.gameObject.tag + hit.collider.gameObject.tag.ToString());
                 if (hit.collider.gameObject.tag == "Platform")
                 {
-                    Debug.Log(hit.collider.Distance(GetComponent<Collider2D>()).distance);
+                    //Debug.Log(hit.collider.Distance(GetComponent<Collider2D>()).distance);
                     onGround = true;
                     jumpFinished = false;
                     hasLeft = false;
@@ -133,25 +134,7 @@ public class PlayerController : MonoBehaviour
         }
         if (canMove)
         {
-            //Vertical Movement
-            if (Input.GetButtonDown("Jump") && onGround)
-            {
-                rb.velocity = new Vector2(rb.velocity.x, charJumpSpeed);
-                onGround = false;
-                jumpFrame = Time.time;
-            }
-            else if (Input.GetButtonDown("Jump") && !onGround && doubleJump && !jumpFinished)
-            {
-                jumpFinished = true;
-                rb.velocity = new Vector2(-rb.velocity.x, charJumpSpeed);
-                doubleJump = false;
-            }
-
-            //checking for basic button presses - all button input should be here
-            if (Input.GetButtonDown("Attack"))
-            {
-                mop.GetComponent<CleanAttack>().swingMop();
-            }
+            
 
             //slime throwing shenanigans - movement of reticle happens on the reticle
             if (Input.GetAxis("ShowAim") > 0 && !aiming)//(Input.GetButtonDown("ShowAimButton") || Input.GetAxis("ShowAimTrigger") > 0) && !aiming)
@@ -164,28 +147,8 @@ public class PlayerController : MonoBehaviour
                 HideAim();
                 Debug.Log("Aim Hidden");
             }
-
-
-
-            //Horizontal Movement
-            float force = Input.GetAxis("Horizontal");
-            //Debug.Log("Force: " + force + "rby: " + rb.velocity.y);
-            //an.SetFloat("Speed", Mathf.Abs(force));
-
-            if (force > 0 && !facingRight /*&& onGround*/)
-            {
-                Flip();
-            }
-            else if (force < 0 && facingRight /*&& onGround*/)
-            {
-                Flip();
-            }
-
-            rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
-            if (!an.GetCurrentAnimatorStateInfo(0).IsName("run") && Mathf.Abs(rb.velocity.x) > 0)
-            {
-                an.Play("run");
-            }
+            
+            
         }
 
         //Checking for ground
@@ -256,10 +219,69 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    void Update()
+    {
+        //Vertical Movement
+        if (Input.GetButtonDown("Jump") && onGround)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, charJumpSpeed);
+            onGround = false;
+            jumpFrame = Time.time;
+        }
+        else if (Input.GetButtonDown("Jump") && !onGround && doubleJump && !jumpFinished)
+        {
+            jumpFinished = true;
+            rb.velocity = new Vector2(-rb.velocity.x, charJumpSpeed);
+            doubleJump = false;
+        }
+
+        //checking for basic button presses - all button input should be here
+        if (Input.GetButtonDown("Attack"))
+        {
+            mop.GetComponent<CleanAttack>().swingMop();
+        }
+
+        //Horizontal Movement
+        float force = Input.GetAxis("Horizontal");
+        //Debug.Log("Force: " + force + "rby: " + rb.velocity.y);
+        //an.SetFloat("Speed", Mathf.Abs(force));
+
+        if (force > 0 && !facingRight /*&& onGround*/)
+        {
+            Flip();
+        }
+        else if (force < 0 && facingRight /*&& onGround*/)
+        {
+            Flip();
+        }
+
+        rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
+        if (!an.GetCurrentAnimatorStateInfo(0).IsName("run") && Mathf.Abs(rb.velocity.x) > 0)
+        {
+            an.Play("run");
+        }
+    }
+
     void Flip()
     {
         facingRight = !facingRight;
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y);
+    }
+
+    public void Knockback(int dir)
+    {
+        if (dir == 1) //Knockback Left
+        {
+            Debug.Log("Flying Left");
+            rb.velocity = new Vector2(rb.velocity.x, 30f);
+            rb.velocity = new Vector2(-50f, rb.velocity.y);
+        }
+        else if (dir == 2) //Knockback Right
+        {
+            Debug.Log("Flying Right");
+            rb.velocity = new Vector2(rb.velocity.x, 30f);
+            rb.velocity = new Vector2(50f, rb.velocity.y);
+        }
     }
 
     //Display the reticle and allow you to interact with it
