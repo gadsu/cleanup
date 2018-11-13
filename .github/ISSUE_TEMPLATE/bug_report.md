@@ -4,6 +4,12 @@ about: Create a report to help us improve
 
 ---
 
+**Branch or release bug is on**
+Tell us what version you're running to better find the bug.
+
+**If found on Unity editor, what scene did you load**
+For example: `_DontDestroyOnLoad`
+
 **Describe the bug**
 A clear and concise description of what the bug is.
 
