@@ -26,6 +26,8 @@ public class PlayerState : MonoBehaviour {
     public float playerHealth = 100f;
     [Tooltip("Can the player be damaged?")]
     public bool isInvuln;
+    [Tooltip("Time to be invulnerable")]
+    public float invulnTime = 1.00f;
     [Tooltip("Frame the player was damaged on")]
     public float damageFrame;
 
@@ -79,13 +81,12 @@ public class PlayerState : MonoBehaviour {
                 playerHealth = 100;
             }
             isInvuln = true;
-            damageFrame = Time.deltaTime;
         }
     }
 
     // Use this for initialization
     void Start () {
-
+        damageFrame = invulnTime;
     }
 	
     public void loadScene()
@@ -103,9 +104,14 @@ public class PlayerState : MonoBehaviour {
         {
             loadScene();
         }
-        if (isInvuln && damageFrame <= Time.deltaTime + 0.5f)
+        if (isInvuln)
         {
-            isInvuln = false;
+            damageFrame -= Time.deltaTime;
+            if (damageFrame <= 0)
+            {
+                damageFrame = invulnTime;
+                isInvuln = false;
+            }
         }
 	}
 }

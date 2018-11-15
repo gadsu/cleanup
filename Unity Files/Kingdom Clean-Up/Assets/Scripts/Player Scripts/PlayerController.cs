@@ -35,6 +35,10 @@ public class PlayerController : MonoBehaviour
     public float charMaxSpeed = 40f;
     [Tooltip("How much can the character jump?")]
     public float charJumpSpeed = 60f;
+    [Tooltip("How high you go on knockback")]
+    public float knockbackY = 40f;
+    [Tooltip("How far you go on knockback")]
+    public float knockbackX = 40f;
 
     bool hasLeft;
     float leaveGroundFrame;
@@ -91,6 +95,7 @@ public class PlayerController : MonoBehaviour
                 {
                     //Debug.Log(hit.collider.Distance(GetComponent<Collider2D>()).distance);
                     onGround = true;
+                    canMove = true;
                     jumpFinished = false;
                     hasLeft = false;
                 }
@@ -112,7 +117,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D col)
     {
-        if (col.CompareTag("!slimeInteractable"))
+        if (col.gameObject.tag != ("slimeInteractable"))
         {
             doubleJump = false;
         }
@@ -246,19 +251,22 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Force: " + force + "rby: " + rb.velocity.y);
         //an.SetFloat("Speed", Mathf.Abs(force));
 
-        if (force > 0 && !facingRight /*&& onGround*/)
+        if (canMove)
         {
-            Flip();
-        }
-        else if (force < 0 && facingRight /*&& onGround*/)
-        {
-            Flip();
-        }
+            if (force > 0 && !facingRight /*&& onGround*/)
+            {
+                Flip();
+            }
+            else if (force < 0 && facingRight /*&& onGround*/)
+            {
+                Flip();
+            }
 
-        rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
-        if (!an.GetCurrentAnimatorStateInfo(0).IsName("run") && Mathf.Abs(rb.velocity.x) > 0)
-        {
-            an.Play("run");
+            rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
+            if (!an.GetCurrentAnimatorStateInfo(0).IsName("run") && Mathf.Abs(rb.velocity.x) > 0)
+            {
+                an.Play("run");
+            }
         }
     }
 
@@ -270,17 +278,17 @@ public class PlayerController : MonoBehaviour
 
     public void Knockback(int dir)
     {
+        canMove = false;
+
         if (dir == 1) //Knockback Left
         {
             Debug.Log("Flying Left");
-            rb.velocity = new Vector2(rb.velocity.x, 30f);
-            rb.velocity = new Vector2(-50f, rb.velocity.y);
+            rb.velocity = new Vector2(-knockbackX, knockbackY);
         }
         else if (dir == 2) //Knockback Right
         {
             Debug.Log("Flying Right");
-            rb.velocity = new Vector2(rb.velocity.x, 30f);
-            rb.velocity = new Vector2(50f, rb.velocity.y);
+            rb.velocity = new Vector2(knockbackX, knockbackY);
         }
     }
 
