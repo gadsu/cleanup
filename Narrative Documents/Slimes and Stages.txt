@@ -33,6 +33,8 @@ Bosses
    * The special attack originates from Barney, starts at the top of the screen and moves down leaving time for the player to get out of the way. (Doesn't go all the way to the bottom, Stops about the bottom of the bottom left/right platforms.)
    * After both sides of the stage have been covered (6 hits) the boss will fall to the ground swinging its arms/tentacles around which deals damage to the player if the player gets hit
 
+*(Possible Third Boss names: Goobert, Goory, Blobert, Goopy, Squishy, Blobby
+
 Stages
 1. Tutorial level
    1. The true OBSOOO location
