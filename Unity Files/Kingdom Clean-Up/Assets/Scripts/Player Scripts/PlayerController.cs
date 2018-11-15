@@ -25,8 +25,6 @@ public class PlayerController : MonoBehaviour
     public bool aiming;
     [Tooltip("Can player move?")]
     public bool canMove;
-    [Tooltip("Is the jump over?")]
-    public bool jumpFinished;
     [Tooltip("The mop object")]
     public GameObject mop;
 
@@ -94,7 +92,6 @@ public class PlayerController : MonoBehaviour
                     //Debug.Log(hit.collider.Distance(GetComponent<Collider2D>()).distance);
                     onGround = true;
                     canMove = true;
-                    jumpFinished = false;
                     doubleJump = false;
                 }
             }
@@ -226,9 +223,8 @@ public class PlayerController : MonoBehaviour
             onGround = false;
             jumpFrame = Time.time;
         }
-        else if (Input.GetButtonDown("Jump") && !onGround && doubleJump && !jumpFinished)
+        else if (Input.GetButtonDown("Jump") && !onGround && doubleJump)
         {
-            jumpFinished = true;
             rb.velocity = new Vector2(-rb.velocity.x, charJumpSpeed);
             doubleJump = false;
         }
