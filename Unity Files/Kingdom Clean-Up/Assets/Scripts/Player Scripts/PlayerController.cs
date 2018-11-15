@@ -40,8 +40,6 @@ public class PlayerController : MonoBehaviour
     [Tooltip("How far you go on knockback")]
     public float knockbackX = 40f;
 
-    bool hasLeft;
-    float leaveGroundFrame;
     float jumpFrame;
     float force;
 
@@ -97,7 +95,7 @@ public class PlayerController : MonoBehaviour
                     onGround = true;
                     canMove = true;
                     jumpFinished = false;
-                    hasLeft = false;
+                    doubleJump = false;
                 }
             }
         }
@@ -110,8 +108,7 @@ public class PlayerController : MonoBehaviour
 
         if (col.gameObject.tag == "Platform" && onGround)
         {
-            leaveGroundFrame = Time.deltaTime;
-            hasLeft = true;
+            onGround = false;
         }
     }
 
@@ -133,10 +130,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (onGround && hasLeft && leaveGroundFrame + 5f < Time.deltaTime)
-        {
-            onGround = false;
-        }
         if (canMove)
         {
             
