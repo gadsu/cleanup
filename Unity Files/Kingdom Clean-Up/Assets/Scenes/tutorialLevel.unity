@@ -92161,11 +92161,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4891282989758060, guid: f1ef8da39b8126e4691a9a3c234f4da3, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 26.33
+      value: 26.35
       objectReference: {fileID: 0}
     - target: {fileID: 4891282989758060, guid: f1ef8da39b8126e4691a9a3c234f4da3, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.22
+      value: -0.36
       objectReference: {fileID: 0}
     - target: {fileID: 4891282989758060, guid: f1ef8da39b8126e4691a9a3c234f4da3, type: 2}
       propertyPath: m_LocalPosition.z
