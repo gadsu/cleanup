@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D col)
     {
-        if (col.CompareTag("!slimeInteractable"))
+        if (col.gameObject.tag != "slimeInteractable")
         {
             doubleJump = false;
         }
@@ -227,12 +227,20 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, charJumpSpeed);
             onGround = false;
             jumpFrame = Time.time;
+            if (facingRight)
+                an.Play("jumpRight");
+            else
+                an.Play("jumpLeft");
         }
         else if (Input.GetButtonDown("Jump") && !onGround && doubleJump && !jumpFinished)
         {
             jumpFinished = true;
             rb.velocity = new Vector2(-rb.velocity.x, charJumpSpeed);
             doubleJump = false;
+            if (facingRight)
+                an.Play("jumpRight");
+            else
+                an.Play("jumpLeft");
         }
 
         //checking for basic button presses - all button input should be here
@@ -256,12 +264,26 @@ public class PlayerController : MonoBehaviour
         }
 
         rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
-        if (!an.GetCurrentAnimatorStateInfo(0).IsName("run") && Mathf.Abs(rb.velocity.x) > 0)
+        if (!an.GetCurrentAnimatorStateInfo(0).IsName("run") && Mathf.Abs(rb.velocity.x) > 0 && !isJumpAnimation())
         {
             an.Play("run");
         }
+
+        if(onGround && isJumpAnimation())
+        {
+            an.Play("landing");
+        }
     }
 
+    bool isJumpAnimation()
+    {
+        if (an.GetCurrentAnimatorStateInfo(0).IsName("jumpRight") ||
+            an.GetCurrentAnimatorStateInfo(0).IsName("jumpLeft") ||
+            an.GetCurrentAnimatorStateInfo(0).IsName("inAirRight") ||
+            an.GetCurrentAnimatorStateInfo(0).IsName("inAirLeft") )
+            return true;
+        return false;
+    }
     void Flip()
     {
         facingRight = !facingRight;

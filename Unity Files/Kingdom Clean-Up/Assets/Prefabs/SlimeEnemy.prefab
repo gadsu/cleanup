@@ -153,9 +153,8 @@ MonoBehaviour:
   spawner: {fileID: 0}
   color: 
   facingRight: 1
-  speed: 20
   buffer: 3
-  visceraPrefab: {fileID: 1827464675113566, guid: f1ef8da39b8126e4691a9a3c234f4da3,
+  visceraPrefab: {fileID: 1827464675113566, guid: 99e6383ecb9f5f64e8ccae5b201cbecf,
     type: 2}
 --- !u!114 &114523982183119758
 MonoBehaviour:
@@ -176,6 +175,7 @@ MonoBehaviour:
   PatrolIndex: 1
   distance: 0
   patrolChar: 0
+  baseSpeed: 20
 --- !u!114 &114826460253411566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,7 +191,6 @@ MonoBehaviour:
   spawner: {fileID: 0}
   color: 
   facingRight: 1
-  speed: 20
   buffer: 3
   visceraPrefab: {fileID: 0}
 --- !u!212 &212114615716861108
