@@ -58,7 +58,7 @@ public class OBSOOO : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         es = GetComponent<EnemyState>();
         an = GetComponentInChildren<Animator>();
-
+        
 
         //Cycle through all spawner objects and only add the ones that match our character
         foreach (GameObject n in points)
