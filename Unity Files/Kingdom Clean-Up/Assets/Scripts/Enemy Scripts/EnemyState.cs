@@ -51,7 +51,7 @@ public class EnemyState : MonoBehaviour {
         an = GetComponentInChildren<Animator>();
         if (gameObject.CompareTag("Boss"))
         {
-            health = 40;
+            health = 90;
             //slimeDamage = 34f;
         }
     }
