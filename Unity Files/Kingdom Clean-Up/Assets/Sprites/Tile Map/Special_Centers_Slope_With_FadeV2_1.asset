@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: Special_Centers_Slope_With_FadeV2_1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 4b9b4b7fdbf7f114fac8cc9540a6e6e8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 30b1dbacada9cf54fb922f13e302a8d8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
