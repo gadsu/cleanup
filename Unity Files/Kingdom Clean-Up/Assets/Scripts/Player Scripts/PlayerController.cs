@@ -25,8 +25,6 @@ public class PlayerController : MonoBehaviour
     public bool aiming;
     [Tooltip("Can player move?")]
     public bool canMove;
-    [Tooltip("Is the jump over?")]
-    public bool jumpFinished;
     [Tooltip("The mop object")]
     public GameObject mop;
 
@@ -35,9 +33,11 @@ public class PlayerController : MonoBehaviour
     public float charMaxSpeed = 40f;
     [Tooltip("How much can the character jump?")]
     public float charJumpSpeed = 60f;
+    [Tooltip("How high you go on knockback")]
+    public float knockbackY = 40f;
+    [Tooltip("How far you go on knockback")]
+    public float knockbackX = 40f;
 
-    bool hasLeft;
-    float leaveGroundFrame;
     float jumpFrame;
     float force;
 
@@ -91,8 +91,8 @@ public class PlayerController : MonoBehaviour
                 {
                     //Debug.Log(hit.collider.Distance(GetComponent<Collider2D>()).distance);
                     onGround = true;
-                    jumpFinished = false;
-                    hasLeft = false;
+                    canMove = true;
+                    doubleJump = false;
                 }
             }
         }
@@ -105,8 +105,7 @@ public class PlayerController : MonoBehaviour
 
         if (col.gameObject.tag == "Platform" && onGround)
         {
-            leaveGroundFrame = Time.deltaTime;
-            hasLeft = true;
+            onGround = false;
         }
     }
 
@@ -128,10 +127,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (onGround && hasLeft && leaveGroundFrame + 5f < Time.deltaTime)
-        {
-            onGround = false;
-        }
         if (canMove)
         {
             
@@ -232,9 +227,8 @@ public class PlayerController : MonoBehaviour
             else
                 an.Play("jumpLeft");
         }
-        else if (Input.GetButtonDown("Jump") && !onGround && doubleJump && !jumpFinished)
+        else if (Input.GetButtonDown("Jump") && !onGround && doubleJump)
         {
-            jumpFinished = true;
             rb.velocity = new Vector2(-rb.velocity.x, charJumpSpeed);
             doubleJump = false;
             if (facingRight)
@@ -254,24 +248,26 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Force: " + force + "rby: " + rb.velocity.y);
         //an.SetFloat("Speed", Mathf.Abs(force));
 
-        if (force > 0 && !facingRight /*&& onGround*/)
+        if (canMove)
         {
-            Flip();
-        }
-        else if (force < 0 && facingRight /*&& onGround*/)
-        {
-            Flip();
-        }
+            if (force > 0 && !facingRight /*&& onGround*/)
+            {
+                Flip();
+            }
+            else if (force < 0 && facingRight /*&& onGround*/)
+            {
+                Flip();
+            }
+            rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
+            if (!an.GetCurrentAnimatorStateInfo(0).IsName("run") && Mathf.Abs(rb.velocity.x) > 0 && !isJumpAnimation())
+            {
+                an.Play("run");
+            }
 
-        rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
-        if (!an.GetCurrentAnimatorStateInfo(0).IsName("run") && Mathf.Abs(rb.velocity.x) > 0 && !isJumpAnimation())
-        {
-            an.Play("run");
-        }
-
-        if(onGround && isJumpAnimation())
-        {
-            an.Play("landing");
+            if (onGround && isJumpAnimation())
+            {
+                an.Play("landing");
+            }
         }
     }
 
@@ -292,17 +288,17 @@ public class PlayerController : MonoBehaviour
 
     public void Knockback(int dir)
     {
+        canMove = false;
+
         if (dir == 1) //Knockback Left
         {
             Debug.Log("Flying Left");
-            rb.velocity = new Vector2(rb.velocity.x, 30f);
-            rb.velocity = new Vector2(-50f, rb.velocity.y);
+            rb.velocity = new Vector2(-knockbackX, knockbackY);
         }
         else if (dir == 2) //Knockback Right
         {
             Debug.Log("Flying Right");
-            rb.velocity = new Vector2(rb.velocity.x, 30f);
-            rb.velocity = new Vector2(50f, rb.velocity.y);
+            rb.velocity = new Vector2(knockbackX, knockbackY);
         }
     }
 
