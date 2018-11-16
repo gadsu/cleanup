@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour
     public bool canMove;
     [Tooltip("The mop object")]
     public GameObject mop;
+    public bool ignoreCollision;
+
+    public List<GameObject> ignoredObjects;
 
     [Header("Editable Variables")]
     [Tooltip("How fast can the character move?")]
@@ -56,6 +59,7 @@ public class PlayerController : MonoBehaviour
         doubleJump = false;
         facingRight = false;
         canMove = true;
+        ignoreCollision = false;
     }
 
 
@@ -74,10 +78,10 @@ public class PlayerController : MonoBehaviour
         }
         
     }
-    
+
     private void OnCollisionEnter2D(Collision2D col)
     {
-        
+
         Vector3 colpos = col.gameObject.transform.position;
         Vector3 mypos = transform.position;
         if (col.gameObject.tag == "Platform")
@@ -93,11 +97,37 @@ public class PlayerController : MonoBehaviour
                     onGround = true;
                     canMove = true;
                     doubleJump = false;
+                    if (ignoreCollision)
+                    {
+                        ignoreCollision = false;
+                        foreach(GameObject i in ignoredObjects)
+                        {
+                            Physics2D.IgnoreCollision(i.GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
+                        }
+                        ignoredObjects.Clear();
+                    }
                 }
             }
         }
+        if ((col.gameObject.tag == "Enemy" || col.gameObject.tag == "Boss") && !onGround)
+        {
+            Debug.Log(col.gameObject + col.gameObject.name + col.gameObject.tag);
+            ignoredObjects.Add(col.gameObject);
+            Physics2D.IgnoreCollision(col.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            ignoreCollision = true;
+        }
         
         
+    }
+
+    private void OnCollisionStay2D(Collision col)
+    {
+        if(col.gameObject.tag == "Platform" && !onGround)
+        {
+            onGround = true;
+            doubleJump = false;
+            canMove = true;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D col)
@@ -107,6 +137,7 @@ public class PlayerController : MonoBehaviour
         {
             onGround = false;
         }
+
     }
 
     private void OnTriggerExit2D(Collider2D col)
@@ -223,17 +254,7 @@ public class PlayerController : MonoBehaviour
     public void Knockback(int dir)
     {
         canMove = false;
-
-        if (dir == 1) //Knockback Left
-        {
-            Debug.Log("Flying Left");
-            rb.velocity = new Vector2(-knockbackX, knockbackY);
-        }
-        else if (dir == 2) //Knockback Right
-        {
-            Debug.Log("Flying Right");
-            rb.velocity = new Vector2(knockbackX, knockbackY);
-        }
+        rb.velocity = new Vector2(dir * knockbackX, knockbackY);
     }
 
     //Display the reticle and allow you to interact with it
