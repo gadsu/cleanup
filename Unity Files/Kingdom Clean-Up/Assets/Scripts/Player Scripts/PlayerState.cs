@@ -49,6 +49,7 @@ public class PlayerState : MonoBehaviour {
         {
             greenSlimeMeter = Mathf.Clamp(greenSlimeMeter + val, 0, 100);
             greenMeter.value = greenSlimeMeter;
+            //setSlimeMeterImage(greenSlimeMeter, type);
             //Debug.Log("<color=green>GreenSlimeVal:</color> " + greenSlimeMeter);//tells the debug log that green slime was added to the slime meter
         }
 
@@ -56,6 +57,7 @@ public class PlayerState : MonoBehaviour {
         {
             redSlimeMeter = Mathf.Clamp(redSlimeMeter + val, 0, 100);
             redMeter.value = redSlimeMeter;
+            //setSlimeMeterImage(redSlimeMeter, type);
             //Debug.Log("<color=red>RedSlimeVal:</color> " + redSlimeMeter);//tells the debug log that red slime was added to the slime meter
         }
 
@@ -63,9 +65,35 @@ public class PlayerState : MonoBehaviour {
         {
             blueSlimeMeter = Mathf.Clamp(blueSlimeMeter + val, 0, 100);
             blueMeter.value = blueSlimeMeter;
+            //setSlimeMeterImage(blueSlimeMeter, type);
             //Debug.Log("<color=blue>BlueSlimeVal:</color> " + blueSlimeMeter);//tells the debug log that blue slime was added to the slime meter
         }
+
     }
+
+     //starting logic for switching the image when slime val gets to certain points
+
+    //public void setSlimeMeterImage(int val, string type)
+    //{
+    //    GameObject SlimeMeter;
+    //    if ( type == "blue")
+    //    {
+    //        SlimeMeter = blueMeter;
+    //    }
+    //    if (type == "red")
+    //    {
+    //        SlimeMeter = redMeter;
+    //    }
+    //    if (type == "green")
+    //    {
+    //        SlimeMeter = greenMeter;
+    //    }
+
+    //    if (val <= 12)
+    //    {
+
+    //    }
+    //}
 
     public void takeDamage(float dmg)
     {
