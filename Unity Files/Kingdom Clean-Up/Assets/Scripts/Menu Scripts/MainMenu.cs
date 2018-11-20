@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour, ISelectHandler, IDeselectHandler // ISele
 
     private void Start()
     {
-        Child = gameObject.transform.Find("Sprite").gameObject;
+       // Child = gameObject.transform.Find("Sprite").gameObject;
         Hide(Child);
     }
 

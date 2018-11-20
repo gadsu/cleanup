@@ -81168,6 +81168,12 @@ Prefab:
       propertyPath: m_UseAutoMass
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212152763885082436, guid: c008b36a9e039574cbb9caa9b32e8ac6,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cae60af460d87664194bf4560b172860,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c008b36a9e039574cbb9caa9b32e8ac6, type: 2}
   m_IsPrefabAsset: 0
