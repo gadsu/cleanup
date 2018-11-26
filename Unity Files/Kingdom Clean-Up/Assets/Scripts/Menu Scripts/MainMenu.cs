@@ -11,12 +11,14 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour, ISelectHandler, IDeselectHandler // ISelect and IDeselect used for controller use
 {
-    GameObject Child;
+    public GameObject MopImage;
+    public GameObject SlimeOverlay;
 
     private void Start()
     {
-       // Child = gameObject.transform.Find("Sprite").gameObject;
-        Hide(Child);
+        // MopImage = gameObject.transform.Find("Sprite").gameObject;
+        Hide(MopImage);
+        Show(SlimeOverlay);
     }
 
     public void ChangeSceneByName(string name)
@@ -32,41 +34,48 @@ public class MainMenu : MonoBehaviour, ISelectHandler, IDeselectHandler // ISele
     //If button is being hovered over show Mop on the Left
     public void OnMouseEnter()
     {
-        Show(Child);
+        Show(MopImage);
+        Hide(SlimeOverlay);
     }
     private void OnMouseOver()
     {
-        Show(Child);
+        Show(MopImage);
+        Hide(SlimeOverlay);
     }
     private void OnMouseExit() //hide mop when not hovered
     {
-        Hide(Child);
+        Hide(MopImage);
+        Show(SlimeOverlay);
     }
     
     //same as above but with controller
     void ISelectHandler.OnSelect(BaseEventData eventData)
     {
-        Show(Child);
+        Show(MopImage);
+        Hide(SlimeOverlay);
     }   
     void IDeselectHandler.OnDeselect(BaseEventData eventData)
     {
-        Hide(Child);
+        Hide(MopImage);
+        Show(SlimeOverlay);
     }
 
+    //quits the game
     public void QuitGame()
     {
         Application.Quit();
         Debug.Log("Quit mothas");
     }
 
-    public void Show(GameObject Gobject)
+    // shows and hides objects
+    public void Show(GameObject TheObject)
     {
-        Gobject.SetActive(true);
+        TheObject.SetActive(true);
     }
 
-    public void Hide(GameObject Gobject)
+    public void Hide(GameObject TheObject)
     {
 
-        Gobject.SetActive(false);
+        TheObject.SetActive(false);
     }
 }
