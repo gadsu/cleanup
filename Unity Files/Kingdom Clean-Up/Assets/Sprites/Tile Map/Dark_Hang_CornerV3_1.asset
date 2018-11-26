@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: Dark_Hang_CornerV3_1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: ad89f68a3b63708499674d5a333f2686, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 052aad151bca39f41a4dd3e17a7cdae7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
