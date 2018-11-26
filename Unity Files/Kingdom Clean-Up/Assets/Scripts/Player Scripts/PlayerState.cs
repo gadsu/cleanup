@@ -22,6 +22,12 @@ public class PlayerState : MonoBehaviour {
     public GameObject redMeter;
     [Tooltip("Slime Meter object")]
     public GameObject blueMeter;
+    [Tooltip("List of the slime meter's children")]
+    public List<GameObject> greenChildren = new List<GameObject>();
+    [Tooltip("List of the slime meter's children")]
+    public List<GameObject> redChildren = new List<GameObject>();
+    [Tooltip("List of the slime meter's children")]
+    public List<GameObject> blueChildren = new List<GameObject>();
     [Tooltip("How much health the player has as a float")]
     public float playerHealth = 100f;
     [Tooltip("Can the player be damaged?")]
@@ -30,8 +36,6 @@ public class PlayerState : MonoBehaviour {
     public float invulnTime = 1.00f;
     [Tooltip("Frame the player was damaged on")]
     public float damageFrame;
-
-    public GameObject SlimeMeter;
 
     GameObject player;
     int maxSlime = 100;
@@ -49,14 +53,14 @@ public class PlayerState : MonoBehaviour {
         if ((greenSlimeMeter < maxSlime) && type == "green")//Adds green slime to the slime meter
         {
             greenSlimeMeter = Mathf.Clamp(greenSlimeMeter + val, 0, 100);
-            setSlimeMeterImage(greenSlimeMeter, type);
+            setSlimeMeterImage(greenSlimeMeter, greenChildren);
             //Debug.Log("<color=green>GreenSlimeVal:</color> " + greenSlimeMeter);//tells the debug log that green slime was added to the slime meter
         }
 
         if ((redSlimeMeter < maxSlime) && type == "red")//Adds red slime to the slime meter
         {
             redSlimeMeter = Mathf.Clamp(redSlimeMeter + val, 0, 100);
-            setSlimeMeterImage(redSlimeMeter, type);
+            setSlimeMeterImage(redSlimeMeter, redChildren);
             //Debug.Log("<color=red>RedSlimeVal:</color> " + redSlimeMeter);//tells the debug log that red slime was added to the slime meter
         }
 
@@ -64,7 +68,7 @@ public class PlayerState : MonoBehaviour {
         {
             blueSlimeMeter = Mathf.Clamp(blueSlimeMeter + val, 0, 100);
             //blueMeter.value = blueSlimeMeter;
-            setSlimeMeterImage(blueSlimeMeter, type);
+            setSlimeMeterImage(blueSlimeMeter, blueChildren);
             //Debug.Log("<color=blue>BlueSlimeVal:</color> " + blueSlimeMeter);//tells the debug log that blue slime was added to the slime meter
         }
 
@@ -72,60 +76,46 @@ public class PlayerState : MonoBehaviour {
 
     //starting logic for switching the image when slime val gets to certain points
 
-    public void setSlimeMeterImage(int val, string type)
+    public void setSlimeMeterImage(int val, List<GameObject> SlimeMeter)
     {
-
-        if (type == "blue")
-        {
-            SlimeMeter = blueMeter;
-        }
-        if (type == "red")
-        {
-            SlimeMeter = redMeter;
-        }
-        if (type == "green")
-        {
-            SlimeMeter = greenMeter;
-        }
-
         if (val < 25)
         {
-            SlimeMeter.transform.Find("1").gameObject.SetActive(true);
+            SlimeMeter[0].SetActive(true);
         }
         if (val >= 25 && val < 37)
         {
-            SlimeMeter.transform.Find("1").gameObject.SetActive(false);
-            SlimeMeter.transform.Find("2").gameObject.SetActive(true);
+            SlimeMeter[0].SetActive(false);
+            SlimeMeter[1].gameObject.SetActive(true);
         }
         if (val >= 37 && val < 50)
         {
-            SlimeMeter.transform.Find("2").gameObject.SetActive(false);
-            SlimeMeter.transform.Find("3").gameObject.SetActive(true);
+            SlimeMeter[1].SetActive(false);
+            SlimeMeter[2].SetActive(true);
         }
         if (val >= 50 && val < 62)
         {
-            SlimeMeter.transform.Find("3").gameObject.SetActive(false);
-            SlimeMeter.transform.Find("4").gameObject.SetActive(true);
+            SlimeMeter[2].SetActive(false);
+            SlimeMeter[3].SetActive(true);
         }
         if (val >= 62 && val < 75)
         {
-            SlimeMeter.transform.Find("4").gameObject.SetActive(false);
-            SlimeMeter.transform.Find("5").gameObject.SetActive(true);
+            SlimeMeter[3].SetActive(false);
+            SlimeMeter[4].SetActive(true);
         }
         if (val >= 75 && val < 87)
         {
-            SlimeMeter.transform.Find("5").gameObject.SetActive(false);
-            SlimeMeter.transform.Find("6").gameObject.SetActive(true);
+            SlimeMeter[4].SetActive(false);
+            SlimeMeter[5].SetActive(true);
         }
         if (val >= 87 && val < 100)
         {
-            SlimeMeter.transform.Find("6").gameObject.SetActive(false);
-            SlimeMeter.transform.Find("7").gameObject.SetActive(true);
+            SlimeMeter[5].SetActive(false);
+            SlimeMeter[6].SetActive(true);
         }
         if (val >= 100)
         {
-            SlimeMeter.transform.Find("7").gameObject.SetActive(false);
-            SlimeMeter.transform.Find("8").gameObject.SetActive(true);
+            SlimeMeter[6].SetActive(false);
+            SlimeMeter[7].SetActive(true);
         }
     }
 
@@ -153,16 +143,28 @@ public class PlayerState : MonoBehaviour {
 	
     public void loadScene()
     {
+        int i;
         greenMeter = GameObject.Find("greenMeter");
         redMeter = GameObject.Find("redMeter");
         blueMeter = GameObject.Find("blueMeter");
 
+        if(greenChildren.Count == 0)
+        {
+            for (i = 1; i <= 8; i++)
+            {
+                greenChildren.Add(greenMeter.transform.Find(i.ToString()).gameObject);
+                redChildren.Add(redMeter.transform.Find(i.ToString()).gameObject);
+                blueChildren.Add(blueMeter.transform.Find(i.ToString()).gameObject);
+            }
+        }
+
         player = GameObject.Find("Player");
     }
+    
 
 	// Update is called once per frame
 	void Update () {
-        if (GameObject.Find("GreenMeter"))
+        if (GameObject.Find("greenMeter"))
         {
             loadScene();
         }
