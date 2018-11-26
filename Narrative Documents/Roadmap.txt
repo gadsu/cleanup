@@ -1,0 +1,55 @@
+Sep. 5
+•	First 101 presentation
+•	Sprint report
+Oct. 17
+•	Controls finalized and implemented
+•	Art style and program finalized
+•	Testing
+•	Finished Camera
+•	Plot Doc
+•	Structured first level
+•	Working enemy AI
+•	Character Sprites
+•	Basic level art
+•	Basic UI
+•	Basic Menu
+•	Basic Overworld
+Nov. 9-11
+•	Nanocon Presentation
+•	1 mostly playable level
+•	Tools implemented
+•	Testing
+•	Level Art Finalized
+•	Functional UI
+•	Complete Menu
+Dec. 12
+•	1 Complete level
+•	2 Structured levels for next semester
+•	Testing
+•	Road map for next semester
+Jan. 7
+•	Classes Begin
+•	Live
+March 2nd.
+•	Tiles finished up for each stage
+•	Background assets finished and implemented for the first 2 stages
+•	Level 2 mostly complete
+•	Player animations completed
+•	Boss animations for first and 2nd stage
+•	Boss plan for first 2 levels plus tutorial.
+•	Implement base music for the levels
+•	Implement sound effects for most actions.
+•	Smoothed out movement controls
+•	Slime throw-able
+•	Blue/Green slime working mechanically 
+All Fools day
+•	Nice build
+•	2 full levels plus tutorial
+•	3rd level outline
+•	Boss plan for each stage in detail
+•	Finished sound effects for every need
+•	Red slime working mechanically
+April 26
+•	Last day
+•	3 levels and a tutorial
+•	Full audio
