@@ -80,41 +80,42 @@ public class PlayerState : MonoBehaviour {
     {
         if (val < 25)
         {
+            disableSlimeMeters(SlimeMeter);
             SlimeMeter[0].SetActive(true);
         }
         if (val >= 25 && val < 37)
         {
-            SlimeMeter[0].SetActive(false);
+            disableSlimeMeters(SlimeMeter);
             SlimeMeter[1].gameObject.SetActive(true);
         }
         if (val >= 37 && val < 50)
         {
-            SlimeMeter[1].SetActive(false);
+            disableSlimeMeters(SlimeMeter);
             SlimeMeter[2].SetActive(true);
         }
         if (val >= 50 && val < 62)
         {
-            SlimeMeter[2].SetActive(false);
+            disableSlimeMeters(SlimeMeter);
             SlimeMeter[3].SetActive(true);
         }
         if (val >= 62 && val < 75)
         {
-            SlimeMeter[3].SetActive(false);
+            disableSlimeMeters(SlimeMeter);
             SlimeMeter[4].SetActive(true);
         }
         if (val >= 75 && val < 87)
         {
-            SlimeMeter[4].SetActive(false);
+            disableSlimeMeters(SlimeMeter);
             SlimeMeter[5].SetActive(true);
         }
         if (val >= 87 && val < 100)
         {
-            SlimeMeter[5].SetActive(false);
+            disableSlimeMeters(SlimeMeter);
             SlimeMeter[6].SetActive(true);
         }
         if (val >= 100)
         {
-            SlimeMeter[6].SetActive(false);
+            disableSlimeMeters(SlimeMeter);
             SlimeMeter[7].SetActive(true);
         }
     }
@@ -159,6 +160,16 @@ public class PlayerState : MonoBehaviour {
         }
 
         player = GameObject.Find("Player");
+    }
+
+    public void disableSlimeMeters(List<GameObject> meter)
+    {
+        int size = meter.Count;
+
+        for(int i = 0; i < size; i++)
+        {
+            meter[i].SetActive(false);
+        }
     }
     
 
