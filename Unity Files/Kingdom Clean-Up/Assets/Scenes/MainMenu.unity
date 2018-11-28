@@ -402,6 +402,7 @@ GameObject:
   - component: {fileID: 347014996}
   - component: {fileID: 347014995}
   - component: {fileID: 347014994}
+  - component: {fileID: 347014998}
   - component: {fileID: 347014993}
   m_Layer: 5
   m_Name: Save and Load
@@ -466,8 +467,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2817034342dd14fbf6ec28c231362f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MopImage: {fileID: 267136123}
-  SlimeOverlay: {fileID: 1808802054}
 --- !u!114 &347014995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,6 +553,19 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 347014991}
   m_CullTransparentMesh: 0
+--- !u!114 &347014998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 347014991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23b9a30487880b541a46d22b589fcc1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MopImage: {fileID: 267136123}
+  SlimeOverlay: {fileID: 1808802054}
 --- !u!1 &452681026
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,9 +680,10 @@ GameObject:
   - component: {fileID: 539470028}
   - component: {fileID: 539470027}
   - component: {fileID: 539470026}
+  - component: {fileID: 539470030}
   - component: {fileID: 539470025}
   m_Layer: 5
-  m_Name: Quit
+  m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -732,8 +745,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2817034342dd14fbf6ec28c231362f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MopImage: {fileID: 1713133345}
-  SlimeOverlay: {fileID: 2000032979}
 --- !u!114 &539470027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -820,6 +831,19 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 539470023}
   m_CullTransparentMesh: 0
+--- !u!114 &539470030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 539470023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23b9a30487880b541a46d22b589fcc1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MopImage: {fileID: 1713133345}
+  SlimeOverlay: {fileID: 2000032979}
 --- !u!1 &604814718
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,6 +1015,7 @@ GameObject:
   - component: {fileID: 861362101}
   - component: {fileID: 861362100}
   - component: {fileID: 861362099}
+  - component: {fileID: 861362104}
   - component: {fileID: 861362103}
   m_Layer: 5
   m_Name: Start
@@ -1030,8 +1055,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2817034342dd14fbf6ec28c231362f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MopImage: {fileID: 1550465476}
-  SlimeOverlay: {fileID: 82256816}
 --- !u!114 &861362100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1154,6 +1177,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 288.15555, y: 111.41553}
   m_EdgeRadius: 0
+--- !u!114 &861362104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 861362097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23b9a30487880b541a46d22b589fcc1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MopImage: {fileID: 1550465476}
+  SlimeOverlay: {fileID: 82256816}
 --- !u!1 &903491663
 GameObject:
   m_ObjectHideFlags: 0
@@ -1490,8 +1526,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2817034342dd14fbf6ec28c231362f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MopImage: {fileID: 0}
-  SlimeOverlay: {fileID: 0}
 --- !u!114 &1630774616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1885,6 +1919,7 @@ GameObject:
   - component: {fileID: 1991036553}
   - component: {fileID: 1991036552}
   - component: {fileID: 1991036551}
+  - component: {fileID: 1991036555}
   - component: {fileID: 1991036550}
   m_Layer: 5
   m_Name: Credits
@@ -1949,8 +1984,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2817034342dd14fbf6ec28c231362f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MopImage: {fileID: 1921858219}
-  SlimeOverlay: {fileID: 903491663}
 --- !u!114 &1991036552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2037,6 +2070,19 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1991036548}
   m_CullTransparentMesh: 0
+--- !u!114 &1991036555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1991036548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23b9a30487880b541a46d22b589fcc1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MopImage: {fileID: 1921858219}
+  SlimeOverlay: {fileID: 903491663}
 --- !u!1 &2000032979
 GameObject:
   m_ObjectHideFlags: 0
@@ -2232,8 +2278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2817034342dd14fbf6ec28c231362f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MopImage: {fileID: 0}
-  SlimeOverlay: {fileID: 0}
 --- !u!114 &2142700893
 MonoBehaviour:
   m_ObjectHideFlags: 0

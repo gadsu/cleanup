@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    private void OnCollisionStay2D(Collision col)
+    private void OnCollisionStay2D(Collision2D col)
     {
         if(col.gameObject.tag == "Platform" && !onGround)
         {
