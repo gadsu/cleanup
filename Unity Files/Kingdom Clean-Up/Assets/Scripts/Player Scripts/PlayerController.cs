@@ -234,10 +234,11 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
             if ((!an.GetCurrentAnimatorStateInfo(0).IsName("runRight" )|| !an.GetCurrentAnimatorStateInfo(0).IsName("runLeft")) && Mathf.Abs(rb.velocity.x) > 0 && !isJumpAnimation())
             {
+                
+
                 if (facingRight)
-                {
-                   //Flip();
-                   an.Play("runRight");
+                { 
+                    an.Play("runRight");
                 }
                 else
                 {
