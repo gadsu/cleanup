@@ -22,7 +22,6 @@ public class OverworldMovement : MonoBehaviour {
 
         move = EventSystem.current.currentSelectedGameObject.transform.position - transform.position;
 
-
         transform.Translate(move * 0.05f);
 
     }

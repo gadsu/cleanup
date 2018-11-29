@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 212152763885082436}
   - component: {fileID: 50562500313674334}
   - component: {fileID: 95055646844152270}
-  - component: {fileID: 61308379653445474}
+  - component: {fileID: 70668132294074848}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -106,7 +106,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1788341133676570}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -34.4, y: 15.1, z: 0}
+  m_LocalPosition: {x: 1883.6, y: -12.18, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 0}
   m_Children:
   - {fileID: 4428149637119078}
@@ -196,31 +196,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
---- !u!61 &61308379653445474
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1788341133676570}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.03907776, y: -3.7953367}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15.000001, y: 15.000001}
-    newSize: {x: 15.000001, y: 15.000001}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.479248, y: 7.4093266}
-  m_EdgeRadius: 0
 --- !u!61 &61333474243181684
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -246,6 +221,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5}
   m_EdgeRadius: 0
+--- !u!70 &70668132294074848
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1788341133676570}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -3.5}
+  m_Size: {x: 3, y: 8.2}
+  m_Direction: 0
 --- !u!95 &95055646844152270
 Animator:
   serializedVersion: 3
@@ -336,10 +326,13 @@ MonoBehaviour:
   doubleJump: 1
   aiming: 0
   canMove: 1
-  jumpFinished: 0
   mop: {fileID: 1552292412110382}
+  ignoreCollision: 0
+  ignoredObjects: []
   charMaxSpeed: 40
   charJumpSpeed: 60
+  knockbackY: 40
+  knockbackX: 40
 --- !u!212 &212135581963135204
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -421,7 +414,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300004, guid: 0da878fda1815b34993dac366912a33a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cae60af460d87664194bf4560b172860, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
