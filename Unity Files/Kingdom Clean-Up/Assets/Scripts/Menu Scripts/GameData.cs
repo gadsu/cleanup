@@ -80,4 +80,20 @@ public class GameData : MonoBehaviour {
         Debug.Log("Saved.");
     }
 
+    public void DeleteFile(string num)
+    {
+        LoadFile("0");
+        saveFileNum = num;
+        gamedic[num + "newGame"] = "true";
+        gamedic[num + "playerName"] = "--- New Game ---";
+        gamedic[num + "appearance"] = "Default";
+        SaveFile();
+    }
+    
+    public void copyFile(string source, string dest)
+    {
+        gamedic[dest + "newGame"] = gamedic[source + "newGame"];
+        gamedic[dest + "playerName"] = gamedic[source + "playerName"];
+        gamedic[dest + "appearance"] = gamedic[source + "appearance"];
+    }
 }

@@ -104,6 +104,10 @@ public class EnemyState : MonoBehaviour {
     public void takeDamage(int dmg)  
     {
         health -= dmg;
+        if (!an.GetCurrentAnimatorStateInfo(0).IsName("hit"))
+        {
+            an.Play("hit");
+        }
         if(health <= 0)
         {
             death();

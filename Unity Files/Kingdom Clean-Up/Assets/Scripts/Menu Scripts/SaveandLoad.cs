@@ -11,6 +11,7 @@ public class SaveandLoad : MonoBehaviour {
     public Text name3;
     public Text name4;
     GameData gd;
+    public bool copymode;
 
 	// Use this for initialization
 	void Start () {
@@ -37,9 +38,18 @@ public class SaveandLoad : MonoBehaviour {
     public void SelectFile(string playernum)
     {
         //Tell GameData which file to load
-        gd.LoadFile(playernum);
+        if (copymode)
+        {
+            gd.copyFile(gd.saveFileNum, playernum);
+            gd.LoadFile(gd.saveFileNum);
+            gd.saveFileNum = playernum;
+            gd.SaveFile();
+            GameObject.Find("StatusText").GetComponent<Text>().text = "";
+            copymode = false;
+            loadSaveAndLoad();
+        }
         //Checking if first time, then moving 
-        if (gd.gamedic[playernum + "newGame"] == "true")
+        else if (gd.gamedic[playernum + "newGame"] == "true")
         {
             string val = playernum + "newGame";
             gd.gamedic[val] = "false";
@@ -52,7 +62,18 @@ public class SaveandLoad : MonoBehaviour {
         }
     }
 
+    public void DeleteFile(string playernum)
+    {
+        gd.DeleteFile(playernum);
+        loadSaveAndLoad();
+    }
     
+    public void startCopy(string playernum)
+    {
+        GameObject.Find("StatusText").GetComponent<Text>().text = "COPYING FROM FILE " + playernum;
+        copymode = true;
+        gd.LoadFile(playernum);
+    }
 
 
     // Update is called once per frame
