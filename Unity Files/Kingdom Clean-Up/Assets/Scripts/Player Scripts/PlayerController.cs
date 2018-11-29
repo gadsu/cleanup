@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //Vertical Movement
-        if (Input.GetButtonDown("Jump"))// && onGround
+        if (Input.GetButtonDown("Jump") && onGround)// && onGround
         {
             rb.velocity = new Vector2(rb.velocity.x, charJumpSpeed);
             onGround = false;
@@ -232,23 +232,25 @@ public class PlayerController : MonoBehaviour
             {
                 Flip();
             }
-            rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
-            if ((!an.GetCurrentAnimatorStateInfo(0).IsName("runRight" )|| !an.GetCurrentAnimatorStateInfo(0).IsName("runLeft")) && Mathf.Abs(rb.velocity.x) > 0 && !isJumpAnimation())
+            if ((an.GetCurrentAnimatorStateInfo(0).IsName("inAirRight") || an.GetCurrentAnimatorStateInfo(0).IsName("inAirLeft")) && onGround )
             {
-                
-
+                //might need to add a condition in the animation controler.
+                an.Play("landing");
+            }
+            rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
+            if (Mathf.Abs(rb.velocity.x) > 0 && !isJumpAnimation())
+            {
                 if (facingRight)
-                { 
-                    an.Play("runRight");
+                {
+                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("runRight"))
+                    {
+                        an.Play("runRight");
+                    }
                 }
                 else
                 {
-                    an.Play("runLeft");
-                }
-                if (isJumpAnimation() && onGround)
-                {
-                    //might need to add a condition in the animation controler.
-                    an.Play("landing");
+                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("runLeft"))
+                        an.Play("runLeft");
                 }
             }
 
