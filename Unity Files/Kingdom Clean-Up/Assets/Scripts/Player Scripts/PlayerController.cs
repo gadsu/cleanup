@@ -25,20 +25,24 @@ public class PlayerController : MonoBehaviour
     public bool aiming;
     [Tooltip("Can player move?")]
     public bool canMove;
-    [Tooltip("Is the jump over?")]
-    public bool jumpFinished;
     [Tooltip("The mop object")]
     public GameObject mop;
+    public bool ignoreCollision;
+
+    public List<GameObject> ignoredObjects;
 
     [Header("Editable Variables")]
     [Tooltip("How fast can the character move?")]
     public float charMaxSpeed = 40f;
     [Tooltip("How much can the character jump?")]
     public float charJumpSpeed = 60f;
+    [Tooltip("How high you go on knockback")]
+    public float knockbackY = 40f;
+    [Tooltip("How far you go on knockback")]
+    public float knockbackX = 40f;
 
-    bool hasLeft;
-    float leaveGroundFrame;
     float jumpFrame;
+    float force;
 
     Animator an;
     Rigidbody2D rb;
@@ -55,6 +59,7 @@ public class PlayerController : MonoBehaviour
         doubleJump = false;
         facingRight = false;
         canMove = true;
+        ignoreCollision = false;
     }
 
 
@@ -73,10 +78,10 @@ public class PlayerController : MonoBehaviour
         }
         
     }
-    
+
     private void OnCollisionEnter2D(Collision2D col)
     {
-        
+
         Vector3 colpos = col.gameObject.transform.position;
         Vector3 mypos = transform.position;
         if (col.gameObject.tag == "Platform")
@@ -88,15 +93,41 @@ public class PlayerController : MonoBehaviour
                 Debug.Log(hit.collider.gameObject.tag + hit.collider.gameObject.tag.ToString());
                 if (hit.collider.gameObject.tag == "Platform")
                 {
-                    Debug.Log(hit.collider.Distance(GetComponent<Collider2D>()).distance);
+                    //Debug.Log(hit.collider.Distance(GetComponent<Collider2D>()).distance);
                     onGround = true;
-                    jumpFinished = false;
-                    hasLeft = false;
+                    canMove = true;
+                    doubleJump = false;
+                    if (ignoreCollision)
+                    {
+                        ignoreCollision = false;
+                        foreach(GameObject i in ignoredObjects)
+                        {
+                            Physics2D.IgnoreCollision(i.GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
+                        }
+                        ignoredObjects.Clear();
+                    }
                 }
             }
         }
+        if ((col.gameObject.tag == "Enemy" || col.gameObject.tag == "Boss") && !onGround)
+        {
+            Debug.Log(col.gameObject + col.gameObject.name + col.gameObject.tag);
+            ignoredObjects.Add(col.gameObject);
+            Physics2D.IgnoreCollision(col.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            ignoreCollision = true;
+        }
         
         
+    }
+
+    private void OnCollisionStay2D(Collision2D col)
+    {
+        if(col.gameObject.tag == "Platform" && !onGround)
+        {
+            onGround = true;
+            doubleJump = false;
+            canMove = true;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D col)
@@ -104,14 +135,14 @@ public class PlayerController : MonoBehaviour
 
         if (col.gameObject.tag == "Platform" && onGround)
         {
-            leaveGroundFrame = Time.deltaTime;
-            hasLeft = true;
+            onGround = false;
         }
+
     }
 
     private void OnTriggerExit2D(Collider2D col)
     {
-        if (col.CompareTag("!slimeInteractable"))
+        if (col.gameObject.tag != "slimeInteractable")
         {
             doubleJump = false;
         }
@@ -127,31 +158,9 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (onGround && hasLeft && leaveGroundFrame + 5f < Time.deltaTime)
-        {
-            onGround = false;
-        }
         if (canMove)
         {
-            //Vertical Movement
-            if (Input.GetButtonDown("Jump") && onGround)
-            {
-                rb.velocity = new Vector2(rb.velocity.x, charJumpSpeed);
-                onGround = false;
-                jumpFrame = Time.time;
-            }
-            else if (Input.GetButtonDown("Jump") && !onGround && doubleJump && !jumpFinished)
-            {
-                jumpFinished = true;
-                rb.velocity = new Vector2(-rb.velocity.x, charJumpSpeed);
-                doubleJump = false;
-            }
-
-            //checking for basic button presses - all button input should be here
-            if (Input.GetButtonDown("Attack"))
-            {
-                mop.GetComponent<CleanAttack>().swingMop();
-            }
+            
 
             //slime throwing shenanigans - movement of reticle happens on the reticle
             if (Input.GetAxis("ShowAim") > 0 && !aiming)//(Input.GetButtonDown("ShowAimButton") || Input.GetAxis("ShowAimTrigger") > 0) && !aiming)
@@ -164,14 +173,57 @@ public class PlayerController : MonoBehaviour
                 HideAim();
                 Debug.Log("Aim Hidden");
             }
+            
+            
+        }
 
+    }
 
+    void Update()
+    {
+        //Vertical Movement
+        if (Input.GetButtonDown("Jump") && onGround)// && onGround
+        {
+            rb.velocity = new Vector2(rb.velocity.x, charJumpSpeed);
+            onGround = false;
+            jumpFrame = Time.time;
+            if (facingRight)
+            { 
+                an.Play("jumpRight");
+            }
+            else
+            {
+                an.Play("jumpLeft");
+            }
+        }
+        else if (Input.GetButtonDown("Jump") && !onGround && doubleJump)
+        {
+            rb.velocity = new Vector2(-rb.velocity.x, charJumpSpeed);
+            doubleJump = false;
+            if (facingRight)
+            {
+                an.Play("jumpRight");
+            }
+            else
+            {
+                an.Play("jumpLeft");
+            }
+            
+        }
 
-            //Horizontal Movement
-            float force = Input.GetAxis("Horizontal");
-            //Debug.Log("Force: " + force + "rby: " + rb.velocity.y);
-            //an.SetFloat("Speed", Mathf.Abs(force));
+        //checking for basic button presses - all button input should be here
+        if (Input.GetButtonDown("Attack"))
+        {
+            mop.GetComponent<CleanAttack>().swingMop();
+        }
 
+        //Horizontal Movement
+        float force = Input.GetAxis("Horizontal");
+        //Debug.Log("Force: " + force + "rby: " + rb.velocity.y);
+        //an.SetFloat("Speed", Mathf.Abs(force));
+
+        if (canMove)
+        {
             if (force > 0 && !facingRight /*&& onGround*/)
             {
                 Flip();
@@ -180,86 +232,57 @@ public class PlayerController : MonoBehaviour
             {
                 Flip();
             }
-
-            rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
-            if (!an.GetCurrentAnimatorStateInfo(0).IsName("run") && Mathf.Abs(rb.velocity.x) > 0)
+            if ((an.GetCurrentAnimatorStateInfo(0).IsName("inAirRight") || an.GetCurrentAnimatorStateInfo(0).IsName("inAirLeft")) && onGround )
             {
-                an.Play("run");
+                //might need to add a condition in the animation controler.
+                an.Play("landing");
             }
-        }
-
-        //Checking for ground
-        //Debug.DrawRay(transform.position, Vector2.down * playerSize, Color.magenta);
-/*
-        Debug.DrawRay(transform.position, Vector2.down * playerSize,  Color.magenta);
-        if (!onGround && ((Time.time - jumpFrame) > 0.5f))
-        {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down * playerSize);
-            if (hit.collider != null)
+            rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
+            if (Mathf.Abs(rb.velocity.x) > 0 && !isJumpAnimation())
             {
-                Debug.Log(hit.collider.gameObject.tag + hit.collider.gameObject.tag.ToString());
-                if (hit.collider.gameObject.tag == "Platform")
+                if (facingRight)
                 {
-                    if (hit.collider.Distance(GetComponent<Collider2D>()).distance < 1)
+                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("runRight"))
                     {
-                        Debug.Log(hit.collider.Distance(GetComponent<Collider2D>()).distance);
-                        onGround = true;
-                        jumpFinished = false;
-                        doubleJump = true;
+                        an.Play("runRight");
                     }
+                }
+                else
+                {
+                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("runLeft"))
+                        an.Play("runLeft");
                 }
             }
 
-            if ((facingRight && force < 0) || (!facingRight && force > 0))
-            {
-
-                force = force * 0.4f + (rb.velocity.x / charMaxSpeed);
-                force = Mathf.Clamp(force, -0.6f, 0.6f);
-
-            }
-        }*/
-
-        //Checking for Slime Wall
-        /*
-        if (!onGround && doubleJump && !jumpFinished) // if you slide past and don't jump
-        {
-            RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left * playerSize, playerSize);
-            RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right * playerSize, playerSize);
-            if (hitLeft.collider == null && hitRight.collider == null) //update later
-
-            {
-                doubleJump = false;
-            }
-
+          
         }
-        if (!onGround && !doubleJump && !jumpFinished) //checking to add doublejump
-        {
-            Debug.DrawRay(transform.position, Vector2.left * playerSize, Color.green);
-            Debug.DrawRay(transform.position, Vector2.right * playerSize, Color.green);
-            RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left * playerSize, playerSize);
-            RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right * playerSize, playerSize);
-            if (hitLeft.collider != null) // break into 2 or it gets angry
-            {
-                if (hitLeft.collider.gameObject.tag == "slimeInteractable" && hitLeft.collider.gameObject.name.Contains("green"))
-                    doubleJump = true;
-            }
-            else if (hitRight.collider != null)
-            {
-                if (hitRight.collider.gameObject.tag == "slimeInteractable" && hitRight.collider.gameObject.name.Contains("green"))
-                    doubleJump = true;
-            }
-        }
-
-    */
-        //rb.AddForce(new Vector2(force * charMaxSpeed, rb.velocity.y));
-
-
     }
 
+    bool isJumpAnimation()
+    {
+        if (an.GetCurrentAnimatorStateInfo(0).IsName("jumpRight") ||
+            an.GetCurrentAnimatorStateInfo(0).IsName("jumpLeft")  ||
+            an.GetCurrentAnimatorStateInfo(0).IsName("inAirRight")||
+            an.GetCurrentAnimatorStateInfo(0).IsName("inAirLeft"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+
+        }
+    }
     void Flip()
     {
         facingRight = !facingRight;
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y);
+    }
+
+    public void Knockback(int dir)
+    {
+        canMove = false;
+        rb.velocity = new Vector2(dir * knockbackX, knockbackY);
     }
 
     //Display the reticle and allow you to interact with it

@@ -250,4 +250,6 @@ MonoBehaviour:
   blueMeter: {fileID: 0}
   playerHealth: 100
   isInvuln: 0
+  invulnTime: 1
   damageFrame: 0
+  SlimeMeter: {fileID: 0}

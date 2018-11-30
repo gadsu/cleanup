@@ -14,11 +14,13 @@ using System;
 
 public class GameData : MonoBehaviour {
     //player name
-//    public Text playerName;
-//    public bool newGame;
-//    public string Appearance;
+    //    public Text playerName;
+    //    public bool newGame;
+    //    public string Appearance;
+    public string saveFileNum;
 
     public Dictionary<string, string> gamedic;
+    public Dictionary<string, string> playerdic;
 
     // Use this for initialization
     private void Awake()
@@ -41,49 +43,57 @@ public class GameData : MonoBehaviour {
 
     void Update()
     {
-        if(SceneManager.GetActiveScene().name == "Save and Load")
-        {
-            loadSaveAndLoad();
-        }
-    }
 
-    public void loadSaveAndLoad()
+    }
+    public void LoadFile(string num)
     {
-        Text name1 = GameObject.Find("Name1").GetComponent<Text>();
-        name1.text = gamedic["1playerName"];
+        //Load the data from the GameFile
+        saveFileNum = num;
 
-        Text name2 = GameObject.Find("Name2").GetComponent<Text>();
-        name2.text = gamedic["2playerName"];
+        TextAsset SaveFile = new TextAsset();
+        SaveFile = Resources.Load("Save" + num) as TextAsset;
 
-        Text name3 = GameObject.Find("Name3").GetComponent<Text>();
-        name3.text = gamedic["3playerName"];
+        //Create a dictionary that can be referenced by gamedic["varname"] = stringresult, i.e. gamedic[1playerName] will return Rachel or some shit
+        playerdic = SaveFile.text.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries).Select(l => l.Split(new[] { '=' })).ToDictionary(s => s[0].Trim(), s => s[1].Trim());
 
-        Text name4 = GameObject.Find("Name4").GetComponent<Text>();
-        name4.text = gamedic["4playerName"];
     }
 
-    //Called upon the click of a button
-    private void FirstTimeCheck(string playernum)
+    public void SaveFile()
     {
-        if (gamedic[playernum + "newGame" ] == "true")
+        //Save player state
+        string saveData = "";
+        foreach(var item in playerdic)
         {
-            SceneManager.LoadScene("CharacterCustomize");
-            string val = playernum + "newGame";
-            gamedic[val] = "false";
- //           NEED TO CHANGE STRING TO READ FALSE!
+            saveData += item.Key + " = " + item.Value + "\r\n";
         }
-        else if (gamedic[playernum + "newGame"] == "false")
+
+        File.WriteAllText("Assets/Resources/Save" + saveFileNum + ".txt", saveData);
+
+        //Save Gamedata state
+        string gameData = "";
+        foreach (var item in gamedic)
         {
-            SceneManager.LoadScene("OverWorld");
+            gameData += item.Key + " = " + item.Value + "\r\n";
         }
+
+        File.WriteAllText("Assets/Resources/GameData.txt", gameData);
+        Debug.Log("Saved.");
     }
 
-    //void SaveFile()
-    //{
-    //    while (true)
-    //    {
-            
-    //    }
-    //}
-
+    public void DeleteFile(string num)
+    {
+        LoadFile("0");
+        saveFileNum = num;
+        gamedic[num + "newGame"] = "true";
+        gamedic[num + "playerName"] = "--- New Game ---";
+        gamedic[num + "appearance"] = "Default";
+        SaveFile();
+    }
+    
+    public void copyFile(string source, string dest)
+    {
+        gamedic[dest + "newGame"] = gamedic[source + "newGame"];
+        gamedic[dest + "playerName"] = gamedic[source + "playerName"];
+        gamedic[dest + "appearance"] = gamedic[source + "appearance"];
+    }
 }
