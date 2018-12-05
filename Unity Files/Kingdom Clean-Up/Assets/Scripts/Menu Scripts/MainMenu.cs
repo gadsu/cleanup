@@ -14,14 +14,19 @@ public class MainMenu : MonoBehaviour
 
     public void ChangeSceneByName(string name)
     {
+        if(GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().sceneLoaded == true)
+        {
+            GameObject.Find("DontDestroyOnLoad").GetComponent<GameData>().ReloadLevel();
+        }
         SceneManager.LoadScene(name);
     }
 
-    public void setResetPlayer()
+    public void ReloadScene()
     {
-        GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().playerHealth = 100;
+        GameObject.Find("DontDestroyOnLoad").GetComponent<GameData>().ReloadLevel();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    
+
     //quits the game
     public void QuitGame()
     {
