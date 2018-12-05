@@ -9,24 +9,37 @@ public class SlimeConstructs : MonoBehaviour {
     public int blue;
     public string color;
     public GameObject slimePrefab;
-
+    public bool isFrozen = false;
+    GameObject player;
+    Rigidbody2D playerRB;
 
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
 
     }
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	void Update ()
+    {
+        if (isFrozen && Input.GetButtonDown("Jump"))
+        {
+            player.GetComponent<PlayerController>().jump();
+            isFrozen = false;
+            playerRB.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+    }
 
     //A mirror of EnemyState's Death function
+    
+        //Breaks the slime wall DONT DELETE
+
     public void breakSlime()
     {
         Transform currentPos = gameObject.transform;
         int i = 1;
+
     //    while (green + red + blue > 0)
     //    {
     //        GameObject SlimeViscera = Instantiate<GameObject>(slimePrefab, currentPos.position, currentPos.rotation);
@@ -68,6 +81,22 @@ public class SlimeConstructs : MonoBehaviour {
     //    }
         
     //    Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if(col.gameObject.tag == "Player")
+        {
+            playerRB = col.gameObject.GetComponent<Rigidbody2D>();
+            player = col.gameObject;
+            freezePlayer();
+        }
+    }
+    public void freezePlayer()
+    {
+        playerRB.constraints = RigidbodyConstraints2D.FreezePosition; //when player hits wall FREEZE THEM
+        isFrozen = true;
+
     }
 
 }

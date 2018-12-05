@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114389954930914160}
   - component: {fileID: 212041683450388822}
   - component: {fileID: 61396468291491406}
+  - component: {fileID: 61425827841595694}
   m_Layer: 0
   m_Name: greenSlimeWall
   m_TagString: slimeInteractable
@@ -36,8 +37,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1158865207458514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 67.08629, y: -11.584177, z: 106.103294}
-  m_LocalScale: {x: 3, y: 10, z: 1}
+  m_LocalPosition: {x: 528.9, y: -15.8, z: 1}
+  m_LocalScale: {x: 2.56245, y: 16.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -50,8 +51,33 @@ BoxCollider2D:
   m_GameObject: {fileID: 1158865207458514}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 91fce4ed93bc904418bff79cec2de284, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.5299221, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.5, y: 1.5}
+    newSize: {x: 1.5, y: 1.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.5598438, y: 1.5}
+  m_EdgeRadius: 0
+--- !u!61 &61425827841595694
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1158865207458514}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 91fce4ed93bc904418bff79cec2de284, type: 2}
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -84,6 +110,7 @@ MonoBehaviour:
   color: green
   slimePrefab: {fileID: 1827464675113566, guid: f1ef8da39b8126e4691a9a3c234f4da3,
     type: 2}
+  isFrozen: 0
 --- !u!212 &212041683450388822
 SpriteRenderer:
   m_ObjectHideFlags: 1

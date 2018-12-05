@@ -181,35 +181,37 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        //Vertical Movement
-        if (Input.GetButtonDown("Jump") && onGround)// && onGround
-        {
-            rb.velocity = new Vector2(rb.velocity.x, charJumpSpeed);
-            onGround = false;
-            jumpFrame = Time.time;
-            if (facingRight)
-            { 
-                an.Play("jumpRight");
-            }
-            else
-            {
-                an.Play("jumpLeft");
-            }
-        }
-        else if (Input.GetButtonDown("Jump") && !onGround && doubleJump)
-        {
-            rb.velocity = new Vector2(-rb.velocity.x, charJumpSpeed);
-            doubleJump = false;
-            if (facingRight)
-            {
-                an.Play("jumpRight");
-            }
-            else
-            {
-                an.Play("jumpLeft");
-            }
-            
-        }
+        jump(); //made own function as we can call it in other places
+
+        ////Vertical Movement
+        //if (Input.GetButtonDown("Jump") && onGround)// && onGround
+        //{
+        //    rb.velocity = new Vector2(rb.velocity.x, charJumpSpeed);
+        //    onGround = false;
+        //    jumpFrame = Time.time;
+        //    if (facingRight)
+        //    { 
+        //        an.Play("jumpRight");
+        //    }
+        //    else
+        //    {
+        //        an.Play("jumpLeft");
+        //    }
+        //}
+        //else if (Input.GetButtonDown("Jump") && !onGround && doubleJump)
+        //{
+        //    rb.velocity = new Vector2(-rb.velocity.x, charJumpSpeed);
+        //    doubleJump = false;
+        //    if (facingRight)
+        //    {
+        //        an.Play("jumpRight");
+        //    }
+        //    else
+        //    {
+        //        an.Play("jumpLeft");
+        //    }
+
+        //}
 
         //checking for basic button presses - all button input should be here
         if (Input.GetButtonDown("Attack"))
@@ -255,6 +257,38 @@ public class PlayerController : MonoBehaviour
             }
 
           
+        }
+    }
+    public void jump()
+    {
+        //Vertical Movement
+        if (Input.GetButtonDown("Jump") && onGround)// && onGround
+        {
+            rb.velocity = new Vector2(rb.velocity.x, charJumpSpeed);
+            onGround = false;
+            jumpFrame = Time.time;
+            if (facingRight)
+            {
+                an.Play("jumpRight");
+            }
+            else
+            {
+                an.Play("jumpLeft");
+            }
+        }
+        else if (Input.GetButtonDown("Jump") && !onGround && doubleJump)
+        {
+            rb.velocity = new Vector2(-rb.velocity.x, charJumpSpeed);
+            doubleJump = false;
+            if (facingRight)
+            {
+                an.Play("jumpRight");
+            }
+            else
+            {
+                an.Play("jumpLeft");
+            }
+
         }
     }
 
