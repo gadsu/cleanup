@@ -37,6 +37,8 @@ public class PlayerState : MonoBehaviour {
     [Tooltip("Frame the player was damaged on")]
     public float damageFrame;
 
+    public bool sceneLoaded;
+
     GameObject player;
     int maxSlime = 100;
 
@@ -140,6 +142,7 @@ public class PlayerState : MonoBehaviour {
     // Use this for initialization
     void Start () {
         damageFrame = invulnTime;
+        sceneLoaded = false;
     }
 	
     public void loadScene()
@@ -175,9 +178,10 @@ public class PlayerState : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (GameObject.Find("greenMeter"))
+        if (GameObject.Find("greenMeter") && sceneLoaded == false)
         {
             loadScene();
+            sceneLoaded = true;
         }
         if (isInvuln)
         {
