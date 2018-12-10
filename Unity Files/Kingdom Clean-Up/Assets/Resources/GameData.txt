@@ -1,4 +1,4 @@
-1newGame = true
+1newGame = false
 1playerName = --- New Game ---
 1appearance = Default
 2newGame = false
@@ -10,3 +10,4 @@
 4newGame = false
 4playerName = Berk
 4appearance = Default
+0playerName = Rachel

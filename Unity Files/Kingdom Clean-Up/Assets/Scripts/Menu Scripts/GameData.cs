@@ -38,7 +38,7 @@ public class GameData : MonoBehaviour {
         
         //Create a dictionary that can be referenced by gamedic["varname"] = stringresult, i.e. gamedic[1playerName] will return Rachel or some shit
         gamedic = GameFile.text.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries).Select(l => l.Split(new[] { '=' })).ToDictionary(s => s[0].Trim(), s => s[1].Trim());
-
+        LoadFile("0");
     }
 
     void Update()
