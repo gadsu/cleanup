@@ -1,0 +1,4 @@
+Scraping of the throwing mechanic
+Green gloves for the wall climbing, still saps from gauge so once youre out you cant climb walls and need to refill
+Blue boots that also sap from the gauge, need to keep track to move faster, refill once your out
+Red block can only be dispensed right in front of you, also saps from gauge, need to refill once empty to make more.
