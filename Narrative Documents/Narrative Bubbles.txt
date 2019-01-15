@@ -2,27 +2,38 @@ Narrative Bubbles:
 
 Tutorial:
 
+*upon starting level*
+Shows MC move with the wasd buttons being pushed (or analog stick being tilted) while he moves in the respective directions
+
+*upon getting to the old man*
+Show MC walking up to NPC with the y button being pressed and some example dialouge showing up
+
+*upon picking up mop*
+Shows picture of a sparkling kingdom. But then bucket with a quesion mark.
+
 *Upon seeing slime on the ground for the first time*
 Displays an image of the mop mopping up the slime with the y button being pressed.
-
-*At the last obstacle of tutorial level*
-Display bubble showing the slime being thrown onto the surface of the map, also displaying the buttons needed to do so. (LT and B)
 
 *upon seeing a slime for the first time*
 Stops game to display the bubble
 shows MC 'cleaning' the slime with the mop with the x button being pressed
 
-*upon starting level*
-Shows MC move with the wasd buttons being pushed (or analog stick being tilted) while he moves in the respective directions
-
-*upon picking up mop*
-Shows picture of a sparkling kingdom. But then bucket with a quesion mark.
+*upon seeing slime on the wall for the first time*
+Shows MC stuck to wall before jumping off of the wall
 
 *upon picking up the bucket*
 Thumbs up with a picture of sparkling kingdom.
 
-*upon seeing slime on the wall for the first time*
-Shows MC stuck to wall before jumping off of the wall
+*At the last obstacle of tutorial level*
+Display bubble showing the slime being thrown onto the surface of the map, also displaying the buttons needed to do so. (LT and B)
 
-*upon getting to the old man*
-Show MC walking up to NPC with the y button being pressed and some example dialouge showing up
+- possible idea for slime tools
+(flat wall with npc at the base stuck in slime)
+*upon cleaning/freeing the npc*
+Show button being pressed (need a button to activate tools?) see green slime gloves get equipped and see MC climb the wall
+or
+show MC walk to wall, green slime gloves get equipped, and MC climbs wall
+
+(gap with npc slimed in front of it)
+*upon cleaning/freeing the npc*
+Show button being pressed (if we decide to have one), see blue slime boots get equipped and see MC speeding down hill and jumping the gap (think this is probably best way to go about it for the boots being there doesnt seem to be something that can just auto proc the boots like the wall could proc the gloves)
