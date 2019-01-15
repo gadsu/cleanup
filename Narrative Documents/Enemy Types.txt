@@ -1,0 +1,9 @@
+Slime Enemies:
+- Red Goopa: Average Speed
+- Green Goopa: Slow Speed
+- Blue Goopa: Fast Speed
+
+Possible Enemies:
+- Goop Mother: Spawns the Goopas, and also shares speed/color with the Goopas it spawns
+
+Not sure what else should go in here, I just know we were talking about having different enemy types so figured there should be a document for it. Will try to keep this updated as we get more ideas nailed down.
