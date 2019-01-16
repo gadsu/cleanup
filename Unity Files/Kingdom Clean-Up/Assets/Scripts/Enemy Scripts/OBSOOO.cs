@@ -249,6 +249,7 @@ public class OBSOOO : MonoBehaviour {
             vel.y = specialSpeed;
         }
         rb.velocity = vel;
+        
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -256,6 +257,13 @@ public class OBSOOO : MonoBehaviour {
         if (col.gameObject.tag == "Platform" && !onGround)
         {
             onGround = true;
+           
+        }
+        if(doingSpecial && col.gameObject.tag == "Player")
+        {
+            doingSpecial = false;
+            attackSpecial = 0;
+            hitCount = 0;
         }
     }
 

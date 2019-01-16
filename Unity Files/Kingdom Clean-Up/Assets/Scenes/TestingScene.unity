@@ -68266,7 +68266,7 @@ Tilemap:
   - first: {x: 1, y: -2, z: 0}
     second:
       m_TileIndex: 14
-      m_TileSpriteIndex: 22
+      m_TileSpriteIndex: 23
       m_TileMatrixIndex: 1
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -68284,7 +68284,7 @@ Tilemap:
   - first: {x: 3, y: -2, z: 0}
     second:
       m_TileIndex: 3
-      m_TileSpriteIndex: 21
+      m_TileSpriteIndex: 22
       m_TileMatrixIndex: 1
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -75351,12 +75351,12 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 53
     m_Data: {fileID: 21300000, guid: 72c99aa768de9984b900ee1ab0a1702c, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: e3b5e6ece726ebb45b1590a6d5df8e21, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: dc7534a164e5fcc4e9c12978d6fb1c48, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 94
     m_Data: {fileID: 21300000, guid: 966b4b33347913b44a479b0d8c54087b, type: 3}
   m_TileMatrixArray:
@@ -80428,36 +80428,6 @@ Prefab:
     - target: {fileID: 4200679053849870, guid: c008b36a9e039574cbb9caa9b32e8ac6, type: 2}
       propertyPath: m_RootOrder
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 212152763885082436, guid: c008b36a9e039574cbb9caa9b32e8ac6,
-        type: 2}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 50562500313674334, guid: c008b36a9e039574cbb9caa9b32e8ac6,
-        type: 2}
-      propertyPath: m_Mass
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 50562500313674334, guid: c008b36a9e039574cbb9caa9b32e8ac6,
-        type: 2}
-      propertyPath: m_UseAutoMass
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212152763885082436, guid: c008b36a9e039574cbb9caa9b32e8ac6,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: cae60af460d87664194bf4560b172860,
-        type: 3}
-    - target: {fileID: 50562500313674334, guid: c008b36a9e039574cbb9caa9b32e8ac6,
-        type: 2}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: d93c4cd1557d9654a8a8172c19978ca0, type: 2}
-    - target: {fileID: 1788341133676570, guid: c008b36a9e039574cbb9caa9b32e8ac6, type: 2}
-      propertyPath: m_Name
-      value: w
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c008b36a9e039574cbb9caa9b32e8ac6, type: 2}
