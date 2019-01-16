@@ -16,13 +16,13 @@ M1 - Place Slime
 M2 - Throw Slime
 
 Controller Controls
-Bumpers Cycles
-LT: Distance/Aim of Thrown Slime
-RT: Place Slime
+Bumpers: Cycle tools
+LT: 
+RT: 
 A: Jump
 X: Mop Attack
 Y: Interact/Clean
-B: Throw Slime
+B: 
 Start: Menu/Pause
 
 Slimes and Their Abilities:
