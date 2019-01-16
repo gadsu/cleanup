@@ -224,6 +224,8 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Force: " + force + "rby: " + rb.velocity.y);
         //an.SetFloat("Speed", Mathf.Abs(force));
 
+
+
         if (canMove)
         {
             if (force > 0 && !facingRight /*&& onGround*/)
@@ -256,7 +258,21 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-          
+            if ((Input.GetAxis("Horizontal")) == 0)
+            {
+                if (facingRight)
+                {
+                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+                        an.Play("idle");
+                }
+                else
+                {
+                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("idleLeft"))
+                        an.Play("idleLeft");
+                }
+            }
+
+
         }
     }
     public void jump()
@@ -307,6 +323,23 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+
+    //bool isRunningAnimation()
+    //{
+    //    if (an.GetCurrentAnimatorStateInfo(0).IsName("runRight") ||
+    //        an.GetCurrentAnimatorStateInfo(0).IsName("runLeft"))
+    //    {
+    //        an.SetBool("Running", true);
+    //        return true;
+    //    }
+    //    else
+    //    {
+    //        an.SetBool("Running", false);
+    //        return false;
+
+    //    }
+    //}
+
     void Flip()
     {
         facingRight = !facingRight;
