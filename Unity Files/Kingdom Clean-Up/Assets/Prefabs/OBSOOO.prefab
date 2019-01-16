@@ -198,6 +198,7 @@ MonoBehaviour:
   YPosFreeze: 64
   basicSpeed: 15
   specialSpeed: 31
+  pauseTime: 1
 --- !u!212 &212483728879703542
 SpriteRenderer:
   m_ObjectHideFlags: 1
