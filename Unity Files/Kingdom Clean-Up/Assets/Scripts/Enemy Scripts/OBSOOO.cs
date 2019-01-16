@@ -239,7 +239,7 @@ public class OBSOOO : MonoBehaviour {
         rb.velocity = vel;
     }
 
-    private void OnCollisionStay2D(Collision2D col)
+    private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Platform" && !onGround)
         {
