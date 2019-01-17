@@ -37,6 +37,9 @@ public class PlayerState : MonoBehaviour {
     [Tooltip("Frame the player was damaged on")]
     public float damageFrame;
 
+    public GameObject CleanProgressBar;
+    public int groundSlimeMax;
+    public int groundSlimeCleaned;
     public bool sceneLoaded;
 
     GameObject player;
@@ -73,7 +76,7 @@ public class PlayerState : MonoBehaviour {
             setSlimeMeterImage(blueSlimeMeter, blueChildren);
             //Debug.Log("<color=blue>BlueSlimeVal:</color> " + blueSlimeMeter);//tells the debug log that blue slime was added to the slime meter
         }
-
+        CountGroundSlime();
     }
 
     //starting logic for switching the image when slime val gets to certain points
@@ -143,6 +146,8 @@ public class PlayerState : MonoBehaviour {
     void Start () {
         damageFrame = invulnTime;
         sceneLoaded = false;
+        groundSlimeCleaned = 0;
+        groundSlimeMax = 0;
     }
 	
     public void loadScene()
@@ -161,8 +166,25 @@ public class PlayerState : MonoBehaviour {
                 blueChildren.Add(blueMeter.transform.Find(i.ToString()).gameObject);
             }
         }
-
+        CleanProgressBar = GameObject.Find("CleanProgress");
+        CountGroundSlime();
         player = GameObject.Find("Player");
+    }
+
+    public void CountGroundSlime()
+    {
+        List<GameObject> groundSlimes = GameObject.FindGameObjectsWithTag("slimeObject").ToList<GameObject>();
+        if (groundSlimeMax == 0 || groundSlimes.Count > groundSlimeMax)
+        {
+            groundSlimeMax = groundSlimes.Count;
+        }
+        else if(groundSlimes.Count < groundSlimeMax)
+        {
+            groundSlimeCleaned = groundSlimeMax - groundSlimes.Count;
+        }
+
+        CleanProgressBar.GetComponent<Slider>().value = (groundSlimeCleaned / groundSlimeMax) * 100;
+        CleanProgressBar.GetComponentInChildren<Text>().text = CleanProgressBar.GetComponent<Slider>().value.ToString() + "%";
     }
 
     public void disableSlimeMeters(List<GameObject> meter)

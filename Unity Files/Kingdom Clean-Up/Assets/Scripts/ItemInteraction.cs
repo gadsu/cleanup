@@ -87,7 +87,7 @@ public class ItemInteraction : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D other)
     {
-        
+        //have slime decay?
         
         //Debug.Log("TOUCHING " + other.gameObject.name);
         if (gameObject.CompareTag("slimeObject") && other.CompareTag("Player"))
