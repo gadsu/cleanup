@@ -262,12 +262,12 @@ public class PlayerController : MonoBehaviour
             {
                 if (facingRight)
                 {
-                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("idle") && !isJumpAnimation())
                         an.Play("idle");
                 }
                 else
                 {
-                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("idleLeft"))
+                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("idleLeft") && !isJumpAnimation())
                         an.Play("idleLeft");
                 }
             }
@@ -307,23 +307,28 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-
-    bool isJumpAnimation()
+    
+    public bool isJumpAnimation()
     {
-        if (an.GetCurrentAnimatorStateInfo(0).IsName("jumpRight") ||
+        
+        if (
+            an.GetCurrentAnimatorStateInfo(0).IsName("jumpRight") ||
             an.GetCurrentAnimatorStateInfo(0).IsName("jumpLeft")  ||
             an.GetCurrentAnimatorStateInfo(0).IsName("inAirRight")||
-            an.GetCurrentAnimatorStateInfo(0).IsName("inAirLeft"))
+            an.GetCurrentAnimatorStateInfo(0).IsName("inAirLeft")
+            )
         {
+            Debug.Log("isJump");
             return true;
         }
         else
         {
+            Debug.Log("!isJump");
             return false;
 
         }
     }
-
+    
     //bool isRunningAnimation()
     //{
     //    if (an.GetCurrentAnimatorStateInfo(0).IsName("runRight") ||
