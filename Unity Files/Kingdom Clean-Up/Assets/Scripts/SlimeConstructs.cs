@@ -94,7 +94,7 @@ public class SlimeConstructs : MonoBehaviour {
     }
     public void freezePlayer()
     {
-        playerRB.constraints = RigidbodyConstraints2D.FreezePosition; //when player hits wall FREEZE THEM
+        playerRB.constraints = RigidbodyConstraints2D.FreezeAll; //when player hits wall FREEZE THEM
         isFrozen = true;
 
     }
