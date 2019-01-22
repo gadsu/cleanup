@@ -196,8 +196,9 @@ public class PlayerState : MonoBehaviour {
             groundSlimeCleaned = groundSlimeMax - groundSlimes.Count;
         }
 
-        //CleanProgressBar.GetComponent<Slider>().value = (groundSlimeCleaned / groundSlimeMax) * 100;
-        //CleanProgressBar.GetComponentInChildren<Text>().text = CleanProgressBar.GetComponent<Slider>().value.ToString() + "%";
+        //Dont Work?
+        CleanProgressBar.GetComponent<Slider>().value = (groundSlimeCleaned / groundSlimeMax) * 100;
+        CleanProgressBar.GetComponentInChildren<Text>().text = CleanProgressBar.GetComponent<Slider>().value.ToString() + "%";
     }
 
     public void disableSlimeMeters(List<GameObject> meter)
