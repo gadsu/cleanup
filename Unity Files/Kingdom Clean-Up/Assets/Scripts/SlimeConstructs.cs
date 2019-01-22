@@ -87,11 +87,7 @@ public class SlimeConstructs : MonoBehaviour {
     {
         if(col.gameObject.tag == "Player" )
         {
-<<<<<<< HEAD
             if (GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().greenSlimeMeter >= 10)
-=======
-            if (GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerController>().doubleJump)//this if is to see if you can double jump - Carl
->>>>>>> b84447605edd6e8f73780d81c9c668ea4ed4444c
             {
                 playerRB = col.gameObject.GetComponent<Rigidbody2D>();
                 player = col.gameObject;
