@@ -1,0 +1,18 @@
+Ideas made on 11/29:
+Rock 'n Roll (temp name)
+- Armadillo like
+- Rocks for armored shell
+- Rolls at player as basic attack (1 heart of damage)
+- Supposed to use blue slime to make it roll into the water which damages it
+	- As R'nR climbs out of the water, blue slime with splash onto the sides of the 	  	  stage to provide players more blue slime if they need it
+- Special attack (triggers after 3 damage)
+	- R'nR rolls in place causing rocks to fly off dealing 1/2 heart of damage to 	  the player per hit
+- "Stance" change (triggers after 6 damage and the 2nd special attack)
+	- R'nR now has less rocks which allows him to charge a little faster (deals 1 	  heart of damage if hit)
+	- R'nR no longer runs off of the stage, but is now hitable with the mop
+
+Ideas made on 11/30 while talking with Nick:
+- Mixture of hardened slime and rocks are what make up the shell
+- incorportate potential period of no movement that would allow you to chip rocks off of R'nR
+	- This could work in place or alongside rocks falling off as R'nR falls in water
+

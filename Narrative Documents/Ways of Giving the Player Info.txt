@@ -1,0 +1,29 @@
+﻿1. NPC - Old Man, Rescuees - Used to give info as to what happened/What is happening
+2. World Art/Level Design - Used to give out info as to what happened
+3. Thought Bubbles - Used for Tutorial Information
+
+
+
+
+Examples:
+NPC Dialogue:
+You’re finally back, <Name>!
+The kingdom of Katharis is in a sticky situation.
+Get your mop and get to work!
+
+
+World Art/Level Design:
+World will be slimed up which will represent the slimes having taken over and what kind of slimes are in the area.
+
+
+Thought Bubbles:
+*Upon seeing slime on the ground for the first time*
+Displays an image of the mop mopping up the slime with the y button being pressed.
+
+*At the last obstacle of tutorial level*
+Display bubble showing the slime being thrown onto the surface of the map, also displaying the buttons needed to do so. (LT and B)
+
+*upon seeing a slime for the first time*
+Stops game to display the bubble
+shows MC 'cleaning' the slime with the mop with the x button being pressed
+

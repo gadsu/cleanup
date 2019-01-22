@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Paused
+  - UI
+  - Platform
+  - slimeObject
+  - slimeInteractable
+  - Enemy
+  - Spawner
+  - Boss
+  - InvisObject
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Platform
+  - Viscera
+  - Objects
+  - throwReticle
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Viscera
+    uniqueID: 1833632159
+    locked: 0
+  - name: Objects
+    uniqueID: 3532061751
+    locked: 0

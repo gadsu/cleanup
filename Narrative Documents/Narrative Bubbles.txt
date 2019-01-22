@@ -1,0 +1,28 @@
+Narrative Bubbles: 
+
+Tutorial:
+
+*Upon seeing slime on the ground for the first time*
+Displays an image of the mop mopping up the slime with the y button being pressed.
+
+*At the last obstacle of tutorial level*
+Display bubble showing the slime being thrown onto the surface of the map, also displaying the buttons needed to do so. (LT and B)
+
+*upon seeing a slime for the first time*
+Stops game to display the bubble
+shows MC 'cleaning' the slime with the mop with the x button being pressed
+
+*upon starting level*
+Shows MC move with the wasd buttons being pushed (or analog stick being tilted) while he moves in the respective directions
+
+*upon picking up mop*
+Shows picture of a sparkling kingdom. But then bucket with a quesion mark.
+
+*upon picking up the bucket*
+Thumbs up with a picture of sparkling kingdom.
+
+*upon seeing slime on the wall for the first time*
+Shows MC stuck to wall before jumping off of the wall
+
+*upon getting to the old man*
+Show MC walking up to NPC with the y button being pressed and some example dialouge showing up

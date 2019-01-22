@@ -1,0 +1,11 @@
+1.	To fix the animator bug you have to add a child Empty GameObject to any game object with a rigid body that needs to be animated 
+
+2.	Put your sprite renderer and Animator on the child gameObject
+
+3.	make sure to reference your animator and sprite renderer with GetComponetInChildren<>
+
+4.	If you do this to a Prefab it will break and have to be re added to the prefabs folder and any script that was refrenceing the prefab I.E. Spawners
+
+Ex 1)  an = GetComponentInChildren<Animator>();
+
+Ex 2) GetComponentInChildren<SpriteRenderer>().color = cgreen;

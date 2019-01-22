@@ -1,0 +1,12 @@
+1newGame = false
+1playerName = Brooke
+1appearance = Default
+2newGame = false
+2playerName = Carol
+2appearance = Default
+3newGame = false
+3playerName = Rachel
+3appearance = Default
+4newGame = true
+4playerName = New Save
+4appearance = Default
