@@ -87,12 +87,12 @@ public class SlimeConstructs : MonoBehaviour {
     {
         if(col.gameObject.tag == "Player")
         {
-            //if (GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerController>().doubleJump)
-            //{
+            if (GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerController>().doubleJump)//this if is to see if you can double jump - Carl
+            {
                 playerRB = col.gameObject.GetComponent<Rigidbody2D>();
                 player = col.gameObject;
                 freezePlayer();
-            //}
+            }
         }
     }
     public void freezePlayer()
