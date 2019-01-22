@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
              onGround = true;
                         Debug.Log("onground = true");
          } */
-        if (col.CompareTag("slimeInteractable"))
+        if (col.CompareTag("slimeInteractable") && GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().useSlime())
         {
             Debug.Log("Hit a slime wall");
             doubleJump = true;
@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down * playerSize);
             if (hit.collider != null)
             {
-                Debug.Log(hit.collider.gameObject.tag + hit.collider.gameObject.tag.ToString());
+                //Debug.Log(hit.collider.gameObject.tag + hit.collider.gameObject.tag.ToString());
                 if (hit.collider.gameObject.tag == "Platform")
                 {
                     //Debug.Log(hit.collider.Distance(GetComponent<Collider2D>()).distance);
@@ -304,7 +304,6 @@ public class PlayerController : MonoBehaviour
             {
                 an.Play("jumpLeft");
             }
-
         }
     }
     
@@ -318,14 +317,11 @@ public class PlayerController : MonoBehaviour
             an.GetCurrentAnimatorStateInfo(0).IsName("inAirLeft")
             )
         {
-            Debug.Log("isJump");
             return true;
         }
         else
         {
-            Debug.Log("!isJump");
             return false;
-
         }
     }
     

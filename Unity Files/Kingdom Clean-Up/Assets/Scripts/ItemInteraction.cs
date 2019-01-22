@@ -116,7 +116,7 @@ public class ItemInteraction : MonoBehaviour {
                     //else if (color == "blue")
                     //    other.GetComponent<PlayerState>().addSlime(10, "blue");
                 }
-                Debug.Log("IS DESTROY");
+                //Debug.Log("IS DESTROY");
                 Destroy(gameObject);
             }
         }

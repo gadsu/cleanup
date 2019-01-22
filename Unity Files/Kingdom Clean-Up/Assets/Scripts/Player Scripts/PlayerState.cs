@@ -78,6 +78,19 @@ public class PlayerState : MonoBehaviour {
         }
         CountGroundSlime();
     }
+    public bool useSlime()
+    {
+        if(greenSlimeMeter >= 10 )
+        {
+            greenSlimeMeter -= 10;
+            setSlimeMeterImage(greenSlimeMeter, greenChildren);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     //starting logic for switching the image when slime val gets to certain points
 
@@ -183,8 +196,8 @@ public class PlayerState : MonoBehaviour {
             groundSlimeCleaned = groundSlimeMax - groundSlimes.Count;
         }
 
-        CleanProgressBar.GetComponent<Slider>().value = (groundSlimeCleaned / groundSlimeMax) * 100;
-        CleanProgressBar.GetComponentInChildren<Text>().text = CleanProgressBar.GetComponent<Slider>().value.ToString() + "%";
+        //CleanProgressBar.GetComponent<Slider>().value = (groundSlimeCleaned / groundSlimeMax) * 100;
+        //CleanProgressBar.GetComponentInChildren<Text>().text = CleanProgressBar.GetComponent<Slider>().value.ToString() + "%";
     }
 
     public void disableSlimeMeters(List<GameObject> meter)
