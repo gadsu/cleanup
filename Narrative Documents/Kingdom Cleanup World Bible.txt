@@ -8,13 +8,13 @@ The tone of the world is portrayed through its slightly cartoonish art style, it
 and the fun jokes and puns that are used throughout the game.
 
 -         Themes
-	 The world of Katharis has themes centered around being cheerful and cute.
+	 The world of Kingdom Cleanup has themes centered around being cheerful and cute.
  With adorable slime enemies and a pleasant enviornment art style.
 
 -         Geography, and Wildlife
 	Geographically, the world we are designing is very similar to that of Earth.
-We have plains, forests, mountains, and oceans. The biggest difference comes in the way of the creatures that inhabit our world.
-Our world contains fantastic beasts from many stories such as Dragons, Unicorns, and most importantly, Slimes.
+It has plains, forests, mountains, and oceans. The biggest difference comes from the creatures that inhabit the world.
+The world of Kingdom Cleanup contains fantastic beasts from many stories such as Dragons, Unicorns, and most importantly, Slimes.
 
 -         Civilizations
 	Katharis is the kingdom that is going to be the focus of our game.
@@ -36,7 +36,7 @@ or their reason for making the world, if this god did make the world.
 Our world is set in a time similar to that of Earth’s time of kingdoms, kings, and knights.
 People still settle in kingdoms and rely on horses, metal armor, swords, bows, etc. as a means of war.
 There is some technology however that wasn’t around at that point, such as the main characters weapon of choice; 
-the mop and a well made steel bucket.
+the mop, the steel bucket, and things like rubber gloves.
 
 -         History
 	Long ago, when the kingdom of Katharis was formed, it was a small and dirty nation.

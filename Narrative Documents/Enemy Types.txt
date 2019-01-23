@@ -1,9 +1,9 @@
 Slime Enemies:
-- Base Red: Average Speed
-- Base Green: Slow Speed
-- Base Blue: Fast Speed
+- Red Goopa: Average Speed
+- Green Goopa: Slow Speed
+- Blue Goopa: Fast Speed
 
 Possible Enemies:
-- Goop Mother: Spawns the base slimes, and also shares speed/color with the slimes it spawns
+- Goop Mother: Spawns the Goopas, and also shares speed/color with the Goopas it spawns
 
 Not sure what else should go in here, I just know we were talking about having different enemy types so figured there should be a document for it. Will try to keep this updated as we get more ideas nailed down.

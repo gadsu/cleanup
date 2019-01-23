@@ -5,16 +5,15 @@ W - Jump
 E - Interact/Clean
 Space - Mop Attack
 Esc - Pause
-Tab - Swap
-M1 - Place Slime
-M2 - Throw Slime
+Tab - Cycle tools
+Q- Activate/Deactivate Tools
 
 Controller Controls
-Bumpers Cycles
-LT: Distance/Aim of Thrown Slime
-RT: Place Slime
+Bumpers: Cycle tools
+LT: (Cycle Tools left)
+RT: (Cycle Tools right)
 A: Jump
 X: Mop Attack
 Y: Interact/Clean
-B: Throw Slime
+B: Activate/Deactivate tools
 Start: Menu/Pause

@@ -15,8 +15,10 @@ Slime Enemy types
 * Goopa
    * Base slimes, do almost nothing, run into player to deal damage.
 * Bosses
-   * More powerful slimes at the end of the stage, have unique attacks
+   * More powerful slimes at the end of the stage, have unique attacks and unique names.
    * Most, if not all, bosses will have 9 hitpoints. Every 3 attacks the boss will do a powerful move that the player must avoid.
+* Goop Mother
+   * Spawns Goopas
 
 
 Bosses
@@ -33,16 +35,23 @@ Bosses
    * The special attack originates from Barney, starts at the top of the screen and moves down leaving time for the player to get out of the way. (Doesn't go all the way to the bottom, Stops about the bottom of the bottom left/right platforms.)
    * After both sides of the stage have been covered (6 hits) the boss will fall to the ground swinging its arms/tentacles around which deals damage to the player if the player gets hit
 
-*(Possible Third Boss names: Goobert, Goory, Blobert, Goopy, Squishy, Blobby, Goomi, Goomy)
+* Rock 'n Roll (roll/charge deal 1 heart of damage, flying rocks deal 1/2 heart per rock)
+   * Looks like a large blue armadillo whose shell is made up of hardened blue slime and rocks
+   * Base attack is rolling at the player
+   * Use blue slime at the edge of the arena to cause R'nR to roll into the water/blue slime below which deals damage to it (When it climbs out it splashes more blue slime on the sides of the stage so the player doesnt run out of slime)
+   * Special attack (triggers after 3 damage) R'nR rolls in place causeing rocks to fly off dealing damage to the player per hit
+   * Potential stance change (triggers after 6 damage and 2nd special attack): R'nR now has less rocks which allows him to charge faster (no longer runs off the stage, but is hittable with mop)
+   * Potential period of no movement to allow the player to chip rocks off of R'nR which might speed up when the stance change happens?
 
 Stages
 1. Tutorial level
    1. The true OBSOOO location
-   2. Very simple
+   2. Very simple navigation
 1. Country
    1. Area surrounding the Kingdom
    2. Boss is Barney
 1. Kingdom
    1. Immediately within the perimeter of the wall, leading towards the Castle/Keep
+   2. Boss is R'nR (Rock 'n Roll)
 1. Throne Room
    1. After getting into the Castle/Keep, ends with Throne Room, final boss fight.
