@@ -30,8 +30,21 @@ Dec. 12
 Jan. 7
 •	Classes Begin
 •	Live
-March 2nd.
-•	Tiles finished up for each stage
+Jan. 25
+• 	Idle Animation implimented
+•	Cleaning animation Implimented
+• 	Audio implemented background music "Crunk Knight"
+Jan. 29 
+•	legislature thingy
+•	Updated Documents
+•	Updated trailer
+•	Updated Tile thingalingalingies??????
+Feb. 27
+•	Green Slime tool working
+•	Tutorial level redesigned
+•	First level redesign
+Mar. 2nd
+•	Tiles complete for level 2
 •	Background assets finished and implemented for the first 2 stages
 •	Level 2 mostly complete
 •	Player animations completed
@@ -40,9 +53,8 @@ March 2nd.
 •	Implement base music for the levels
 •	Implement sound effects for most actions.
 •	Smoothed out movement controls
-•	Slime throw-able
 •	Blue/Green slime working mechanically 
-All Fools day
+All Fools day (April 6)
 •	Nice build
 •	2 full levels plus tutorial
 •	3rd level outline

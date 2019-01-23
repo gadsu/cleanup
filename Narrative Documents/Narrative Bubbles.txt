@@ -15,6 +15,15 @@ Show MC walking up to NPC with the y button being pressed and some example dialo
 Shows picture of a sparkling kingdom. But then bucket with a quesion mark.
 "Finally, a mop, now all I need is a bucket and I can get to work cleaning up this mess."
 
+*upon starting level*
+Shows MC move with the wasd buttons being pushed (or analog stick being tilted) while he moves in the respective directions
+
+*upon getting to the old man*
+Show MC walking up to NPC with the y button being pressed and some example dialouge showing up
+
+*upon picking up mop*
+Shows picture of a sparkling kingdom. But then bucket with a quesion mark.
+
 *Upon seeing slime on the ground for the first time*
 Displays an image of the mop mopping up the slime with the y button being pressed.
 "I wonder if *insert button here* will allow me to clean this up too."

@@ -30,6 +30,8 @@ public class OBSOOO : MonoBehaviour {
     public float basicSpeed = 30f;
     [Tooltip("Y Jump Speed")]
     public float specialSpeed = 40f;
+    [Tooltip("Amount of time paused between each jump")]
+    public float pauseTime = 1.0f;
     GameObject[] points;
     GameObject target = null;  //Will be the player
     Rigidbody2D rb;
@@ -37,6 +39,7 @@ public class OBSOOO : MonoBehaviour {
     Animator an;
     GameObject leftPoint;
     GameObject rightPoint;
+    float paused = 0;
     float rightX;
     float leftX;
     bool facingRight;
@@ -104,17 +107,26 @@ public class OBSOOO : MonoBehaviour {
         }
         if (hitCount < 3 && !doingSpecial) //Normal movement
         {
-            if (jumpCount < JTIME) 
+            if (paused < pauseTime)
             {
-                Vector3 playerPos = target.transform.position;
-
-                basicJump(playerPos);
-                jumpCount++;
+                paused = paused + Time.deltaTime;
             }
             else
             {
-                bigJump();
-                jumpCount = 0;
+                paused = 0;
+
+                if (jumpCount < JTIME)
+                {
+                    Vector3 playerPos = target.transform.position;
+
+                    basicJump(playerPos);
+                    jumpCount++;
+                }
+                else
+                {
+                    bigJump();
+                    jumpCount = 0;
+                }
             }
         }
 
@@ -237,13 +249,21 @@ public class OBSOOO : MonoBehaviour {
             vel.y = specialSpeed;
         }
         rb.velocity = vel;
+        
     }
 
-    private void OnCollisionStay2D(Collision2D col)
+    private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Platform" && !onGround)
         {
             onGround = true;
+           
+        }
+        if(doingSpecial && col.gameObject.tag == "Player")
+        {
+            doingSpecial = false;
+            attackSpecial = 0;
+            hitCount = 0;
         }
     }
 

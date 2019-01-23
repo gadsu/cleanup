@@ -17,7 +17,7 @@ public class SlimeConstructs : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-
+        //green = 
     }
 	
 	// Update is called once per frame
@@ -85,16 +85,19 @@ public class SlimeConstructs : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if(col.gameObject.tag == "Player")
+        if(col.gameObject.tag == "Player" )
         {
-            playerRB = col.gameObject.GetComponent<Rigidbody2D>();
-            player = col.gameObject;
-            freezePlayer();
+            if (GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().greenSlimeMeter >= 10)
+            {
+                playerRB = col.gameObject.GetComponent<Rigidbody2D>();
+                player = col.gameObject;
+                freezePlayer();
+            }
         }
     }
     public void freezePlayer()
     {
-        playerRB.constraints = RigidbodyConstraints2D.FreezePosition; //when player hits wall FREEZE THEM
+        playerRB.constraints = RigidbodyConstraints2D.FreezeAll; //when player hits wall FREEZE THEM
         isFrozen = true;
 
     }

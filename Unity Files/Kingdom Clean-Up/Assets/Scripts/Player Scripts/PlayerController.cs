@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
              onGround = true;
                         Debug.Log("onground = true");
          } */
-        if (col.CompareTag("slimeInteractable"))
+        if (col.CompareTag("slimeInteractable") && GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().useSlime())
         {
             Debug.Log("Hit a slime wall");
             doubleJump = true;
@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down * playerSize);
             if (hit.collider != null)
             {
-                Debug.Log(hit.collider.gameObject.tag + hit.collider.gameObject.tag.ToString());
+                //Debug.Log(hit.collider.gameObject.tag + hit.collider.gameObject.tag.ToString());
                 if (hit.collider.gameObject.tag == "Platform")
                 {
                     //Debug.Log(hit.collider.Distance(GetComponent<Collider2D>()).distance);
@@ -183,36 +183,6 @@ public class PlayerController : MonoBehaviour
     {
         jump(); //made own function as we can call it in other places
 
-        ////Vertical Movement
-        //if (Input.GetButtonDown("Jump") && onGround)// && onGround
-        //{
-        //    rb.velocity = new Vector2(rb.velocity.x, charJumpSpeed);
-        //    onGround = false;
-        //    jumpFrame = Time.time;
-        //    if (facingRight)
-        //    { 
-        //        an.Play("jumpRight");
-        //    }
-        //    else
-        //    {
-        //        an.Play("jumpLeft");
-        //    }
-        //}
-        //else if (Input.GetButtonDown("Jump") && !onGround && doubleJump)
-        //{
-        //    rb.velocity = new Vector2(-rb.velocity.x, charJumpSpeed);
-        //    doubleJump = false;
-        //    if (facingRight)
-        //    {
-        //        an.Play("jumpRight");
-        //    }
-        //    else
-        //    {
-        //        an.Play("jumpLeft");
-        //    }
-
-        //}
-
         //checking for basic button presses - all button input should be here
         if (Input.GetButtonDown("Attack"))
         {
@@ -223,6 +193,8 @@ public class PlayerController : MonoBehaviour
         float force = Input.GetAxis("Horizontal");
         //Debug.Log("Force: " + force + "rby: " + rb.velocity.y);
         //an.SetFloat("Speed", Mathf.Abs(force));
+
+
 
         if (canMove)
         {
@@ -256,7 +228,21 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-          
+            if ((Input.GetAxis("Horizontal")) == 0)
+            {
+                if (facingRight)
+                {
+                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("idle") && !isJumpAnimation())
+                        an.Play("idle");
+                }
+                else
+                {
+                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("idleLeft") && !isJumpAnimation())
+                        an.Play("idleLeft");
+                }
+            }
+
+
         }
     }
     public void jump()
@@ -288,25 +274,28 @@ public class PlayerController : MonoBehaviour
             {
                 an.Play("jumpLeft");
             }
-
         }
     }
-
-    bool isJumpAnimation()
+    
+    public bool isJumpAnimation()
     {
-        if (an.GetCurrentAnimatorStateInfo(0).IsName("jumpRight") ||
+        
+        if (
+            an.GetCurrentAnimatorStateInfo(0).IsName("jumpRight") ||
             an.GetCurrentAnimatorStateInfo(0).IsName("jumpLeft")  ||
             an.GetCurrentAnimatorStateInfo(0).IsName("inAirRight")||
-            an.GetCurrentAnimatorStateInfo(0).IsName("inAirLeft"))
+            an.GetCurrentAnimatorStateInfo(0).IsName("inAirLeft")
+            )
         {
             return true;
         }
         else
         {
             return false;
-
         }
     }
+    
+
     void Flip()
     {
         facingRight = !facingRight;

@@ -196,8 +196,9 @@ MonoBehaviour:
   PTIME: 3
   JTIME: 4
   YPosFreeze: 64
-  basicSpeed: 15
+  basicSpeed: 20
   specialSpeed: 31
+  pauseTime: 1
 --- !u!212 &212483728879703542
 SpriteRenderer:
   m_ObjectHideFlags: 1

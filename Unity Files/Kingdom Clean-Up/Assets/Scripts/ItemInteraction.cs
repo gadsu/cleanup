@@ -87,7 +87,7 @@ public class ItemInteraction : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D other)
     {
-        
+        //have slime decay?
         
         //Debug.Log("TOUCHING " + other.gameObject.name);
         if (gameObject.CompareTag("slimeObject") && other.CompareTag("Player"))
@@ -116,7 +116,7 @@ public class ItemInteraction : MonoBehaviour {
                     //else if (color == "blue")
                     //    other.GetComponent<PlayerState>().addSlime(10, "blue");
                 }
-                Debug.Log("IS DESTROY");
+                //Debug.Log("IS DESTROY");
                 Destroy(gameObject);
             }
         }

@@ -65,19 +65,22 @@ public class AIFollow : MonoBehaviour
         distance = Vector2.Distance(target.transform.position, transform.position);   //Calculate the distance between the player and yourself
         if (playerFound)
         {
-            MoveTowardsPoint(target.transform.position);
             if (LostPlayerTimer <= 0) //If the player has been out of range for too long
             {
                 playerFound = false;
                 MoveTowardsPoint(targetArr[PatrolIndex].position);
             }
-            else if (distance > 30f)  //Decrements LostPlayerTimer if the player is too far away
+            else
             {
-                LostPlayerTimer -= Time.deltaTime;
-            }
-            else  // Keep updating the timer since the player is close enough
-            {
-                LostPlayerTimer = PTIME;
+                MoveTowardsPoint(target.transform.position);
+                if (distance > 30f)  //Decrements LostPlayerTimer if the player is too far away
+                {
+                    LostPlayerTimer -= Time.deltaTime;
+                }
+                else  // Keep updating the timer since the player is close enough
+                {
+                    LostPlayerTimer = PTIME;
+                }
             }
         }
         else
