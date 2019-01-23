@@ -33,18 +33,15 @@ Jan. 7
 Jan. 25
 • 	Idle Animation implimented
 •	Cleaning animation Implimented
-• 	Audio implemented background music "Crunk Knight"
+• 	Audio implemented background music "crunk knight"
+• 
 Jan. 29 
 •	legislature thingy
 •	Updated Documents
 •	Updated trailer
-•	Updated Tile thingalingalingies??????
-Feb. 27
-•	Green Slime tool working
-•	Tutorial level redesigned
-•	First level redesign
+•	Updated Tiles surfaces
 Mar. 2nd
-•	Tiles complete for level 2
+•	Tiles finished up for each stage
 •	Background assets finished and implemented for the first 2 stages
 •	Level 2 mostly complete
 •	Player animations completed
@@ -55,7 +52,7 @@ Mar. 2nd
 •	Smoothed out movement controls
 •	Blue/Green slime working mechanically 
 All Fools day (April 6)
-•	Nice build
+•	working build
 •	2 full levels plus tutorial
 •	3rd level outline
 •	Boss plan for each stage in detail
