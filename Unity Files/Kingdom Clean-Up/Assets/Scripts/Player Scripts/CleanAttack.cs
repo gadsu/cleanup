@@ -24,7 +24,7 @@ public class CleanAttack : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D col)  
     {
-        Debug.Log(col.gameObject.tag.ToString());
+        //Debug.Log(col.gameObject.tag.ToString());
         if (col.gameObject.tag == "Enemy" || col.gameObject.tag == "Boss")  //If you are hitting an enemy
         {
             col.gameObject.GetComponent<EnemyState>().takeDamage(mopDamage); //
