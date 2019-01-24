@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down * playerSize);
             if (hit.collider != null)
             {
-                Debug.Log(hit.collider.gameObject.tag + hit.collider.gameObject.tag.ToString());
+               // Debug.Log(hit.collider.gameObject.tag + hit.collider.gameObject.tag.ToString());
                 if (hit.collider.gameObject.tag == "Platform")
                 {
                     //Debug.Log(hit.collider.Distance(GetComponent<Collider2D>()).distance);

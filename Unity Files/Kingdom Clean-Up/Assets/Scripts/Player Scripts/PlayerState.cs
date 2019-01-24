@@ -76,6 +76,7 @@ public class PlayerState : MonoBehaviour {
             setSlimeMeterImage(blueSlimeMeter, blueChildren);
             //Debug.Log("<color=blue>BlueSlimeVal:</color> " + blueSlimeMeter);//tells the debug log that blue slime was added to the slime meter
         }
+
         CountGroundSlime();
     }
     public bool useSlime()
@@ -187,18 +188,18 @@ public class PlayerState : MonoBehaviour {
     public void CountGroundSlime()
     {
         List<GameObject> groundSlimes = GameObject.FindGameObjectsWithTag("slimeObject").ToList<GameObject>();
+        Debug.Log("Slime Count: " + groundSlimes.Count);
         if (groundSlimeMax == 0 || groundSlimes.Count > groundSlimeMax)
         {
             groundSlimeMax = groundSlimes.Count;
         }
-        else if(groundSlimes.Count < groundSlimeMax)
-        {
-            groundSlimeCleaned = groundSlimeMax - groundSlimes.Count;
-        }
 
         //Dont Work?
-        CleanProgressBar.GetComponent<Slider>().value = (groundSlimeCleaned / groundSlimeMax) * 100;
+        float slimeCleaned = ((groundSlimeCleaned / groundSlimeMax) * 100);
+        CleanProgressBar.GetComponent<Slider>().value = slimeCleaned;
         CleanProgressBar.GetComponentInChildren<Text>().text = CleanProgressBar.GetComponent<Slider>().value.ToString() + "%";
+
+        Debug.Log(groundSlimeCleaned + " " + groundSlimeMax + " " + slimeCleaned);
     }
 
     public void disableSlimeMeters(List<GameObject> meter)
