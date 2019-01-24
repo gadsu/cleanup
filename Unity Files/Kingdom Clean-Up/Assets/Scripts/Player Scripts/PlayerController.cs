@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     public float playerSize = 5000f;
     [Tooltip("Is player touching ground?")]
     public bool onGround;
+    [Tooltip("How long the player is off the ground")]
+    public float groundTimer;
     [Tooltip("Is player facing right?")]
     public bool facingRight;
     [Tooltip("Can player doublejump?")]
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip("How far you go on knockback")]
     public float knockbackX = 40f;
 
+    bool startTimer;
     float jumpFrame;
     float force;
 
@@ -86,6 +89,8 @@ public class PlayerController : MonoBehaviour
         Vector3 mypos = transform.position;
         if (col.gameObject.tag == "Platform")
         {
+            groundTimer = 0f;
+            startTimer = false;
             Debug.DrawRay(transform.position, Vector2.down * playerSize, Color.magenta);
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down * playerSize);
             if (hit.collider != null)
@@ -124,6 +129,8 @@ public class PlayerController : MonoBehaviour
     {
         if(col.gameObject.tag == "Platform" && !onGround)
         {
+            groundTimer = 0f;
+            startTimer = false;
             onGround = true;
             doubleJump = false;
             canMove = true;
@@ -135,7 +142,7 @@ public class PlayerController : MonoBehaviour
 
         if (col.gameObject.tag == "Platform" && onGround)
         {
-            onGround = false;
+            startTimer = true;
         }
 
     }
@@ -181,6 +188,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        groundCheck();
         jump(); //made own function as we can call it in other places
 
         //checking for basic button presses - all button input should be here
@@ -244,6 +252,15 @@ public class PlayerController : MonoBehaviour
 
 
         }
+    }
+
+    private void groundCheck()
+    {
+        if (startTimer)
+            groundTimer += Time.deltaTime;
+
+        if (groundTimer >= 0.75f)
+            onGround = false;
     }
     public void jump()
     {
