@@ -9,7 +9,7 @@ Slime is cleaned up and held within a bucket that works as a form of inventory f
 Tools:
 In his progress of cleaning the kingdom, MC will come across specialized tools which utilize the various slimes in ways that will allow him to progress through the levels.
 Tools so far:
-Green Glove: Allows the player to scale walls.
+Green Glove: Allows the player to jump off of walls.
 Blue Boots: Allows the player to increase speed and create a slick surface for a short time that enemies and items can slide on.
 (Red tool is Red Rag? -Ian)
 Slime Ratios:
@@ -21,7 +21,7 @@ Enemy Slime:
 Gain 2
 Glove Usage:
 Boots Usage:
-(I assume we are going to use 1 per something, im not sure if we want that something to be tiles moved, or something else though.)
+(Still need to figure out a slime usage for these)
 Hammer Usage:
 Use 1 per block
 
@@ -37,4 +37,3 @@ You are at the top of a hill, and at the bottom there is a ramp and a gap that i
 
 Innate Slime:
 All slimes when found on the stage will all be in a gelatinous form spread across the floor, walls, and ceiling.
-It will be helpful to note that green and blue slimes still maintain their respective properties when naturally spread, however the red slimes are not and are instead just a gelatinous substance
