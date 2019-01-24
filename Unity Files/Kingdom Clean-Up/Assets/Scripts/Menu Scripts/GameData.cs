@@ -64,17 +64,17 @@ public class GameData : MonoBehaviour {
         ps.playerHealth = 100f;
 
         ps.greenSlimeMeter = 0;
-        ps.greenMeter.GetComponent<Slider>().value = 0;
+//        ps.greenMeter.GetComponent<Slider>().value = 0;
         ps.setSlimeMeterImage(0, ps.greenChildren);
         ps.greenChildren.Clear();
 
         ps.redSlimeMeter = 0;
-        ps.redMeter.GetComponent<Slider>().value = 0;
+//        ps.redMeter.GetComponent<Slider>().value = 0;
         ps.setSlimeMeterImage(0, ps.redChildren);
         ps.greenChildren.Clear();
 
         ps.blueSlimeMeter = 0;
-        ps.blueMeter.GetComponent<Slider>().value = 0;
+//        ps.blueMeter.GetComponent<Slider>().value = 0;
         ps.setSlimeMeterImage(0, ps.blueChildren);
         ps.greenChildren.Clear();
 
