@@ -55,6 +55,7 @@ public class PlayerState : MonoBehaviour {
 
     public void addSlime(int val, string type)// Adds slime to the slime meter
     {
+        Debug.Log("Getting Slime");
         if ((greenSlimeMeter < maxSlime) && type == "green")//Adds green slime to the slime meter
         {
             greenSlimeMeter = Mathf.Clamp(greenSlimeMeter + val, 0, 100);
@@ -81,6 +82,7 @@ public class PlayerState : MonoBehaviour {
     }
     public bool useSlime()
     {
+        Debug.Log("Using Slime");
         if(greenSlimeMeter >= 10 )
         {
             greenSlimeMeter -= 10;
@@ -97,45 +99,48 @@ public class PlayerState : MonoBehaviour {
 
     public void setSlimeMeterImage(int val, List<GameObject> SlimeMeter)
     {
-        if (val < 25)
+        if (GameObject.Find("greenMeter"))
         {
-            disableSlimeMeters(SlimeMeter);
-            SlimeMeter[0].SetActive(true);
-        }
-        if (val >= 25 && val < 37)
-        {
-            disableSlimeMeters(SlimeMeter);
-            SlimeMeter[1].gameObject.SetActive(true);
-        }
-        if (val >= 37 && val < 50)
-        {
-            disableSlimeMeters(SlimeMeter);
-            SlimeMeter[2].SetActive(true);
-        }
-        if (val >= 50 && val < 62)
-        {
-            disableSlimeMeters(SlimeMeter);
-            SlimeMeter[3].SetActive(true);
-        }
-        if (val >= 62 && val < 75)
-        {
-            disableSlimeMeters(SlimeMeter);
-            SlimeMeter[4].SetActive(true);
-        }
-        if (val >= 75 && val < 87)
-        {
-            disableSlimeMeters(SlimeMeter);
-            SlimeMeter[5].SetActive(true);
-        }
-        if (val >= 87 && val < 100)
-        {
-            disableSlimeMeters(SlimeMeter);
-            SlimeMeter[6].SetActive(true);
-        }
-        if (val >= 100)
-        {
-            disableSlimeMeters(SlimeMeter);
-            SlimeMeter[7].SetActive(true);
+            if (val < 25)
+            {
+                disableSlimeMeters(SlimeMeter);
+                SlimeMeter[0].SetActive(true);
+            }
+            if (val >= 25 && val < 37)
+            {
+                disableSlimeMeters(SlimeMeter);
+                SlimeMeter[1].gameObject.SetActive(true);
+            }
+            if (val >= 37 && val < 50)
+            {
+                disableSlimeMeters(SlimeMeter);
+                SlimeMeter[2].SetActive(true);
+            }
+            if (val >= 50 && val < 62)
+            {
+                disableSlimeMeters(SlimeMeter);
+                SlimeMeter[3].SetActive(true);
+            }
+            if (val >= 62 && val < 75)
+            {
+                disableSlimeMeters(SlimeMeter);
+                SlimeMeter[4].SetActive(true);
+            }
+            if (val >= 75 && val < 87)
+            {
+                disableSlimeMeters(SlimeMeter);
+                SlimeMeter[5].SetActive(true);
+            }
+            if (val >= 87 && val < 100)
+            {
+                disableSlimeMeters(SlimeMeter);
+                SlimeMeter[6].SetActive(true);
+            }
+            if (val >= 100)
+            {
+                disableSlimeMeters(SlimeMeter);
+                SlimeMeter[7].SetActive(true);
+            }
         }
     }
 
@@ -180,6 +185,7 @@ public class PlayerState : MonoBehaviour {
                 blueChildren.Add(blueMeter.transform.Find(i.ToString()).gameObject);
             }
         }
+
         CleanProgressBar = GameObject.Find("CleanProgress");
         CountGroundSlime();
         player = GameObject.Find("Player");

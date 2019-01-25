@@ -65,18 +65,18 @@ public class GameData : MonoBehaviour {
 
         ps.greenSlimeMeter = 0;
 //        ps.greenMeter.GetComponent<Slider>().value = 0;
-        ps.setSlimeMeterImage(0, ps.greenChildren);
+        //ps.setSlimeMeterImage(0, ps.greenChildren);
         ps.greenChildren.Clear();
 
         ps.redSlimeMeter = 0;
 //        ps.redMeter.GetComponent<Slider>().value = 0;
-        ps.setSlimeMeterImage(0, ps.redChildren);
-        ps.greenChildren.Clear();
+        //ps.setSlimeMeterImage(0, ps.redChildren);
+        ps.blueChildren.Clear();
 
         ps.blueSlimeMeter = 0;
 //        ps.blueMeter.GetComponent<Slider>().value = 0;
-        ps.setSlimeMeterImage(0, ps.blueChildren);
-        ps.greenChildren.Clear();
+        //ps.setSlimeMeterImage(0, ps.blueChildren);
+        ps.redChildren.Clear();
 
         ps.sceneLoaded = false;
     }
