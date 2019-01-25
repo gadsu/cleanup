@@ -9,7 +9,7 @@ Slime is cleaned up and held within a bucket that works as a form of inventory f
 Tools:
 In his progress of cleaning the kingdom, MC will come across specialized tools which utilize the various slimes in ways that will allow him to progress through the levels.
 Tools so far:
-Green Glove: Allows the player to jump off of walls.
+Green Glove: Allows the player to latch to, and jump off of walls.
 Blue Boots: Allows the player to increase speed and create a slick surface for a short time that enemies and items can slide on.
 (Red tool is Red Rag? -Ian)
 Slime Ratios:
