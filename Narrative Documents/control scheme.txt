@@ -6,10 +6,13 @@ E - Interact/Clean
 Space - Mop Attack
 Esc - Pause
 Tab - Cycle tools
-Q- Activate/Deactivate Tools
+Q- Activate/Deactivate Tools?
+Right Click: Activate Tools?
+Left Click: Activate Tools?
 
 Controller Controls
-Bumpers: Cycle tools
+LB: Cycle Tools Left
+RB: Cycle Tools Right
 LT: (Cycle Tools left)
 RT: (Cycle Tools right)
 A: Jump
