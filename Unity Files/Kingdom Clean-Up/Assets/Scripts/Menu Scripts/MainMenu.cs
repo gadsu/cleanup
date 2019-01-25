@@ -18,16 +18,13 @@ public class MainMenu : MonoBehaviour
         {
             GameObject.Find("DontDestroyOnLoad").GetComponent<GameData>().ReloadLevel();
         }
-        Debug.Log("Got Scene");
         SceneManager.LoadScene(name);
-        Debug.Log("Changing Scene");
     }
 
     public void ReloadScene()
     {
         GameObject.Find("DontDestroyOnLoad").GetComponent<GameData>().ReloadLevel();
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Debug.Log("Reloading Scene");
     }
 
     //quits the game
