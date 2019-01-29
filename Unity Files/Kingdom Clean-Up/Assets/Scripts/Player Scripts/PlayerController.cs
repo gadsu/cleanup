@@ -125,13 +125,20 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    private void OnCollisionEnter(Collision col)
+    {
+        if(col.gameObject.tag == "Platform")
+        {
+            onGround = true;
+        }
+    }
+
     private void OnCollisionStay2D(Collision2D col)
     {
         if(col.gameObject.tag == "Platform" && !onGround)
         {
             groundTimer = 0f;
             startTimer = false;
-            onGround = true;
             doubleJump = false;
             canMove = true;
         }
