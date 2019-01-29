@@ -38,6 +38,7 @@ public class PlayerState : MonoBehaviour {
     public float damageFrame;
 
     public GameObject CleanProgressBar;
+    public string SceneName;
     public int groundSlimeMax;
     public int groundSlimeCleaned;
     public bool sceneLoaded;
@@ -77,7 +78,7 @@ public class PlayerState : MonoBehaviour {
             setSlimeMeterImage(blueSlimeMeter, blueChildren);
             //Debug.Log("<color=blue>BlueSlimeVal:</color> " + blueSlimeMeter);//tells the debug log that blue slime was added to the slime meter
         }
-
+        
         CountGroundSlime();
     }
     public bool useSlime()
@@ -176,7 +177,7 @@ public class PlayerState : MonoBehaviour {
         redMeter = GameObject.Find("redMeter");
         blueMeter = GameObject.Find("blueMeter");
 
-        if(greenChildren.Count == 0)
+        if (GameObject.Find("greenChildren"))
         {
             for (i = 1; i <= 8; i++)
             {
@@ -186,7 +187,9 @@ public class PlayerState : MonoBehaviour {
             }
         }
 
+        CleanProgressBar = null;
         CleanProgressBar = GameObject.Find("CleanProgress");
+        groundSlimeMax = 0;
         CountGroundSlime();
         player = GameObject.Find("Player");
     }
@@ -195,13 +198,12 @@ public class PlayerState : MonoBehaviour {
     {
         List<GameObject> groundSlimes = GameObject.FindGameObjectsWithTag("slimeObject").ToList<GameObject>();
         Debug.Log("Slime Count: " + groundSlimes.Count);
-        if (groundSlimeMax == 0 || groundSlimes.Count > groundSlimeMax)
+        if (groundSlimeMax == 0 || groundSlimes.Count + groundSlimeCleaned > groundSlimeMax)
         {
-            groundSlimeMax = groundSlimes.Count;
+            groundSlimeMax = groundSlimes.Count + groundSlimeCleaned;
         }
-
-        //Dont Work?
-        float slimeCleaned = ((groundSlimeCleaned / groundSlimeMax) * 100);
+       
+        float slimeCleaned = Mathf.Round(((float)groundSlimeCleaned / (float)groundSlimeMax) * 100);
         CleanProgressBar.GetComponent<Slider>().value = slimeCleaned;
         CleanProgressBar.GetComponentInChildren<Text>().text = CleanProgressBar.GetComponent<Slider>().value.ToString() + "%";
 
@@ -223,6 +225,7 @@ public class PlayerState : MonoBehaviour {
 	void Update () {
         if (GameObject.Find("greenMeter") && sceneLoaded == false)
         {
+            Debug.Log("LOAD SCENE");
             loadScene();
             sceneLoaded = true;
         }

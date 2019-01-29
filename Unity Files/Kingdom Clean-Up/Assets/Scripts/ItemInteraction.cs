@@ -118,7 +118,6 @@ public class ItemInteraction : MonoBehaviour {
                 }
                 //Debug.Log("IS DESTROY");
                 GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().groundSlimeCleaned++;
-                GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().CountGroundSlime();
                 Destroy(gameObject);
             }
         }

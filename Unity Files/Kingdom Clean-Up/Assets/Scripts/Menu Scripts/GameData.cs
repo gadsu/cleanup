@@ -22,13 +22,6 @@ public class GameData : MonoBehaviour {
     public Dictionary<string, string> gamedic;
     public Dictionary<string, string> playerdic;
 
-    // Use this for initialization
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);  //THIS IS WHAT MAKES THE OBJECT PERSIST
-
-        SceneManager.LoadScene("MainMenu");
-    }
 
     void Start() {
 
