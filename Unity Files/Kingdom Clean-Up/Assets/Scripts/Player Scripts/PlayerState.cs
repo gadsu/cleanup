@@ -173,11 +173,15 @@ public class PlayerState : MonoBehaviour {
     public void loadScene()
     {
         int i;
+        greenChildren.Clear();
+        redChildren.Clear();
+        blueChildren.Clear();
         greenMeter = GameObject.Find("greenMeter");
         redMeter = GameObject.Find("redMeter");
         blueMeter = GameObject.Find("blueMeter");
+        CleanProgressBar = GameObject.Find("CleanProgress");
 
-        if (GameObject.Find("greenChildren"))
+        if (GameObject.Find("greenMeter"))
         {
             for (i = 1; i <= 8; i++)
             {
@@ -187,10 +191,12 @@ public class PlayerState : MonoBehaviour {
             }
         }
 
-        CleanProgressBar = null;
-        CleanProgressBar = GameObject.Find("CleanProgress");
+        //CleanProgressBar = null;
         groundSlimeMax = 0;
         CountGroundSlime();
+        setSlimeMeterImage(0, greenChildren);
+        setSlimeMeterImage(0, blueChildren);
+        setSlimeMeterImage(0, redChildren);
         player = GameObject.Find("Player");
     }
 
@@ -203,6 +209,9 @@ public class PlayerState : MonoBehaviour {
             groundSlimeMax = groundSlimes.Count + groundSlimeCleaned;
         }
        
+        //if (CleanProgressBar = null)
+            CleanProgressBar = GameObject.Find("CleanProgress");
+
         float slimeCleaned = Mathf.Round(((float)groundSlimeCleaned / (float)groundSlimeMax) * 100);
         CleanProgressBar.GetComponent<Slider>().value = slimeCleaned;
         CleanProgressBar.GetComponentInChildren<Text>().text = CleanProgressBar.GetComponent<Slider>().value.ToString() + "%";
