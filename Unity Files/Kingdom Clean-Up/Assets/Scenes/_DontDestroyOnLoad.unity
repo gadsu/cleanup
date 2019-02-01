@@ -341,6 +341,7 @@ MonoBehaviour:
   invulnTime: 1
   damageFrame: 0
   CleanProgressBar: {fileID: 0}
+  SceneName: 
   groundSlimeMax: 0
   groundSlimeCleaned: 0
   sceneLoaded: 0
