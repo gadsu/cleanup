@@ -120,17 +120,17 @@ public class EnemyState : MonoBehaviour {
         if (col.gameObject.tag == "Player")  //If you are hitting an enemy
         {
             GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().takeDamage(slimeDamage); //
-            Debug.Log("PLAYER HIT: " + col.gameObject.name);
+            //Debug.Log("PLAYER HIT: " + col.gameObject.name);
 
             if (col.gameObject.transform.position.x > gameObject.transform.position.x) //If player is to the position x value - Right of slime
             {
                 col.gameObject.GetComponent<PlayerController>().Knockback(-1);
-                Debug.Log("Fly Left");
+                //Debug.Log("Fly Left");
             }
             else if (col.gameObject.transform.position.x <= gameObject.transform.position.x) //If player is to the negative x value - Left of slime
             {
                 col.gameObject.GetComponent<PlayerController>().Knockback(1);
-                Debug.Log("Fly Right");
+                //Debug.Log("Fly Right");
             }
 
         }
