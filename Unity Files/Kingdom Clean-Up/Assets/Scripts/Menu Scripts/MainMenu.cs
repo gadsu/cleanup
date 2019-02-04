@@ -24,7 +24,7 @@ public class MainMenu : MonoBehaviour
     public void ReloadScene()
     {
         GameObject.Find("DontDestroyOnLoad").GetComponent<GameData>().ReloadLevel();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     //quits the game

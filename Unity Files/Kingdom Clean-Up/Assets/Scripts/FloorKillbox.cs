@@ -25,7 +25,7 @@ public class FloorKillbox : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            col.gameObject.transform.position = new Vector3(-25, 9, 0);
+            col.gameObject.transform.position = new Vector3(-25, 20, 0);
             if (health.value > 0)
             {
                 GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().takeDamage(34f);

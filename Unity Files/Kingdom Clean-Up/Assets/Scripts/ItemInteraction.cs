@@ -117,6 +117,7 @@ public class ItemInteraction : MonoBehaviour {
                     //    other.GetComponent<PlayerState>().addSlime(10, "blue");
                 }
                 //Debug.Log("IS DESTROY");
+                GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().groundSlimeCleaned++;
                 Destroy(gameObject);
             }
         }

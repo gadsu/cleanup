@@ -26,6 +26,7 @@ public class EndScene : MonoBehaviour {
             if(!finalLevel)
             {
                 Debug.Log("you in me");
+                //GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().sceneLoaded = false;
                 //Move to next level
                 Debug.Log(SceneManager.GetActiveScene().buildIndex);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

@@ -4,14 +4,15 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: SmallSlopeTileD-DV1_1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: f5f248d7e6fe8b64a84db72661b47f93, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b5505d08bf409ac4cb1c12f0e57d2cc5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

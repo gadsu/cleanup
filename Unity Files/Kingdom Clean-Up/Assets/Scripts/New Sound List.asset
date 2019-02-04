@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24558927dab1fb0429dde1156bbbecec, type: 3}
+  m_Name: New Sound List
+  m_EditorClassIdentifier: 
+  Sound:
+  - CrunkKnight: {fileID: 8300000, guid: dd711e89df1e0914c83d68fe27876f65, type: 3}
+  _source: {fileID: 5394380692057634030, guid: 0cdbcccf765e3fa4e972c1e0c8548d27, type: 3}

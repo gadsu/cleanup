@@ -50,7 +50,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -69,11 +69,31 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites: []
     outline: []
-    physicsShape: []
+    physicsShape:
+    - - {x: -500, y: 475}
+      - {x: -500, y: -151}
+      - {x: -497, y: -165}
+      - {x: -183, y: -172}
+      - {x: 34, y: -55}
+      - {x: 252, y: 9}
+      - {x: 352, y: 180}
+      - {x: 358, y: 361}
+      - {x: 155, y: 463}
     bones: []
     spriteID: 7d98375a0c3dbd74f885a4b1d80a79e7
     vertices: []

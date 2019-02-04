@@ -40,6 +40,7 @@ public class PauseMenu : MonoBehaviour
         {
             PauseControl();
         }
+        
     }
     
     public void PauseControl()
@@ -70,7 +71,6 @@ public class PauseMenu : MonoBehaviour
     //hides objects with ShowOnPause tag
     public void HidePaused()
     {
-
         PauseObjects.SetActive(false);
     }
 }

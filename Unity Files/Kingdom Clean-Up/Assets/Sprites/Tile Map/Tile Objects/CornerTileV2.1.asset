@@ -4,14 +4,15 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: CornerTileV2.1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: f67f4b2a7b9804645a85ecc12fa52f20, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 434bb52218f4473428bfa7554505aa9b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

@@ -18,7 +18,7 @@ public class KillScreen : MonoBehaviour {
     // Use this for initialization
 	void Start ()
     {
-        KillScreenObject = GameObject.Find("Kill Screen");
+        //KillScreenObject = GameObject.Find("Kill Screen"); //(Set in editor the code `
         HealthBar = GameObject.Find("Health").GetComponent<Slider>();
         firstButton = KillScreenObject.GetComponentInChildren<Button>();
         HideKillScreen();
