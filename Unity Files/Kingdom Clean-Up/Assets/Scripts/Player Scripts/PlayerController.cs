@@ -165,10 +165,6 @@ public class PlayerController : MonoBehaviour
              onGround = false;
          } */
     }
-    private void OnDrawGizmosSelected()
-    {
-        Debug.DrawRay(transform.position, Vector2.down * playerSize, Color.magenta);
-    }
 
     private void FixedUpdate()
     {
