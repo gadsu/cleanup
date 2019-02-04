@@ -1,0 +1,24 @@
+General Overview:
+
+Kingdom Clean-Up is a cute 2-D side-scroller about cleaning up your home kingdom and taking it back from the slimes. It is playable with both the mouse and keyboard, and the controller.
+The two main mechanics of the game are: cleaning the kingdom, and the tools used to traverse the kingdom. Each tool utilizes a different color of slime, and uses the slimes properties.
+
+Slime:
+- Green slime is sticky and can be used to climb.
+- Blue slime is slippery and can be used to move faster and to push heavy objects and enemies.
+- Red slime is moldable and is used to make blocks to reach higher areas.
+
+Levels:
+- Tutorial: A simple tutorial stage set in the outskirts of the kingdom. This stage is to help players get used to the controls and some of the mechanics of the game.
+- Level 1: This stage is also set in the outskirts of the kingdom. This stage focuses on uses of the green slime, and is a little more difficult than the tutorial stage.
+- Level 2: This stage is set in the inner city, between the castle walls and the castle itself. In this stage, blue slime is the focus, with green being there as a supporting color.
+- Level 3: This stage starts just outside the castle itself and ends in the throne room with the final boss fight of the game. In this stage we introduce red slime to the game.
+
+Enemies:
+- Goopa: base enemy, comes in green, red, and blue.
+- Goop Mother: this enemy generates more Goopa as its in the world. The Goopa spawned share the same color as the Goop Mother.
+
+Bosses:
+- Obsooo: Obsooo is the Goopa boss of the tutorial level. It is stuck in a bucket which it uses to attack, but also makes it harder to kill.
+- Barney: A spider like creature made up of green slime that has taken up residence in a local barn. Attacks by spitting slime at the player, or by slapping the player with its legs.
+- Rock 'n Roll: An armadillo like creature made up of blue slime. Has hardened slime and stones as its shell, and attacks by rolling into the player.

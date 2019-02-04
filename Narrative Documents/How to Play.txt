@@ -12,7 +12,7 @@ E - Interact/Clean
 Space - Mop Attack
 Esc - Pause
 Tab - Swap Tools
-Q - Activate Tools
+Right Click - Activate Tools
 
 Controller Controls
 Bumpers: Cycle tools
