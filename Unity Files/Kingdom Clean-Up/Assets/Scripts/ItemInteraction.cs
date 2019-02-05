@@ -44,7 +44,6 @@ public class ItemInteraction : MonoBehaviour {
 
     }
 
-
     public void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Platform")
@@ -81,45 +80,6 @@ public class ItemInteraction : MonoBehaviour {
         else
         {
             Debug.Log("HELP");
-        }
-    }
-
-
-    void OnTriggerStay2D(Collider2D other)
-    {
-        //have slime decay?
-        
-        //Debug.Log("TOUCHING " + other.gameObject.name);
-        if (gameObject.CompareTag("slimeObject") && other.CompareTag("Player"))
-        {
-            //Debug.Log("IS SLIME");
-            if (Input.GetButtonDown("Interact"))
-            {
-                //Debug.Log("IS INTER");
-                if(gameObject.name.Contains("Splat"))
-                {
-                    GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().addSlime(2, color);
-                    //if (color == "green")
-                    //    other.GetComponent<PlayerState>().addSlime(2, "green");
-                    //else if (color == "red")
-                    //    other.GetComponent<PlayerState>().addSlime(2, "red");
-                    //else if (color == "blue")
-                    //    other.GetComponent<PlayerState>().addSlime(2, "blue");
-                }
-                else
-                {
-                    GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().addSlime(10, color);
-                    //if (color == "green")
-                    //    other.GetComponent<PlayerState>().addSlime(10, "green");
-                    //else if (color == "red")
-                    //    other.GetComponent<PlayerState>().addSlime(10, "red");
-                    //else if (color == "blue")
-                    //    other.GetComponent<PlayerState>().addSlime(10, "blue");
-                }
-                //Debug.Log("IS DESTROY");
-                GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().groundSlimeCleaned++;
-                Destroy(gameObject);
-            }
         }
     }
 }

@@ -205,6 +205,19 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Force: " + force + "rby: " + rb.velocity.y);
         //an.SetFloat("Speed", Mathf.Abs(force));
 
+        if (Input.GetButton("Interact"))
+        {
+            RaycastHit2D hit;
+
+            hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 20f);
+
+            if (hit.collider.gameObject.CompareTag("slimeObject"))
+            {
+                GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().addSlime(10, hit.transform.gameObject.GetComponent<ItemInteraction>().color);
+                GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().groundSlimeCleaned++;
+                Destroy(hit.transform.gameObject);
+            }
+        }
 
 
         if (canMove)
