@@ -39,9 +39,9 @@ public class PlayerController : MonoBehaviour
     [Tooltip("How much can the character jump?")]
     public float charJumpSpeed = 60f;
     [Tooltip("How high you go on knockback")]
-    public float knockbackY = 40f;
+    public float knockbackY = 30f;
     [Tooltip("How far you go on knockback")]
-    public float knockbackX = 40f;
+    public float knockbackX = 30f;
 
     bool startTimer;
     float jumpFrame;
@@ -267,6 +267,14 @@ public class PlayerController : MonoBehaviour
             }
 
 
+        }
+    }
+
+    public void IsInjured()
+    {
+        if (!an.GetCurrentAnimatorStateInfo(0).IsName("injured"))
+        {
+            an.Play("injured");
         }
     }
 

@@ -22,16 +22,22 @@ public class EnemyState : MonoBehaviour {
     public string color = null;
     [Tooltip("Is it facing right?")]
     public bool facingRight = true;
-
+    [Tooltip("Can enemy move?")]
+    public bool canMove;
     [Header("Editable Variables")]
     //[Tooltip("How fast the enemy moves")]
     //public float baseSpeed = 20f;
     [Tooltip("The buffer between the person's xy and the point, to stop aggressive wiggling")]
     public float buffer = 3f;
+    [Tooltip("How high you go on knockback")]
+    public float knockbackY = 30f;
+    [Tooltip("How far you go on knockback")]
+    public float knockbackX = 30f;
+    //[Tooltip("can you knockback the player")]
+    //public bool canKnockback;
 
 
-
-    [Tooltip("Setting the prefab for what viscera it spawns")]
+[Tooltip("Setting the prefab for what viscera it spawns")]
     public GameObject visceraPrefab;
 
     //Slime/World Colors
@@ -45,14 +51,17 @@ public class EnemyState : MonoBehaviour {
 
     // Initialization
     void Start () {
+        //canKnockback = true;
+        canMove = true;
         health = 10;
         slimeDamage = 16.7f;
         rb = GetComponent<Rigidbody2D>();
-        an = GetComponentInChildren<Animator>();
+        an = GetComponent<Animator>();
         if (gameObject.CompareTag("Boss"))
         {
             health = 90;
             //slimeDamage = 34f;
+
         }
     }
 	
@@ -104,38 +113,49 @@ public class EnemyState : MonoBehaviour {
     public void takeDamage(int dmg)  
     {
         health -= dmg;
-        if (!an.GetCurrentAnimatorStateInfo(0).IsName("hit"))
-        {
-            an.Play("hit");
-        }
+        
         if(health <= 0)
         {
             death();
  //           an.Play("death"); //calls death function at end of animation
         }
     }
+    public void EnemyKnockback(int dir)
+    {
+        canMove = false;
+        rb.velocity = new Vector2(dir * knockbackX, knockbackY);
+    }
     // Do damage to the player when colliders hits
     public void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Player")  //If you are hitting an enemy
+        if (col.gameObject.tag == "Player")  //If you are hit by an enemy
         {
             GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().takeDamage(slimeDamage); //
-            //Debug.Log("PLAYER HIT: " + col.gameObject.name);
+            Debug.Log("PLAYER HIT: " + col.gameObject.name);
+            
 
             if (col.gameObject.transform.position.x > gameObject.transform.position.x) //If player is to the position x value - Right of slime
             {
-                col.gameObject.GetComponent<PlayerController>().Knockback(-1);
+                EnemyKnockback(-1);
+                col.gameObject.GetComponent<PlayerController>().Knockback(1);
+                col.gameObject.GetComponent<PlayerController>().IsInjured();
                 //Debug.Log("Fly Left");
             }
             else if (col.gameObject.transform.position.x <= gameObject.transform.position.x) //If player is to the negative x value - Left of slime
             {
-                col.gameObject.GetComponent<PlayerController>().Knockback(1);
+                EnemyKnockback(1);
+                col.gameObject.GetComponent<PlayerController>().Knockback(-1);
+                col.gameObject.GetComponent<PlayerController>().IsInjured();
                 //Debug.Log("Fly Right");
             }
-
+            
+           
+        }
+        else
+        {
+            canMove = (true);
         }
     }
-
     //Finds a reference from the spawner it came from
     public void setSpawner(string spawnName)
     {
@@ -155,27 +175,30 @@ public class EnemyState : MonoBehaviour {
 
     public void walkto(Vector3 pos, float speed)  //Move towards a position 
     {
-        if(pos.x - buffer > rb.position.x)  //If it is to the right of you
+        if(canMove)
         {
-            if (!facingRight)
+            if(pos.x - buffer > rb.position.x)  //If it is to the right of you
             {
-                Flip();
-            }
+                if (!facingRight)
+                {
+                    Flip();
+                }
 
-            rb.velocity = new Vector2(speed, rb.velocity.y);
-        }
-        else if (pos.x + buffer < rb.position.x)   //If it is to the left of you
-        {
-            if (facingRight)
+                rb.velocity = new Vector2(speed, rb.velocity.y);
+            }
+            else if (pos.x + buffer < rb.position.x)   //If it is to the left of you
             {
-                Flip();
-            }
+                if (facingRight)
+                {
+                    Flip();
+                }
 
-            rb.velocity = new Vector2(-1 * speed, rb.velocity.y);
-        }
-        else  //Hang out
-        {
-            rb.velocity = new Vector2(0, rb.velocity.y);
+                rb.velocity = new Vector2(-1 * speed, rb.velocity.y);
+            }
+            else  //Hang out
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
         }
     }
 

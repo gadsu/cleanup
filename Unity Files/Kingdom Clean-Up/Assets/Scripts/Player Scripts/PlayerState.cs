@@ -33,9 +33,9 @@ public class PlayerState : MonoBehaviour {
     [Tooltip("Can the player be damaged?")]
     public bool isInvuln;
     [Tooltip("Time to be invulnerable")]
-    public float invulnTime = 1.00f;
+    public float invulnTime = 3;
     [Tooltip("Frame the player was damaged on")]
-    public float damageFrame;
+    public float damageFrame = 3;
 
     public GameObject CleanProgressBar;
     public string SceneName;
@@ -45,7 +45,7 @@ public class PlayerState : MonoBehaviour {
 
     GameObject player;
     int maxSlime = 100;
-
+    
     //public TextAsset PlayerFile; DOES NOT WORK FOR SOME RAISIN
 
     public void loadData(string playernum)
@@ -164,6 +164,7 @@ public class PlayerState : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        
         damageFrame = invulnTime;
         sceneLoaded = false;
         groundSlimeCleaned = 0;
