@@ -7,13 +7,9 @@
 
 
 Spider 
-
 	Stationary for first phase clinging to the center of the stage
-	
-	Shoots "cleanable?" slime in a straight line to the players position, if it hits the player they are damaged and slowed.
-
+	Shoots "cleanable?" slime in a straight line to the players position, if it hits the player they are damaged and slowed
 	After the boss takes 3 hits it Covers the Players current area in damage dealing slime for the rest of the encounter, slime starts at the bosses locarion and is a barage of the basic attack but the slime is non-cleanable
-
 	After 6 hits the boss falls the the ground and damages the player if they are hit 
 
 **Barny Slime Ball prefab**
