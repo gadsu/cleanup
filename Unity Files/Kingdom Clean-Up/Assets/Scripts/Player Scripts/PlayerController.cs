@@ -82,116 +82,21 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-
-        Vector3 colpos = col.gameObject.transform.position;
-        Vector3 mypos = transform.position;
-        if (col.gameObject.tag == "Platform")
-        {
-            groundTimer = 0f;
-            startTimer = false;
-            Debug.DrawRay(transform.position, Vector2.down * playerSize, Color.magenta);
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down * playerSize);
-            if (hit.collider != null)
-            {
-               // Debug.Log(hit.collider.gameObject.tag + hit.collider.gameObject.tag.ToString());
-                if (hit.collider.gameObject.tag == "Platform")
-                {
-                    //Debug.Log(hit.collider.Distance(GetComponent<Collider2D>()).distance);
-                    onGround = true;
-                    canMove = true;
-                    doubleJump = false;
-                    if (ignoreCollision)
-                    {
-                        ignoreCollision = false;
-                        foreach(GameObject i in ignoredObjects)
-                        {
-                            Physics2D.IgnoreCollision(i.GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
-                        }
-                        ignoredObjects.Clear();
-                    }
-                }
-            }
-        }
-        if ((col.gameObject.tag == "Enemy" || col.gameObject.tag == "Boss") && !onGround)
-        {
-            Debug.Log(col.gameObject + col.gameObject.name + col.gameObject.tag);
-            ignoredObjects.Add(col.gameObject);
-            Physics2D.IgnoreCollision(col.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-            ignoreCollision = true;
-        }
-        
-        
-    }
-
-    private void OnCollisionEnter(Collision col)
-    {
-        if(col.gameObject.tag == "Platform")
-        {
-            onGround = true;
-        }
-    }
-
-    private void OnCollisionStay2D(Collision2D col)
-    {
-        if(col.gameObject.tag == "Platform" && !onGround)
-        {
-            groundTimer = 0f;
-            startTimer = false;
-            doubleJump = false;
-            canMove = true;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D col)
-    {
-
-        if (col.gameObject.tag == "Platform" && onGround)
-        {
-            startTimer = true;
-        }
-
-    }
-
     private void OnTriggerExit2D(Collider2D col)
     {
         if (col.gameObject.tag != "slimeInteractable")
         {
             doubleJump = false;
         }
-        /* if (onGround == true && col.tag == "Platform")
-         {
-             onGround = false;
-         } */
     }
 
     private void FixedUpdate()
     {
-        if (canMove)
-        {
-            
-
-            //slime throwing shenanigans - movement of reticle happens on the reticle
-            if (Input.GetAxis("ShowAim") > 0 && !aiming)//(Input.GetButtonDown("ShowAimButton") || Input.GetAxis("ShowAimTrigger") > 0) && !aiming)
-            {
-                ShowAim();
-                Debug.Log("Showing Aim");
-            }
-            else if (Input.GetAxis("ShowAim") <= 0 && aiming)//(Input.GetButtonUp("ShowAimButton") || Input.GetAxis("ShowAimTrigger") == 0) && aiming)
-            {
-                HideAim();
-                Debug.Log("Aim Hidden");
-            }
-            
-            
-        }
-
+        groundCheck();
     }
 
     void Update()
     {
-        groundCheck();
         jump(); //made own function as we can call it in other places
 
         //checking for basic button presses - all button input should be here
@@ -211,11 +116,14 @@ public class PlayerController : MonoBehaviour
 
             hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 20f);
 
-            if (hit.collider.gameObject.CompareTag("slimeObject"))
+            if (hit)
             {
-                GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().addSlime(10, hit.transform.gameObject.GetComponent<ItemInteraction>().color);
-                GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().groundSlimeCleaned++;
-                Destroy(hit.transform.gameObject);
+                if (hit.collider.gameObject.CompareTag("slimeObject"))
+                {
+                    GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().addSlime(10, hit.transform.gameObject.GetComponent<ItemInteraction>().color);
+                    GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().groundSlimeCleaned++;
+                    Destroy(hit.transform.gameObject);
+                }
             }
         }
 
@@ -280,11 +188,21 @@ public class PlayerController : MonoBehaviour
 
     private void groundCheck()
     {
-        if (startTimer)
-            groundTimer += Time.deltaTime;
-
-        if (groundTimer >= 0.75f)
+        LayerMask layer = LayerMask.GetMask("Platform");
+        RaycastHit2D hit;
+        hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 17f, layer);
+        Debug.DrawRay(gameObject.transform.position, Vector2.down * 17);
+        if (hit)
+        {
+            Debug.Log("FLOOR");
+            onGround = true;
+            canMove = true;
+            doubleJump = false;
+        }
+        else
+        {
             onGround = false;
+        }
     }
     public void jump()
     {
