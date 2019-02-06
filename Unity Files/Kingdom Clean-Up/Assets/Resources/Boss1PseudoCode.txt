@@ -1,0 +1,65 @@
+* Barney (Slime balls deal half heart of damage, Slime lazer deals 1 1/2 hearts of damage, Flailing tentacles deal 1 heart damage)
+   * Large Spider like slime that hangs from the ceiling
+   * Throws slime balls at the player that hurts and slows upon hitting the player
+   * After three hits he throws a large amount of slime over the half of the stage that will hurt the player and is too thick to clean (supposed to cover most of that half of the stage, but leave the bottom area open for final stage)
+   * The special attack originates from Barney, starts at the top of the screen and moves down leaving time for the player to get out of the way. (Doesn't go all the way to the bottom, Stops about the bottom of the bottom left/right platforms.)
+   * After both sides of the stage have been covered (6 hits) the boss will fall to the ground swinging its arms/tentacles around which deals damage to the player if the player gets hit
+
+
+Spider 
+
+	Stationary for first phase clinging to the center of the stage
+	
+	Shoots "cleanable?" slime in a straight line to the players position, if it hits the player they are damaged and slowed.
+
+	After the boss takes 3 hits it Covers the Players current area in damage dealing slime for the rest of the encounter, slime starts at the bosses locarion and is a barage of the basic attack but the slime is non-cleanable
+
+	After 6 hits the boss falls the the ground and damages the player if they are hit 
+
+**Barny Slime Ball prefab**
+needs a trigger colider
+needs BarnySlimeBall script
+
+**Barny Slime Ball script**
+
+if touches player do dmg and slow
+can be picked up?
+dissapears when hits player dose not grant useable slime?
+
+**Non-Cleanable Slime Prefab**
+needs a colider with trigger 
+needs to look differnt than normal slime 
+needs non-cleanable slime script
+
+**Non-Cleanable Slime Script**
+
+voidDmgOverTime
+{
+	on triger stay if player touches slime hurt them
+}
+**Barny Prefab**
+Needs Colider 
+Needs to take dmg from player see ObSooo
+needs Barny Script
+add slime prefabs to barny script
+
+
+**Barny Script**
+
+void shootSlime()
+{
+
+
+if player is in the barn shoot slime
+	instantiate a slime ball from prefab
+	give it a velocity
+	have it fly towards the players position 
+	
+}
+
+void shootMoreSlime
+{
+if hit counter == 3 
+shoot enough slime to cover the section of the map the player is standing on to an array of preset destenations in that direction
+
+}
