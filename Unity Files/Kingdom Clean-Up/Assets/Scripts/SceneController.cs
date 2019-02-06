@@ -7,7 +7,7 @@ public class SceneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().sceneLoaded = false; //Set sceneLoaded to false so loadScene() runs
+        GameObject.Find("DontDestroyOnLoad").GetComponent<GameData>().ReloadLevel();
     }
 
     // Update is called once per frame
