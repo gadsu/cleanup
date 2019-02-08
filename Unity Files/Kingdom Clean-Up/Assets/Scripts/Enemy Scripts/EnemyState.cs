@@ -61,7 +61,6 @@ public class EnemyState : MonoBehaviour {
         {
             health = 90;
             //slimeDamage = 34f;
-
         }
     }
 	
@@ -109,6 +108,7 @@ public class EnemyState : MonoBehaviour {
         }
         Debug.Log(color + " color");
     }
+
     // Happens every time the slime take damage, called from the Player
     public void takeDamage(int dmg)  
     {
@@ -120,11 +120,13 @@ public class EnemyState : MonoBehaviour {
  //           an.Play("death"); //calls death function at end of animation
         }
     }
+
     public void EnemyKnockback(int dir)
     {
         canMove = false;
         rb.velocity = new Vector2(dir * knockbackX, knockbackY);
     }
+
     // Do damage to the player when colliders hits
     public void OnCollisionEnter2D(Collision2D col)
     {
@@ -148,14 +150,14 @@ public class EnemyState : MonoBehaviour {
                 col.gameObject.GetComponent<PlayerController>().IsInjured();
                 //Debug.Log("Fly Right");
             }
-            
-           
+
         }
         else
         {
             canMove = (true);
         }
     }
+
     //Finds a reference from the spawner it came from
     public void setSpawner(string spawnName)
     {
@@ -223,6 +225,8 @@ public class EnemyState : MonoBehaviour {
             red = 1;
             blue = 1;
         }
+
+    
         //spawn viscera
         Transform currentPos = gameObject.transform;
         int i = 1;
