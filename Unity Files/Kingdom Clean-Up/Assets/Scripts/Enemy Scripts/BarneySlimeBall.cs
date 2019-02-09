@@ -7,9 +7,9 @@ public class BarneySlimeBall : MonoBehaviour
     Rigidbody2D rb;
     public float speed;
     GameObject player;
-    Vector2 playerPos;
+    public Vector2 playerPos;
     float playerHealth;
-    public int slimeDamage = 34;
+    public int slimeDamage;
     public GameObject slimeBall;
 
 
@@ -20,32 +20,37 @@ public class BarneySlimeBall : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         player = GameObject.Find("Player");
         playerHealth = GameObject.Find("DontDestoryOnLoad").GetComponent<PlayerState>().playerHealth;
-        playerPos = player.transform.position;
+        playerPos = new Vector2();
+       
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        ThrowSlime();
-    }
+    
+        ShootPlayer( playerPos);
 
-    void ThrowSlime()
+    }
+    
+    void ShootPlayer(Vector2 playerPos)
     {
         gameObject.transform.position = Vector2.MoveTowards(gameObject.transform.position, playerPos, speed);
+        
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    
+    private void OnCollisionEnter2D(Collision2D col)
     {
-        if(col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Player")
         {
-            playerHealth -= slimeDamage; //damage player
+            GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().takeDamage(slimeDamage); //damage player
+            Destroy(gameObject); //kill self
         }
-        else if (col.gameObject.tag == "Barn")
+        else //if (col.gameObject.tag == "Barn")
         {
             Transform startpos = gameObject.transform; //find location of self
             Instantiate<GameObject>(slimeBall, startpos.position, startpos.rotation);  //Create slime
             Destroy(gameObject); //kill self
         }
     }
-
 }
