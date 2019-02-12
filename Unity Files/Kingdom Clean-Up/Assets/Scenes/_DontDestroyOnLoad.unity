@@ -338,7 +338,7 @@ MonoBehaviour:
   blueChildren: []
   playerHealth: 100
   isInvuln: 0
-  invulnTime: 3
+  invulnTime: 1
   damageFrame: 0
   CleanProgressBar: {fileID: 0}
   SceneName: 

@@ -33,9 +33,9 @@ public class PlayerState : MonoBehaviour {
     [Tooltip("Can the player be damaged?")]
     public bool isInvuln;
     [Tooltip("Time to be invulnerable")]
-    public float invulnTime = 3;
+    public float invulnTime = 1;
     [Tooltip("Frame the player was damaged on")]
-    public float damageFrame = 3;
+    public float damageFrame = 1;
 
     public GameObject CleanProgressBar;
     public string SceneName;
@@ -194,11 +194,13 @@ public class PlayerState : MonoBehaviour {
 
         //CleanProgressBar = null;
         groundSlimeMax = 0;
+        groundSlimeCleaned = 0;
         CountGroundSlime();
         setSlimeMeterImage(0, greenChildren);
         setSlimeMeterImage(0, blueChildren);
         setSlimeMeterImage(0, redChildren);
         player = GameObject.Find("Player");
+        playerHealth = 100f;
     }
 
     public void CountGroundSlime()
