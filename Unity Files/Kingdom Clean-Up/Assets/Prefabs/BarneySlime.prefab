@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4891282989758060}
   - component: {fileID: 212011826461443710}
   - component: {fileID: 114724730534880134}
-  - component: {fileID: 50715995538295254}
   - component: {fileID: 6536434256093331733}
   - component: {fileID: 70735175225839256}
   m_Layer: 2
@@ -98,27 +97,6 @@ MonoBehaviour:
   initvel: {x: 0, y: 0}
   prefab: {fileID: 1827464675113566, guid: 99e6383ecb9f5f64e8ccae5b201cbecf, type: 3}
   color: green
---- !u!50 &50715995538295254
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1827464675113566}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 4
-  m_LinearDrag: 0.05
-  m_AngularDrag: 0.05
-  m_GravityScale: 10
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!114 &6536434256093331733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +110,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  playerPos: {x: 0, y: 0}
   slimeDamage: 17
   slimeBall: {fileID: 0}
 --- !u!70 &70735175225839256
@@ -145,7 +122,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.09887695, y: -1.6}

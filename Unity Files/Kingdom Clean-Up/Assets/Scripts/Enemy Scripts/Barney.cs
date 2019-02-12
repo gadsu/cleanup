@@ -24,8 +24,8 @@ public class Barney : MonoBehaviour
     {
         target = GameObject.Find("Player");    //Find the player
         health = 90;
-
-
+        maxSlimeAmmo = 10;
+        curAmmo = 10;
     }
 
     // Update is called once per frame
@@ -38,15 +38,20 @@ public class Barney : MonoBehaviour
 
     void ThrowSlime( )
     {
-        if (distanceToPlayer < maxRange && maxSlimeAmmo > 0 )
+        //if (distanceToPlayer < maxRange && maxSlimeAmmo > 0 )
+        //{
+        //        if(launchTimer <= 0)
+        //        {
+
+        //            Instantiate(throwSlimePrefab, BarneySlimePos).GetComponent<BarneySlimeBall>().playerPos = target.transform.position;
+        //            //maxSlimeAmmo--;
+        //            launchTimer = rateOfFire;
+        //        }
+        //}
+        if(curAmmo > 0)
         {
-                if(launchTimer <= 0)
-                {
-                    
-                    Instantiate(throwSlimePrefab, BarneySlimePos).GetComponent<BarneySlimeBall>().playerPos = target.transform.position;
-                    //maxSlimeAmmo--;
-                    launchTimer = rateOfFire;
-                }
+            Instantiate(throwSlimePrefab, BarneySlimePos);
+            curAmmo--;
         }
     }
     

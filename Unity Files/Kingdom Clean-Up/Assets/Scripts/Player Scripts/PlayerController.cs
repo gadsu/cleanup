@@ -194,7 +194,7 @@ public class PlayerController : MonoBehaviour
         Debug.DrawRay(gameObject.transform.position, Vector2.down * 17);
         if (hit)
         {
-            Debug.Log("FLOOR");
+          //  Debug.Log("FLOOR");
             onGround = true;
             canMove = true;
             doubleJump = false;

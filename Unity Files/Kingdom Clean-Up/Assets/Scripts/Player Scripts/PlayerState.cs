@@ -233,7 +233,7 @@ public class PlayerState : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (GameObject.Find("greenMeter") && sceneLoaded == false)
+        if (GameObject.Find("greenMeter") && sceneLoaded == false && !SceneName.Equals("_DontDestroyOnLoad"))
         {
             Debug.Log("LOAD SCENE");
             loadScene();
