@@ -7,35 +7,23 @@ Slime Jump or maybe death:
 https://freesound.org/people/DrMinky/sounds/167074/
 
 Slime hit effect: 
-https://www.audioblocks.com/stock-audio/mop-hitting-wet-cement-96888.html
-https://www.audioblocks.com/stock-audio/slap-sound-effect.html
+(Worked) https://www.audioblocks.com/stock-audio/mop-hitting-wet-cement-96888.html
 
 Cleaning Effect: 
-https://www.audioblocks.com/stock-audio/mop-moving-on-wet-cement-96890.html
-https://www.audioblocks.com/stock-audio/mop-moving-on-wet-cement.html
+(Test with bubble noise) https://www.audioblocks.com/stock-audio/mop-moving-on-wet-cement.html
 
 Bucket Handle SFX:
-https://www.audioblocks.com/stock-audio/footsteps-shoes-jump-metal-platform-97809.html
-https://www.audioblocks.com/stock-audio/footsteps-shoes-jump-metal-platform.html
 https://www.audioblocks.com/stock-audio/footsteps-tennis-shoes-jump-on-metal-surface-83209.html
 
 Landing from a jump SFX: 
-https://www.audioblocks.com/stock-audio/footsteps-dirt-jump-land.html
+(Dont hate, will need a different one for stone blocks) https://www.audioblocks.com/stock-audio/footsteps-dirt-jump-land.html
 
 Walk SFX:
-https://www.audioblocks.com/stock-audio/stubble-field-walking.html
-https://www.audioblocks.com/stock-audio/field-way-walking.html
-https://www.audioblocks.com/stock-audio/footsteps-grass-walk-creep.html
-https://www.audioblocks.com/stock-audio/footsteps-grass-single-step.html
+(Might be good for gross parts) https://www.audioblocks.com/stock-audio/field-way-walking.html
+(Every other be quieter)https://www.audioblocks.com/stock-audio/footsteps-grass-single-step.html
 
 End of level garbage can SFX:
-https://www.audioblocks.com/stock-audio/throwing-garbage-to-metal-can.html
-https://www.audioblocks.com/stock-audio/metal-garbage-can-empty-lid-put-on-cover.html
-https://www.audioblocks.com/stock-audio/metal-garbage-can-throw-away-large-object-rattle.html
-
-Game Over FX:
-https://www.audioblocks.com/stock-audio/video-game-fail-sound-100939.html
-https://www.audioblocks.com/stock-audio/video-game-fail-wobble-100937.html
+(Maybe) https://www.audioblocks.com/stock-audio/metal-garbage-can-empty-lid-put-on-cover.html
 
 Disturbing >:) https://freesound.org/people/mattiagreyfox/sounds/202400/
 
