@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
     public bool canMove;
     [Tooltip("The mop object")]
     public GameObject mop;
+    [Tooltip("How long the player is unable to move from knockback")]
+    public float knockbackTime;
+
     public bool ignoreCollision;
 
     public List<GameObject> ignoredObjects;
@@ -98,6 +101,17 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         jump(); //made own function as we can call it in other places
+
+        if (knockbackTime > 0)
+        {
+            knockbackTime = knockbackTime - Time.deltaTime;
+
+            if (knockbackTime < 1)
+            {
+                canMove = true;
+                knockbackTime = 0;
+            }
+        }
 
         //checking for basic button presses - all button input should be here
         if (Input.GetButtonDown("Attack"))
@@ -264,6 +278,7 @@ public class PlayerController : MonoBehaviour
     public void Knockback(int dir)
     {
         canMove = false;
+        knockbackTime = 3f;
         rb.velocity = new Vector2(dir * knockbackX, knockbackY);
     }
 
