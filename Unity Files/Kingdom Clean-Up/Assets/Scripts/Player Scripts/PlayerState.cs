@@ -79,7 +79,6 @@ public class PlayerState : MonoBehaviour {
             //Debug.Log("<color=blue>BlueSlimeVal:</color> " + blueSlimeMeter);//tells the debug log that blue slime was added to the slime meter
         }
         
-        CountGroundSlime();
     }
     public bool useSlime()
     {
@@ -206,20 +205,31 @@ public class PlayerState : MonoBehaviour {
     public void CountGroundSlime()
     {
         List<GameObject> groundSlimes = GameObject.FindGameObjectsWithTag("slimeObject").ToList<GameObject>();
-        Debug.Log("Slime Count: " + groundSlimes.Count);
+        List<GameObject> slimeSpawners = GameObject.FindGameObjectsWithTag("Spawner").ToList<GameObject>();
+        Debug.Log("Slime Count: " + groundSlimes.Count + ", Spawner Count: " + slimeSpawners.Count);
+
         if (groundSlimeMax == 0 || groundSlimes.Count + groundSlimeCleaned > groundSlimeMax)
+            groundSlimeMax = groundSlimes.Count;
+
+        foreach (GameObject spawner in slimeSpawners)
         {
-            groundSlimeMax = groundSlimes.Count + groundSlimeCleaned;
+            if (spawner)
+                groundSlimeMax += spawner.GetComponent<SlimeSpawner>().totalSlime * 3;
+            else
+                Debug.Log("SPAWNER NOT FOUND");
         }
-       
-        //if (CleanProgressBar = null)
+
+        updateCleanProgress();
+    }
+
+    public void updateCleanProgress()
+    {
+        if (!CleanProgressBar)
             CleanProgressBar = GameObject.Find("CleanProgress");
 
         float slimeCleaned = Mathf.Round(((float)groundSlimeCleaned / (float)groundSlimeMax) * 100);
         CleanProgressBar.GetComponent<Slider>().value = slimeCleaned;
         CleanProgressBar.GetComponentInChildren<Text>().text = CleanProgressBar.GetComponent<Slider>().value.ToString() + "%";
-
-        Debug.Log(groundSlimeCleaned + " " + groundSlimeMax + " " + slimeCleaned);
     }
 
     public void disableSlimeMeters(List<GameObject> meter)

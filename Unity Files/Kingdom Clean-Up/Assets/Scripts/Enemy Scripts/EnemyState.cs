@@ -269,10 +269,6 @@ public class EnemyState : MonoBehaviour {
             SlimeViscera.GetComponent<ItemInteraction>().setVelocity(vel);
             i++;
         }
-        if (GameObject.Find("CleanProgress"))
-        {
-            GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().CountGroundSlime();
-        }
 
         // Die
         Debug.Log("i should die now");
