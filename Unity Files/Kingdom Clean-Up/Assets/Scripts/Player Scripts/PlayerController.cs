@@ -129,6 +129,10 @@ public class PlayerController : MonoBehaviour
 
             RaycastHit2D hit;
             hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 20f);
+            if (!an.GetCurrentAnimatorStateInfo(0).IsName("MopClean"))
+            {
+                an.Play("MopClean");
+            }
             an.Play("MopClean");
             if (hit)
             {
@@ -286,6 +290,7 @@ public class PlayerController : MonoBehaviour
     void Flip()
     {
         facingRight = !facingRight;
+        an.SetBool("facingRight", facingRight);
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y);
     }
 
