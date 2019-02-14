@@ -126,10 +126,10 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButton("Interact"))
         {
+
             RaycastHit2D hit;
-
             hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 20f);
-
+            an.Play("MopClean");
             if (hit)
             {
                 if (hit.collider.gameObject.CompareTag("slimeObject"))
@@ -163,15 +163,17 @@ public class PlayerController : MonoBehaviour
             {
                 if (facingRight)
                 {
-                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("runRight"))
+                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("runRight") && !(Input.GetButton("Interact")))
                     {
                         an.Play("runRight");
                     }
                 }
                 else
                 {
-                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("runLeft"))
-                        an.Play("runLeft");
+                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("runLeft") && !(Input.GetButton("Interact")) )
+                        {
+                            an.Play("runLeft");
+                        }
                 }
             }
 
@@ -179,12 +181,12 @@ public class PlayerController : MonoBehaviour
             {
                 if (facingRight)
                 {
-                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("idle") && !isJumpAnimation())
+                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("idle") && !isJumpAnimation() && !isCleanAnimation())
                         an.Play("idle");
                 }
                 else
                 {
-                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("idleLeft") && !isJumpAnimation())
+                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("idleLeft") && !isJumpAnimation() && !isCleanAnimation())
                         an.Play("idleLeft");
                 }
             }
@@ -260,6 +262,17 @@ public class PlayerController : MonoBehaviour
             an.GetCurrentAnimatorStateInfo(0).IsName("inAirRight")||
             an.GetCurrentAnimatorStateInfo(0).IsName("inAirLeft")
             )
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public bool isCleanAnimation()
+    {
+        if(an.GetCurrentAnimatorStateInfo(0).IsName("MopClean"))
         {
             return true;
         }
