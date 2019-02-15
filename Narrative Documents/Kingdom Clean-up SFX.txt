@@ -11,12 +11,23 @@ Slime hit effect:
 
 Cleaning Effect: 
 (Test with bubble noise) https://www.audioblocks.com/stock-audio/mop-moving-on-wet-cement.html
+https://www.audioblocks.com/stock-audio/mopping-linoleum-1-sound-effect.html (not as scratchy sounding)
+
+Bubble:
+https://www.audioblocks.com/stock-audio/water-bubble-surface-single.html
+https://www.audioblocks.com/stock-audio/bubble-sound-effect.html
 
 Bucket Handle SFX:
 https://www.audioblocks.com/stock-audio/footsteps-tennis-shoes-jump-on-metal-surface-83209.html
 
 Landing from a jump SFX: 
+Dirt:
 (Dont hate, will need a different one for stone blocks) https://www.audioblocks.com/stock-audio/footsteps-dirt-jump-land.html
+
+Stone:
+https://www.audioblocks.com/stock-audio/footsteps-work-boots-jump-on-sand.html
+https://www.audioblocks.com/stock-audio/footsteps-high-heel-shoes-jump-concrete.html
+https://www.audioblocks.com/stock-audio/footsteps-work-boots-cement-scrape-jump-land.html
 
 Walk SFX:
 (Might be good for gross parts) https://www.audioblocks.com/stock-audio/field-way-walking.html
@@ -24,6 +35,11 @@ Walk SFX:
 
 End of level garbage can SFX:
 (Maybe) https://www.audioblocks.com/stock-audio/metal-garbage-can-empty-lid-put-on-cover.html
+
+Nature Ambience:
+https://www.audioblocks.com/stock-audio/morning-meadow-birds-ambience---looping.html
+https://www.audioblocks.com/stock-audio/nature-woods-birds-chirp-crickets.html
+https://www.audioblocks.com/stock-audio/nature-woods-birds-chirp-light-rain-drips-95546.html
 
 Disturbing >:) https://freesound.org/people/mattiagreyfox/sounds/202400/
 
