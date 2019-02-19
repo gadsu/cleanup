@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
     public bool canMove;
     [Tooltip("The mop object")]
     public GameObject mop;
+    [Tooltip("How long the player is unable to move from knockback")]
+    public float knockbackTime;
+
     public bool ignoreCollision;
 
     public List<GameObject> ignoredObjects;
@@ -39,9 +42,9 @@ public class PlayerController : MonoBehaviour
     [Tooltip("How much can the character jump?")]
     public float charJumpSpeed = 60f;
     [Tooltip("How high you go on knockback")]
-    public float knockbackY = 40f;
+    public float knockbackY = 30f;
     [Tooltip("How far you go on knockback")]
-    public float knockbackX = 40f;
+    public float knockbackX = 30f;
 
     bool startTimer;
     float jumpFrame;
@@ -82,121 +85,33 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-
-        Vector3 colpos = col.gameObject.transform.position;
-        Vector3 mypos = transform.position;
-        if (col.gameObject.tag == "Platform")
-        {
-            groundTimer = 0f;
-            startTimer = false;
-            Debug.DrawRay(transform.position, Vector2.down * playerSize, Color.magenta);
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down * playerSize);
-            if (hit.collider != null)
-            {
-               // Debug.Log(hit.collider.gameObject.tag + hit.collider.gameObject.tag.ToString());
-                if (hit.collider.gameObject.tag == "Platform")
-                {
-                    //Debug.Log(hit.collider.Distance(GetComponent<Collider2D>()).distance);
-                    onGround = true;
-                    canMove = true;
-                    doubleJump = false;
-                    if (ignoreCollision)
-                    {
-                        ignoreCollision = false;
-                        foreach(GameObject i in ignoredObjects)
-                        {
-                            Physics2D.IgnoreCollision(i.GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
-                        }
-                        ignoredObjects.Clear();
-                    }
-                }
-            }
-        }
-        if ((col.gameObject.tag == "Enemy" || col.gameObject.tag == "Boss") && !onGround)
-        {
-            Debug.Log(col.gameObject + col.gameObject.name + col.gameObject.tag);
-            ignoredObjects.Add(col.gameObject);
-            Physics2D.IgnoreCollision(col.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-            ignoreCollision = true;
-        }
-        
-        
-    }
-
-    private void OnCollisionEnter(Collision col)
-    {
-        if(col.gameObject.tag == "Platform")
-        {
-            onGround = true;
-        }
-    }
-
-    private void OnCollisionStay2D(Collision2D col)
-    {
-        if(col.gameObject.tag == "Platform" && !onGround)
-        {
-            groundTimer = 0f;
-            startTimer = false;
-            doubleJump = false;
-            canMove = true;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D col)
-    {
-
-        if (col.gameObject.tag == "Platform" && onGround)
-        {
-            startTimer = true;
-        }
-
-    }
-
     private void OnTriggerExit2D(Collider2D col)
     {
         if (col.gameObject.tag != "slimeInteractable")
         {
             doubleJump = false;
         }
-        /* if (onGround == true && col.tag == "Platform")
-         {
-             onGround = false;
-         } */
-    }
-    private void OnDrawGizmosSelected()
-    {
-        Debug.DrawRay(transform.position, Vector2.down * playerSize, Color.magenta);
     }
 
     private void FixedUpdate()
     {
-        if (canMove)
-        {
-            
-
-            //slime throwing shenanigans - movement of reticle happens on the reticle
-            if (Input.GetAxis("ShowAim") > 0 && !aiming)//(Input.GetButtonDown("ShowAimButton") || Input.GetAxis("ShowAimTrigger") > 0) && !aiming)
-            {
-                ShowAim();
-                Debug.Log("Showing Aim");
-            }
-            else if (Input.GetAxis("ShowAim") <= 0 && aiming)//(Input.GetButtonUp("ShowAimButton") || Input.GetAxis("ShowAimTrigger") == 0) && aiming)
-            {
-                HideAim();
-                Debug.Log("Aim Hidden");
-            }
-            
-            
-        }
-
+        groundCheck();
     }
 
     void Update()
     {
-        groundCheck();
         jump(); //made own function as we can call it in other places
+
+        if (knockbackTime > 0)
+        {
+            knockbackTime = knockbackTime - Time.deltaTime;
+
+            if (knockbackTime < 1)
+            {
+                canMove = true;
+                knockbackTime = 0;
+            }
+        }
 
         //checking for basic button presses - all button input should be here
         if (Input.GetButtonDown("Attack"))
@@ -209,6 +124,27 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Force: " + force + "rby: " + rb.velocity.y);
         //an.SetFloat("Speed", Mathf.Abs(force));
 
+        if (Input.GetButton("Interact"))
+        {
+
+            RaycastHit2D hit;
+            hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 20f);
+            if (!an.GetCurrentAnimatorStateInfo(0).IsName("MopClean"))
+            {
+                an.Play("MopClean");
+            }
+            an.Play("MopClean");
+            if (hit)
+            {
+                if (hit.collider.gameObject.CompareTag("slimeObject"))
+                {
+                    GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().addSlime(10, hit.transform.gameObject.GetComponent<ItemInteraction>().color);
+                    GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().groundSlimeCleaned++;
+                    GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().updateCleanProgress();
+                    Destroy(hit.transform.gameObject);
+                }
+            }
+        }
 
 
         if (canMove)
@@ -231,15 +167,17 @@ public class PlayerController : MonoBehaviour
             {
                 if (facingRight)
                 {
-                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("runRight"))
+                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("runRight") && !(Input.GetButton("Interact")))
                     {
                         an.Play("runRight");
                     }
                 }
                 else
                 {
-                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("runLeft"))
-                        an.Play("runLeft");
+                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("runLeft") && !(Input.GetButton("Interact")) )
+                        {
+                            an.Play("runLeft");
+                        }
                 }
             }
 
@@ -247,12 +185,12 @@ public class PlayerController : MonoBehaviour
             {
                 if (facingRight)
                 {
-                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("idle") && !isJumpAnimation())
+                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("idle") && !isJumpAnimation() && !isCleanAnimation())
                         an.Play("idle");
                 }
                 else
                 {
-                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("idleLeft") && !isJumpAnimation())
+                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("idleLeft") && !isJumpAnimation() && !isCleanAnimation())
                         an.Play("idleLeft");
                 }
             }
@@ -261,13 +199,31 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void IsInjured()
+    {
+        if (!an.GetCurrentAnimatorStateInfo(0).IsName("injured"))
+        {
+            an.Play("injured");
+        }
+    }
+
     private void groundCheck()
     {
-        if (startTimer)
-            groundTimer += Time.deltaTime;
-
-        if (groundTimer >= 0.75f)
+        LayerMask layer = LayerMask.GetMask("Platform");
+        RaycastHit2D hit;
+        hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 17f, layer);
+        Debug.DrawRay(gameObject.transform.position, Vector2.down * 17);
+        if (hit)
+        {
+          //  Debug.Log("FLOOR");
+            onGround = true;
+            canMove = true;
+            doubleJump = false;
+        }
+        else
+        {
             onGround = false;
+        }
     }
     public void jump()
     {
@@ -318,17 +274,30 @@ public class PlayerController : MonoBehaviour
             return false;
         }
     }
+    public bool isCleanAnimation()
+    {
+        if(an.GetCurrentAnimatorStateInfo(0).IsName("MopClean"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     
 
     void Flip()
     {
         facingRight = !facingRight;
+        an.SetBool("facingRight", facingRight);
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y);
     }
 
     public void Knockback(int dir)
     {
         canMove = false;
+        knockbackTime = 3f;
         rb.velocity = new Vector2(dir * knockbackX, knockbackY);
     }
 

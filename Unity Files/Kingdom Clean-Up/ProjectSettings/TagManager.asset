@@ -13,6 +13,7 @@ TagManager:
   - Spawner
   - Boss
   - InvisObject
+  - Barn
   layers:
   - Default
   - TransparentFX

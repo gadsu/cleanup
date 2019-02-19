@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 114724730534880134}
   - component: {fileID: 50715995538295254}
   - component: {fileID: 70735175225839256}
-  m_Layer: 2
+  m_Layer: 9
   m_Name: slimeBallBlue
   m_TagString: slimeObject
   m_Icon: {fileID: 0}

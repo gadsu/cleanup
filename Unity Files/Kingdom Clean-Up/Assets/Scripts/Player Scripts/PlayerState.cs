@@ -33,9 +33,9 @@ public class PlayerState : MonoBehaviour {
     [Tooltip("Can the player be damaged?")]
     public bool isInvuln;
     [Tooltip("Time to be invulnerable")]
-    public float invulnTime = 1.00f;
+    public float invulnTime = 1;
     [Tooltip("Frame the player was damaged on")]
-    public float damageFrame;
+    public float damageFrame = 1;
 
     public GameObject CleanProgressBar;
     public string SceneName;
@@ -45,7 +45,7 @@ public class PlayerState : MonoBehaviour {
 
     GameObject player;
     int maxSlime = 100;
-
+    
     //public TextAsset PlayerFile; DOES NOT WORK FOR SOME RAISIN
 
     public void loadData(string playernum)
@@ -79,7 +79,6 @@ public class PlayerState : MonoBehaviour {
             //Debug.Log("<color=blue>BlueSlimeVal:</color> " + blueSlimeMeter);//tells the debug log that blue slime was added to the slime meter
         }
         
-        CountGroundSlime();
     }
     public bool useSlime()
     {
@@ -164,6 +163,7 @@ public class PlayerState : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        
         damageFrame = invulnTime;
         sceneLoaded = false;
         groundSlimeCleaned = 0;
@@ -193,30 +193,43 @@ public class PlayerState : MonoBehaviour {
 
         //CleanProgressBar = null;
         groundSlimeMax = 0;
+        groundSlimeCleaned = 0;
         CountGroundSlime();
         setSlimeMeterImage(0, greenChildren);
         setSlimeMeterImage(0, blueChildren);
         setSlimeMeterImage(0, redChildren);
         player = GameObject.Find("Player");
+        playerHealth = 100f;
     }
 
     public void CountGroundSlime()
     {
         List<GameObject> groundSlimes = GameObject.FindGameObjectsWithTag("slimeObject").ToList<GameObject>();
-        Debug.Log("Slime Count: " + groundSlimes.Count);
+        List<GameObject> slimeSpawners = GameObject.FindGameObjectsWithTag("Spawner").ToList<GameObject>();
+        Debug.Log("Slime Count: " + groundSlimes.Count + ", Spawner Count: " + slimeSpawners.Count);
+
         if (groundSlimeMax == 0 || groundSlimes.Count + groundSlimeCleaned > groundSlimeMax)
+            groundSlimeMax = groundSlimes.Count;
+
+        foreach (GameObject spawner in slimeSpawners)
         {
-            groundSlimeMax = groundSlimes.Count + groundSlimeCleaned;
+            if (spawner)
+                groundSlimeMax += spawner.GetComponent<SlimeSpawner>().totalSlime * 3;
+            else
+                Debug.Log("SPAWNER NOT FOUND");
         }
-       
-        //if (CleanProgressBar = null)
+
+        updateCleanProgress();
+    }
+
+    public void updateCleanProgress()
+    {
+        if (!CleanProgressBar)
             CleanProgressBar = GameObject.Find("CleanProgress");
 
         float slimeCleaned = Mathf.Round(((float)groundSlimeCleaned / (float)groundSlimeMax) * 100);
         CleanProgressBar.GetComponent<Slider>().value = slimeCleaned;
         CleanProgressBar.GetComponentInChildren<Text>().text = CleanProgressBar.GetComponent<Slider>().value.ToString() + "%";
-
-        Debug.Log(groundSlimeCleaned + " " + groundSlimeMax + " " + slimeCleaned);
     }
 
     public void disableSlimeMeters(List<GameObject> meter)
@@ -232,7 +245,7 @@ public class PlayerState : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (GameObject.Find("greenMeter") && sceneLoaded == false)
+        if (GameObject.Find("greenMeter") && sceneLoaded == false && !SceneName.Equals("_DontDestroyOnLoad"))
         {
             Debug.Log("LOAD SCENE");
             loadScene();

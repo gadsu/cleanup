@@ -252,6 +252,14 @@ public class OBSOOO : MonoBehaviour {
         
     }
 
+    void constrain()
+    {
+        if (gameObject.transform.position.x < leftX)
+            gameObject.transform.position = new Vector2(leftX, gameObject.transform.position.y);
+        else if (gameObject.transform.position.x > rightX)
+            gameObject.transform.position = new Vector2(rightX, gameObject.transform.position.y);
+    }
+
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Platform" && !onGround)
@@ -279,8 +287,8 @@ public class OBSOOO : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate ()
     {
-        
-        
+
+        constrain();
 
         if (rb.transform.position.y >= YPosFreeze)
         {
