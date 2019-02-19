@@ -95,3 +95,7 @@ Possible grass movement: https://www.audioblocks.com/stock-audio/grass-movement-
 
 Running on stone: https://www.audioblocks.com/stock-audio/running-through-stony-corridor.html
 
+Tutorial background sounds: https://www.audioblocks.com/stock-audio/suburb-town-foley---looping.html
+
+Pausible additional sound effect for walking animation (Due to bucket): https://www.audioblocks.com/stock-audio/metal-impact-hit-ring.html
+
