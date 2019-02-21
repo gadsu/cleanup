@@ -25,7 +25,7 @@ public class OBSOOO : MonoBehaviour {
     [Tooltip("Jumps to begin big jump")]
     public float JTIME = 6f; //How many jump to do big jump
     [Tooltip("Y Value to freeze OBSOOO at")]
-    public int YPosFreeze = 64;
+    public int YPosFreeze = 110;
     [Tooltip("X Movement Speed")]
     public float basicSpeed = 30f;
     [Tooltip("Y Jump Speed")]
@@ -299,10 +299,12 @@ public class OBSOOO : MonoBehaviour {
         {
             movementController();
         }
+        /*
         else if (!onGround)
         {
            // MoveTowardsPoint(target.transform.position);
         }
+        */
 	}
 
     private void MoveTowardsPoint(Vector3 pos)
