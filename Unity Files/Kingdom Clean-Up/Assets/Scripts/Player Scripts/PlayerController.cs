@@ -157,11 +157,7 @@ public class PlayerController : MonoBehaviour
             {
                 Flip();
             }
-            if ((an.GetCurrentAnimatorStateInfo(0).IsName("inAirRight") || an.GetCurrentAnimatorStateInfo(0).IsName("inAirLeft")) && onGround )
-            {
-                //might need to add a condition in the animation controler.
-                an.Play("landing");
-            }
+            
             rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
             if (Mathf.Abs(rb.velocity.x) > 0 && !isJumpAnimation())
             {
