@@ -18,6 +18,8 @@ public class Barney : MonoBehaviour
     public float rateOfFire;
     public float launchTimer;
     int curAmmo;
+    public int attackState = 0;
+    public List<GameObject> tentacles = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,32 @@ public class Barney : MonoBehaviour
         distanceToPlayer = Vector2.Distance(target.transform.position, transform.position);   //Calculate the distance between the player and yourself
         ThrowSlime();
         launchTimer -= Time.deltaTime;
+
+        attack();
+    }
+
+    void attack()
+    {
+        if (attackState == 0)
+        {
+            //timer
+        }
+        else if (attackState == 1)
+        {
+            moveTentacle(tentacles[0], new Vector3(2778, 229, 0));
+        }
+        else if (attackState == 2)
+        {
+            moveTentacle(tentacles[0], player.transform.position);
+        }
+    }
+
+    void moveTentacle(GameObject t, Vector3 pos)
+    {
+        Rigidbody2D end = t.transform.Find("end").gameObject.GetComponent<Rigidbody2D>();
+
+        end.AddForce((pos - end.gameObject.transform.position).normalized * 1000);
+
     }
 
     void ThrowSlime( )
