@@ -96,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initvel: {x: 0, y: 0}
   prefab: {fileID: 0}
-  color: 
+  color: green
 --- !u!50 &50715995538295254
 Rigidbody2D:
   serializedVersion: 4
