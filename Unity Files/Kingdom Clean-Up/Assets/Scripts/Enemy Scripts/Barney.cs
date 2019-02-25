@@ -5,28 +5,31 @@ using UnityEngine;
 public class Barney : MonoBehaviour
 {
 
-    int hitCount;
-    int health;
-    float throwSlimeWait;
+    [Header("Debug Variables")]
+    public float distanceToPlayer;
+    public Transform BarneySlimePos;
+    public float launchTimer;
+    public int curAmmo;
+    public int attackState = 0;
+    [Header("Editable Variables")]
     public GameObject player;
     public GameObject throwSlimePrefab;
-    GameObject target = null;  //Will be the player
-    public float distanceToPlayer;
     public float maxRange;
-    public Transform BarneySlimePos;
-    public int maxSlimeAmmo;
+    public int maxSlimeAmmo = 10;
     public float rateOfFire;
-    public float launchTimer;
-    int curAmmo;
-    public int attackState = 0;
     public List<GameObject> tentacles = new List<GameObject>();
+    public GameObject attTentacle;
+
+    GameObject target = null;  //Will be the player
+    int hitCount;
+    int health;
+    float throwSlimeWait = 0;
+    System.Random rnd = new System.Random();
 
     // Start is called before the first frame update
     void Start()
     {
         target = GameObject.Find("Player");    //Find the player
-        health = 90;
-        maxSlimeAmmo = 10;
         curAmmo = 10;
     }
 
@@ -34,13 +37,49 @@ public class Barney : MonoBehaviour
     void Update()
     {
         distanceToPlayer = Vector2.Distance(target.transform.position, transform.position);   //Calculate the distance between the player and yourself
-        ThrowSlime();
+        //ThrowSlime();
         launchTimer -= Time.deltaTime;
 
-        attack();
+        controller();
     }
 
-    void attack()
+    void controller()
+    {
+        if (attackState == 0 && player.transform.position.x <= gameObject.transform.position.x) //If player is left of Barney and not attacking
+        {
+            attTentacle = tentacles[rnd.Next(2)];
+            attackState = 1;
+        }
+        else if (attackState == 0 && player.transform.position.x > gameObject.transform.position.x)//If player is right of Barney and not attacking
+        {
+            attTentacle = tentacles[rnd.Next(2, 4)];
+            attackState = 1;
+        }
+
+        if (attackState != 0)
+        {
+            throwSlimeWait += Time.fixedDeltaTime;
+            Debug.Log(throwSlimeWait);
+        }
+        if (throwSlimeWait >= 3f && attackState == 1)
+        {
+            attackState = 2;
+        }
+        if (throwSlimeWait >= 3.5f && attackState == 2)
+        {
+            Instantiate(throwSlimePrefab, attTentacle.transform.Find("end").position, new Quaternion());
+            attackState = 3; //Cooldown phase
+        }
+        if (throwSlimeWait >= 5f)
+        {
+            attackState = 0;
+            throwSlimeWait = 0;
+        }
+
+        attack(attTentacle);
+    }
+
+    void attack(GameObject tent)
     {
         if (attackState == 0)
         {
@@ -48,11 +87,11 @@ public class Barney : MonoBehaviour
         }
         else if (attackState == 1)
         {
-            moveTentacle(tentacles[0], new Vector3(2778, 229, 0));
+            moveTentacle(tent, new Vector3(2778, 229, 0));
         }
         else if (attackState == 2)
         {
-            moveTentacle(tentacles[0], player.transform.position);
+            moveTentacle(tent, player.transform.position);
         }
     }
 
@@ -66,16 +105,6 @@ public class Barney : MonoBehaviour
 
     void ThrowSlime( )
     {
-        //if (distanceToPlayer < maxRange && maxSlimeAmmo > 0 )
-        //{
-        //        if(launchTimer <= 0)
-        //        {
-
-        //            Instantiate(throwSlimePrefab, BarneySlimePos).GetComponent<BarneySlimeBall>().playerPos = target.transform.position;
-        //            //maxSlimeAmmo--;
-        //            launchTimer = rateOfFire;
-        //        }
-        //}
         if(curAmmo > 0)
         {
             Instantiate(throwSlimePrefab, BarneySlimePos);
