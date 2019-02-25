@@ -405,10 +405,14 @@ MonoBehaviour:
   onGround: 1
   groundTimer: 0
   facingRight: 0
+  isClean: 0
+  isJump: 0
+  isInteract: 0
   doubleJump: 1
   aiming: 0
   canMove: 1
   mop: {fileID: 1552292412110382}
+  knockbackTime: 0
   ignoreCollision: 0
   ignoredObjects: []
   charMaxSpeed: 40
@@ -497,7 +501,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: d93c4cd1557d9654a8a8172c19978ca0, type: 2}
   m_Interpolate: 2
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!95 &95055646844152270
 Animator:
