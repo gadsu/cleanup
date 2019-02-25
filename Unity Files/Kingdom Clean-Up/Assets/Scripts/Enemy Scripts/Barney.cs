@@ -69,11 +69,20 @@ public class Barney : MonoBehaviour
         {
             Instantiate(throwSlimePrefab, attTentacle.transform.Find("end").position, new Quaternion());
             attackState = 3; //Cooldown phase
+
         }
         if (throwSlimeWait >= 5f)
         {
             attackState = 0;
             throwSlimeWait = 0;
+        }
+
+        foreach (GameObject tentacle in tentacles)
+        {
+            if (tentacle != attTentacle)
+            {
+                moveTentacle(tentacle, new Vector3(tentacle.transform.position.x, tentacle.transform.position.y + rnd.Next(-30, 30), 0));
+            }
         }
 
         attack(attTentacle);
@@ -87,7 +96,7 @@ public class Barney : MonoBehaviour
         }
         else if (attackState == 1)
         {
-            moveTentacle(tent, new Vector3(2778, 229, 0));
+            moveTentacle(tent, new Vector3(tent.transform.position.x, tent.transform.position.y + 30, 0));
         }
         else if (attackState == 2)
         {
