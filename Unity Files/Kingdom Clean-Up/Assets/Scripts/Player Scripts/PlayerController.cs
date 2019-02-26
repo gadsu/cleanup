@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     public bool facingRight;
     [Tooltip("Is player cleaning?")]
     public bool isClean;
+    [Tooltip("Is player running?")]
+    public bool isRun;
     [Tooltip("Is player Jumping?")]
     public bool isJump;
     [Tooltip("Is player pressing Interact?")]
@@ -51,6 +53,8 @@ public class PlayerController : MonoBehaviour
     public float knockbackY = 30f;
     [Tooltip("How far you go on knockback")]
     public float knockbackX = 30f;
+    [Tooltip("Sprite to show when running and moping")]
+    GameObject runningMop; 
 
     bool startTimer;
     float jumpFrame;
@@ -63,11 +67,15 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        runningMop = GameObject.Find("mopRun");
+        runningMop.SetActive(false);
+        
         onGround = true;
         an = GetComponent<Animator>();
         
         rb = GetComponent<Rigidbody2D>();
         //       ar = GetComponent<AimRender>();
+        isRun = false;
         aiming = false;
         doubleJump = false;
         facingRight = false;
@@ -110,6 +118,10 @@ public class PlayerController : MonoBehaviour
     {
         jump(); //made own function as we can call it in other places
         
+        if(isRun)
+        {
+            runningMop.SetActive(false);
+        }
 
         if (Input.GetButton("Interact") && !isJump)
         {
@@ -117,7 +129,7 @@ public class PlayerController : MonoBehaviour
 
             RaycastHit2D hit;
             hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 20f);
-            if (!isClean)
+            if (!isClean && !isRun)
             {
                 if(facingRight)
                 {
@@ -191,20 +203,42 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
             if (Mathf.Abs(rb.velocity.x) > 0 && !isJump)
             {
+                isRun = true;
                 if (facingRight)
                 {
                     if (!an.GetCurrentAnimatorStateInfo(0).IsName("runRight") && !(Input.GetButton("Interact")))
                     {
                         an.Play("runRight");
                     }
+                    else if (!an.GetCurrentAnimatorStateInfo(0).IsName("runRight") && (Input.GetButton("Interact")))
+                    {
+                        runningMop.SetActive(true);
+                        an.Play("mopRunRight");
+                    }
+                    else
+                    {
+                        runningMop.SetActive(false);
+                    }
+                    
                 }
                 else
                 {
                     if (!an.GetCurrentAnimatorStateInfo(0).IsName("runLeft") && !(Input.GetButton("Interact")) )
-                        {
-                            an.Play("runLeft");
-                        }
+                    {
+                        an.Play("runLeft");
+                    }
+                    else if (!an.GetCurrentAnimatorStateInfo(0).IsName("runLeft") && (Input.GetButton("Interact")))
+                    {
+                        runningMop.SetActive(true);
+                        an.Play("mopRunLeft");
+                    }
+                    else
+                    {
+                        runningMop.SetActive(false);
+                    }
+                    
                 }
+                
             }
 
             if ((Input.GetAxis("Horizontal")) == 0)
@@ -212,17 +246,26 @@ public class PlayerController : MonoBehaviour
                 if (facingRight)
                 {
                     if (!an.GetCurrentAnimatorStateInfo(0).IsName("idle") && !isJump && !isClean)
+                    {
                         an.Play("idle");
+                    }
                 }
                 else
                 {
                     if (!an.GetCurrentAnimatorStateInfo(0).IsName("idleLeft") && !isJump && !isClean)
+                    {
                         an.Play("idleLeft");
+                    }
                 }
             }
             
 
         }
+        if (Mathf.Abs(rb.velocity.x) <= 0 || isJump)
+        {
+            isRun = false;
+        }
+        an.SetBool("isRun", isRun);
     }
 
     public void IsInjured()
