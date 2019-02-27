@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4473736864127886}
   - component: {fileID: 212687608210414902}
+  - component: {fileID: 3140644696418394453}
   m_Layer: 0
   m_Name: ene-goopmother_lay-1.6_ani-idle
   m_TagString: Untagged
@@ -79,6 +80,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3140644696418394453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003254147196092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0844c089607b1d94599ad13e1a1c215c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gooplingPrefab: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
+    type: 3}
 --- !u!1 &1010384942394740
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,6 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4575022279579154}
   - component: {fileID: 212835859102403390}
+  - component: {fileID: 7486562479181961544}
   m_Layer: 0
   m_Name: ene-goopmother_lay-1.4_ani-idle
   m_TagString: Untagged
@@ -158,6 +174,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7486562479181961544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010384942394740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0844c089607b1d94599ad13e1a1c215c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gooplingPrefab: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
+    type: 3}
 --- !u!1 &1042593451219140
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,6 +198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4955842692479030}
   - component: {fileID: 212801756696918118}
+  - component: {fileID: 7099733931734136425}
   m_Layer: 0
   m_Name: ene-goopmother_lay-1.8_ani-idle
   m_TagString: Untagged
@@ -237,6 +268,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7099733931734136425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042593451219140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0844c089607b1d94599ad13e1a1c215c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gooplingPrefab: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
+    type: 3}
 --- !u!1 &1088936908517376
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +300,7 @@ GameObject:
   - component: {fileID: 2213052501624680699}
   m_Layer: 0
   m_Name: GoopMother
-  m_TagString: Enemy
+  m_TagString: GoopMother
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -388,7 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0c9c7106adea4e49a5031e78fa01dc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 1000
   spawner: {fileID: 0}
   color: Green
   facingRight: 1
@@ -396,7 +441,7 @@ MonoBehaviour:
   buffer: 3
   knockbackY: 30
   knockbackX: 30
-  visceraPrefab: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
+  visceraPrefab: {fileID: 1827464675113566, guid: f1ef8da39b8126e4691a9a3c234f4da3,
     type: 3}
 --- !u!114 &5893288098925495961
 MonoBehaviour:
@@ -466,6 +511,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4669854210239006}
   - component: {fileID: 212075165751672160}
+  - component: {fileID: 6038574305949697189}
   m_Layer: 0
   m_Name: ene-goopmother_lay-1.3_ani-idle
   m_TagString: Untagged
@@ -535,6 +581,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6038574305949697189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119006940388888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0844c089607b1d94599ad13e1a1c215c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gooplingPrefab: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
+    type: 3}
 --- !u!1 &1287054491152940
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,6 +605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4269489943575790}
   - component: {fileID: 212354436035458260}
+  - component: {fileID: 2468339314306528875}
   m_Layer: 0
   m_Name: ene-goopmother_lay--1.1_ani-idle
   m_TagString: Untagged
@@ -614,6 +675,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2468339314306528875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287054491152940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0844c089607b1d94599ad13e1a1c215c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gooplingPrefab: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
+    type: 3}
 --- !u!1 &1436807108363110
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,6 +699,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4405248945233818}
   - component: {fileID: 212089238664240556}
+  - component: {fileID: 6786641588986931025}
   m_Layer: 0
   m_Name: ene-goopmother_lay--1.3_ani-idle
   m_TagString: Untagged
@@ -693,6 +769,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6786641588986931025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436807108363110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0844c089607b1d94599ad13e1a1c215c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gooplingPrefab: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
+    type: 3}
 --- !u!1 &1588146309248170
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,6 +793,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4692899360427232}
   - component: {fileID: 212235921370660692}
+  - component: {fileID: 7225426430399326390}
   m_Layer: 0
   m_Name: ene-goopmother_lay--1.2_ani-idle
   m_TagString: Untagged
@@ -772,6 +863,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7225426430399326390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588146309248170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0844c089607b1d94599ad13e1a1c215c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gooplingPrefab: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
+    type: 3}
 --- !u!1 &1640100709285900
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,6 +887,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4671119400755614}
   - component: {fileID: 212018962650559300}
+  - component: {fileID: 2558740433316841984}
   m_Layer: 0
   m_Name: ene-goopmother_lay-1.1_ani-idle
   m_TagString: Untagged
@@ -851,6 +957,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2558740433316841984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640100709285900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0844c089607b1d94599ad13e1a1c215c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gooplingPrefab: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
+    type: 3}
 --- !u!1 &1700836303039116
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,6 +981,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4516715543356298}
   - component: {fileID: 212719400561178522}
+  - component: {fileID: 7483488236601006401}
   m_Layer: 0
   m_Name: ene-goopmother_lay-1.7_ani-idle
   m_TagString: Untagged
@@ -930,6 +1051,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7483488236601006401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700836303039116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0844c089607b1d94599ad13e1a1c215c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gooplingPrefab: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
+    type: 3}
 --- !u!1 &1751747716050190
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,6 +1075,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4703347448626510}
   - component: {fileID: 212871624295301248}
+  - component: {fileID: 8144255185315433881}
   m_Layer: 0
   m_Name: ene-goopmother_lay-1.5_ani-idle
   m_TagString: Untagged
@@ -1009,6 +1145,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8144255185315433881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751747716050190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0844c089607b1d94599ad13e1a1c215c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gooplingPrefab: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
+    type: 3}
 --- !u!1 &1868637161460388
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,6 +1169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4145723296995616}
   - component: {fileID: 212601923469200474}
+  - component: {fileID: 2392581211164349303}
   m_Layer: 0
   m_Name: ene-goopmother_lay-1.2_ani-idle
   m_TagString: Untagged
@@ -1088,3 +1239,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2392581211164349303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868637161460388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0844c089607b1d94599ad13e1a1c215c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gooplingPrefab: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
+    type: 3}

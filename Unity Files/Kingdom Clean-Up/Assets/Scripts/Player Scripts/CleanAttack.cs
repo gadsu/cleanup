@@ -47,6 +47,11 @@ public class CleanAttack : MonoBehaviour {
                 Debug.Log("SLIME HIT: " + col.gameObject.name);
 
             }
+            else if(col.gameObject.tag == "GoopMother")
+            {
+                col.gameObject.GetComponent<EnemyState>().takeDamage(mopDamage);
+                col.gameObject.GetComponent<GoopaMother>().spawnGoopling();
+            }
             else if(col.gameObject.tag == "slimeInteractable") //If you are hitting placed slime
             {
                 //break the object

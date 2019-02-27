@@ -52,7 +52,7 @@ public class BarneySlimeBall : MonoBehaviour
         gameObject.transform.position = Vector2.MoveTowards(gameObject.transform.position, initPos, -1 * speed);
     }
 
-    private void OnCollisionEnter2D(Collider2D col)
+    private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Player")
         {

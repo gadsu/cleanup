@@ -62,6 +62,11 @@ public class EnemyState : MonoBehaviour {
             health = 90;
             //slimeDamage = 34f;
         }
+        else if (gameObject.CompareTag("GoopMother"))
+        {
+            health = 120;
+            //slimeDamage = 34f;
+        }
     }
 	
 	// Update is called once per frame
