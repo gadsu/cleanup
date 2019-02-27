@@ -52,19 +52,24 @@ public class BarneySlimeBall : MonoBehaviour
         gameObject.transform.position = Vector2.MoveTowards(gameObject.transform.position, initPos, -1 * speed);
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnCollisionEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Player")
         {
             ps.takeDamage(slimeDamage); //damage player
             Destroy(gameObject);
         }
-        else if (col.gameObject.tag == "Barn")
+    }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        Debug.Log("I LEFT " + col.gameObject.name);
+        if(col.gameObject.name == "BarnBox")
         {
+            Debug.Log("I HAVE LEFT THE BARN");
             Transform startpos = gameObject.transform; //find location of self
             Instantiate<GameObject>(slimeBall, startpos.position, startpos.rotation);  //Create slime
             Destroy(gameObject); //kill self
         }
     }
-
 }

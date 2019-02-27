@@ -11,6 +11,7 @@ public class Barney : MonoBehaviour
     public float launchTimer;
     public int curAmmo;
     public int attackState = 0;
+
     [Header("Editable Variables")]
     public GameObject player;
     public GameObject throwSlimePrefab;
@@ -47,19 +48,18 @@ public class Barney : MonoBehaviour
     {
         if (attackState == 0 && player.transform.position.x <= gameObject.transform.position.x) //If player is left of Barney and not attacking
         {
-            attTentacle = tentacles[rnd.Next(2)];
+            attTentacle = tentacles[rnd.Next(3)];
             attackState = 1;
         }
         else if (attackState == 0 && player.transform.position.x > gameObject.transform.position.x)//If player is right of Barney and not attacking
         {
-            attTentacle = tentacles[rnd.Next(2, 4)];
+            attTentacle = tentacles[rnd.Next(3, 6)];
             attackState = 1;
         }
 
         if (attackState != 0)
         {
             throwSlimeWait += Time.fixedDeltaTime;
-            Debug.Log(throwSlimeWait);
         }
         if (throwSlimeWait >= 3f && attackState == 1)
         {
@@ -111,17 +111,4 @@ public class Barney : MonoBehaviour
         end.AddForce((pos - end.gameObject.transform.position).normalized * 1000);
 
     }
-
-    void ThrowSlime( )
-    {
-        if(curAmmo > 0)
-        {
-            Instantiate(throwSlimePrefab, BarneySlimePos);
-            curAmmo--;
-        }
-    }
-    
-
-
-
 }
