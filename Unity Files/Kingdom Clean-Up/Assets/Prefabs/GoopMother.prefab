@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 4473736864127886}
   - component: {fileID: 212687608210414902}
   - component: {fileID: 3140644696418394453}
+  - component: {fileID: 1324378379743373646}
   m_Layer: 0
-  m_Name: ene-goopmother_lay-1.6_ani-idle
+  m_Name: L6Goopling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +31,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4252698529769618}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &212687608210414902
 SpriteRenderer:
@@ -94,6 +95,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gooplingPrefab: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
     type: 3}
+--- !u!70 &1324378379743373646
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003254147196092}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -4.833042, y: -5.434953}
+  m_Size: {x: 3.1353104, y: 3.1353104}
+  m_Direction: 0
 --- !u!1 &1010384942394740
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,8 +122,9 @@ GameObject:
   - component: {fileID: 4575022279579154}
   - component: {fileID: 212835859102403390}
   - component: {fileID: 7486562479181961544}
+  - component: {fileID: 7926343489632152752}
   m_Layer: 0
-  m_Name: ene-goopmother_lay-1.4_ani-idle
+  m_Name: L5Goopling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,7 +142,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4252698529769618}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &212835859102403390
 SpriteRenderer:
@@ -188,6 +206,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gooplingPrefab: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
     type: 3}
+--- !u!70 &7926343489632152752
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010384942394740}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -6.235471, y: -4.636159}
+  m_Size: {x: 3.135309, y: 3.135309}
+  m_Direction: 0
 --- !u!1 &1042593451219140
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,8 +233,9 @@ GameObject:
   - component: {fileID: 4955842692479030}
   - component: {fileID: 212801756696918118}
   - component: {fileID: 7099733931734136425}
+  - component: {fileID: 3708999078833117690}
   m_Layer: 0
-  m_Name: ene-goopmother_lay-1.8_ani-idle
+  m_Name: L3Goopling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,7 +253,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4252698529769618}
-  m_RootOrder: 10
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &212801756696918118
 SpriteRenderer:
@@ -282,6 +317,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gooplingPrefab: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
     type: 3}
+--- !u!70 &3708999078833117690
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042593451219140}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -4.638836, y: -1.6306247}
+  m_Size: {x: 2.6747398, y: 2.6747398}
+  m_Direction: 1
 --- !u!1 &1088936908517376
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,17 +367,17 @@ Transform:
   m_LocalPosition: {x: -446.59, y: 337.14, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.0801}
   m_Children:
-  - {fileID: 4269489943575790}
-  - {fileID: 4692899360427232}
-  - {fileID: 4405248945233818}
-  - {fileID: 4671119400755614}
-  - {fileID: 4145723296995616}
-  - {fileID: 4669854210239006}
-  - {fileID: 4575022279579154}
-  - {fileID: 4703347448626510}
-  - {fileID: 4473736864127886}
   - {fileID: 4516715543356298}
+  - {fileID: 4269489943575790}
   - {fileID: 4955842692479030}
+  - {fileID: 4703347448626510}
+  - {fileID: 4575022279579154}
+  - {fileID: 4473736864127886}
+  - {fileID: 4692899360427232}
+  - {fileID: 4669854210239006}
+  - {fileID: 4405248945233818}
+  - {fileID: 4145723296995616}
+  - {fileID: 4671119400755614}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -410,17 +461,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gooplings:
-  - {fileID: 1287054491152940}
-  - {fileID: 1588146309248170}
-  - {fileID: 1436807108363110}
-  - {fileID: 1640100709285900}
-  - {fileID: 1868637161460388}
-  - {fileID: 1119006940388888}
-  - {fileID: 1010384942394740}
-  - {fileID: 1751747716050190}
-  - {fileID: 1003254147196092}
   - {fileID: 1700836303039116}
+  - {fileID: 1287054491152940}
   - {fileID: 1042593451219140}
+  - {fileID: 1751747716050190}
+  - {fileID: 1010384942394740}
+  - {fileID: 1003254147196092}
+  - {fileID: 1588146309248170}
+  - {fileID: 1119006940388888}
+  - {fileID: 1436807108363110}
+  - {fileID: 1868637161460388}
+  - {fileID: 1640100709285900}
+  leftVal: 6
+  rightVal: -6
 --- !u!114 &5782301619991309355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,8 +565,9 @@ GameObject:
   - component: {fileID: 4669854210239006}
   - component: {fileID: 212075165751672160}
   - component: {fileID: 6038574305949697189}
+  - component: {fileID: 7278092272613153015}
   m_Layer: 0
-  m_Name: ene-goopmother_lay-1.3_ani-idle
+  m_Name: R2Goopling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -531,7 +585,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4252698529769618}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &212075165751672160
 SpriteRenderer:
@@ -595,6 +649,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gooplingPrefab: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
     type: 3}
+--- !u!70 &7278092272613153015
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119006940388888}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 4.9753265, y: -1.469191}
+  m_Size: {x: 2.8681824, y: 3.268872}
+  m_Direction: 0
 --- !u!1 &1287054491152940
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,8 +676,9 @@ GameObject:
   - component: {fileID: 4269489943575790}
   - component: {fileID: 212354436035458260}
   - component: {fileID: 2468339314306528875}
+  - component: {fileID: 7508611820499439842}
   m_Layer: 0
-  m_Name: ene-goopmother_lay--1.1_ani-idle
+  m_Name: L2Goopling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -625,7 +696,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4252698529769618}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &212354436035458260
 SpriteRenderer:
@@ -689,6 +760,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gooplingPrefab: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
     type: 3}
+--- !u!70 &7508611820499439842
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287054491152940}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -5.888288, y: -0.88928604}
+  m_Size: {x: 2.5288103, y: 2.5288103}
+  m_Direction: 0
 --- !u!1 &1436807108363110
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,8 +787,9 @@ GameObject:
   - component: {fileID: 4405248945233818}
   - component: {fileID: 212089238664240556}
   - component: {fileID: 6786641588986931025}
+  - component: {fileID: 8800549706830210802}
   m_Layer: 0
-  m_Name: ene-goopmother_lay--1.3_ani-idle
+  m_Name: R3Goopling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -719,7 +807,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4252698529769618}
-  m_RootOrder: 2
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &212089238664240556
 SpriteRenderer:
@@ -783,6 +871,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gooplingPrefab: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
     type: 3}
+--- !u!70 &8800549706830210802
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436807108363110}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 6.1767116, y: -3.004237}
+  m_Size: {x: 3.970783, y: 2.8171544}
+  m_Direction: 1
 --- !u!1 &1588146309248170
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,8 +898,9 @@ GameObject:
   - component: {fileID: 4692899360427232}
   - component: {fileID: 212235921370660692}
   - component: {fileID: 7225426430399326390}
+  - component: {fileID: 7334835396895885547}
   m_Layer: 0
-  m_Name: ene-goopmother_lay--1.2_ani-idle
+  m_Name: R1Goopling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -813,7 +918,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4252698529769618}
-  m_RootOrder: 1
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &212235921370660692
 SpriteRenderer:
@@ -877,6 +982,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gooplingPrefab: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
     type: 3}
+--- !u!70 &7334835396895885547
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588146309248170}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 4.5240326, y: 0.6008484}
+  m_Size: {x: 2.0480652, y: 2.240338}
+  m_Direction: 0
 --- !u!1 &1640100709285900
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,8 +1009,9 @@ GameObject:
   - component: {fileID: 4671119400755614}
   - component: {fileID: 212018962650559300}
   - component: {fileID: 2558740433316841984}
+  - component: {fileID: 1061957827540607912}
   m_Layer: 0
-  m_Name: ene-goopmother_lay-1.1_ani-idle
+  m_Name: R5Goopling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -907,7 +1029,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4252698529769618}
-  m_RootOrder: 3
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &212018962650559300
 SpriteRenderer:
@@ -971,6 +1093,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gooplingPrefab: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
     type: 3}
+--- !u!70 &1061957827540607912
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640100709285900}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 4.955655, y: -6.339142}
+  m_Size: {x: 4.605146, y: 1.7211733}
+  m_Direction: 1
 --- !u!1 &1700836303039116
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,8 +1120,9 @@ GameObject:
   - component: {fileID: 4516715543356298}
   - component: {fileID: 212719400561178522}
   - component: {fileID: 7483488236601006401}
+  - component: {fileID: 8571594519678266572}
   m_Layer: 0
-  m_Name: ene-goopmother_lay-1.7_ani-idle
+  m_Name: L1Goopling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1001,7 +1140,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4252698529769618}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &212719400561178522
 SpriteRenderer:
@@ -1065,6 +1204,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gooplingPrefab: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
     type: 3}
+--- !u!70 &8571594519678266572
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700836303039116}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -4.8387237, y: 0.54464585}
+  m_Size: {x: 2.7590153, y: 2.1405036}
+  m_Direction: 1
 --- !u!1 &1751747716050190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,8 +1231,9 @@ GameObject:
   - component: {fileID: 4703347448626510}
   - component: {fileID: 212871624295301248}
   - component: {fileID: 8144255185315433881}
+  - component: {fileID: 7021662257728995495}
   m_Layer: 0
-  m_Name: ene-goopmother_lay-1.5_ani-idle
+  m_Name: L4Goopling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1095,7 +1251,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4252698529769618}
-  m_RootOrder: 7
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &212871624295301248
 SpriteRenderer:
@@ -1159,6 +1315,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gooplingPrefab: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
     type: 3}
+--- !u!70 &7021662257728995495
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751747716050190}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -5.9033084, y: -2.7996538}
+  m_Size: {x: 2.467505, y: 2.6678436}
+  m_Direction: 0
 --- !u!1 &1868637161460388
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,8 +1342,9 @@ GameObject:
   - component: {fileID: 4145723296995616}
   - component: {fileID: 212601923469200474}
   - component: {fileID: 2392581211164349303}
+  - component: {fileID: 8178269920446646786}
   m_Layer: 0
-  m_Name: ene-goopmother_lay-1.2_ani-idle
+  m_Name: R4Goopling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1189,7 +1362,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4252698529769618}
-  m_RootOrder: 4
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &212601923469200474
 SpriteRenderer:
@@ -1253,3 +1426,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gooplingPrefab: {fileID: 1329204740880434, guid: 92fa042a41266054aad7aba8baa26bf2,
     type: 3}
+--- !u!70 &8178269920446646786
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868637161460388}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 4.974872, y: -4.3499513}
+  m_Size: {x: 3.8744874, y: 3.8744874}
+  m_Direction: 0

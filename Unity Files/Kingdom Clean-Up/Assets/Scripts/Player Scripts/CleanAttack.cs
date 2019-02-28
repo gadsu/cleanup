@@ -49,8 +49,8 @@ public class CleanAttack : MonoBehaviour {
             }
             else if(col.gameObject.tag == "GoopMother")
             {
-                col.gameObject.GetComponent<EnemyState>().takeDamage(mopDamage);
                 col.gameObject.GetComponent<GoopaMother>().spawnGoopling();
+                col.gameObject.GetComponent<EnemyState>().takeDamage(mopDamage);
             }
             else if(col.gameObject.tag == "slimeInteractable") //If you are hitting placed slime
             {

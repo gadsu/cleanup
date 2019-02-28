@@ -53,18 +53,18 @@ public class EnemyState : MonoBehaviour {
     void Start () {
         //canKnockback = true;
         canMove = true;
-        health = 10;
+        health = 10; // set defult health
         slimeDamage = 16.7f;
         rb = GetComponent<Rigidbody2D>();
         an = GetComponent<Animator>();
         if (gameObject.CompareTag("Boss"))
         {
-            health = 90;
+            health = 90; //set boss health
             //slimeDamage = 34f;
         }
         else if (gameObject.CompareTag("GoopMother"))
         {
-            health = 120;
+            health = 110; //set goop mother heath must be less than number of goopilings * 10, 110 is max rn
             //slimeDamage = 34f;
         }
     }
