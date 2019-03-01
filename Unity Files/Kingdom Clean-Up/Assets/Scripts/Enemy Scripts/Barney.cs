@@ -9,17 +9,17 @@ public class Barney : MonoBehaviour
     public float distanceToPlayer;
     public Transform BarneySlimePos;
     public float launchTimer;
-    public int curAmmo;
     public int attackState = 0;
 
     [Header("Editable Variables")]
     public GameObject player;
     public GameObject throwSlimePrefab;
     public float maxRange;
-    public int maxSlimeAmmo = 10;
     public float rateOfFire;
     public List<GameObject> tentacles = new List<GameObject>();
     public GameObject attTentacle;
+    public GameObject leftSlimeCover;
+    public GameObject rightSlimeCover;
 
     GameObject target = null;  //Will be the player
     int hitCount;
@@ -31,7 +31,6 @@ public class Barney : MonoBehaviour
     void Start()
     {
         target = GameObject.Find("Player");    //Find the player
-        curAmmo = 10;
     }
 
     // Update is called once per frame
@@ -109,6 +108,11 @@ public class Barney : MonoBehaviour
         Rigidbody2D end = t.transform.Find("end").gameObject.GetComponent<Rigidbody2D>();
 
         end.AddForce((pos - end.gameObject.transform.position).normalized * 1000);
+
+    }
+
+    void coverSlime(int side) //1 - Left, 2 - Right
+    {
 
     }
 }
