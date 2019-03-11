@@ -14,6 +14,7 @@ public class Barney : MonoBehaviour
     [Header("Editable Variables")]
     public GameObject player;
     public GameObject throwSlimePrefab;
+    public int hitCount;
     public float maxRange;
     public float rateOfFire;
     public List<GameObject> tentacles = new List<GameObject>();
@@ -22,7 +23,6 @@ public class Barney : MonoBehaviour
     public GameObject rightSlimeCover;
 
     GameObject target = null;  //Will be the player
-    int hitCount;
     int health;
     float throwSlimeWait = 0;
     System.Random rnd = new System.Random();
@@ -43,8 +43,30 @@ public class Barney : MonoBehaviour
         controller();
     }
 
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.name == "mopAttack")
+        {
+            hitCount++;
+        }
+    }
+
     void controller()
     {
+        if (hitCount >= 3)
+        {
+            if (player.transform.position.x >= gameObject.transform.position.x)
+            {
+                StartCoroutine(coverSlime(rightSlimeCover));
+            }
+
+            else if (player.transform.position.x < gameObject.transform.position.x)
+            {
+                StartCoroutine(coverSlime(leftSlimeCover));
+            }
+
+            hitCount = 0;
+        }
         if (attackState == 0 && player.transform.position.x <= gameObject.transform.position.x) //If player is left of Barney and not attacking
         {
             attTentacle = tentacles[rnd.Next(3)];
@@ -111,8 +133,13 @@ public class Barney : MonoBehaviour
 
     }
 
-    void coverSlime(int side) //1 - Left, 2 - Right
+    IEnumerator coverSlime(GameObject cover) //1 - Left, 2 - Right
     {
-
+        yield return new WaitForSeconds(3);
+        foreach (Transform section in cover.transform)
+        {
+            yield return new WaitForSeconds(0.1f);
+            section.gameObject.SetActive(true);
+        }
     }
 }
