@@ -36,7 +36,10 @@ public class GameData : MonoBehaviour {
 
     void Update()
     {
-
+        if (Input.GetKeyDown("1"))
+        {
+            GameObject.Find("DontDestroyOnLoad").GetComponent<PlaySound>().Play("mopHit");
+        }
     }
     public void LoadFile(string num)
     {

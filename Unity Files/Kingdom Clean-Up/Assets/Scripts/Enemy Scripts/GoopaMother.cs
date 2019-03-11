@@ -4,21 +4,31 @@ using UnityEngine;
 
 public class GoopaMother : MonoBehaviour
 {
+    System.Random rnd = new System.Random();
     public List<GameObject> gooplings = new List<GameObject>();
-    [Tooltip("Setting the prefab for what viscera it spawns")]
-    public GameObject gooplingPrefab;
+    int rightCount= 6;
+    int leftCount = 0;
+    public float leftVal;
+    public float rightVal;
 
-    public void takeDamage(int dmg)
+    bool facingRight;
+
+    public void spawnGoopling()
     {
+        facingRight = gameObject.GetComponent<EnemyState>().facingRight;
 
-        GameObject SlimeViscera = Instantiate<GameObject>(gooplingPrefab);//, currentPos.position, currentPos.rotation);
-        SlimeViscera.transform.localScale = new Vector3(2.5f, 2.5f, 0);
+        if (facingRight && rightCount < 10)
+        {
+            gooplings[leftCount].GetComponent<Goopling>().spawn(leftVal);
+            leftCount++;
+        }
+        else if (!facingRight && leftCount < 6)
+        {
+            gooplings[rightCount].GetComponent<Goopling>().spawn(rightVal);
+            rightCount++;
+        }
         
+
     }
     
-       
-
-
-    
-
 }

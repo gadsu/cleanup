@@ -14,6 +14,7 @@ TagManager:
   - Boss
   - InvisObject
   - Barn
+  - GoopMother
   layers:
   - Default
   - TransparentFX
@@ -26,8 +27,8 @@ TagManager:
   - Platform
   - Viscera
   - Objects
-  - throwReticle
-  - 
+  - thrownSlime
+  - tentacle
   - 
   - 
   - 

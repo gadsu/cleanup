@@ -5,57 +5,114 @@ using UnityEngine;
 public class Barney : MonoBehaviour
 {
 
-    int hitCount;
-    int health;
-    float throwSlimeWait;
+    [Header("Debug Variables")]
+    public float distanceToPlayer;
+    public Transform BarneySlimePos;
+    public float launchTimer;
+    public int attackState = 0;
+
+    [Header("Editable Variables")]
     public GameObject player;
     public GameObject throwSlimePrefab;
-    GameObject target = null;  //Will be the player
-    public float distanceToPlayer;
     public float maxRange;
-    public Transform BarneySlimePos;
-    public int maxSlimeAmmo;
     public float rateOfFire;
-    public float launchTimer;
-    int curAmmo;
+    public List<GameObject> tentacles = new List<GameObject>();
+    public GameObject attTentacle;
+    public GameObject leftSlimeCover;
+    public GameObject rightSlimeCover;
+
+    GameObject target = null;  //Will be the player
+    int hitCount;
+    int health;
+    float throwSlimeWait = 0;
+    System.Random rnd = new System.Random();
 
     // Start is called before the first frame update
     void Start()
     {
         target = GameObject.Find("Player");    //Find the player
-        health = 90;
-        maxSlimeAmmo = 10;
-        curAmmo = 10;
     }
 
     // Update is called once per frame
     void Update()
     {
         distanceToPlayer = Vector2.Distance(target.transform.position, transform.position);   //Calculate the distance between the player and yourself
-        ThrowSlime();
+        //ThrowSlime();
         launchTimer -= Time.deltaTime;
+
+        controller();
     }
 
-    void ThrowSlime( )
+    void controller()
     {
-        //if (distanceToPlayer < maxRange && maxSlimeAmmo > 0 )
-        //{
-        //        if(launchTimer <= 0)
-        //        {
-
-        //            Instantiate(throwSlimePrefab, BarneySlimePos).GetComponent<BarneySlimeBall>().playerPos = target.transform.position;
-        //            //maxSlimeAmmo--;
-        //            launchTimer = rateOfFire;
-        //        }
-        //}
-        if(curAmmo > 0)
+        if (attackState == 0 && player.transform.position.x <= gameObject.transform.position.x) //If player is left of Barney and not attacking
         {
-            Instantiate(throwSlimePrefab, BarneySlimePos);
-            curAmmo--;
+            attTentacle = tentacles[rnd.Next(3)];
+            attackState = 1;
+        }
+        else if (attackState == 0 && player.transform.position.x > gameObject.transform.position.x)//If player is right of Barney and not attacking
+        {
+            attTentacle = tentacles[rnd.Next(3, 6)];
+            attackState = 1;
+        }
+
+        if (attackState != 0)
+        {
+            throwSlimeWait += Time.fixedDeltaTime;
+        }
+        if (throwSlimeWait >= 3f && attackState == 1)
+        {
+            attackState = 2;
+        }
+        if (throwSlimeWait >= 3.5f && attackState == 2)
+        {
+            Instantiate(throwSlimePrefab, attTentacle.transform.Find("end").position, new Quaternion());
+            attackState = 3; //Cooldown phase
+
+        }
+        if (throwSlimeWait >= 5f)
+        {
+            attackState = 0;
+            throwSlimeWait = 0;
+        }
+
+        foreach (GameObject tentacle in tentacles)
+        {
+            if (tentacle != attTentacle)
+            {
+                moveTentacle(tentacle, new Vector3(tentacle.transform.position.x, tentacle.transform.position.y + rnd.Next(-30, 30), 0));
+            }
+        }
+
+        attack(attTentacle);
+    }
+
+    void attack(GameObject tent)
+    {
+        if (attackState == 0)
+        {
+            //timer
+        }
+        else if (attackState == 1)
+        {
+            moveTentacle(tent, new Vector3(tent.transform.position.x, tent.transform.position.y + 30, 0));
+        }
+        else if (attackState == 2)
+        {
+            moveTentacle(tent, player.transform.position);
         }
     }
-    
 
+    void moveTentacle(GameObject t, Vector3 pos)
+    {
+        Rigidbody2D end = t.transform.Find("end").gameObject.GetComponent<Rigidbody2D>();
 
+        end.AddForce((pos - end.gameObject.transform.position).normalized * 1000);
 
+    }
+
+    void coverSlime(int side) //1 - Left, 2 - Right
+    {
+
+    }
 }

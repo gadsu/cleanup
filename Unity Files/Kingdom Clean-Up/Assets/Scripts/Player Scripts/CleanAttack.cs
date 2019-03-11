@@ -20,21 +20,43 @@ public class CleanAttack : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
+        
     }
-
     private void OnTriggerEnter2D(Collider2D col)  
     {
         //Debug.Log(col.gameObject.tag.ToString());
-        if (col.gameObject.tag == "Enemy" || col.gameObject.tag == "Boss")  //If you are hitting an enemy
+        if (gameObject.name == "mopRun") //Mop Run Attack
         {
-            col.gameObject.GetComponent<EnemyState>().takeDamage(mopDamage); //
-            Debug.Log("SLIME HIT: " + col.gameObject.name);
+            if (col.gameObject.tag == "Enemy" )  //Can oly hit basic enemy's not bosses
+            {
+                col.gameObject.GetComponent<EnemyState>().takeDamage(mopDamage); //
+                Debug.Log("SLIME HIT: " + col.gameObject.name);
 
+            }
+            else if (col.gameObject.tag == "slimeInteractable") //If you are hitting placed slime
+            {
+                //break the object
+                col.gameObject.GetComponent<SlimeConstructs>().breakSlime();
+            }
         }
-        else if(col.gameObject.tag == "slimeInteractable") //If you are hitting placed slime
+        else //Normal Mop Attack
         {
-            //break the object
-            col.gameObject.GetComponent<SlimeConstructs>().breakSlime();
+            if (col.gameObject.tag == "Enemy" || col.gameObject.tag == "Boss")  //If you are hitting any enemy
+            {
+                col.gameObject.GetComponent<EnemyState>().takeDamage(mopDamage); //
+                Debug.Log("SLIME HIT: " + col.gameObject.name);
+
+            }
+            else if(col.gameObject.tag == "GoopMother")
+            {
+                col.gameObject.GetComponent<GoopaMother>().spawnGoopling();
+                col.gameObject.GetComponent<EnemyState>().takeDamage(mopDamage);
+            }
+            else if(col.gameObject.tag == "slimeInteractable") //If you are hitting placed slime
+            {
+                //break the object
+                col.gameObject.GetComponent<SlimeConstructs>().breakSlime();
+            }
         }
     }
 
