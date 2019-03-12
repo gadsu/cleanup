@@ -26,11 +26,13 @@ public class Barney : MonoBehaviour
     int health;
     float throwSlimeWait = 0;
     System.Random rnd = new System.Random();
+    EnemyState es;
 
     // Start is called before the first frame update
     void Start()
     {
         target = GameObject.Find("Player");    //Find the player
+        es = gameObject.GetComponent<EnemyState>();
     }
 
     // Update is called once per frame
@@ -135,11 +137,15 @@ public class Barney : MonoBehaviour
 
     IEnumerator coverSlime(GameObject cover) //1 - Left, 2 - Right
     {
+        es.invulnerable = true;
+
         yield return new WaitForSeconds(3);
         foreach (Transform section in cover.transform)
         {
             yield return new WaitForSeconds(0.1f);
             section.gameObject.SetActive(true);
         }
+
+        es.invulnerable = false;
     }
 }
