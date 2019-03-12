@@ -29,7 +29,7 @@ TagManager:
   - Objects
   - thrownSlime
   - tentacle
-  - 
+  - background pieces
   - 
   - 
   - 
@@ -57,4 +57,7 @@ TagManager:
     locked: 0
   - name: Objects
     uniqueID: 3532061751
+    locked: 0
+  - name: background pieces
+    uniqueID: 3569797053
     locked: 0
