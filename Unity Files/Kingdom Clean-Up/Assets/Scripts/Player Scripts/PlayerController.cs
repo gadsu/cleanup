@@ -199,8 +199,9 @@ public class PlayerController : MonoBehaviour
             {
                 Flip();
             }
-            
-            rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
+
+            rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y); //THIS IS WHERE YOU MOVE
+
             if (Mathf.Abs(rb.velocity.x) > 0 && !isJump)
             {
                 isRun = true;
