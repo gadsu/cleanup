@@ -12,12 +12,17 @@ public class SlimeConstructs : MonoBehaviour {
     public bool isFrozen = false;
     GameObject player;
     Rigidbody2D playerRB;
+    public GameObject GreenGloves;
+    public GameObject BlueBottle;
+    public GameObject RedBucket;
 
 
     // Use this for initialization
     void Start ()
     {
-        //green = 
+        GreenGloves = GameObject.Find("GreenGloves");
+        BlueBottle = GameObject.Find("Blue");
+        RedBucket = GameObject.Find("Red");
     }
 	
 	// Update is called once per frame
@@ -85,16 +90,21 @@ public class SlimeConstructs : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if(col.gameObject.tag == "Player" )
+        //for green walls
+        if(col.gameObject.tag == "Player" && color == "green")
         {
-            if (GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().greenSlimeMeter >= 10)
+            if (GreenGloves.activeInHierarchy == true)
             {
-                playerRB = col.gameObject.GetComponent<Rigidbody2D>();
-                player = col.gameObject;
-                freezePlayer();
+                if (GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().greenSlimeMeter >= 10)
+                {
+                    playerRB = col.gameObject.GetComponent<Rigidbody2D>();
+                    player = col.gameObject;
+                    freezePlayer();
+                }
             }
         }
     }
+
     public void freezePlayer()
     {
         playerRB.constraints = RigidbodyConstraints2D.FreezeAll; //when player hits wall FREEZE THEM
