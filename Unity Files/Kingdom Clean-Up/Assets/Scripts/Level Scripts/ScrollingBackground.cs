@@ -5,17 +5,23 @@ using UnityEngine;
 public class ScrollingBackground : MonoBehaviour {
     [Tooltip("What is the size of the image?")]
     public float backgroundSize;
+    public float paralaxSpeed;
 
-    private Transform cameraTransform;
+    public bool scrolling;
+    public bool paralax;
+    public Transform cameraTransform;
     private Transform[] layers;
-    private float viewZone = 10;
+    private float viewZone = 50;
 
     private int leftIndex;
     private int rightIndex;
+    private float lastCameraX;
+
 
     private void Start()
     {
-        cameraTransform = Camera.main.transform;
+        //cameraTransform = Camera.main.transform;
+        lastCameraX = cameraTransform.position.x;
         layers = new Transform[transform.childCount]; //makes an array with the number of children on the parent object
         for (int i = 0; i < transform.childCount; i ++)
         {
@@ -27,14 +33,25 @@ public class ScrollingBackground : MonoBehaviour {
 
     private void Update()
     {
-        if (cameraTransform.position.x < layers[leftIndex].transform.position.x + viewZone)
+        if (paralax)
         {
-            ScrollLeft();
+            float deltaX = cameraTransform.position.x - lastCameraX;
+            transform.position += Vector3.right * (deltaX * paralaxSpeed);
         }
 
-        if (cameraTransform.position.x > layers[rightIndex].transform.position.x - viewZone)
+        lastCameraX = cameraTransform.position.x;
+
+        if (scrolling)
         {
-            ScrollRight();
+            if (cameraTransform.position.x < layers[leftIndex].transform.position.x + viewZone)
+            {
+                ScrollLeft();
+            }
+
+            if (cameraTransform.position.x > layers[rightIndex].transform.position.x - viewZone)
+            {
+                ScrollRight();
+            }
         }
     }
 
