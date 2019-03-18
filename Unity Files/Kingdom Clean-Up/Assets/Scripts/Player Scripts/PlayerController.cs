@@ -13,12 +13,8 @@ public class PlayerController : MonoBehaviour
 {
 
     [Header("Debug Variables")]
-    [Tooltip("How far should raycasting reach?")]
-    public float playerSize = 5000f;
     [Tooltip("Is player touching ground?")]
     public bool onGround;
-    [Tooltip("How long the player is off the ground")]
-    public float groundTimer;
     [Tooltip("Is player facing right?")]
     public bool facingRight;
     [Tooltip("Is player cleaning?")]
@@ -39,10 +35,6 @@ public class PlayerController : MonoBehaviour
     public GameObject mop;
     [Tooltip("How long the player is unable to move from knockback")]
     public float knockbackTime;
-
-    public bool ignoreCollision;
-
-    public List<GameObject> ignoredObjects;
 
     [Header("Editable Variables")]
     [Tooltip("How fast can the character move?")]
@@ -80,7 +72,6 @@ public class PlayerController : MonoBehaviour
         doubleJump = false;
         facingRight = false;
         canMove = true;
-        ignoreCollision = false;
     }
 
 
@@ -127,8 +118,8 @@ public class PlayerController : MonoBehaviour
         {
             isInteract = true;
 
-            RaycastHit2D hit;
-            hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 20f);
+
+            RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 20f, layer);
             if (!isClean && !isRun)
             {
                 if(facingRight)
@@ -280,8 +271,7 @@ public class PlayerController : MonoBehaviour
     private void groundCheck()
     {
         LayerMask layer = LayerMask.GetMask("Platform");
-        RaycastHit2D hit;
-        hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 17f, layer);
+        RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 17f, layer);
         Debug.DrawRay(gameObject.transform.position, Vector2.down * 17);
         if (hit)
         {
