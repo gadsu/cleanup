@@ -6,26 +6,29 @@ public class ScrollingBackground : MonoBehaviour {
     [Tooltip("How fast the background scrolls?")]
     public float paralaxSpeed;
 
-    public bool scrolling;
+    public float paralaxSpeedY;
+
     public bool paralax;
     public Transform cameraTransform;
-    private float lastCameraX;
+    private Vector3 lastCamera;
 
 
     private void Start()
     {
         //cameraTransform = Camera.main.transform;
-        lastCameraX = cameraTransform.position.x;
+        lastCamera = cameraTransform.position;
     }
 
     private void Update()
     {
         if (paralax)
         {
-            float deltaX = cameraTransform.position.x - lastCameraX;
+            float deltaX = cameraTransform.position.x - lastCamera.x;
+            float deltaY = cameraTransform.position.y - lastCamera.y;
             transform.position += Vector3.right * (deltaX * paralaxSpeed);
+            transform.position += Vector3.up * (deltaY * paralaxSpeedY);
         }
 
-        lastCameraX = cameraTransform.position.x;
+        lastCamera = cameraTransform.position;
     }
 }
