@@ -118,6 +118,7 @@ public class PlayerController : MonoBehaviour
         {
             isInteract = true;
 
+            LayerMask layer = LayerMask.GetMask("Viscera");
 
             RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 20f, layer);
             if (!isClean && !isRun)

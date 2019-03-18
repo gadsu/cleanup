@@ -4149,7 +4149,12 @@ PrefabInstance:
     - target: {fileID: 114297534854645564, guid: 8a5b6045dd3839f4e9bfaa70c20e392d,
         type: 3}
       propertyPath: paralaxSpeed
-      value: -0.1
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114297534854645564, guid: 8a5b6045dd3839f4e9bfaa70c20e392d,
+        type: 3}
+      propertyPath: paralaxSpeedY
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 701443062042728192, guid: 8a5b6045dd3839f4e9bfaa70c20e392d,
         type: 3}
