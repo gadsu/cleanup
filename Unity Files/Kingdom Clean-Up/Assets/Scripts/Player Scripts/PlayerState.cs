@@ -43,7 +43,6 @@ public class PlayerState : MonoBehaviour {
     public int groundSlimeCleaned;
     public bool sceneLoaded;
 
-    GameObject player;
     int maxSlime = 100;
     
     //public TextAsset PlayerFile; DOES NOT WORK FOR SOME RAISIN
@@ -198,7 +197,6 @@ public class PlayerState : MonoBehaviour {
         setSlimeMeterImage(0, greenChildren);
         setSlimeMeterImage(0, blueChildren);
         setSlimeMeterImage(0, redChildren);
-        player = GameObject.Find("Player");
         playerHealth = 100f;
     }
 

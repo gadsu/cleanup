@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BarneySlimeBall : MonoBehaviour
 {
-    Rigidbody2D rb;
     public float speed;
     GameObject player;
     Vector3 playerPos;
@@ -18,7 +17,6 @@ public class BarneySlimeBall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody2D>();
         //rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         player = GameObject.Find("Player");
         ps = GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>();

@@ -14,7 +14,8 @@ public class CleaningWeapons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        list[1].SetActive(false);
+        list[2].SetActive(false);
         items.SetActive(false);
         itemsOn = false;
     }

@@ -138,6 +138,7 @@ public class Barney : MonoBehaviour
     IEnumerator coverSlime(GameObject cover) //1 - Left, 2 - Right
     {
         es.invulnerable = true;
+        gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.red;
 
         yield return new WaitForSeconds(3);
         foreach (Transform section in cover.transform)
@@ -147,5 +148,6 @@ public class Barney : MonoBehaviour
         }
 
         es.invulnerable = false;
+        gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
     }
 }

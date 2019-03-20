@@ -85,7 +85,7 @@ public class OBSOOO : MonoBehaviour {
         }
         if (doingSpecial) //Move to and commence special attack
         {
-            if (rb.position.x < rightX && rb.position.x > leftX && attackSpecial == 0)
+            if (rb.position.x < rightX - 1 && rb.position.x > leftX + 1 && attackSpecial == 0)
             {
                 moveToSpecialAttack(facingRight);
             }
@@ -94,12 +94,12 @@ public class OBSOOO : MonoBehaviour {
                 doingSpecial = false;
                 attackSpecial = 0;
             }
-            else if (rb.position.x >= rightX || attackSpecial == 1)
+            else if (rb.position.x >= rightX - 1 || attackSpecial == 1)
             {
                 specialAttack(leftPoint.transform.position);
                 attackSpecial = 1;
             }
-            else if (rb.position.x <= leftX || attackSpecial == 2)
+            else if (rb.position.x <= leftX + 1 || attackSpecial == 2)
             {
                 specialAttack(rightPoint.transform.position);
                 attackSpecial = 2;
