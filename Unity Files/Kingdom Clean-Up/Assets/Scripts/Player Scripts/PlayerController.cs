@@ -254,6 +254,7 @@ public class PlayerController : MonoBehaviour
             
 
         }
+
         if (Mathf.Abs(rb.velocity.x) <= 0 || isJump)
         {
             isRun = false;
@@ -306,7 +307,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetButtonDown("Jump") && !onGround && doubleJump)
         {
-            rb.velocity = new Vector2(-rb.velocity.x, charJumpSpeed);
+            rb.velocity = new Vector2(rb.velocity.x, charJumpSpeed);
             doubleJump = false;
             if (facingRight)
             {
