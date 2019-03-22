@@ -24,6 +24,7 @@ public class PlayerControllerV2 : MonoBehaviour
     Rigidbody2D rb;
     GameObject runningMop;
     float jumpFrame;
+    float force = 0;
 
 
     private void Awake()
@@ -40,6 +41,8 @@ public class PlayerControllerV2 : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        force = Input.GetAxis("Horizontal");
+
         jump();
         interact();
         isCleanAnimation(); //is the player cleaning?
@@ -89,6 +92,23 @@ public class PlayerControllerV2 : MonoBehaviour
     }
 
     // ------------- Movement -------------
+
+    public void move()
+    {
+         if (canMove)
+        {
+            rb.AddForce(transform.right * force); //Applies force to rigidbody
+
+            if (force > 0 && !facingRight) //Determine which way to face the character
+            {
+                Flip();
+            }
+            else if (force < 0 && facingRight)
+            {
+                Flip();
+            }
+        }
+    }
 
     public void jump()
     {
