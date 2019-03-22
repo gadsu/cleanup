@@ -20,14 +20,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Save and Load.unity
     guid: 973de54fa4873a74d90eb7636fa0dca9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/garbage scenes/TestingScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
-    path: Assets/Scenes/tutorialLevel.unity
+    path: Assets/Scenes/V1_tutorialLevel.unity
     guid: ef7e16edce9e00940a48d6e88ffdce98
   - enabled: 1
-    path: Assets/Scenes/Tutorial2.unity
+    path: Assets/Scenes/tutorialLevel.unity
     guid: bf016d1e587991345a5d5a35bf4aeec8
   - enabled: 1
     path: Assets/Scenes/greenLevel.unity

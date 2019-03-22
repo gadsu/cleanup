@@ -21,15 +21,15 @@ public class OBSOOO : MonoBehaviour {
     public int attackSpecial = 0; // 0 - Not Attacking, 1 - Left, 2 - Right
     [Header("Editable Variables")]
     [Tooltip("Time to float in air")]
-    public float PTIME = 5f; //How long to float in the air
+    public float PTIME = 5; //How long to float in the air
     [Tooltip("Jumps to begin big jump")]
     public float JTIME = 6f; //How many jump to do big jump
     [Tooltip("Y Value to freeze OBSOOO at")]
     public int YPosFreeze = 110;
     [Tooltip("X Movement Speed")]
-    public float basicSpeed = 30f;
+    public float basicSpeed;
     [Tooltip("Y Jump Speed")]
-    public float specialSpeed = 40f;
+    public float specialSpeed;
     [Tooltip("Amount of time paused between each jump")]
     public float pauseTime = 1.0f;
     GameObject[] points;
@@ -85,7 +85,7 @@ public class OBSOOO : MonoBehaviour {
         }
         if (doingSpecial) //Move to and commence special attack
         {
-            if (rb.position.x < rightX && rb.position.x > leftX && attackSpecial == 0)
+            if (rb.position.x < rightX - 1 && rb.position.x > leftX + 1 && attackSpecial == 0)
             {
                 moveToSpecialAttack(facingRight);
             }
@@ -94,12 +94,12 @@ public class OBSOOO : MonoBehaviour {
                 doingSpecial = false;
                 attackSpecial = 0;
             }
-            else if (rb.position.x >= rightX || attackSpecial == 1)
+            else if (rb.position.x >= rightX - 1 || attackSpecial == 1)
             {
                 specialAttack(leftPoint.transform.position);
                 attackSpecial = 1;
             }
-            else if (rb.position.x <= leftX || attackSpecial == 2)
+            else if (rb.position.x <= leftX + 1 || attackSpecial == 2)
             {
                 specialAttack(rightPoint.transform.position);
                 attackSpecial = 2;
@@ -135,7 +135,8 @@ public class OBSOOO : MonoBehaviour {
     public void basicJump(Vector3 targetPos)
     {
         onGround = false;
-        an.Play("jump");
+        an.SetBool("onGround", onGround);
+        an.Play("ObsoooJump");
         Vector2 vel = new Vector2(rb.velocity.x, rb.velocity.y);
         if (targetPos.x > rb.position.x)  //If it is to the right of you
         {
@@ -163,7 +164,8 @@ public class OBSOOO : MonoBehaviour {
     public void bigJump()
     {
         onGround = false;
-        an.Play("jump");
+        an.SetBool("onGround", onGround);
+        an.Play("ObsoooJump");
         Vector3 playerPos = target.transform.position;
         Vector2 vel = new Vector2(rb.velocity.x, rb.velocity.y);
         if (playerPos.x > rb.position.x)  //If it is to the right of you
@@ -226,7 +228,7 @@ public class OBSOOO : MonoBehaviour {
     public void specialAttack(Vector2 pointPos)
     {
         onGround = false;
-        an.Play("jump");
+        an.SetBool("onGround", onGround);
         Vector2 vel = new Vector2(rb.velocity.x, rb.velocity.y);
         if (pointPos.x > rb.position.x)  //If it is to the right of you
         {
@@ -265,7 +267,7 @@ public class OBSOOO : MonoBehaviour {
         if (col.gameObject.tag == "Platform" && !onGround)
         {
             onGround = true;
-           
+            an.SetBool("onGround", onGround);
         }
         if(doingSpecial && col.gameObject.tag == "Player")
         {

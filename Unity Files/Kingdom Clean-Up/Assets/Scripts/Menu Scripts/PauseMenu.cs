@@ -50,14 +50,14 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 0;
             Unpaused = false;
             ShowPaused();
-            GameObject.Find("Player").GetComponent<PlayerController>().toggleMove();
+            GameObject.Find("Player").GetComponent<PlayerController>().canMove = false;
         }
         else if (!Unpaused)
         {
             Time.timeScale = 1;
             Unpaused = true;
             HidePaused();
-            GameObject.Find("Player").GetComponent<PlayerController>().toggleMove();
+            GameObject.Find("Player").GetComponent<PlayerController>().canMove = true;
         }
     }
     

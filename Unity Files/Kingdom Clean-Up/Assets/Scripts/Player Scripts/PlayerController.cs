@@ -13,12 +13,8 @@ public class PlayerController : MonoBehaviour
 {
 
     [Header("Debug Variables")]
-    [Tooltip("How far should raycasting reach?")]
-    public float playerSize = 5000f;
     [Tooltip("Is player touching ground?")]
     public bool onGround;
-    [Tooltip("How long the player is off the ground")]
-    public float groundTimer;
     [Tooltip("Is player facing right?")]
     public bool facingRight;
     [Tooltip("Is player cleaning?")]
@@ -39,10 +35,6 @@ public class PlayerController : MonoBehaviour
     public GameObject mop;
     [Tooltip("How long the player is unable to move from knockback")]
     public float knockbackTime;
-
-    public bool ignoreCollision;
-
-    public List<GameObject> ignoredObjects;
 
     [Header("Editable Variables")]
     [Tooltip("How fast can the character move?")]
@@ -80,7 +72,6 @@ public class PlayerController : MonoBehaviour
         doubleJump = false;
         facingRight = false;
         canMove = true;
-        ignoreCollision = false;
     }
 
 
@@ -127,8 +118,9 @@ public class PlayerController : MonoBehaviour
         {
             isInteract = true;
 
-            RaycastHit2D hit;
-            hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 20f);
+            LayerMask layer = LayerMask.GetMask("Viscera");
+
+            RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 20f, layer);
             if (!isClean && !isRun)
             {
                 if(facingRight)
@@ -199,8 +191,9 @@ public class PlayerController : MonoBehaviour
             {
                 Flip();
             }
-            
-            rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y);
+
+            rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y); //THIS IS WHERE YOU MOVE
+
             if (Mathf.Abs(rb.velocity.x) > 0 && !isJump)
             {
                 isRun = true;
@@ -261,6 +254,7 @@ public class PlayerController : MonoBehaviour
             
 
         }
+
         if (Mathf.Abs(rb.velocity.x) <= 0 || isJump)
         {
             isRun = false;
@@ -279,8 +273,7 @@ public class PlayerController : MonoBehaviour
     private void groundCheck()
     {
         LayerMask layer = LayerMask.GetMask("Platform");
-        RaycastHit2D hit;
-        hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 17f, layer);
+        RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 17f, layer);
         Debug.DrawRay(gameObject.transform.position, Vector2.down * 17);
         if (hit)
         {
@@ -314,7 +307,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetButtonDown("Jump") && !onGround && doubleJump)
         {
-            rb.velocity = new Vector2(-rb.velocity.x, charJumpSpeed);
+            rb.velocity = new Vector2(rb.velocity.x, charJumpSpeed);
             doubleJump = false;
             if (facingRight)
             {
