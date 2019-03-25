@@ -16,6 +16,7 @@ public class PlayerControllerV2 : MonoBehaviour
     public GameObject mop;
     public float knockbackTime;
     public float maxSpeed = 40f;
+    public float speed;
     public float jumpSpeed = 60f;
     public float knockbackY = 30f;
     public float knockbackX = 30f;
@@ -32,6 +33,7 @@ public class PlayerControllerV2 : MonoBehaviour
         an = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         runningMop = gameObject.transform.Find("mopRun").gameObject;
+        speed = maxSpeed;
     }
     private void Start()
     {
@@ -79,6 +81,7 @@ public class PlayerControllerV2 : MonoBehaviour
     private void FixedUpdate()
     {
         groundCheck(); //is the player on the ground?
+        constrain();
 
     }
 
@@ -93,7 +96,7 @@ public class PlayerControllerV2 : MonoBehaviour
 
     // ------------- Movement -------------
 
-    public void move()
+    public void move() //Horizontal Movement
     {
          if (canMove)
         {
@@ -110,7 +113,7 @@ public class PlayerControllerV2 : MonoBehaviour
         }
     }
 
-    public void jump()
+    public void jump() //Vertical Movement
     {
         if (Input.GetButtonDown("Jump") && (onGround || doubleJump))
         {
@@ -129,7 +132,7 @@ public class PlayerControllerV2 : MonoBehaviour
         }
     }
 
-    public void interact()
+    public void interact() //Interact/Clean
     {
         if (Input.GetButton("Interact") && !isJump)
         {
@@ -171,16 +174,18 @@ public class PlayerControllerV2 : MonoBehaviour
         }
     }
 
-    public void Knockback(int dir)
+    public void Knockback(int dir) //Throw the player back
     {
         canMove = false;
         knockbackTime = 3f;
         rb.velocity = new Vector2(dir * knockbackX, knockbackY);
     }
 
+    // ----------------------------------
+
     // ------------- Checks -------------
 
-    private void groundCheck()
+    private void groundCheck() //Checks if touching the ground
     {
         LayerMask layer = LayerMask.GetMask("Platform");
         RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 17f, layer);
@@ -197,6 +202,28 @@ public class PlayerControllerV2 : MonoBehaviour
         }
         an.SetBool("onGround", onGround);
     }
+
+    private void constrain() //Constrains movement
+    {
+        if (rb.velocity.x > speed)
+        {
+            rb.velocity = new Vector2(speed, rb.velocity.x);
+        }
+        else if (rb.velocity.x < -speed)
+        {
+            rb.velocity = new Vector2(-speed, rb.velocity.x);
+        }
+    }
+
+    public void setSpeed(float newSpeed)
+    {
+        if (newSpeed < 0)
+            speed = maxSpeed;
+        else
+            speed = newSpeed;
+    }
+
+    // --------------------------------------
 
     // ------------- Animations -------------
 
@@ -250,4 +277,6 @@ public class PlayerControllerV2 : MonoBehaviour
         an.SetBool("facingRight", facingRight);
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y);
     }
+
+    // --------------------------------------
 }
