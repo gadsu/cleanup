@@ -33,11 +33,6 @@ public class CleanAttack : MonoBehaviour {
                 Debug.Log("SLIME HIT: " + col.gameObject.name);
 
             }
-            else if (col.gameObject.tag == "slimeInteractable") //If you are hitting placed slime
-            {
-                //break the object
-                col.gameObject.GetComponent<SlimeConstructs>().breakSlime();
-            }
         }
         else //Normal Mop Attack
         {
@@ -51,11 +46,6 @@ public class CleanAttack : MonoBehaviour {
             {
                 col.gameObject.GetComponent<GoopaMother>().spawnGoopling();
                 col.gameObject.GetComponent<EnemyState>().takeDamage(mopDamage);
-            }
-            else if(col.gameObject.tag == "slimeInteractable") //If you are hitting placed slime
-            {
-                //break the object
-                col.gameObject.GetComponent<SlimeConstructs>().breakSlime();
             }
         }
     }

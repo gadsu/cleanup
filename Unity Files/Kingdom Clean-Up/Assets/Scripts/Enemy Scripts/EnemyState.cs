@@ -24,6 +24,8 @@ public class EnemyState : MonoBehaviour {
     public bool facingRight = true;
     [Tooltip("Can enemy move?")]
     public bool canMove;
+    [Tooltip("Is the slime invulnerable")]
+    public bool invulnerable = false;
     [Header("Editable Variables")]
     //[Tooltip("How fast the enemy moves")]
     //public float baseSpeed = 20f;
@@ -117,12 +119,15 @@ public class EnemyState : MonoBehaviour {
     // Happens every time the slime take damage, called from the Player
     public void takeDamage(int dmg)  
     {
-        health -= dmg;
-        
-        if(health <= 0)
+        if (!invulnerable)
         {
-            death();
- //           an.Play("death"); //calls death function at end of animation
+            health -= dmg;
+
+            if (health <= 0)
+            {
+                death();
+                //           an.Play("death"); //calls death function at end of animation
+            }
         }
     }
 
