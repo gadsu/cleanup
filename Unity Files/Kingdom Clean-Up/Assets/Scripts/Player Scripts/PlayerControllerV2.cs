@@ -16,7 +16,7 @@ public class PlayerControllerV2 : MonoBehaviour
     public bool canMove;
     public GameObject mop;
     public float knockbackTime;
-    public float maxSpeed = 40f;
+    public float maxSpeed = 200f;
     public float speed;
     public float jumpSpeed = 60f;
     public float knockbackY = 30f;
@@ -45,10 +45,11 @@ public class PlayerControllerV2 : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        force = Input.GetAxis("Horizontal");
+        force = Input.GetAxisRaw("Horizontal");
 
         jump();
         interact();
+        move();
         isCleanAnimation(); //is the player cleaning?
         isJumpAnimation(); //is the player Jumping?
         an.SetBool("isInteract", isInteract);
@@ -118,8 +119,8 @@ public class PlayerControllerV2 : MonoBehaviour
     public void move() //Horizontal Movement
     {
          if (canMove)
-        {
-            rb.AddForce(transform.right * force); //Applies force to rigidbody
+         {
+            rb.velocity = new Vector2(force * speed, rb.velocity.y); //Applies force to rigidbody
 
             if (force > 0 && !facingRight) //Determine which way to face the character
             {
@@ -129,14 +130,83 @@ public class PlayerControllerV2 : MonoBehaviour
             {
                 Flip();
             }
-        }
+
+           
+
+                if (Mathf.Abs(rb.velocity.x) > 0 && !isJump)
+                {
+                    isRun = true;
+                    if (facingRight)
+                    {
+                        if (!an.GetCurrentAnimatorStateInfo(0).IsName("runRight") && !(Input.GetButton("Interact")))
+                        {
+                            an.Play("runRight");
+                        }
+                        else if (!an.GetCurrentAnimatorStateInfo(0).IsName("runRight") && (Input.GetButton("Interact")))
+                        {
+                            runningMop.SetActive(true);
+                            an.Play("mopRunRight");
+                        }
+                        else
+                        {
+                            runningMop.SetActive(false);
+                        }
+
+                    }
+                    else
+                    {
+                        if (!an.GetCurrentAnimatorStateInfo(0).IsName("runLeft") && !(Input.GetButton("Interact")))
+                        {
+                            an.Play("runLeft");
+                        }
+                        else if (!an.GetCurrentAnimatorStateInfo(0).IsName("runLeft") && (Input.GetButton("Interact")))
+                        {
+                            runningMop.SetActive(true);
+                            an.Play("mopRunLeft");
+                        }
+                        else
+                        {
+                            runningMop.SetActive(false);
+                        }
+
+                    }
+
+                }
+
+                if ((Input.GetAxis("Horizontal")) == 0)
+                {
+                    if (facingRight)
+                    {
+                        if (!an.GetCurrentAnimatorStateInfo(0).IsName("idle") && !isJump && !isClean)
+                        {
+                            an.Play("idle");
+                        }
+                    }
+                    else
+                    {
+                        if (!an.GetCurrentAnimatorStateInfo(0).IsName("idleLeft") && !isJump && !isClean)
+                        {
+                            an.Play("idleLeft");
+                        }
+                    }
+                }
+
+
+         }
+
+         if (Mathf.Abs(rb.velocity.x) <= 0 || isJump)
+         {
+            isRun = false;
+         }
+         an.SetBool("isRun", isRun);
+        
     }
 
     public void jump() //Vertical Movement
     {
         if (Input.GetButtonDown("Jump") && (onGround || doubleJump))
         {
-            rb.AddForce(transform.up * jumpSpeed);
+            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
             onGround = false;
             doubleJump = false;
             jumpFrame = Time.time;

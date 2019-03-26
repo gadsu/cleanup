@@ -610,6 +610,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4200679053849870}
   - component: {fileID: 114808477611694884}
+  - component: {fileID: 7660175800734585141}
   - component: {fileID: 114318356214555972}
   - component: {fileID: 212152763885082436}
   - component: {fileID: 50562500313674334}
@@ -647,14 +648,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1788341133676570}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9523db3ef7a5d24580c4aac1e246e63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSize: 5000
   onGround: 1
-  groundTimer: 0
   facingRight: 0
   isClean: 0
   isRun: 0
@@ -665,10 +664,37 @@ MonoBehaviour:
   canMove: 1
   mop: {fileID: 1552292412110382}
   knockbackTime: 0
-  ignoreCollision: 0
-  ignoredObjects: []
   charMaxSpeed: 40
   charJumpSpeed: 60
+  knockbackY: 30
+  knockbackX: 30
+--- !u!114 &7660175800734585141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788341133676570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5276a8fa20506f42be9bc6192727854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGround: 1
+  facingRight: 0
+  isClean: 0
+  isRun: 0
+  isJump: 0
+  isSwing: 0
+  isInteract: 0
+  doubleJump: 0
+  aiming: 0
+  canMove: 1
+  mop: {fileID: 1552292412110382}
+  knockbackTime: 0
+  maxSpeed: 40
+  speed: 0
+  jumpSpeed: 60
   knockbackY: 30
   knockbackX: 30
 --- !u!114 &114318356214555972
