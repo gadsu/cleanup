@@ -170,6 +170,14 @@ public class PlayerController : MonoBehaviour
         //checking for basic button presses - all button input should be here
         if (Input.GetButtonDown("Attack"))
         {
+            if (facingRight)
+            {
+                an.Play("swingRight");
+            }
+            else
+            {
+                an.Play("swingLeft");
+            }
             mop.GetComponent<CleanAttack>().swingMop();
         }
 

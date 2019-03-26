@@ -9,6 +9,7 @@ public class PlayerControllerV2 : MonoBehaviour
     public bool isClean;
     public bool isRun;
     public bool isJump;
+    public bool isSwing;
     public bool isInteract;
     public bool doubleJump;
     public bool aiming;
@@ -38,6 +39,7 @@ public class PlayerControllerV2 : MonoBehaviour
     private void Start()
     {
         runningMop.SetActive(false);
+            
     }
 
     // Update is called once per frame
@@ -50,11 +52,28 @@ public class PlayerControllerV2 : MonoBehaviour
         isCleanAnimation(); //is the player cleaning?
         isJumpAnimation(); //is the player Jumping?
         an.SetBool("isInteract", isInteract);
+        an.SetBool("isSwing", isSwing);
 
         if (Input.GetButtonDown("Attack"))
         {
+            isSwing = true;
+
+            if (facingRight)
+            {
+                an.Play("swingRight");
+            }
+            else
+            {
+                an.Play("swingLeft");
+            }
+            
             mop.GetComponent<CleanAttack>().swingMop();
         }
+        else
+        {
+            isSwing = false;
+        }
+        
 
         if (isRun)
         {
