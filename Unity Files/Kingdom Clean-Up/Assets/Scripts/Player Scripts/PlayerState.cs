@@ -82,9 +82,9 @@ public class PlayerState : MonoBehaviour {
     public bool useSlime()
     {
         Debug.Log("Using Slime");
-        if(greenSlimeMeter >= 10 )
+        if(greenSlimeMeter >= 5 )
         {
-            greenSlimeMeter -= 10;
+            greenSlimeMeter -= 5;
             setSlimeMeterImage(greenSlimeMeter, greenChildren);
             return true;
         }

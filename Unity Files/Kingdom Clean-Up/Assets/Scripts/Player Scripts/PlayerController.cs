@@ -1,160 +1,94 @@
-﻿
-//    PlayerController
-//    Moving the player character and reading inputs
-//    This should control anything and everything to do with the player
-
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
-
-    [Header("Debug Variables")]
-    [Tooltip("Is player touching ground?")]
     public bool onGround;
-    [Tooltip("Is player facing right?")]
     public bool facingRight;
-    [Tooltip("Is player cleaning?")]
     public bool isClean;
-    [Tooltip("Is player running?")]
     public bool isRun;
-    [Tooltip("Is player Jumping?")]
     public bool isJump;
-    [Tooltip("Is player pressing Interact?")]
+    public bool isSwing;
     public bool isInteract;
-    [Tooltip("Can player doublejump?")]
     public bool doubleJump;
-    [Tooltip("Is player aiming?")]
     public bool aiming;
-    [Tooltip("Can player move?")]
     public bool canMove;
-    [Tooltip("The mop object")]
     public GameObject mop;
-    [Tooltip("How long the player is unable to move from knockback")]
     public float knockbackTime;
-
-    [Header("Editable Variables")]
-    [Tooltip("How fast can the character move?")]
-    public float charMaxSpeed = 40f;
-    [Tooltip("How much can the character jump?")]
-    public float charJumpSpeed = 60f;
-    [Tooltip("How high you go on knockback")]
+    public float maxSpeed = 200f;
+    public float speed;
+    public float jumpSpeed = 60f;
     public float knockbackY = 30f;
-    [Tooltip("How far you go on knockback")]
     public float knockbackX = 30f;
-    [Tooltip("Sprite to show when running and moping")]
-    GameObject runningMop; 
-
-    bool startTimer;
-    float jumpFrame;
-    float force;
 
     Animator an;
     Rigidbody2D rb;
-    //   AimRender ar;
+    GameObject runningMop;
+    PlayerState ps;
+    float jumpFrame;
+    float force = 0;
+    bool isFrozen = false;
+    bool dontDestroy = false;
 
-    // Use this for initialization
-    void Start()
+
+    private void Awake()
     {
-        runningMop = GameObject.Find("mopRun");
-        runningMop.SetActive(false);
-        
-        onGround = true;
+        if (GameObject.Find("DontDestroyOnLoad"))
+        {
+            dontDestroy = true;
+            ps = GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>();
+        }
+
         an = GetComponent<Animator>();
-        
         rb = GetComponent<Rigidbody2D>();
-        //       ar = GetComponent<AimRender>();
-        isRun = false;
-        aiming = false;
-        doubleJump = false;
-        facingRight = false;
-        canMove = true;
+        runningMop = gameObject.transform.Find("mopRun").gameObject;
+        speed = maxSpeed;
+    }
+    private void Start()
+    {
+        runningMop.SetActive(false);
+            
     }
 
-
-    private void OnTriggerEnter2D(Collider2D col)
+    // Update is called once per frame
+    private void Update()
     {
-        /* if (col.tag == "Platform" && !onGround)
-         {
-             //col.transform.position
-             onGround = true;
-                        Debug.Log("onground = true");
-         } */
-        if (col.CompareTag("slimeInteractable") && GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().useSlime())
+        force = Input.GetAxisRaw("Horizontal");
+
+        jump();
+        interact();
+        move();
+        isCleanAnimation(); //is the player cleaning?
+        isJumpAnimation(); //is the player Jumping?
+        an.SetBool("isInteract", isInteract);
+        an.SetBool("isSwing", isSwing);
+
+        if (Input.GetButtonDown("Attack"))
         {
-            Debug.Log("Hit a slime wall");
-            doubleJump = true;
-        }
-        
-    }
+            isSwing = true;
 
-    private void OnTriggerExit2D(Collider2D col)
-    {
-        if (col.gameObject.tag != "slimeInteractable")
-        {
-            doubleJump = false;
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        groundCheck();//is the player on the ground?
-        
-    }
-
-    void Update()
-    {
-        jump(); //made own function as we can call it in other places
-        
-        if(isRun)
-        {
-            runningMop.SetActive(false);
-        }
-
-        if (Input.GetButton("Interact") && !isJump)
-        {
-            isInteract = true;
-
-            LayerMask layer = LayerMask.GetMask("Viscera");
-
-            RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 20f, layer);
-            if (!isClean && !isRun)
+            if (facingRight)
             {
-                if(facingRight)
-                {
-                    an.Play("mopRight");
-                }
-                else
-                {
-
-                    an.Play("mopLeft");
-                }
-
+                an.Play("swingRight");
+            }
+            else
+            {
+                an.Play("swingLeft");
             }
             
-            if (hit)
-            {
-                if (hit.collider.gameObject.CompareTag("slimeObject"))
-                {
-                    GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().addSlime(10, hit.transform.gameObject.GetComponent<ItemInteraction>().color);
-                    GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().groundSlimeCleaned++;
-                    GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().updateCleanProgress();
-                    Destroy(hit.transform.gameObject);
-                }
-            }
-            
+            mop.GetComponent<CleanAttack>().swingMop();
         }
         else
         {
-            isInteract = false;
+            isSwing = false;
         }
-        isCleanAnimation(); //is the player cleaning?
-        isJumpAnimation();//is the player Jumping?
+        
 
-        an.SetBool("isInteract", isInteract);
+        if (isRun)
+        {
+            runningMop.SetActive(false);
+        }
 
         if (knockbackTime > 0)
         {
@@ -166,103 +100,6 @@ public class PlayerController : MonoBehaviour
                 knockbackTime = 0;
             }
         }
-
-        //checking for basic button presses - all button input should be here
-        if (Input.GetButtonDown("Attack"))
-        {
-            if (facingRight)
-            {
-                an.Play("swingRight");
-            }
-            else
-            {
-                an.Play("swingLeft");
-            }
-            mop.GetComponent<CleanAttack>().swingMop();
-        }
-
-        //Horizontal Movement
-        float force = Input.GetAxis("Horizontal");
-        //Debug.Log("Force: " + force + "rby: " + rb.velocity.y);
-        //an.SetFloat("Speed", Mathf.Abs(force));
-
-     
-
-
-        if (canMove)
-        {
-            if (force > 0 && !facingRight /*&& onGround*/)
-            {
-                Flip();
-            }
-            else if (force < 0 && facingRight /*&& onGround*/)
-            {
-                Flip();
-            }
-
-            rb.velocity = new Vector2(force * charMaxSpeed, rb.velocity.y); //THIS IS WHERE YOU MOVE
-
-            if (Mathf.Abs(rb.velocity.x) > 0 && !isJump)
-            {
-                isRun = true;
-                if (facingRight)
-                {
-                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("runRight") && !(Input.GetButton("Interact")))
-                    {
-                        an.Play("runRight");
-                    }
-                    else if (!an.GetCurrentAnimatorStateInfo(0).IsName("runRight") && (Input.GetButton("Interact")))
-                    {
-                        runningMop.SetActive(true);
-                        an.Play("mopRunRight");
-                    }
-                    else
-                    {
-                        runningMop.SetActive(false);
-                    }
-                    
-                }
-                else
-                {
-                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("runLeft") && !(Input.GetButton("Interact")) )
-                    {
-                        an.Play("runLeft");
-                    }
-                    else if (!an.GetCurrentAnimatorStateInfo(0).IsName("runLeft") && (Input.GetButton("Interact")))
-                    {
-                        runningMop.SetActive(true);
-                        an.Play("mopRunLeft");
-                    }
-                    else
-                    {
-                        runningMop.SetActive(false);
-                    }
-                    
-                }
-                
-            }
-
-            if ((Input.GetAxis("Horizontal")) == 0)
-            {
-                if (facingRight)
-                {
-                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("idle") && !isJump && !isClean)
-                    {
-                        an.Play("idle");
-                    }
-                }
-                else
-                {
-                    if (!an.GetCurrentAnimatorStateInfo(0).IsName("idleLeft") && !isJump && !isClean)
-                    {
-                        an.Play("idleLeft");
-                    }
-                }
-            }
-            
-
-        }
-
         if (Mathf.Abs(rb.velocity.x) <= 0 || isJump)
         {
             isRun = false;
@@ -270,39 +107,122 @@ public class PlayerController : MonoBehaviour
         an.SetBool("isRun", isRun);
     }
 
-    public void IsInjured()
+    private void FixedUpdate()
     {
-        if (!an.GetCurrentAnimatorStateInfo(0).IsName("injured"))
+        groundCheck(); //is the player on the ground?
+        constrain();
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "slimeInteractable")
         {
-            an.Play("injured");
+            freezePlayer();
         }
     }
 
-    private void groundCheck()
+    // ------------- Movement -------------
+
+    public void move() //Horizontal Movement
     {
-        LayerMask layer = LayerMask.GetMask("Platform");
-        RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 17f, layer);
-        Debug.DrawRay(gameObject.transform.position, Vector2.down * 17);
-        if (hit)
-        {
-          //  Debug.Log("FLOOR");
-            onGround = true;
-            canMove = true;
-            doubleJump = false;
-        }
-        else
-        {
-            onGround = false;
-        }
-        an.SetBool("onGround", onGround);
+         if (canMove)
+         {
+            rb.velocity = new Vector2(force * speed, rb.velocity.y); //Applies force to rigidbody
+
+            if (force > 0 && !facingRight) //Determine which way to face the character
+            {
+                Flip();
+            }
+            else if (force < 0 && facingRight)
+            {
+                Flip();
+            }
+
+           
+
+                if (Mathf.Abs(rb.velocity.x) > 0 && !isJump)
+                {
+                    isRun = true;
+                    if (facingRight)
+                    {
+                        if (!an.GetCurrentAnimatorStateInfo(0).IsName("runRight") && !(Input.GetButton("Interact")))
+                        {
+                            an.Play("runRight");
+                        }
+                        else if (!an.GetCurrentAnimatorStateInfo(0).IsName("runRight") && (Input.GetButton("Interact")))
+                        {
+                            runningMop.SetActive(true);
+                            an.Play("mopRunRight");
+                        }
+                        else
+                        {
+                            runningMop.SetActive(false);
+                        }
+
+                    }
+                    else
+                    {
+                        if (!an.GetCurrentAnimatorStateInfo(0).IsName("runLeft") && !(Input.GetButton("Interact")))
+                        {
+                            an.Play("runLeft");
+                        }
+                        else if (!an.GetCurrentAnimatorStateInfo(0).IsName("runLeft") && (Input.GetButton("Interact")))
+                        {
+                            runningMop.SetActive(true);
+                            an.Play("mopRunLeft");
+                        }
+                        else
+                        {
+                            runningMop.SetActive(false);
+                        }
+
+                    }
+
+                }
+
+                if ((Input.GetAxis("Horizontal")) == 0)
+                {
+                    if (facingRight)
+                    {
+                        if (!an.GetCurrentAnimatorStateInfo(0).IsName("idle") && !isJump && !isClean)
+                        {
+                            an.Play("idle");
+                        }
+                    }
+                    else
+                    {
+                        if (!an.GetCurrentAnimatorStateInfo(0).IsName("idleLeft") && !isJump && !isClean)
+                        {
+                            an.Play("idleLeft");
+                        }
+                    }
+                }
+
+
+         }
+
+         if (Mathf.Abs(rb.velocity.x) <= 0 || isJump)
+         {
+            isRun = false;
+         }
+         an.SetBool("isRun", isRun);
+        
     }
-    public void jump()
+
+    public void jump() //Vertical Movement
     {
-        //Vertical Movement
-        if (Input.GetButtonDown("Jump") && onGround)// && onGround
+        if (Input.GetButtonDown("Jump") && (onGround || doubleJump))
         {
-            rb.velocity = new Vector2(rb.velocity.x, charJumpSpeed);
+            if (isFrozen)
+            {
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+                isFrozen = false;
+            }
+
+            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
             onGround = false;
+            doubleJump = false;
             jumpFrame = Time.time;
             if (facingRight)
             {
@@ -313,28 +233,133 @@ public class PlayerController : MonoBehaviour
                 an.Play("jumpLeft");
             }
         }
-        else if (Input.GetButtonDown("Jump") && !onGround && doubleJump)
+    }
+
+    public void interact() //Interact/Clean
+    {
+        if (Input.GetButton("Interact") && !isJump)
         {
-            rb.velocity = new Vector2(rb.velocity.x, charJumpSpeed);
-            doubleJump = false;
-            if (facingRight)
+            isInteract = true;
+
+            LayerMask layer = LayerMask.GetMask("Viscera");
+
+            RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 20f, layer);
+            if (!isClean && !isRun)
             {
-                an.Play("jumpRight");
+                if (facingRight)
+                {
+                    an.Play("mopRight");
+                }
+                else
+                {
+
+                    an.Play("mopLeft");
+                }
+
             }
-            else
+
+            if (hit)
             {
-                an.Play("jumpLeft");
+                if (hit.collider.gameObject.CompareTag("slimeObject"))
+                {
+                    GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().addSlime(10, hit.transform.gameObject.GetComponent<ItemInteraction>().color);
+                    GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().groundSlimeCleaned++;
+                    GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().updateCleanProgress();
+                    Destroy(hit.transform.gameObject);
+                }
+            }
+
+
+        }
+        else
+        {
+            isInteract = false;
+        }
+    }
+
+    public void Knockback(int dir) //Throw the player back
+    {
+        canMove = false;
+        knockbackTime = 3f;
+        rb.velocity = new Vector2(dir * knockbackX, knockbackY);
+    }
+
+    private void freezePlayer()
+    {
+        if (dontDestroy)
+        {
+            if (GameObject.Find("GreenGloves") && ps.greenSlimeMeter >= 10)
+            {
+                rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                isFrozen = true;
+                doubleJump = true;
+                ps.useSlime();
+            }
+        }
+        else
+        {
+            if (GameObject.Find("GreenGloves"))
+            {
+                rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                isFrozen = true;
+                doubleJump = true;
             }
         }
     }
-    
+
+    // ----------------------------------
+
+    // ------------- Checks -------------
+
+    private void groundCheck() //Checks if touching the ground
+    {
+        LayerMask layer = LayerMask.GetMask("Platform");
+        RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 17f, layer);
+        Debug.DrawRay(gameObject.transform.position, Vector2.down * 17);
+        if (hit)
+        {
+            onGround = true;
+            canMove = true;
+            doubleJump = false;
+        }
+        else
+        {
+            onGround = false;
+        }
+        an.SetBool("onGround", onGround);
+    }
+
+    private void constrain() //Constrains movement
+    {
+        if (rb.velocity.x > speed)
+        {
+            rb.velocity = new Vector2(speed, rb.velocity.x);
+        }
+        else if (rb.velocity.x < -speed)
+        {
+            rb.velocity = new Vector2(-speed, rb.velocity.x);
+        }
+    }
+
+    public void setSpeed(float newSpeed)
+    {
+        if (newSpeed < 0)
+            speed = maxSpeed;
+        else
+            speed = newSpeed;
+    }
+
+    // --------------------------------------
+
+    // ------------- Animations -------------
+
     public void isJumpAnimation()
     {
-        
+
         if (
             an.GetCurrentAnimatorStateInfo(0).IsName("jumpRight") ||
-            an.GetCurrentAnimatorStateInfo(0).IsName("jumpLeft")  ||
-            an.GetCurrentAnimatorStateInfo(0).IsName("inAirRight")||
+            an.GetCurrentAnimatorStateInfo(0).IsName("jumpLeft") ||
+            an.GetCurrentAnimatorStateInfo(0).IsName("inAirRight") ||
             an.GetCurrentAnimatorStateInfo(0).IsName("inAirLeft")
             )
         {
@@ -345,24 +370,32 @@ public class PlayerController : MonoBehaviour
             isJump = false;
         }
     }
+
     public void isCleanAnimation()
     {
-        if( an.GetCurrentAnimatorStateInfo(0).IsName("mopLeft")|| an.GetCurrentAnimatorStateInfo(0).IsName("mopRight"))
+        if (an.GetCurrentAnimatorStateInfo(0).IsName("mopLeft") || an.GetCurrentAnimatorStateInfo(0).IsName("mopRight"))
         {
             isClean = true;
         }
         else
         {
             isClean = false;
-            
+
         }
-        if(isInteract)
+        if (isInteract)
         {
-         
+
         }
         an.SetBool("isClean", isClean);
     }
-    
+
+    public void IsInjured()
+    {
+        if (!an.GetCurrentAnimatorStateInfo(0).IsName("injured"))
+        {
+            an.Play("injured");
+        }
+    }
 
     void Flip()
     {
@@ -371,32 +404,5 @@ public class PlayerController : MonoBehaviour
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y);
     }
 
-    public void Knockback(int dir)
-    {
-        canMove = false;
-        knockbackTime = 3f;
-        rb.velocity = new Vector2(dir * knockbackX, knockbackY);
-    }
-
-    //Display the reticle and allow you to interact with it
-    void ShowAim()
-    {
-        aiming = true;
-    }
-
-    void HideAim()
-    {
-        aiming = false;
-    }
-
-    public void toggleMove()
-    {
-        canMove = !canMove;
-    }
-
-    void ThrowSlime()
-    {
-        HideAim();
-    }
-
+    // --------------------------------------
 }

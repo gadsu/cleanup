@@ -5,6 +5,12 @@ using UnityEngine;
 public class slimeCover : MonoBehaviour
 {
     public float slowSpeed = 10f;
+    PlayerController pc;
+
+    private void Awake()
+    {
+        pc = GameObject.Find("Player").GetComponent<PlayerController>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +39,15 @@ public class slimeCover : MonoBehaviour
             else if (rb.velocity.y < -slowSpeed)
                 rb.velocity = new Vector2(rb.velocity.x, -slowSpeed);
 
+            pc.setSpeed(slowSpeed);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.name == "Player")
+        {
+            pc.setSpeed(-1f);
         }
     }
 }
