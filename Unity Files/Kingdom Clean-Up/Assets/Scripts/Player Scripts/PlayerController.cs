@@ -181,7 +181,7 @@ public class PlayerController : MonoBehaviour
 
                 }
 
-                if ((Input.GetAxis("Horizontal")) == 0)
+                if ((Input.GetAxis("Horizontal")) == 0 && onGround)
                 {
                     if (facingRight)
                     {
