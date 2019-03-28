@@ -15,6 +15,7 @@ TagManager:
   - InvisObject
   - Barn
   - GoopMother
+  - WallBox
   layers:
   - Default
   - TransparentFX

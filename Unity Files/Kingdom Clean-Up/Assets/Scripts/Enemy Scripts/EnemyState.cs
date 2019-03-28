@@ -37,9 +37,9 @@ public class EnemyState : MonoBehaviour {
     public float knockbackX = 30f;
     //[Tooltip("can you knockback the player")]
     //public bool canKnockback;
+    GameObject Walls;
 
-
-[Tooltip("Setting the prefab for what viscera it spawns")]
+    [Tooltip("Setting the prefab for what viscera it spawns")]
     public GameObject visceraPrefab;
 
     //Slime/World Colors
@@ -69,6 +69,7 @@ public class EnemyState : MonoBehaviour {
             health = 110; //set goop mother heath must be less than number of goopilings * 10, 110 is max rn
             //slimeDamage = 34f;
         }
+        Walls = GameObject.FindGameObjectWithTag("WallBox");
     }
 	
 	// Update is called once per frame
@@ -223,7 +224,11 @@ public class EnemyState : MonoBehaviour {
         }
 
         int green = 0, red = 0, blue = 0;
-        if (color == "green")
+        if(color == "Boss")
+        {
+            Walls.GetComponent<InvisObjects>().DisableWalls();
+        }
+        else if(color == "green")
             green = 3;
         else if (color == "red")
             red = 3;

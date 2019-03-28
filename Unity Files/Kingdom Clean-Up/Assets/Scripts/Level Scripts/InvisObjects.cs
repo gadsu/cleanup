@@ -26,11 +26,7 @@ public class InvisObjects : MonoBehaviour {
             leftWall.SetActive(true);
             rightWall.SetActive(true);
         }
-        else
-        {
-            leftWall.SetActive(false);
-            rightWall.SetActive(false);
-        }
+        
     }
 
 
@@ -65,4 +61,11 @@ public class InvisObjects : MonoBehaviour {
         //BossSpawnerObject = GameObject.Find("BossSlimeSpawner");
         HideObject();
 	}
+    
+    public void DisableWalls()
+    {
+        leftWall.SetActive(false);
+        rightWall.SetActive(false);
+    }
+    
 }

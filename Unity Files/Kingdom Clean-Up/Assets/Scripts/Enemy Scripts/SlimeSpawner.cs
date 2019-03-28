@@ -52,4 +52,5 @@ public class SlimeSpawner : MonoBehaviour {
         spawnTime = Time.fixedTime;  //reset timer so it doesn't instantly respawn
         slimeCount--;
     }
+
 }
