@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public bool isInteract;
     public bool doubleJump;
     public bool aiming;
+    public bool isSwingAnimation;
     public bool canMove;
     public GameObject mop;
     public float knockbackTime;
@@ -58,7 +59,10 @@ public class PlayerController : MonoBehaviour
 
         jump();
         interact();
-        move();
+        if(!isSwingAnimation)
+        {
+            move();
+        }
         isCleanAnimation(); //is the player cleaning?
         isJumpAnimation(); //is the player Jumping?
         an.SetBool("isInteract", isInteract);
@@ -85,10 +89,7 @@ public class PlayerController : MonoBehaviour
         }
         
 
-        if (isRun)
-        {
-            runningMop.SetActive(false);
-        }
+        
 
         if (knockbackTime > 0)
         {
@@ -141,7 +142,7 @@ public class PlayerController : MonoBehaviour
 
            
 
-                if (Mathf.Abs(rb.velocity.x) > 0 && !isJump)
+                if (Mathf.Abs(rb.velocity.x) > 0 && !isJump && isAttackAnimation() == false  )
                 {
                     isRun = true;
                     if (facingRight)
@@ -180,7 +181,7 @@ public class PlayerController : MonoBehaviour
                     }
 
                 }
-
+                /*
                 if ((Input.GetAxis("Horizontal")) == 0 && onGround)
                 {
                     if (facingRight)
@@ -198,9 +199,12 @@ public class PlayerController : MonoBehaviour
                         }
                     }
                 }
-
-
-         }
+                */
+                if (!Input.GetButton("Interact"))
+                {
+                runningMop.SetActive(false);
+                }
+        }
 
          if (Mathf.Abs(rb.velocity.x) <= 0 || isJump)
          {
@@ -234,7 +238,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
+ 
     public void interact() //Interact/Clean
     {
         if (Input.GetButton("Interact") && !isJump)
@@ -356,12 +360,10 @@ public class PlayerController : MonoBehaviour
     public void isJumpAnimation()
     {
 
-        if (
-            an.GetCurrentAnimatorStateInfo(0).IsName("jumpRight") ||
+        if (an.GetCurrentAnimatorStateInfo(0).IsName("jumpRight") ||
             an.GetCurrentAnimatorStateInfo(0).IsName("jumpLeft") ||
             an.GetCurrentAnimatorStateInfo(0).IsName("inAirRight") ||
-            an.GetCurrentAnimatorStateInfo(0).IsName("inAirLeft")
-            )
+            an.GetCurrentAnimatorStateInfo(0).IsName("inAirLeft"))
         {
             isJump = true;
         }
@@ -370,7 +372,18 @@ public class PlayerController : MonoBehaviour
             isJump = false;
         }
     }
-
+    public bool isAttackAnimation()
+    {
+       if(an.GetCurrentAnimatorStateInfo(0).IsName("swingLeft") ||
+          an.GetCurrentAnimatorStateInfo(0).IsName("swingRight"))
+        {
+            return true;
+        }
+       else
+        {
+            return false;
+        }
+    }
     public void isCleanAnimation()
     {
         if (an.GetCurrentAnimatorStateInfo(0).IsName("mopLeft") || an.GetCurrentAnimatorStateInfo(0).IsName("mopRight"))
