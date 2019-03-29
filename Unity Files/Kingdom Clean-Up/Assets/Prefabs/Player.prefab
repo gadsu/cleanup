@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 6172908817611125170}
   m_Layer: 2
   m_Name: mopRun
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 95475993690638980}
   m_Layer: 2
   m_Name: mopAttack
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -609,9 +609,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4200679053849870}
-  - component: {fileID: 114808477611694884}
   - component: {fileID: 7660175800734585141}
-  - component: {fileID: 114318356214555972}
   - component: {fileID: 212152763885082436}
   - component: {fileID: 50562500313674334}
   - component: {fileID: 95055646844152270}
@@ -642,33 +640,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114808477611694884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1788341133676570}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9523db3ef7a5d24580c4aac1e246e63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onGround: 1
-  facingRight: 0
-  isClean: 0
-  isRun: 0
-  isJump: 0
-  isInteract: 0
-  doubleJump: 0
-  aiming: 0
-  canMove: 1
-  mop: {fileID: 1552292412110382}
-  knockbackTime: 0
-  charMaxSpeed: 40
-  charJumpSpeed: 60
-  knockbackY: 30
-  knockbackX: 30
 --- !u!114 &7660175800734585141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -699,21 +670,6 @@ MonoBehaviour:
   jumpSpeed: 60
   knockbackY: 30
   knockbackX: 30
---- !u!114 &114318356214555972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1788341133676570}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53ee74a3be0f2644b94c1e77709ad51a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  reticle: {fileID: 0}
-  tp: {fileID: 0}
-  inAir: 0
 --- !u!212 &212152763885082436
 SpriteRenderer:
   m_ObjectHideFlags: 0
