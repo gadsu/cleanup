@@ -64,10 +64,13 @@ public class PlayerController : MonoBehaviour
             move();
         }
         isCleanAnimation(); //is the player cleaning?
-        isJumpAnimation(); //is the player Jumping?
+        if (isJumpAnimation())
+        { isJump = true; }//is the player Jumping?
         an.SetBool("isInteract", isInteract);
         an.SetBool("isSwing", isSwing);
-
+        if(onGround)
+        { isJump = false; }
+        an.SetBool("isJump", isJump);
         if (Input.GetButtonDown("Attack"))
         {
             isSwing = true;
@@ -142,7 +145,7 @@ public class PlayerController : MonoBehaviour
 
            
 
-                if (Mathf.Abs(rb.velocity.x) > 0 && !isJump && isAttackAnimation() == false  )
+                if (Mathf.Abs(rb.velocity.x) > 0 && !isJump && isAttackAnimation() == false && onGround && isJumpAnimation() == false)
                 {
                     isRun = true;
                     if (facingRight)
@@ -223,7 +226,8 @@ public class PlayerController : MonoBehaviour
                 rb.constraints = RigidbodyConstraints2D.FreezeRotation;
                 isFrozen = false;
             }
-
+            isJump = true;
+            an.SetBool("isJump", isJump);
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
             onGround = false;
             doubleJump = false;
@@ -241,15 +245,18 @@ public class PlayerController : MonoBehaviour
  
     public void interact() //Interact/Clean
     {
-        if (Input.GetButton("Interact") && !isJump)
+        if (Input.GetButton("Interact") && !isJump && isJumpAnimation() == false)
         {
             isInteract = true;
-
             LayerMask layer = LayerMask.GetMask("Viscera");
-
             RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 20f, layer);
+
             if (!isClean && !isRun)
             {
+                
+
+                
+
                 runningMop.SetActive(false);
                 if (facingRight)
                 {
@@ -261,7 +268,7 @@ public class PlayerController : MonoBehaviour
 
                     an.Play("mopLeft");
                 }
-
+                
             }
 
             if (hit)
@@ -359,20 +366,23 @@ public class PlayerController : MonoBehaviour
 
     // ------------- Animations -------------
 
-    public void isJumpAnimation()
+    public bool isJumpAnimation()
     {
 
         if (an.GetCurrentAnimatorStateInfo(0).IsName("jumpRight") ||
             an.GetCurrentAnimatorStateInfo(0).IsName("jumpLeft") ||
             an.GetCurrentAnimatorStateInfo(0).IsName("inAirRight") ||
-            an.GetCurrentAnimatorStateInfo(0).IsName("inAirLeft"))
+            an.GetCurrentAnimatorStateInfo(0).IsName("inAirLeft")||
+            an.GetCurrentAnimatorStateInfo(0).IsName("crouchLeft")||
+            an.GetCurrentAnimatorStateInfo(0).IsName("crouchRight"))
         {
-            isJump = true;
+            return true;
         }
         else
         {
-            isJump = false;
+             return false;
         }
+        
     }
     public bool isAttackAnimation()
     {

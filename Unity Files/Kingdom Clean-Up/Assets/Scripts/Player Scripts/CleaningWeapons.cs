@@ -8,12 +8,14 @@ public class CleaningWeapons : MonoBehaviour
     public bool itemsOn;
     public GameObject[] list;
     public GameObject items;
-
+    public GameObject gloveIndicator;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        gloveIndicator = GameObject.Find("GloveIndicator");
+        gloveIndicator.SetActive(false);
         list[1].SetActive(false);
         list[2].SetActive(false);
         items.SetActive(false);
@@ -32,6 +34,7 @@ public class CleaningWeapons : MonoBehaviour
         {
             items.SetActive(false);
             itemsOn = false;
+            gloveIndicator.SetActive(false);
         }
         if (Input.GetButtonDown("SwapItemLeft") && itemsOn == true)
         {
@@ -53,6 +56,16 @@ public class CleaningWeapons : MonoBehaviour
         {
             itemSelected = 0;
         }
+
+        if (itemSelected == 1)
+        {
+            gloveIndicator.SetActive(true);
+        }
+        else
+        {
+            gloveIndicator.SetActive(false);
+        }
+
         list[itemSelected].SetActive(true);
     }
 
@@ -65,6 +78,15 @@ public class CleaningWeapons : MonoBehaviour
         if ((itemSelected) < 0)
         {
             itemSelected = 2;
+        }
+
+        if (itemSelected == 1)
+        {
+            gloveIndicator.SetActive(true);
+        }
+        else
+        {
+            gloveIndicator.SetActive(false);
         }
         list[itemSelected].SetActive(true);
     }
