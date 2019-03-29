@@ -101,11 +101,67 @@ MonoBehaviour:
     m_ActivateAfter: 0
     m_MinDuration: 0
   - m_FullHash: -357548733
-    m_VirtualCamera: {fileID: 0}
-    m_ActivateAfter: 0
+    m_VirtualCamera: {fileID: 2088448917601615177}
+    m_ActivateAfter: 10
     m_MinDuration: 0
   - m_FullHash: -178524345
-    m_VirtualCamera: {fileID: 0}
+    m_VirtualCamera: {fileID: 2088448917601615177}
+    m_ActivateAfter: 10
+    m_MinDuration: 0
+  - m_FullHash: -959814003
+    m_VirtualCamera: {fileID: 2088448918314173205}
+    m_ActivateAfter: 0
+    m_MinDuration: 0
+  - m_FullHash: -1683728759
+    m_VirtualCamera: {fileID: 2088448918314173205}
+    m_ActivateAfter: 0
+    m_MinDuration: 0
+  - m_FullHash: 1679216226
+    m_VirtualCamera: {fileID: 2088448918314173205}
+    m_ActivateAfter: 0
+    m_MinDuration: 0
+  - m_FullHash: 15527313
+    m_VirtualCamera: {fileID: 2088448918314173205}
+    m_ActivateAfter: 0
+    m_MinDuration: 0
+  - m_FullHash: -735501767
+    m_VirtualCamera: {fileID: 2088448918314173205}
+    m_ActivateAfter: 0
+    m_MinDuration: 0
+  - m_FullHash: 1673141205
+    m_VirtualCamera: {fileID: 2088448918314173205}
+    m_ActivateAfter: 0
+    m_MinDuration: 0
+  - m_FullHash: 1535251660
+    m_VirtualCamera: {fileID: 2088448918314173205}
+    m_ActivateAfter: 0
+    m_MinDuration: 0
+  - m_FullHash: 1663460427
+    m_VirtualCamera: {fileID: 2088448918314173205}
+    m_ActivateAfter: 0
+    m_MinDuration: 0
+  - m_FullHash: 1699804950
+    m_VirtualCamera: {fileID: 2088448918314173205}
+    m_ActivateAfter: 0
+    m_MinDuration: 0
+  - m_FullHash: 17000409
+    m_VirtualCamera: {fileID: 2088448918314173205}
+    m_ActivateAfter: 0
+    m_MinDuration: 0
+  - m_FullHash: -309677590
+    m_VirtualCamera: {fileID: 2088448918314173205}
+    m_ActivateAfter: 0
+    m_MinDuration: 0
+  - m_FullHash: -1209304498
+    m_VirtualCamera: {fileID: 2088448918314173205}
+    m_ActivateAfter: 0
+    m_MinDuration: 0
+  - m_FullHash: -1997935657
+    m_VirtualCamera: {fileID: 2088448918314173205}
+    m_ActivateAfter: 0
+    m_MinDuration: 0
+  - m_FullHash: -270117627
+    m_VirtualCamera: {fileID: 2088448918314173205}
     m_ActivateAfter: 0
     m_MinDuration: 0
   m_DefaultBlend:
@@ -123,13 +179,31 @@ MonoBehaviour:
     m_ParentHash: 756556552
   - m_Hash: 1679216226
     m_ParentHash: 756556552
-  - m_Hash: 1663460427
-    m_ParentHash: 756556552
   - m_Hash: 1592452149
     m_ParentHash: 756556552
   - m_Hash: -357548733
     m_ParentHash: 756556552
   - m_Hash: 15527313
+    m_ParentHash: 756556552
+  - m_Hash: -735501767
+    m_ParentHash: 756556552
+  - m_Hash: 1673141205
+    m_ParentHash: 756556552
+  - m_Hash: 1535251660
+    m_ParentHash: 756556552
+  - m_Hash: 1663460427
+    m_ParentHash: 756556552
+  - m_Hash: 1699804950
+    m_ParentHash: 756556552
+  - m_Hash: 17000409
+    m_ParentHash: 756556552
+  - m_Hash: -309677590
+    m_ParentHash: 756556552
+  - m_Hash: -1209304498
+    m_ParentHash: 756556552
+  - m_Hash: -1997935657
+    m_ParentHash: 756556552
+  - m_Hash: -270117627
     m_ParentHash: 756556552
 --- !u!1 &2088448917581283521
 GameObject:
@@ -230,7 +304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2088448917601615158
 Transform:
   m_ObjectHideFlags: 0
@@ -239,7 +313,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2088448917601615159}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -45, y: 18.099998, z: -10}
+  m_LocalPosition: {x: -35.4, y: 26.8, z: 81.60196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2088448917762524741}
@@ -383,7 +457,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2088448917815453557}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.320618, y: 7.929656, z: -10}
+  m_LocalPosition: {x: -16.851376, y: 16.629658, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2088448917319782305}
@@ -415,7 +489,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 46.72694
+  orthographic size: 40
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -503,7 +577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2088448918314173202
 Transform:
   m_ObjectHideFlags: 0
@@ -512,7 +586,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2088448918314173203}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -31.869244, y: 18.099998, z: 81.60196}
+  m_LocalPosition: {x: -22.28, y: 26.799995, z: 81.60196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2088448917581283520}
