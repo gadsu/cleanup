@@ -59,7 +59,11 @@ public class PlayerController : MonoBehaviour
 
         jump();
         interact();
-        if(!isSwingAnimation)
+        if(isSwing)
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+        else
         {
             move();
         }
@@ -67,13 +71,11 @@ public class PlayerController : MonoBehaviour
         if (isJumpAnimation())
         { isJump = true; }//is the player Jumping?
         an.SetBool("isInteract", isInteract);
-        an.SetBool("isSwing", isSwing);
         if(onGround)
         { isJump = false; }
         an.SetBool("isJump", isJump);
         if (Input.GetButtonDown("Attack"))
         {
-            isSwing = true;
 
             if (facingRight)
             {
@@ -83,13 +85,10 @@ public class PlayerController : MonoBehaviour
             {
                 an.Play("swingLeft");
             }
-            
+
             mop.GetComponent<CleanAttack>().swingMop();
         }
-        else
-        {
-            isSwing = false;
-        }
+        an.SetBool("isSwing", isSwing);
         
 
         
@@ -329,7 +328,7 @@ public class PlayerController : MonoBehaviour
         LayerMask layer = LayerMask.GetMask("Platform");
         RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, Vector2.down, 17f, layer);
         Debug.DrawRay(gameObject.transform.position, Vector2.down * 17);
-        if (hit)
+        if (hit && !an.GetBool("isSwing"))
         {
             onGround = true;
             canMove = true;
