@@ -18,8 +18,9 @@ public class CleaningWeapons : MonoBehaviour
         gloveIndicator.SetActive(false);
         list[1].SetActive(false);
         list[2].SetActive(false);
-        items.SetActive(false);
-        itemsOn = false;
+        //items.SetActive(false);
+        //itemsOn = false;
+        itemsOn = true;
     }
 
     // Update is called once per frame
@@ -30,12 +31,12 @@ public class CleaningWeapons : MonoBehaviour
             items.SetActive(true);
             itemsOn = true;
         }
-        else if (Input.GetButtonDown("ShowItem") && itemsOn == true)
-        {
-            items.SetActive(false);
-            itemsOn = false;
-            gloveIndicator.SetActive(false);
-        }
+        //else if (Input.GetButtonDown("ShowItem") && itemsOn == true)
+        //{
+        //    items.SetActive(false);
+        //    itemsOn = false;
+        //    gloveIndicator.SetActive(false);
+        //}
         if (Input.GetButtonDown("SwapItemLeft") && itemsOn == true)
         {
             itemCycleBackwards();
