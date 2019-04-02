@@ -18,7 +18,6 @@ public class CleaningWeapons : MonoBehaviour
         list[2].SetActive(false);
         items.SetActive(false);
         itemsOn = false;
-        itemsOn = true;
     }
 
     // Update is called once per frame

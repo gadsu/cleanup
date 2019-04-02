@@ -23,6 +23,7 @@ public class BarneySlimeBall : MonoBehaviour
         playerPos = player.transform.position;
         hitspot = false;
         initPos = gameObject.transform.position;
+        transform.LookAt(player.transform.transform, Vector2.up);
     }
 
     // Update is called once per frame
@@ -41,7 +42,6 @@ public class BarneySlimeBall : MonoBehaviour
         if (playerPos == transform.position)
         {
             hitspot = true;
-            Debug.Log("HIT");
         }
     }
 
@@ -61,10 +61,8 @@ public class BarneySlimeBall : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D col)
     {
-        Debug.Log("I LEFT " + col.gameObject.name);
         if(col.gameObject.name == "BarnBox")
         {
-            Debug.Log("I HAVE LEFT THE BARN");
             Transform startpos = gameObject.transform; //find location of self
             Instantiate<GameObject>(slimeBall, startpos.position, startpos.rotation);  //Create slime
             Destroy(gameObject); //kill self

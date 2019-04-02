@@ -344,11 +344,11 @@ public class PlayerController : MonoBehaviour
     {
         if (rb.velocity.x > speed)
         {
-            rb.velocity = new Vector2(speed, rb.velocity.x);
+            rb.velocity = new Vector2(speed, rb.velocity.y);
         }
         else if (rb.velocity.x < -speed)
         {
-            rb.velocity = new Vector2(-speed, rb.velocity.x);
+            rb.velocity = new Vector2(-speed, rb.velocity.y);
         }
     }
 

@@ -661,7 +661,6 @@ MonoBehaviour:
   isInteract: 0
   doubleJump: 0
   aiming: 0
-  isSwingAnimation: 0
   canMove: 1
   mop: {fileID: 1552292412110382}
   knockbackTime: 0
@@ -792,4 +791,3 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   items: {fileID: 0}
-  gloveIndicator: {fileID: 0}
