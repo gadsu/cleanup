@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     public bool isInteract;
     public bool doubleJump;
     public bool aiming;
-    public bool isSwingAnimation;
     public bool canMove;
     public GameObject mop;
     public float knockbackTime;
@@ -71,9 +70,11 @@ public class PlayerController : MonoBehaviour
         if (isJumpAnimation())
         { isJump = true; }//is the player Jumping?
         an.SetBool("isInteract", isInteract);
-        if(onGround)
+        if(onGround)//is the player on the ground?
         { isJump = false; }
         an.SetBool("isJump", isJump);
+
+
         if (Input.GetButtonDown("Attack"))
         {
 
@@ -89,9 +90,6 @@ public class PlayerController : MonoBehaviour
             mop.GetComponent<CleanAttack>().swingMop();
         }
         an.SetBool("isSwing", isSwing);
-        
-
-        
 
         if (knockbackTime > 0)
         {
@@ -226,6 +224,7 @@ public class PlayerController : MonoBehaviour
                 isFrozen = false;
             }
             isJump = true;
+            runningMop.SetActive(false);// when the player jumps the running mop is disabled
             an.SetBool("isJump", isJump);
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
             onGround = false;
@@ -365,7 +364,7 @@ public class PlayerController : MonoBehaviour
 
     // ------------- Animations -------------
 
-    public bool isJumpAnimation()
+    public bool isJumpAnimation()//Is the player playing a jump related animation?
     {
 
         if (an.GetCurrentAnimatorStateInfo(0).IsName("jumpRight") ||
@@ -383,7 +382,7 @@ public class PlayerController : MonoBehaviour
         }
         
     }
-    public bool isAttackAnimation()
+    public bool isAttackAnimation()//Is the player playing an attack animation?
     {
        if(an.GetCurrentAnimatorStateInfo(0).IsName("swingLeft") ||
           an.GetCurrentAnimatorStateInfo(0).IsName("swingRight"))
@@ -395,7 +394,7 @@ public class PlayerController : MonoBehaviour
             return false;
         }
     }
-    public void isCleanAnimation()
+    public void isCleanAnimation() //Is the player playing a clean animation?
     {
         if (an.GetCurrentAnimatorStateInfo(0).IsName("mopLeft") || an.GetCurrentAnimatorStateInfo(0).IsName("mopRight"))
         {
@@ -413,7 +412,7 @@ public class PlayerController : MonoBehaviour
         an.SetBool("isClean", isClean);
     }
 
-    public void IsInjured()
+    public void IsInjured() //Is the player playing the injured animation?
     {
         if (!an.GetCurrentAnimatorStateInfo(0).IsName("injured"))
         {

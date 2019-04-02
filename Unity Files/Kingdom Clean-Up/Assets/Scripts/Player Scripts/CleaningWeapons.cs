@@ -8,7 +8,7 @@ public class CleaningWeapons : MonoBehaviour
     public bool itemsOn;
     public GameObject[] list;
     public GameObject items;
-    public GameObject gloveIndicator;
+    
 
 
     // Start is called before the first frame update
@@ -54,16 +54,16 @@ public class CleaningWeapons : MonoBehaviour
         {
             itemSelected = 0;
         }
-
+        /*Could call green glove sprite activation here 
         if (itemSelected == 1)
         {
-            gloveIndicator.SetActive(true);
+            //Switch to the green glove sprite 
         }
         else
         {
-            gloveIndicator.SetActive(false);
+            //Unequip the green glove sprite 
         }
-
+        */
         list[itemSelected].SetActive(true);
     }
 
@@ -77,15 +77,16 @@ public class CleaningWeapons : MonoBehaviour
         {
             itemSelected = 2;
         }
-
+        /* Could call green glove sprite activation here 
         if (itemSelected == 1)
         {
-            gloveIndicator.SetActive(true);
+            //Switch to the green glove sprite 
         }
         else
         {
-            gloveIndicator.SetActive(false);
+            //Unequip the green glove sprite 
         }
+        */
         list[itemSelected].SetActive(true);
     }
 }
