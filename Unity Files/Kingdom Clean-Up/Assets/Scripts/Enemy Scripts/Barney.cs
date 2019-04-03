@@ -23,6 +23,7 @@ public class Barney : MonoBehaviour
     public GameObject leftSlimeCover;
     public GameObject rightSlimeCover;
     public GameObject fallPoint;
+    public GameObject cord;
 
     GameObject target = null;  //Will be the player
     int health;
@@ -125,6 +126,7 @@ public class Barney : MonoBehaviour
         {
             if (falling)
             {
+                cord.GetComponent<LineRenderer>().SetPosition(1, gameObject.transform.position);
                 rb.constraints = RigidbodyConstraints2D.FreezeRotation;
                 if (transform.position.y <= fallPosition)
                 {
@@ -132,6 +134,7 @@ public class Barney : MonoBehaviour
                     rb.constraints = RigidbodyConstraints2D.FreezeAll;
                     Debug.Log("No Longer Falling");
                 }
+
             }
         }
     }
