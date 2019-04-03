@@ -18,12 +18,18 @@ public class BarneySlimeBall : MonoBehaviour
     void Start()
     {
         //rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        if (GameObject.Find("DontDestroyOnLoad"))
+            ps = GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>();
         player = GameObject.Find("Player");
-        ps = GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>();
         playerPos = player.transform.position;
         hitspot = false;
         initPos = gameObject.transform.position;
-        transform.LookAt(player.transform.transform, Vector2.up);
+        
+        Vector2 relativePos = player.transform.position - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector2.up);
+        rotation.x = 0;
+        rotation.y = 0;
+        transform.rotation = rotation;
     }
 
     // Update is called once per frame
@@ -54,7 +60,8 @@ public class BarneySlimeBall : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            ps.takeDamage(slimeDamage); //damage player
+            if (ps)
+                ps.takeDamage(slimeDamage); //damage player
             Destroy(gameObject);
         }
     }

@@ -27,7 +27,6 @@ public class slimeCover : MonoBehaviour
     {
         if (col.name == "Player")
         {
-            Debug.Log("Should Be SLOW");
             Rigidbody2D rb = col.GetComponent<Rigidbody2D>();
 
             if (rb.velocity.x > slowSpeed)
@@ -40,6 +39,7 @@ public class slimeCover : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, -slowSpeed);
 
             pc.setSpeed(slowSpeed);
+            pc.canAttack = false;
         }
     }
 
@@ -48,6 +48,7 @@ public class slimeCover : MonoBehaviour
         if (col.name == "Player")
         {
             pc.setSpeed(-1f);
+            pc.canAttack = true;
         }
     }
 }

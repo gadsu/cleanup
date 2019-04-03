@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public bool doubleJump;
     public bool aiming;
     public bool canMove;
+    public bool canAttack;
     public GameObject mop;
     public float knockbackTime;
     public float maxSpeed = 200f;
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         runningMop = gameObject.transform.Find("mopRun").gameObject;
         speed = maxSpeed;
+        canAttack = true;
     }
     private void Start()
     {
@@ -75,7 +77,7 @@ public class PlayerController : MonoBehaviour
         an.SetBool("isJump", isJump);
 
 
-        if (Input.GetButtonDown("Attack"))
+        if (Input.GetButtonDown("Attack") && canAttack)
         {
 
             if (facingRight)
