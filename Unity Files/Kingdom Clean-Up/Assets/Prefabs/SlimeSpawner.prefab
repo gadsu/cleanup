@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 4858905280151828}
   m_Layer: 0
   m_Name: SlimePatrolPoint
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4320712292328070}
   m_Layer: 0
   m_Name: SlimePatrolPoint
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
