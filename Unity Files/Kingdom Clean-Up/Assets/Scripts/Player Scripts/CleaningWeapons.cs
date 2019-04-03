@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//COMPLETE DO NOT TOUCH//
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -53,16 +55,7 @@ public class CleaningWeapons : MonoBehaviour
         {
             itemSelected = 0;
         }
-        /*Could call green glove sprite activation here 
-        if (itemSelected == 1)
-        {
-            //Switch to the green glove sprite 
-        }
-        else
-        {
-            //Unequip the green glove sprite 
-        }
-        */
+
         list[itemSelected].SetActive(true);
     }
 
@@ -76,16 +69,7 @@ public class CleaningWeapons : MonoBehaviour
         {
             itemSelected = 2;
         }
-        /* Could call green glove sprite activation here 
-        if (itemSelected == 1)
-        {
-            //Switch to the green glove sprite 
-        }
-        else
-        {
-            //Unequip the green glove sprite 
-        }
-        */
+
         list[itemSelected].SetActive(true);
     }
 }
