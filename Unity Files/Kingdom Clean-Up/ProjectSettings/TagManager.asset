@@ -16,6 +16,7 @@ TagManager:
   - Barn
   - GoopMother
   - WallBox
+  - blueSlimeAcc
   layers:
   - Default
   - TransparentFX

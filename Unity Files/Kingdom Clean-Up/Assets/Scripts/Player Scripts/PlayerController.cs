@@ -17,8 +17,9 @@ public class PlayerController : MonoBehaviour
     public bool canAttack;
     public GameObject mop;
     public float knockbackTime;
-    public float maxSpeed = 200f;
+    public float maxSpeed;
     public float speed;
+    public float fastSpeed;
     public float jumpSpeed = 60f;
     public float knockbackY = 30f;
     public float knockbackX = 30f;
@@ -124,6 +125,7 @@ public class PlayerController : MonoBehaviour
             freezePlayer();
         }
     }
+
 
     // ------------- Movement -------------
 
@@ -320,6 +322,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+   
     // ----------------------------------
 
     // ------------- Checks -------------
@@ -360,6 +363,27 @@ public class PlayerController : MonoBehaviour
             speed = maxSpeed;
         else
             speed = newSpeed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        //Debug.Log("Hit Trig");
+        if (col.gameObject.tag == "blueSlimeAcc")//Check to see if the player entered the blueSlimeAccelerator
+        {
+
+            setSpeed(fastSpeed);//Set the speed to go faster
+            //Debug.Log("HitSlime " + speed);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        //Debug.Log("Hit Trig");
+        if (col.gameObject.tag == "blueSlimeAcc")//Check to see if the player left the blueSlimeAccelerator
+        {
+
+            setSpeed(maxSpeed);//set the speed back to normal
+            //Debug.Log("HitSlime " + speed);
+        }
     }
 
     // --------------------------------------
