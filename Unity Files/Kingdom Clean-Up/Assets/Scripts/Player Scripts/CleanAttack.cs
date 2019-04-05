@@ -1,4 +1,7 @@
 ﻿
+//-------------COMPLETE DO NOT TOUCH----------//
+
+
 //    Clean Attack
 //    Controls the events that will happen when someone actually tries to hit someone
 //    Will need to be updated with new animations
