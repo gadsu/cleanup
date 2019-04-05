@@ -120,9 +120,22 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "slimeInteractable")
+        if (col.gameObject.tag == "rightInteractableWall")
         {
             freezePlayer();
+            an.Play("clingRight");
+        }
+
+        if (col.gameObject.tag == "leftInteractableWall")
+        {
+            Debug.Log("Left");
+            if (!facingRight) //Determine which way to face the character
+            {
+                Flip();
+                Debug.Log("Left Flip");
+            }
+            freezePlayer();
+            an.Play("clingLeft");
         }
     }
 
@@ -135,11 +148,11 @@ public class PlayerController : MonoBehaviour
          {
             rb.velocity = new Vector2(force * speed, rb.velocity.y); //Applies force to rigidbody
 
-            if (force > 0 && !facingRight) //Determine which way to face the character
+            if (force > 0 && !facingRight && !isFrozen) //Determine which way to face the character
             {
                 Flip();
             }
-            else if (force < 0 && facingRight)
+            else if (force < 0 && facingRight && !isFrozen)
             {
                 Flip();
             }
@@ -305,6 +318,7 @@ public class PlayerController : MonoBehaviour
         {
             if (GameObject.Find("GreenGloves") && ps.greenSlimeMeter >= 10)
             {
+
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 isFrozen = true;
                 doubleJump = true;

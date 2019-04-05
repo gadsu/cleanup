@@ -17,6 +17,9 @@ TagManager:
   - GoopMother
   - WallBox
   - blueSlimeAcc
+  - New tag
+  - rightInteractableWall
+  - leftInteractableWall
   layers:
   - Default
   - TransparentFX
