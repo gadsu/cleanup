@@ -33,6 +33,7 @@ public class Barney : MonoBehaviour
     bool falling = true;
     float fallPosition;
     Rigidbody2D rb;
+    Color origColor;
 
     // Start is called before the first frame update
     void Start()
@@ -42,10 +43,11 @@ public class Barney : MonoBehaviour
         stage = 1;
         fallPosition = fallPoint.transform.position.y;
         rb = gameObject.GetComponent<Rigidbody2D>();
+        origColor = gameObject.GetComponentInChildren<SpriteRenderer>().color;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //distanceToPlayer = Vector2.Distance(target.transform.position, transform.position);   //Calculate the distance between the player and yourself
         ////ThrowSlime();
@@ -126,7 +128,6 @@ public class Barney : MonoBehaviour
         {
             if (falling)
             {
-                cord.GetComponent<LineRenderer>().SetPosition(1, gameObject.transform.position);
                 rb.constraints = RigidbodyConstraints2D.FreezeRotation;
                 if (transform.position.y <= fallPosition)
                 {
@@ -176,7 +177,7 @@ public class Barney : MonoBehaviour
         }
 
         es.invulnerable = false;
-        gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+        gameObject.GetComponentInChildren<SpriteRenderer>().color = origColor;
         stage += 1;
     }
 }

@@ -48,19 +48,19 @@ public class AIFollow : MonoBehaviour
 
         points = GameObject.FindGameObjectsWithTag("Spawner");   //Find all of the spawner objects in the scene
         targetArr.Clear();
-        Debug.Log("1. " + points.Length);
+        //Debug.Log("1. " + points.Length);
         //Cycle through all spawner objects and only add the ones that match our character
         foreach (GameObject n in points)
         {
             bool bul = new bool();
-            Debug.Log("2. " + n.transform.name.ToCharArray()[0] + " " + patrolChar );
+            //Debug.Log("2. " + n.transform.name.ToCharArray()[0] + " " + patrolChar );
             if (n.name.Contains("PatrolPoint") && n.transform.parent.name.ToCharArray()[0] == patrolChar)  //AGreenSlimeSpawner BGreenSLime
             {
                 bul = true;
                 targetArr.Add(n.transform);
-                Debug.Log("3. " + n.name);
+                //Debug.Log("3. " + n.name);
             }
-            Debug.Log("Bool " + bul);
+            //Debug.Log("Bool " + bul);
         }
     }
 
