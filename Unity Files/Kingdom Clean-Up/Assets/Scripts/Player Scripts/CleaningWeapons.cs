@@ -17,7 +17,6 @@ public class CleaningWeapons : MonoBehaviour
     void Start()
     {
         list[1].SetActive(false);
-        list[2].SetActive(false);
         items.SetActive(false);
         itemsOn = false;
     }
@@ -67,7 +66,7 @@ public class CleaningWeapons : MonoBehaviour
 
         if ((itemSelected) < 0)
         {
-            itemSelected = 2;
+            itemSelected = 1;
         }
 
         list[itemSelected].SetActive(true);
