@@ -71,7 +71,7 @@ public class BarneySlimeBall : MonoBehaviour
         if(col.gameObject.name == "BarnBox")
         {
             Transform startpos = gameObject.transform; //find location of self
-            Instantiate<GameObject>(slimeBall, startpos.position, startpos.rotation);  //Create slime
+            Instantiate<GameObject>(slimeBall, startpos.position, new Quaternion());  //Create slime
             Destroy(gameObject); //kill self
         }
     }
