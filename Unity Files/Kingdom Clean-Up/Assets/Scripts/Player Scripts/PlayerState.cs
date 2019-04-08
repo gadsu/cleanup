@@ -185,7 +185,7 @@ public class PlayerState : MonoBehaviour {
             for (i = 1; i <= 8; i++)
             {
                 greenChildren.Add(greenMeter.transform.Find(i.ToString()).gameObject);
-                redChildren.Add(redMeter.transform.Find(i.ToString()).gameObject);
+//                redChildren.Add(redMeter.transform.Find(i.ToString()).gameObject);
                 blueChildren.Add(blueMeter.transform.Find(i.ToString()).gameObject);
             }
         }
@@ -196,7 +196,7 @@ public class PlayerState : MonoBehaviour {
         CountGroundSlime();
         setSlimeMeterImage(0, greenChildren);
         setSlimeMeterImage(0, blueChildren);
-        setSlimeMeterImage(0, redChildren);
+ //       setSlimeMeterImage(0, redChildren);
         playerHealth = 100f;
     }
 
