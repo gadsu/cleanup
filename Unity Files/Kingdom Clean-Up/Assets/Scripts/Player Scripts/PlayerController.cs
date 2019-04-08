@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
         an.SetBool("isJump", isJump);
 
 
-        if (Input.GetButtonDown("Attack") && canAttack)
+        if (Input.GetButtonDown("Attack") && canAttack && !isFrozen)
         {
 
             if (facingRight)
@@ -120,22 +120,24 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "rightInteractableWall")
+        if (col.gameObject.tag == "slimeInteractable")
         {
-            freezePlayer();
-            an.Play("clingRight");
-        }
-
-        if (col.gameObject.tag == "leftInteractableWall")
-        {
-            Debug.Log("Left");
-            if (!facingRight) //Determine which way to face the character
+            if (transform.position.x < col.gameObject.transform.position.x)
             {
-                Flip();
-                Debug.Log("Left Flip");
+                Debug.Log("Right");
+                if (!facingRight)
+                    Flip();
+                if (freezePlayer())
+                    an.Play("clingRight");
             }
-            freezePlayer();
-            an.Play("clingLeft");
+            else
+            {
+                Debug.Log("Left");
+                if (!facingRight)
+                    Flip();
+                if (freezePlayer())
+                    an.Play("clingLeft");
+            }
         }
     }
 
@@ -260,7 +262,7 @@ public class PlayerController : MonoBehaviour
  
     public void interact() //Interact/Clean
     {
-        if (Input.GetButton("Interact") && !isJump && isJumpAnimation() == false)
+        if (Input.GetButton("Interact") && !isJump && isJumpAnimation() == false && !isFrozen)
         {
             isInteract = true;
             LayerMask layer = LayerMask.GetMask("Viscera");
@@ -312,7 +314,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(dir * knockbackX, knockbackY);
     }
 
-    private void freezePlayer()
+    private bool freezePlayer()
     {
         if (dontDestroy)
         {
@@ -323,7 +325,10 @@ public class PlayerController : MonoBehaviour
                 isFrozen = true;
                 doubleJump = true;
                 ps.useSlime();
+                return true;
             }
+            else
+                return false;
         }
         else
         {
@@ -332,7 +337,10 @@ public class PlayerController : MonoBehaviour
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 isFrozen = true;
                 doubleJump = true;
+                return true;
             }
+            else
+                return false;
         }
     }
 

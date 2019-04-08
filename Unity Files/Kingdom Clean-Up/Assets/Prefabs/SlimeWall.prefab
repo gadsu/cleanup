@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4300269471684202}
   - component: {fileID: 212041683450388822}
-  - component: {fileID: 61396468291491406}
   - component: {fileID: 61425827841595694}
   m_Layer: 0
-  m_Name: RightSlimeWall
-  m_TagString: rightInteractableWall
+  m_Name: SlimeWall
+  m_TagString: slimeInteractable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,32 +80,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &61396468291491406
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158865207458514}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 1.5}
-    newSize: {x: 1.5, y: 1.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5}
-  m_EdgeRadius: 0
 --- !u!61 &61425827841595694
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -116,7 +89,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1158865207458514}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 91fce4ed93bc904418bff79cec2de284, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
