@@ -144,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   spawner: {fileID: 0}
-  color: Boss
+  color: Green
   facingRight: 1
   canMove: 0
   invulnerable: 0
