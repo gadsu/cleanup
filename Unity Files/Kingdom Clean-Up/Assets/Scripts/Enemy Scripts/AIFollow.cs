@@ -46,22 +46,20 @@ public class AIFollow : MonoBehaviour
         PatrolTimer = PTIME - ((gameObject.transform.position.x * gameObject.transform.position.y) % 5);
         LostPlayerTimer = PTIME;
 
-        points = GameObject.FindGameObjectsWithTag("Spawner");   //Find all of the spawner objects in the scene
-        targetArr.Clear();
+        //points = GameObject.FindGameObjectsWithTag("Spawner");   //Find all of the spawner objects in the scene
+        //targetArr.Clear();
         //Debug.Log("1. " + points.Length);
         //Cycle through all spawner objects and only add the ones that match our character
-        foreach (GameObject n in points)
-        {
-            bool bul = new bool();
-            //Debug.Log("2. " + n.transform.name.ToCharArray()[0] + " " + patrolChar );
-            if (n.name.Contains("PatrolPoint") && n.transform.parent.name.ToCharArray()[0] == patrolChar)  //AGreenSlimeSpawner BGreenSLime
-            {
-                bul = true;
-                targetArr.Add(n.transform);
-                //Debug.Log("3. " + n.name);
-            }
-            //Debug.Log("Bool " + bul);
-        }
+        //foreach (GameObject n in points)
+        //{
+        //    //Debug.Log("2. " + n.transform.name.ToCharArray()[0] + " " + patrolChar );
+        //    if (n.name.Contains("PatrolPoint") && n.transform.parent.name.ToCharArray()[0] == patrolChar)  //AGreenSlimeSpawner BGreenSLime
+        //    {
+        //        targetArr.Add(n.transform);
+        //        //Debug.Log("3. " + n.name);
+        //    }
+        //    //Debug.Log("Bool " + bul);
+        //}
     }
 
     void FixedUpdate()  //Happens every fixed frame
