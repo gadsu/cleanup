@@ -17,9 +17,10 @@ public class PlayerController : MonoBehaviour
     public bool canAttack;
     public GameObject mop;
     public float knockbackTime;
+    public float defaultSpeed;
+    public float fastSpeed;
     public float maxSpeed;
     public float speed;
-    public float fastSpeed;
     public float jumpSpeed = 60f;
     public float knockbackY = 30f;
     public float knockbackX = 30f;
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
     Animator an;
     Rigidbody2D rb;
     GameObject runningMop;
+    GameObject BlueBoots;
     PlayerState ps;
     float jumpFrame;
     float force = 0;
@@ -47,6 +49,9 @@ public class PlayerController : MonoBehaviour
         runningMop = gameObject.transform.Find("mopRun").gameObject;
         speed = maxSpeed;
         canAttack = true;
+        BlueBoots = GameObject.Find("Blue");
+        maxSpeed = defaultSpeed;
+        speed = maxSpeed;
     }
     private void Start()
     {
@@ -381,15 +386,25 @@ public class PlayerController : MonoBehaviour
             speed = newSpeed;
     }
 
+    public void blueCheck()
+    {
+        if (BlueBoots.activeInHierarchy == true) // NOT FINISHED
+        {
+            maxSpeed = fastSpeed;
+        }
+        else
+            maxSpeed = defaultSpeed;
+    }
+
     private void OnTriggerEnter2D(Collider2D col)
     {
-        //Debug.Log("Hit Trig");
-        if (col.gameObject.tag == "blueSlimeAcc")//Check to see if the player entered the blueSlimeAccelerator
-        {
+        ////Debug.Log("Hit Trig");
+        //if (col.gameObject.tag == "blueSlimeAcc")//Check to see if the player entered the blueSlimeAccelerator
+        //{
 
-            setSpeed(fastSpeed);//Set the speed to go faster
-            //Debug.Log("HitSlime " + speed);
-        }
+        //    setSpeed(fastSpeed);//Set the speed to go faster
+        //    //Debug.Log("HitSlime " + speed);
+        //}
         if (col.gameObject.tag == "NPC")
         {
             touchingNPC = true;
@@ -397,13 +412,13 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D col)
     {
-        //Debug.Log("Hit Trig");
-        if (col.gameObject.tag == "blueSlimeAcc")//Check to see if the player left the blueSlimeAccelerator
-        {
+        ////Debug.Log("Hit Trig");
+        //if (col.gameObject.tag == "blueSlimeAcc")//Check to see if the player left the blueSlimeAccelerator
+        //{
 
-            setSpeed(maxSpeed);//set the speed back to normal
-            //Debug.Log("HitSlime " + speed);
-        }
+        //    setSpeed(maxSpeed);//set the speed back to normal
+        //    //Debug.Log("HitSlime " + speed);
+        //}
         if (col.gameObject.tag == "NPC")
         {
             touchingNPC = false;
