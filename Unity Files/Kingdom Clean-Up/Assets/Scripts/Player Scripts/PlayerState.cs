@@ -12,20 +12,20 @@ public class PlayerState : MonoBehaviour {
     [Header("Debug Variables")]
     [Tooltip("How much green slime?")]
     public int greenSlimeMeter;
-    [Tooltip("How much red slime?")]
-    public int redSlimeMeter;
+    //[Tooltip("How much red slime?")]
+    //public int redSlimeMeter;
     [Tooltip("How much blue slime?")]
     public int blueSlimeMeter;
     [Tooltip("Slime Meter object")]
     public GameObject greenMeter;
-    [Tooltip("Slime Meter object")]
-    public GameObject redMeter;
+    //[Tooltip("Slime Meter object")]
+    //public GameObject redMeter;
     [Tooltip("Slime Meter object")]
     public GameObject blueMeter;
     [Tooltip("List of the slime meter's children")]
     public List<GameObject> greenChildren = new List<GameObject>();
-    [Tooltip("List of the slime meter's children")]
-    public List<GameObject> redChildren = new List<GameObject>();
+    //[Tooltip("List of the slime meter's children")]
+    //public List<GameObject> redChildren = new List<GameObject>();
     [Tooltip("List of the slime meter's children")]
     public List<GameObject> blueChildren = new List<GameObject>();
     [Tooltip("How much health the player has as a float")]
@@ -63,12 +63,12 @@ public class PlayerState : MonoBehaviour {
             //Debug.Log("<color=green>GreenSlimeVal:</color> " + greenSlimeMeter);//tells the debug log that green slime was added to the slime meter
         }
 
-        if ((redSlimeMeter < maxSlime) && type == "red")//Adds red slime to the slime meter
-        {
-            redSlimeMeter = Mathf.Clamp(redSlimeMeter + val, 0, 100);
-            setSlimeMeterImage(redSlimeMeter, redChildren);
-            //Debug.Log("<color=red>RedSlimeVal:</color> " + redSlimeMeter);//tells the debug log that red slime was added to the slime meter
-        }
+        //if ((redSlimeMeter < maxSlime) && type == "red")//Adds red slime to the slime meter
+        //{
+        //    redSlimeMeter = Mathf.Clamp(redSlimeMeter + val, 0, 100);
+        //    setSlimeMeterImage(redSlimeMeter, redChildren);
+        //    //Debug.Log("<color=red>RedSlimeVal:</color> " + redSlimeMeter);//tells the debug log that red slime was added to the slime meter
+        //}
 
         if ((blueSlimeMeter < maxSlime) && type == "blue")//Adds blue slime to the slime meter
         {
@@ -173,10 +173,10 @@ public class PlayerState : MonoBehaviour {
     {
         int i;
         greenChildren.Clear();
-        redChildren.Clear();
+        //redChildren.Clear();
         blueChildren.Clear();
         greenMeter = GameObject.Find("greenMeter");
-        redMeter = GameObject.Find("redMeter");
+        //redMeter = GameObject.Find("redMeter");
         blueMeter = GameObject.Find("blueMeter");
         CleanProgressBar = GameObject.Find("CleanProgress");
 

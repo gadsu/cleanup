@@ -270,9 +270,6 @@ public class PlayerController : MonoBehaviour
 
             if (!isClean && !isRun)
             {
-                
-
-                
 
                 runningMop.SetActive(false);
                 if (facingRight)
@@ -284,8 +281,7 @@ public class PlayerController : MonoBehaviour
                 {
 
                     an.Play("mopLeft");
-                }
-                
+                } 
             }
 
             if (hit)
@@ -298,8 +294,6 @@ public class PlayerController : MonoBehaviour
                     Destroy(hit.transform.gameObject);
                 }
             }
-
-
         }
         else
         {
