@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     float force = 0;
     bool isFrozen = false;
     bool dontDestroy = false;
-
+    public bool touchingNPC = false;
 
     private void Awake()
     {
@@ -262,7 +262,7 @@ public class PlayerController : MonoBehaviour
  
     public void interact() //Interact/Clean
     {
-        if (Input.GetButton("Interact") && !isJump && isJumpAnimation() == false && !isFrozen)
+        if (Input.GetButton("Interact") && !isJump && isJumpAnimation() == false && !isFrozen && !touchingNPC)
         {
             isInteract = true;
             LayerMask layer = LayerMask.GetMask("Viscera");
@@ -396,6 +396,10 @@ public class PlayerController : MonoBehaviour
             setSpeed(fastSpeed);//Set the speed to go faster
             //Debug.Log("HitSlime " + speed);
         }
+        if (col.gameObject.tag == "NPC")
+        {
+            touchingNPC = true;
+        }
     }
     private void OnTriggerExit2D(Collider2D col)
     {
@@ -405,6 +409,10 @@ public class PlayerController : MonoBehaviour
 
             setSpeed(maxSpeed);//set the speed back to normal
             //Debug.Log("HitSlime " + speed);
+        }
+        if (col.gameObject.tag == "NPC")
+        {
+            touchingNPC = false;
         }
     }
 

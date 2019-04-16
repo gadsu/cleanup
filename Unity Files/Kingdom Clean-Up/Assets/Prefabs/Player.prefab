@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 507021536}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &403855249
 SpriteRenderer:
@@ -128,8 +128,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 561561524}
   - {fileID: 403855248}
+  - {fileID: 561561524}
   m_Father: {fileID: 4200679053849870}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -200,7 +200,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 507021536}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &561561525
 SpriteRenderer:
@@ -458,6 +458,7 @@ MonoBehaviour:
   jumpSpeed: 60
   knockbackY: 30
   knockbackX: 30
+  touchingNPC: 0
 --- !u!212 &212152763885082436
 SpriteRenderer:
   m_ObjectHideFlags: 0
