@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 95475993690638980}
   m_Layer: 2
   m_Name: mopAttack
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -278,8 +278,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1552292412110382}
   m_LocalRotation: {x: -0, y: -0, z: 0.5457717, w: 0.8379339}
-  m_LocalPosition: {x: -6.6, y: -4.17, z: 0}
-  m_LocalScale: {x: 1, y: 7, z: 0}
+  m_LocalPosition: {x: -4.264, y: -5.193, z: 0}
+  m_LocalScale: {x: 1.012, y: 3.598, z: 0}
   m_Children: []
   m_Father: {fileID: 4200679053849870}
   m_RootOrder: 0
@@ -452,9 +452,10 @@ MonoBehaviour:
   canAttack: 0
   mop: {fileID: 1552292412110382}
   knockbackTime: 0
+  defaultSpeed: 0
+  fastSpeed: 80
   maxSpeed: 40
   speed: 0
-  fastSpeed: 80
   jumpSpeed: 60
   knockbackY: 30
   knockbackX: 30
