@@ -34,7 +34,9 @@ public class PlayerController : MonoBehaviour
     float force = 0;
     bool isFrozen = false;
     bool dontDestroy = false;
+    public bool boots = false;
     public bool touchingNPC = false;
+    IEnumerator decayRoutine;
 
     private void Awake()
     {
@@ -52,6 +54,7 @@ public class PlayerController : MonoBehaviour
         BlueBoots = GameObject.Find("Blue");
         maxSpeed = defaultSpeed;
         speed = maxSpeed;
+        decayRoutine = blueDecay();
     }
     private void Start()
     {
@@ -81,6 +84,7 @@ public class PlayerController : MonoBehaviour
         if(onGround)//is the player on the ground?
         { isJump = false; }
         an.SetBool("isJump", isJump);
+        blueCheck();
 
 
         if (Input.GetButtonDown("Attack") && canAttack && !isFrozen)
@@ -388,12 +392,32 @@ public class PlayerController : MonoBehaviour
 
     public void blueCheck()
     {
-        if (BlueBoots.activeInHierarchy == true) // NOT FINISHED
+        if (BlueBoots.activeInHierarchy == true && boots == false && ps.blueSlimeMeter >= 1) // NOT FINISHED
         {
             maxSpeed = fastSpeed;
+            speed = maxSpeed;
+            boots = true;
+            StartCoroutine(decayRoutine);
         }
-        else
+        else if ((BlueBoots.activeInHierarchy == false && boots == true) ||
+                 (boots == true && ps.blueSlimeMeter < 1))
+        {
             maxSpeed = defaultSpeed;
+            speed = maxSpeed;
+            boots = false;
+            StopCoroutine(decayRoutine);
+        }
+    }
+
+    IEnumerator blueDecay()
+    {
+        while (true)
+        {
+            yield return new WaitForSecondsRealtime(1);
+            ps.blueSlimeMeter -= 1;
+            if (ps.blueSlimeMeter < 0)
+                ps.blueSlimeMeter = 0;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)

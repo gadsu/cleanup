@@ -452,13 +452,14 @@ MonoBehaviour:
   canAttack: 0
   mop: {fileID: 1552292412110382}
   knockbackTime: 0
-  defaultSpeed: 0
+  defaultSpeed: 40
   fastSpeed: 80
   maxSpeed: 40
   speed: 0
   jumpSpeed: 60
   knockbackY: 30
   knockbackX: 30
+  boots: 0
   touchingNPC: 0
 --- !u!212 &212152763885082436
 SpriteRenderer:
