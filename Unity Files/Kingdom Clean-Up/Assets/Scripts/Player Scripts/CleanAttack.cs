@@ -50,6 +50,12 @@ public class CleanAttack : MonoBehaviour {
                 col.gameObject.GetComponent<GoopaMother>().spawnGoopling();
                 col.gameObject.GetComponent<EnemyState>().takeDamage(mopDamage);
             }
+            if (col.gameObject.tag == "Rollie")  //If you are hitting rollie
+            {
+                col.gameObject.GetComponent<Rollie>().takeDamage(mopDamage); //
+                Debug.Log("SLIME HIT: " + col.gameObject.name);
+
+            }
         }
     }
 

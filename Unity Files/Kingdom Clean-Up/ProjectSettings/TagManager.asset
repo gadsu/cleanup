@@ -21,6 +21,7 @@ TagManager:
   - rightInteractableWall
   - leftInteractableWall
   - NPC
+  - Rollie
   layers:
   - Default
   - TransparentFX
