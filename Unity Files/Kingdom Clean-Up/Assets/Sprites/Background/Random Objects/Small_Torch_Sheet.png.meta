@@ -1,7 +1,12 @@
 fileFormatVersion: 2
 guid: 3d37eea125a2ab847ad9099c6d47bd94
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Small_Torch_Sheet_0
+    21300002: Small_Torch_Sheet_1
+    21300004: Small_Torch_Sheet_2
+    21300006: Small_Torch_Sheet_3
+    21300008: Small_Torch_Sheet_4
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -40,7 +45,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -69,9 +74,120 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Small_Torch_Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 0
+        width: 135
+        height: 432
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b6a080ac4ee3d24ba5319c8a9657a0e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Small_Torch_Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 0
+        width: 132
+        height: 433
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ee2a01555148ea4283542cddb4488f1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Small_Torch_Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 0
+        width: 133
+        height: 446
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 843b3d7090bb7cc4a9bb248faf618eb5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Small_Torch_Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1109
+        y: 0
+        width: 128
+        height: 436
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 782b5a46dcea7e046b8fff6d2991377c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Small_Torch_Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1388
+        y: 0
+        width: 129
+        height: 440
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 788910a2a9fe21045ae4a420b4fd2c41
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

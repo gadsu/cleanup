@@ -10,6 +10,7 @@ public class Barney : MonoBehaviour
     public Transform BarneySlimePos;
     public float launchTimer;
     public int attackState = 0;
+    public int stage;
 
     [Header("Editable Variables")]
     public GameObject player;
@@ -21,26 +22,36 @@ public class Barney : MonoBehaviour
     public GameObject attTentacle;
     public GameObject leftSlimeCover;
     public GameObject rightSlimeCover;
+    public GameObject fallPoint;
+    public GameObject cord;
 
     GameObject target = null;  //Will be the player
     int health;
     float throwSlimeWait = 0;
     System.Random rnd = new System.Random();
     EnemyState es;
+    bool falling = true;
+    float fallPosition;
+    Rigidbody2D rb;
+    Color origColor;
 
     // Start is called before the first frame update
     void Start()
     {
         target = GameObject.Find("Player");    //Find the player
         es = gameObject.GetComponent<EnemyState>();
+        stage = 1;
+        fallPosition = fallPoint.transform.position.y;
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        origColor = gameObject.GetComponentInChildren<SpriteRenderer>().color;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        distanceToPlayer = Vector2.Distance(target.transform.position, transform.position);   //Calculate the distance between the player and yourself
-        //ThrowSlime();
-        launchTimer -= Time.deltaTime;
+        //distanceToPlayer = Vector2.Distance(target.transform.position, transform.position);   //Calculate the distance between the player and yourself
+        ////ThrowSlime();
+        //launchTimer -= Time.deltaTime;
 
         controller();
     }
@@ -55,7 +66,7 @@ public class Barney : MonoBehaviour
 
     void controller()
     {
-        if (hitCount >= 3)
+        if (hitCount >= 3 && stage < 3)
         {
             if (player.transform.position.x >= gameObject.transform.position.x)
             {
@@ -69,46 +80,64 @@ public class Barney : MonoBehaviour
 
             hitCount = 0;
         }
-        if (attackState == 0 && player.transform.position.x <= gameObject.transform.position.x) //If player is left of Barney and not attacking
-        {
-            attTentacle = tentacles[rnd.Next(3)];
-            attackState = 1;
-        }
-        else if (attackState == 0 && player.transform.position.x > gameObject.transform.position.x)//If player is right of Barney and not attacking
-        {
-            attTentacle = tentacles[rnd.Next(3, 6)];
-            attackState = 1;
-        }
 
-        if (attackState != 0)
+        if (stage < 3) // Act normally if not in final boss stage
         {
-            throwSlimeWait += Time.fixedDeltaTime;
-        }
-        if (throwSlimeWait >= 3f && attackState == 1)
-        {
-            attackState = 2;
-        }
-        if (throwSlimeWait >= 3.5f && attackState == 2)
-        {
-            Instantiate(throwSlimePrefab, attTentacle.transform.Find("end").position, new Quaternion());
-            attackState = 3; //Cooldown phase
-
-        }
-        if (throwSlimeWait >= 5f)
-        {
-            attackState = 0;
-            throwSlimeWait = 0;
-        }
-
-        foreach (GameObject tentacle in tentacles)
-        {
-            if (tentacle != attTentacle)
+            if (attackState == 0 && player.transform.position.x <= gameObject.transform.position.x) //If player is left of Barney and not attacking
             {
-                moveTentacle(tentacle, new Vector3(tentacle.transform.position.x, tentacle.transform.position.y + rnd.Next(-30, 30), 0));
+                attTentacle = tentacles[rnd.Next(3)];
+                attackState = 1;
+            }
+            else if (attackState == 0 && player.transform.position.x > gameObject.transform.position.x)//If player is right of Barney and not attacking
+            {
+                attTentacle = tentacles[rnd.Next(3, 6)];
+                attackState = 1;
+            }
+
+            if (attackState != 0)
+            {
+                throwSlimeWait += Time.fixedDeltaTime;
+            }
+            if (throwSlimeWait >= 3f && attackState == 1)
+            {
+                attackState = 2;
+            }
+            if (throwSlimeWait >= 3.5f && attackState == 2)
+            {
+                Instantiate(throwSlimePrefab, attTentacle.transform.Find("end").position, new Quaternion());
+                attackState = 3; //Cooldown phase
+
+            }
+            if (throwSlimeWait >= 5f)
+            {
+                attackState = 0;
+                throwSlimeWait = 0;
+            }
+
+            foreach (GameObject tentacle in tentacles)
+            {
+                if (tentacle != attTentacle)
+                {
+                    moveTentacle(tentacle, new Vector3(tentacle.transform.position.x, tentacle.transform.position.y + rnd.Next(-30, 30), 0));
+                }
+            }
+
+            attack(attTentacle);
+        }
+        else if (stage == 3)
+        {
+            if (falling)
+            {
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+                if (transform.position.y <= fallPosition)
+                {
+                    falling = false;
+                    rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                    Debug.Log("No Longer Falling");
+                }
+
             }
         }
-
-        attack(attTentacle);
     }
 
     void attack(GameObject tent)
@@ -148,6 +177,7 @@ public class Barney : MonoBehaviour
         }
 
         es.invulnerable = false;
-        gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+        gameObject.GetComponentInChildren<SpriteRenderer>().color = origColor;
+        stage += 1;
     }
 }

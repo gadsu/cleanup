@@ -15,6 +15,13 @@ TagManager:
   - InvisObject
   - Barn
   - GoopMother
+  - WallBox
+  - blueSlimeAcc
+  - New tag
+  - rightInteractableWall
+  - leftInteractableWall
+  - NPC
+  - Rollie
   layers:
   - Default
   - TransparentFX
@@ -60,4 +67,7 @@ TagManager:
     locked: 0
   - name: Objects
     uniqueID: 3532061751
+    locked: 0
+  - name: UI
+    uniqueID: 3160467837
     locked: 0

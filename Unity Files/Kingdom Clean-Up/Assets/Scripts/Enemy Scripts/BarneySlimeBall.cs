@@ -18,11 +18,18 @@ public class BarneySlimeBall : MonoBehaviour
     void Start()
     {
         //rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        if (GameObject.Find("DontDestroyOnLoad"))
+            ps = GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>();
         player = GameObject.Find("Player");
-        ps = GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>();
         playerPos = player.transform.position;
         hitspot = false;
         initPos = gameObject.transform.position;
+        
+        Vector2 relativePos = player.transform.position - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector2.up);
+        rotation.x = 0;
+        rotation.y = 0;
+        transform.rotation = rotation;
     }
 
     // Update is called once per frame
@@ -41,7 +48,6 @@ public class BarneySlimeBall : MonoBehaviour
         if (playerPos == transform.position)
         {
             hitspot = true;
-            Debug.Log("HIT");
         }
     }
 
@@ -54,19 +60,18 @@ public class BarneySlimeBall : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            ps.takeDamage(slimeDamage); //damage player
+            if (ps)
+                ps.takeDamage(slimeDamage); //damage player
             Destroy(gameObject);
         }
     }
 
     private void OnTriggerExit2D(Collider2D col)
     {
-        Debug.Log("I LEFT " + col.gameObject.name);
         if(col.gameObject.name == "BarnBox")
         {
-            Debug.Log("I HAVE LEFT THE BARN");
             Transform startpos = gameObject.transform; //find location of self
-            Instantiate<GameObject>(slimeBall, startpos.position, startpos.rotation);  //Create slime
+            Instantiate<GameObject>(slimeBall, startpos.position, new Quaternion());  //Create slime
             Destroy(gameObject); //kill self
         }
     }

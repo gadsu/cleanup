@@ -1,4 +1,7 @@
 ﻿
+//-------------COMPLETE DO NOT TOUCH----------//
+
+
 //    Clean Attack
 //    Controls the events that will happen when someone actually tries to hit someone
 //    Will need to be updated with new animations
@@ -46,6 +49,12 @@ public class CleanAttack : MonoBehaviour {
             {
                 col.gameObject.GetComponent<GoopaMother>().spawnGoopling();
                 col.gameObject.GetComponent<EnemyState>().takeDamage(mopDamage);
+            }
+            if (col.gameObject.tag == "Rollie")  //If you are hitting rollie
+            {
+                col.gameObject.GetComponent<Rollie>().takeDamage(mopDamage); //
+                Debug.Log("SLIME HIT: " + col.gameObject.name);
+
             }
         }
     }

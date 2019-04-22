@@ -12,14 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36baaa8bdcb9d8b49b9199833965d2c3, type: 3}
   m_Name: Player Camera Blends
   m_EditorClassIdentifier: 
-  m_CustomBlends:
-  - m_From: Player Run
-    m_To: Player Idle
-    m_Blend:
-      m_Style: 1
-      m_Time: 5
-  - m_From: Player Idle
-    m_To: Player Run
-    m_Blend:
-      m_Style: 1
-      m_Time: 0.5
+  m_CustomBlends: []

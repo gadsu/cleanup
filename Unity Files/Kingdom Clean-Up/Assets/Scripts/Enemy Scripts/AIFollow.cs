@@ -1,4 +1,4 @@
-﻿//
+﻿/////////////////COMPLETE, DO NOT TOUCH/////////////////////////////////////
 //   AIFollow
 //   A script attached to each enemy who will follow the player
 //   This script switches back and forth between following the player and patrolling the Patrol Points attached to its spawner.
@@ -39,25 +39,27 @@ public class AIFollow : MonoBehaviour
     [Tooltip("How fast the enemy moves")]
     public float baseSpeed = 20f;
 
-
     void Start()
     {
         target = GameObject.Find("Player");    //Find the player
         patrolChar = name.ToCharArray()[0];    //Get your unique ID
-        PatrolTimer = PTIME;
+        PatrolTimer = PTIME - ((gameObject.transform.position.x * gameObject.transform.position.y) % 5);
         LostPlayerTimer = PTIME;
 
-        points = GameObject.FindGameObjectsWithTag("Spawner");   //Find all of the spawner objects in the scene
-        targetArr.Clear();
-
+        //points = GameObject.FindGameObjectsWithTag("Spawner");   //Find all of the spawner objects in the scene
+        //targetArr.Clear();
+        //Debug.Log("1. " + points.Length);
         //Cycle through all spawner objects and only add the ones that match our character
-        foreach (GameObject n in points)
-        {
-            if (n.name.Contains("PatrolPoint") && n.transform.name.ToCharArray()[0] == patrolChar)  //AGreenSlimeSpawner BGreenSLime
-            {
-                targetArr.Add(n.transform);
-            }
-        }
+        //foreach (GameObject n in points)
+        //{
+        //    //Debug.Log("2. " + n.transform.name.ToCharArray()[0] + " " + patrolChar );
+        //    if (n.name.Contains("PatrolPoint") && n.transform.parent.name.ToCharArray()[0] == patrolChar)  //AGreenSlimeSpawner BGreenSLime
+        //    {
+        //        targetArr.Add(n.transform);
+        //        //Debug.Log("3. " + n.name);
+        //    }
+        //    //Debug.Log("Bool " + bul);
+        //}
     }
 
     void FixedUpdate()  //Happens every fixed frame

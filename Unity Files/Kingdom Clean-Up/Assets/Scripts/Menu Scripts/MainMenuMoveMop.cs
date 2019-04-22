@@ -1,6 +1,9 @@
-﻿
+﻿//-------------COMPLETE DO NOT TOUCH----------//
+
+
+
 //    MainMenuMoveMop
-//    Any code needed for the main menu (mostly quit)
+//    Code to turn on the mop images.
 
 using System.Collections;
 using System.Collections.Generic;

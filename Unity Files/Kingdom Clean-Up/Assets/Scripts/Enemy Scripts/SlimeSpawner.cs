@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿//-------------COMPLETE DO NOT TOUCH----------//
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,15 +23,22 @@ public class SlimeSpawner : MonoBehaviour {
     [Tooltip("Maximum number of slime that can be alive at one time")]
     public int maxSlime = 1;
     [Tooltip("Total number of slime this spawner can create")]
-    public int totalSlime = 4;
+    public int totalSlime = 1;
     [Tooltip("The time inbetween a slime's death and a slime spawn (or, time inbetween spawnings)")]
     public float timeDelay = 3f;
+
+    List<Transform> patrolPoints = new List<Transform>();
 
 	// Use this for initialization
 	void Start ()
     {
         slimeCount = 1;
         respawn();
+
+        foreach(Transform point in transform)
+        {
+            patrolPoints.Add(point);
+        }
 	}
 	
 	// Update is called once per frame
@@ -42,6 +52,12 @@ public class SlimeSpawner : MonoBehaviour {
             newSlimeEnemy.GetComponent<EnemyState>().setSpawner(gameObject.name.ToString());  //Set spawner
             newSlimeEnemy.GetComponent<EnemyState>().setColor(color);   //Set color
             newSlimeEnemy.name = name.ToCharArray()[0].ToString() + newSlimeEnemy.name;  //Name
+
+            if (newSlimeEnemy.GetComponent<AIFollow>())
+            {
+                newSlimeEnemy.GetComponent<AIFollow>().targetArr = patrolPoints;
+            }
+
             spawnTime = Time.fixedTime;  //reset timer
             totalSlime--;
         }
@@ -52,4 +68,5 @@ public class SlimeSpawner : MonoBehaviour {
         spawnTime = Time.fixedTime;  //reset timer so it doesn't instantly respawn
         slimeCount--;
     }
+
 }

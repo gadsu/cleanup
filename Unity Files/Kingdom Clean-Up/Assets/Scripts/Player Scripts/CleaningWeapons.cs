@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//COMPLETE DO NOT TOUCH//
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,14 +10,13 @@ public class CleaningWeapons : MonoBehaviour
     public bool itemsOn;
     public GameObject[] list;
     public GameObject items;
-
+    
 
 
     // Start is called before the first frame update
     void Start()
     {
         list[1].SetActive(false);
-        list[2].SetActive(false);
         items.SetActive(false);
         itemsOn = false;
     }
@@ -53,6 +54,7 @@ public class CleaningWeapons : MonoBehaviour
         {
             itemSelected = 0;
         }
+
         list[itemSelected].SetActive(true);
     }
 
@@ -64,8 +66,9 @@ public class CleaningWeapons : MonoBehaviour
 
         if ((itemSelected) < 0)
         {
-            itemSelected = 2;
+            itemSelected = 1;
         }
+
         list[itemSelected].SetActive(true);
     }
 }
