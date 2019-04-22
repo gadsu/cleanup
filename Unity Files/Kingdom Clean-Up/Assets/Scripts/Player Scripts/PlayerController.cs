@@ -413,10 +413,16 @@ public class PlayerController : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSecondsRealtime(1);
-            ps.blueSlimeMeter -= 1;
-            if (ps.blueSlimeMeter < 0)
-                ps.blueSlimeMeter = 0;
+            if (rb.velocity.x > 10 || rb.velocity.x < -10)
+            {
+                ps.blueSlimeMeter -= 2;
+                if (ps.blueSlimeMeter < 0)
+                    ps.blueSlimeMeter = 0;
+
+                yield return new WaitForSeconds(1);
+            }
+            else
+                yield return new WaitForFixedUpdate();
         }
     }
 
