@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4944659026283798496}
   - component: {fileID: 4944659026283798508}
+  - component: {fileID: 1403128991813840475}
   - component: {fileID: 4944659026283798497}
   - component: {fileID: 4944659026283798510}
   - component: {fileID: 4944659026283798511}
@@ -47,12 +48,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8aa2833bac770043ba42e8fa0dfe3fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 2
-  acceleration: 2500
+  state: 0
+  acceleration: 5000
   maxSpeed: 80
   blueSlimes: 3
   health: 1
   visceraPrefab: {fileID: 1827464675113566, guid: 0db456eb82d77104d99352e78843a2bf,
+    type: 3}
+--- !u!114 &1403128991813840475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4944659026283798509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0c9c7106adea4e49a5031e78fa01dc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  spawner: {fileID: 0}
+  color: blue
+  facingRight: 1
+  canMove: 0
+  invulnerable: 0
+  buffer: 3
+  knockbackY: 30
+  knockbackX: 30
+  visceraPrefab: {fileID: 1827464675113566, guid: 99e6383ecb9f5f64e8ccae5b201cbecf,
     type: 3}
 --- !u!212 &4944659026283798497
 SpriteRenderer:

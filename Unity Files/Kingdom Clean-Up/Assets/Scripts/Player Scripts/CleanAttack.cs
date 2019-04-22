@@ -52,9 +52,8 @@ public class CleanAttack : MonoBehaviour {
             }
             if (col.gameObject.tag == "Rollie")  //If you are hitting rollie
             {
-                col.gameObject.GetComponent<Rollie>().takeDamage(mopDamage); //
                 Debug.Log("SLIME HIT: " + col.gameObject.name);
-
+                col.gameObject.GetComponent<EnemyState>().takeDamage(mopDamage);
             }
         }
     }
