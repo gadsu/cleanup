@@ -28,7 +28,7 @@ public class CleaningWeapons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetBlueBootAnimations();
+        //SetBlueBootAnimations();//Play Blue Boot Animations BROKEN BEACUSE SPRITE STUFF
 
         if (Input.GetButtonDown("ShowItem") && itemsOn == false)
         {
