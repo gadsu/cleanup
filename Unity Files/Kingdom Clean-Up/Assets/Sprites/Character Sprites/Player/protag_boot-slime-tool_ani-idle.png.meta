@@ -1,0 +1,519 @@
+fileFormatVersion: 2
+guid: 6c48f6ebbfb1274458a0b78d79bec8bf
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: protag_boot-slime-tool_ani-idle_0
+    21300002: protag_boot-slime-tool_ani-idle_1
+    21300004: protag_boot-slime-tool_ani-idle_2
+    21300006: protag_boot-slime-tool_ani-idle_3
+    21300008: protag_boot-slime-tool_ani-idle_4
+    21300010: protag_boot-slime-tool_ani-idle_5
+    21300012: protag_boot-slime-tool_ani-idle_6
+    21300014: protag_boot-slime-tool_ani-idle_7
+    21300016: protag_boot-slime-tool_ani-idle_8
+    21300018: protag_boot-slime-tool_ani-idle_9
+    21300020: protag_boot-slime-tool_ani-idle_10
+    21300022: protag_boot-slime-tool_ani-idle_11
+    21300024: protag_boot-slime-tool_ani-idle_12
+    21300026: protag_boot-slime-tool_ani-idle_13
+    21300028: protag_boot-slime-tool_ani-idle_14
+    21300030: protag_boot-slime-tool_ani-idle_15
+    21300032: protag_boot-slime-tool_ani-idle_16
+    21300034: protag_boot-slime-tool_ani-idle_17
+    21300036: protag_boot-slime-tool_ani-idle_18
+    21300038: protag_boot-slime-tool_ani-idle_19
+  externalObjects: {}
+  serializedVersion: 7
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: protag_boot-slime-tool_ani-idle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2489
+        width: 1500
+        height: 845
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 720695d3dd13b0143ac69cff77cd25d0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: protag_boot-slime-tool_ani-idle_1
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 2483
+        width: 1493
+        height: 851
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd1ca17b55241184d809ce485b39f09a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: protag_boot-slime-tool_ani-idle_2
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 2477
+        width: 1529
+        height: 857
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87c1bbf5229e73942901514709c2f86e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: protag_boot-slime-tool_ani-idle_3
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 2489
+        width: 1500
+        height: 845
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1347edbefeb39749977d0347036ab50
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: protag_boot-slime-tool_ani-idle_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2001.3333
+        width: 1500
+        height: 666.6667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7b219871256731469dfa3ac1dd46f41
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: protag_boot-slime-tool_ani-idle_5
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 2001.3333
+        width: 1500
+        height: 666.6667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd823a8edc79e574f87c91e022172a8b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: protag_boot-slime-tool_ani-idle_6
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 2001.3333
+        width: 1500
+        height: 666.6667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c581a6220e7d344e8550764fef0e58b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: protag_boot-slime-tool_ani-idle_7
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 2001.3333
+        width: 1500
+        height: 666.6667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a44e32bced56fcf47849c701e89223cc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: protag_boot-slime-tool_ani-idle_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 502
+        width: 1481
+        height: 834
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c42ec3088db8c7544b72817531b8ea01
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: protag_boot-slime-tool_ani-idle_9
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 489
+        width: 1518
+        height: 847
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c154b028de5ac94c8f1ac24bc2cb3f2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: protag_boot-slime-tool_ani-idle_10
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 496
+        width: 1510
+        height: 840
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29c4918651984d24fa2c8d49facdbe63
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: protag_boot-slime-tool_ani-idle_11
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 483
+        width: 1500
+        height: 860
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f210b5b0b930e34888d2b0f013d07b9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: protag_boot-slime-tool_ani-idle_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3.333313
+        width: 1500
+        height: 666.6667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2456f08d7d4281543bf4326efe99f33f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: protag_boot-slime-tool_ani-idle_13
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 3.333313
+        width: 1500
+        height: 666.6667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89178ba7e2ce5cc499b29f341bd3ca2a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: protag_boot-slime-tool_ani-idle_14
+      rect:
+        serializedVersion: 2
+        x: 2829
+        y: 41
+        width: 1500
+        height: 667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7245944860706043a7044157793d418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: protag_boot-slime-tool_ani-idle_15
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 3.333313
+        width: 1500
+        height: 666.6667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b048e5d6274c1246b3fbd19a52044dd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: protag_boot-slime-tool_ani-idle_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1917
+        width: 6000
+        height: 575
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 17}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29b2a879f3937b543a6e711d22166081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: protag_boot-slime-tool_ani-idle_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 6000
+        height: 1524
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 489, z: 0, w: 228}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79dd1966dca74c94b88e039e175c7437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: protag_boot-slime-tool_ani-idle_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 508
+        width: 6000
+        height: 902
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ed9d152d850cf94d93fc048740408f1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: protag_boot-slime-tool_ani-idle_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 286
+        width: 6000
+        height: 1137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09ae096993f01e3439f8c77e41e2458d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: bcdaac875f503b74d8f336ad48ec648e
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

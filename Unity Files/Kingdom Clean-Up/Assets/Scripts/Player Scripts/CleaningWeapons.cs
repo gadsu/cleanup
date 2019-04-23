@@ -10,11 +10,15 @@ public class CleaningWeapons : MonoBehaviour
     public bool itemsOn;
     public GameObject[] list;
     public GameObject items;
-    
+    Animator an;
 
+    private void Awake()
+    {
+        an = GetComponent<Animator>();
+    }
 
-    // Start is called before the first frame update
-    void Start()
+        // Start is called before the first frame update
+        void Start()
     {
         list[1].SetActive(false);
         items.SetActive(false);
@@ -24,7 +28,9 @@ public class CleaningWeapons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("ShowItem") && itemsOn == false)
+        SetBlueBootAnimations();
+
+        if (Input.GetButtonDown("ShowItem") && itemsOn == false)
         {
             items.SetActive(true);
             itemsOn = true;
@@ -41,6 +47,20 @@ public class CleaningWeapons : MonoBehaviour
         else if (Input.GetButtonDown("SwapItemRight") && itemsOn == true)
         {
             itemCycleForward();
+        }
+    }
+
+    public void SetBlueBootAnimations()
+    { 
+        if(itemSelected == 1)
+        {
+            an.SetBool("isBlue", true);
+            
+        }
+        else
+        {
+            an.SetBool("isBlue", false);
+            
         }
     }
 
