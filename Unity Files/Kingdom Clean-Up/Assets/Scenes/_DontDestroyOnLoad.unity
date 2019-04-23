@@ -330,13 +330,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   greenSlimeMeter: 0
-  redSlimeMeter: 0
   blueSlimeMeter: 0
   greenMeter: {fileID: 0}
-  redMeter: {fileID: 0}
   blueMeter: {fileID: 0}
   greenChildren: []
-  redChildren: []
   blueChildren: []
   playerHealth: 100
   isInvuln: 0
