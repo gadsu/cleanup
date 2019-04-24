@@ -57,7 +57,7 @@ MonoBehaviour:
   attackSpecial: 0
   PTIME: 3
   JTIME: 4
-  YPosFreeze: 95
+  YPosFreeze: 120
   basicSpeed: 20
   specialSpeed: 31
   pauseTime: 1
