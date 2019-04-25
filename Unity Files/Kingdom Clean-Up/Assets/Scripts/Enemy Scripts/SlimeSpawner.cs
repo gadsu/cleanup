@@ -32,6 +32,7 @@ public class SlimeSpawner : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        totalSlime = 1;
         slimeCount = 1;
         respawn();
 
