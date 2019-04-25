@@ -224,9 +224,15 @@ public class EnemyState : MonoBehaviour {
         }
 
         int green = 0, red = 0, blue = 0;
-        if(color == "Boss")
+        if(gameObject.name.Contains("OBSOOO"))
         {
-            Walls.GetComponent<InvisObjects>().DisableWalls();
+                Walls.GetComponent<InvisObjects>().DisableWalls();
+                green = 3;
+        }
+        else if (gameObject.name.Contains("Barn"))
+        {
+            green = 2;
+            blue = 1;
         }
         else if(color == "green")
             green = 3;
