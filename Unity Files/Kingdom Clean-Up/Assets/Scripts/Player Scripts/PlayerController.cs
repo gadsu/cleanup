@@ -271,7 +271,7 @@ public class PlayerController : MonoBehaviour
  
     public void interact() //Interact/Clean
     {
-        if (Input.GetButton("Interact") && !isJump && isJumpAnimation() == false && !isFrozen && !touchingNPC)
+        if (Input.GetButton("Interact") && !isJump && isJumpAnimation() == false && !isFrozen) //&&!touchingNPC
         {
             isInteract = true;
             LayerMask layer = LayerMask.GetMask("Viscera");
