@@ -65,4 +65,13 @@ public class KillScreen : MonoBehaviour {
         KillScreenObject.SetActive(false);
 
     }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+                Time.timeScale = 0; // Stops time
+                ShowKillScreen();
+        }
+    }
 }
