@@ -183,6 +183,8 @@ public class PlayerController : MonoBehaviour
                         {
                             runningMop.SetActive(true);
                             an.Play("mopRunRight");
+                            if (!GameObject.Find("DontDestroyOnLoad").GetComponent<AudioSource>().isPlaying)
+                                GameObject.Find("DontDestroyOnLoad").GetComponent<PlaySound>().Play("floorMop");
                         }
                         else
                         {
@@ -200,6 +202,8 @@ public class PlayerController : MonoBehaviour
                         {
                             runningMop.SetActive(true);
                             an.Play("mopRunLeft");
+                            if (!GameObject.Find("DontDestroyOnLoad").GetComponent<AudioSource>().isPlaying)
+                                GameObject.Find("DontDestroyOnLoad").GetComponent<PlaySound>().Play("floorMop");
                         }
                         else
                         {
@@ -230,9 +234,9 @@ public class PlayerController : MonoBehaviour
                 */
                 if (!Input.GetButton("Interact"))
                 {
-                runningMop.SetActive(false);
+                    runningMop.SetActive(false);
                 }
-        }
+         }
 
          if (Mathf.Abs(rb.velocity.x) <= 0 || isJump)
          {
@@ -283,14 +287,14 @@ public class PlayerController : MonoBehaviour
                 runningMop.SetActive(false);
                 if (facingRight)
                 {
-
                     an.Play("mopRight");
                 }
                 else
                 {
-
                     an.Play("mopLeft");
-                } 
+                }
+                if (!GameObject.Find("DontDestroyOnLoad").GetComponent<AudioSource>().isPlaying)
+                    GameObject.Find("DontDestroyOnLoad").GetComponent<PlaySound>().Play("floorMop");
             }
 
             if (hit)
@@ -301,6 +305,7 @@ public class PlayerController : MonoBehaviour
                     GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().groundSlimeCleaned++;
                     GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().updateCleanProgress();
                     Destroy(hit.transform.gameObject);
+                    GameObject.Find("DontDestroyOnLoad").GetComponent<PlaySound>().Play("cleaningEffect");
                 }
             }
         }
@@ -497,6 +502,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            if (isClean == true)
+                GameObject.Find("DontDestroyOnLoad").GetComponent<AudioSource>().Stop();
             isClean = false;
 
         }

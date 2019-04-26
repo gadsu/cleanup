@@ -284,7 +284,8 @@ public class OBSOOO : MonoBehaviour {
     {
         if (col.gameObject.name == "mopAttack")
         {
-            hitCount++; 
+            hitCount++;
+            an.Play("Obsooo_Hit");
         }
     }
 

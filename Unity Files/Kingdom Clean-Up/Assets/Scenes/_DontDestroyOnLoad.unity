@@ -127,7 +127,7 @@ PrefabInstance:
     - target: {fileID: 8548529014721339195, guid: d611f38bc692d414082e14cf16bcce42,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5698602086527659622, guid: d611f38bc692d414082e14cf16bcce42,
         type: 3}
@@ -183,6 +183,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929193344463114020, guid: d611f38bc692d414082e14cf16bcce42,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d611f38bc692d414082e14cf16bcce42, type: 3}
@@ -372,6 +377,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3ab67818285348f4ea8bdcdbdcca62f3, type: 3}
   - {fileID: 8300000, guid: 190b3db55b8941245a0d9d87f6cf553a, type: 3}
   - {fileID: 8300000, guid: 863a02de1d5fc8045958c43bec5628c0, type: 3}
+  - {fileID: 8300000, guid: 29881d6edf306074eb307e1ddd7328f0, type: 3}
 --- !u!82 &1482372077
 AudioSource:
   m_ObjectHideFlags: 0
