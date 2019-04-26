@@ -32,7 +32,7 @@ public class CleanAttack : MonoBehaviour {
         {
             if (col.gameObject.tag == "Enemy" )  //Can oly hit basic enemy's not bosses
             {
-                col.gameObject.GetComponent<EnemyState>().takeDamage(mopDamage); //
+                col.gameObject.GetComponent<EnemyState>().takeDamage(mopDamage / 2); //
                 Debug.Log("SLIME HIT: " + col.gameObject.name);
 
             }
@@ -60,8 +60,11 @@ public class CleanAttack : MonoBehaviour {
 
     public void swingMop()
     {
-        if (!an.GetCurrentAnimatorStateInfo(0).IsName("Swing"))  //If you are not already playing the animation, play it
+        if (!an.GetCurrentAnimatorStateInfo(0).IsName("Swing")) //If you are not already playing the animation, play it
+        {
             an.Play("Swing");
+            GameObject.Find("DontDestroyOnLoad").GetComponent<PlaySound>().Play("mopHit");
+        }
     }
     
 

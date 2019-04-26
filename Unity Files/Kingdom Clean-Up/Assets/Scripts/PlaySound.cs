@@ -31,6 +31,11 @@ public class PlaySound : MonoBehaviour
             case "cleaningEffect":
                 source.PlayOneShot(aclips[2]);
                 break;
+            case "floorMop":
+                source.volume = 0.6f;
+                source.PlayOneShot(aclips[3]);
+                source.volume = 1f;
+                break;
         }
     }
 }

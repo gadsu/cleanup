@@ -21,36 +21,36 @@ public class MainMenuMoveMop : MonoBehaviour, ISelectHandler, IDeselectHandler /
     {
         // MopImage = gameObject.transform.Find("Sprite").gameObject;
         Hide(MopImage);
-        Show(SlimeOverlay);
+        //Show(SlimeOverlay);
     }
     
     //If button is being hovered over show Mop on the Left
     public void OnMouseEnter()
     {
         Show(MopImage);
-        Hide(SlimeOverlay);
+        //Hide(SlimeOverlay);
     }
     private void OnMouseOver()
     {
         Show(MopImage);
-        Hide(SlimeOverlay);
+        //Hide(SlimeOverlay);
     }
     private void OnMouseExit() //hide mop when not hovered
     {
         Hide(MopImage);
-        Show(SlimeOverlay);
+        //Show(SlimeOverlay);
     }
 
     //same as above but with controller
     void ISelectHandler.OnSelect(BaseEventData eventData)
     {
         Show(MopImage);
-        Hide(SlimeOverlay);
+        //Hide(SlimeOverlay);
     }
     void IDeselectHandler.OnDeselect(BaseEventData eventData)
     {
         Hide(MopImage);
-        Show(SlimeOverlay);
+        //Show(SlimeOverlay);
     }
     
     // shows and hides objects
