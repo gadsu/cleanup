@@ -6,6 +6,8 @@ public class barnCameraTransition : MonoBehaviour
 {
     public GameObject vcam;
     public GameObject player;
+    public GameObject barn;
+    public GameObject walls;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,7 @@ public class barnCameraTransition : MonoBehaviour
         if (collision.name == player.name)
         {
             vcam.SetActive(false);
+            //Add walls and hide barn
         }
     }
 
@@ -32,6 +35,7 @@ public class barnCameraTransition : MonoBehaviour
         if (collision.name == player.name)
         {
             vcam.SetActive(true);
+            //Remove walls and add barn
         }
     }
 }

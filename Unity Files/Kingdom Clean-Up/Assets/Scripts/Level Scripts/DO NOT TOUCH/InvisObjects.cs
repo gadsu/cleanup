@@ -7,6 +7,7 @@ public class InvisObjects : MonoBehaviour {
     public GameObject BossSpawnerObject;
     public GameObject rightWall;
     public GameObject leftWall;
+    public GameObject BarnFront;
 
     //turns on OBSOOO spawner
     private void OnTriggerEnter2D(Collider2D col)
@@ -14,7 +15,10 @@ public class InvisObjects : MonoBehaviour {
         Debug.Log("HE RAN THROUGH ME");
         if (col.gameObject.tag == "Player")
         {
-            ShowObject();
+            if(BossSpawnerObject)
+                ShowObject();
+            if (BarnFront)
+                ShowBarn();
         }
     }
 
@@ -29,7 +33,14 @@ public class InvisObjects : MonoBehaviour {
         
     }
 
+    private void OnTriggerExit2D(Collider2D col)
+    {
 
+        if (col.gameObject.tag == "Player")
+        {
+            BarnFront.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        }
+    }
 
     //private void OnTriggerExit2D(Collider2D col)
     //{
@@ -46,10 +57,14 @@ public class InvisObjects : MonoBehaviour {
         Debug.Log("Spawner is on");
     }
 
+    public void ShowBarn()
+    {
+        BarnFront.GetComponent<SpriteRenderer>().sortingOrder = -3;
+    }
+
     //hides Spawner
     public void HideObject()
     {
-
         BossSpawnerObject.SetActive(false);
     }
 
