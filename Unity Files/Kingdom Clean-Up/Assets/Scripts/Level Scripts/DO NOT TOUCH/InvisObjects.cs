@@ -25,7 +25,7 @@ public class InvisObjects : MonoBehaviour {
     //turns on invisWalls
     private void OnTriggerStay2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Boss")
+        if (col.gameObject.tag == "Boss" && col.gameObject.name.Contains("OBSOOO"))
         {
             leftWall.SetActive(true);
             rightWall.SetActive(true);
@@ -60,12 +60,15 @@ public class InvisObjects : MonoBehaviour {
     public void ShowBarn()
     {
         BarnFront.GetComponent<SpriteRenderer>().sortingOrder = -3;
+        leftWall.SetActive(true);
+        rightWall.SetActive(true);
     }
 
     //hides Spawner
     public void HideObject()
     {
-        BossSpawnerObject.SetActive(false);
+        if(BossSpawnerObject)
+            BossSpawnerObject.SetActive(false);
     }
 
     // Use this for initialization

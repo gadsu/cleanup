@@ -28,8 +28,7 @@ public class EndScene : MonoBehaviour {
                 Debug.Log("Next Level");
                 GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().sceneLoaded = false;
                 //Move to next level
-                Debug.Log(SceneManager.GetActiveScene().buildIndex);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                NextScene();
             }
             else
             {
@@ -40,4 +39,16 @@ public class EndScene : MonoBehaviour {
         }
     }
 
+    public void NextScene()
+    {
+        StartCoroutine(Next());
+    }
+
+    IEnumerator Next()
+    {
+        GameObject.Find("BlackFade").GetComponent<Animator>().Play("BlackFadeIn");
+        yield return new WaitForSeconds(1f);
+        Debug.Log(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }

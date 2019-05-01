@@ -231,6 +231,7 @@ public class EnemyState : MonoBehaviour {
         }
         else if (gameObject.name.Contains("Barn"))
         {
+            Walls.GetComponent<InvisObjects>().DisableWalls();
             green = 2;
             blue = 1;
         }

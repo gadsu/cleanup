@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour
 
     public void ChangeSceneByName(string name)
     {
-        if(GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().sceneLoaded == true)
+        if(GameObject.Find("DontDestroyOnLoad") && GameObject.Find("DontDestroyOnLoad").GetComponent<PlayerState>().sceneLoaded == true)
         {
             GameObject.Find("DontDestroyOnLoad").GetComponent<GameData>().ReloadLevel();
         }
